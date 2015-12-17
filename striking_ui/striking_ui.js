@@ -31,7 +31,7 @@
 	// bottomBuffer pixels from the bottom of the viewport.  Note
 	// that elements near the bottom of the document are also made opaque
 	return (elt.getBoundingClientRect().bottom <= window.innerHeight-bottomBuffer  ||
-	       elt.getBoundingClientRect().bottom > document.body-20);
+	       elt.getBoundingClientRect().bottom > document.body.getBoundingClientRect().bottom-20);
     }
 
     function getOpaqueElements() {
