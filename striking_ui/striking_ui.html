@@ -1,0 +1,523 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=1024, user-scalable=no">
+
+    <title>Striking user interfaces</title>
+
+    <style>
+      body {padding: 0 30% 0 8%; margin: 0;}
+      h2 {font-family: "Times New Roman"; font-size: 72px;}
+      h3 {font-family: "Times New Roman"; font-size: 56px;}
+      p, li {font-family: "Georgia"; font-size: 40px;}
+      p {line-height: 1.8;}
+      li {line-height: 1.4;}
+      a {text-decoration: none; color: #393;}
+      a:hover {text-decoration: underline;}
+      blockquote {font-size: 32px;}
+      .marginnote {
+        position: absolute;
+        left: 73%;
+        width: 19%;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        font-family: "Georgia";
+        font-size: 16px;
+      }
+    </style>
+
+    <script src="striking_ui.js"></script>
+			
+  </head>
+
+  <body>
+    <h2>Striking user interfaces</h2>
+	
+    <p>
+      <span class="marginnote">Rough and incomplete working notes,
+      by <a href="http://michaelnielsen.org">Michael Nielsen</a>.
+      Thanks to John Workman for a conversation that made them a lot
+      clearer.  The notes were used for a presentation at
+      the <a href="http://recurse.com">Recurse Center</a>. Press
+      &ldquo;n&rdquo; to advance forward through the presentation, and
+      &ldquo;p&rdquo; to move back.  Note that the scrolling was
+      quickly hacked together to work with my machine configuration
+      and screen, and hasn't been thoroughly tested.</span>
+      <blockquote><em>In any field find the strangest thing and then
+	  explore it</em> &ndash; John Wheeler</blockquote>
+    </p>
+	
+    <p>
+      What are the strangest and most interesting user interfaces?
+      What principles underly those interfaces?
+    </p>
+
+    <p>
+      Motivating hunches (which I'll come back to): we've discovered
+      no more than an infinitesimal fraction of the most powerful user
+      interface ideas; powerful new interface ideas help expand the
+      range of thoughts we can think*<span class="marginnote">* See
+     <a href="http://worrydream.com/MediaForThinkingTheUnthinkable/">Media for Thinking the Unthinkable</a>.</span>.
+    </p>
+
+    <img src="assets/possible_ui.png"/>
+
+    <p>
+      Natural question: what new interface ideas can we discover?  How
+      can we expand the range of thoughts we can think?
+    </p>
+
+    <p>
+      These are questions I'm very interested in, and puzzling over.
+    </p>
+
+    <p>
+      I don't have good answers.  But I thought it might be fun to
+      show some striking interfaces, and talk a bit about some things
+      I've learned, and interesting questions.
+    </p>
+
+    <p>
+      Such a talk structure is a bit unusual.
+    </p>
+
+    <p>
+      Often a talk starts with a well-posed puzzle or mystery, then
+      develops an answer, and wraps up in a satisfying conclusion that
+      partially or completely resolves the mystery.
+    </p>
+
+    <p>
+      In this talk, my goal is fuzzier.  I'm merely trying to explore
+      and better understand some striking user interface ideas.  The
+      motivating puzzle &ndash; develop UI ideas that can expand the
+      range of thoughts we can think &ndash; is so far in the
+      background as to be barely visible.  So you should view this as
+      exploration and play more than as problem solving with a
+      satisfying conclusion.  Hopefully that'll occur in a future
+      presentation!
+    </p>
+
+    <p>
+      Lots of books (and other resources) on UI design.  Most take UI
+      primitives as a relatively fixed set, and ask how to use them to
+      build good interfaces.  But the stance here is more that of:
+      where do the primitives come from?  How are they invented?  How
+      might we invent new ones?</p>
+
+    <p>We won't answer these questions.  But it's where I'm coming
+      from.
+    </p>
+
+    <p>
+      Invention of new UI primitives is important.  New UI primitives
+      &ndash; the hyperlink, the search box, the written
+      word*<span class="marginnote">* I'm not going to define UI, nor
+      to draw much of a distinction between static media, and
+      interactive interfaces.  I'm more interested in gathering data
+      about powerful examples than in imposing <em>a priori</em>
+      restrictions.</span> &ndash; are often tremendously important
+      vehicles for thought.
+    </p>
+      
+      
+    <h3>Manipulating time in user interfaces: the
+    game <em>Braid</em></h3>
+
+    <p>
+      <em>Braid</em> provides several models allowing you to
+      manipulate time.</p>
+
+    <p>The simplest model lets the player backtrack, a kind of
+      continuous undo or version control.</p>
+
+    <p>
+      In the follow excerpt, I show the player encountering two
+      unexpected obstacles.  In many games you would die.
+      In <em>Braid</em> you die, but can then undo or rewind your
+      actions, taking you back to an earlier game state.  Then you can
+      attempt the obstacle again, but with the advantage of knowing
+      what to expect.  Here's the excerpt:
+    </p>
+
+    <video width="100%" controls>
+      <source src="assets/braid_basic.mp4" type="video/mp4"/>
+	Your browser does not support this video format
+    </video>
+
+    <p>
+      Later parts of the game gradually give us more elaborate ways of
+      manipulating time.
+    </p>
+
+    <p>
+      In the next excerpt, the player sees that they need a key to
+      unlock the gate on the far right of the screen.  They must get
+      the key from the creature at the bottom of the pit.  But how can
+      they get out of the pit?  Let's take a look:
+    </p>
+    <video width="100%" controls>
+      <source src="assets/braid_sparkly.mp4" type="video/mp4"/>
+      Your browser does not support this video format
+    </video>
+
+    <p>
+      Ahah! We learn that green sparkly things don't go backward in
+      time.  They continue forward in time, while everything else
+      rewinds.  This extends the previous model of time we had, in
+      which everything was rewound.
+    </p>
+    
+    <p>
+      In this excerpt we're actually using our control of time to
+      solve otherwise insoluble puzzles.  Indeed, each new model of
+      time gives the game designer space to discover new puzzles.
+    </p>
+
+    <p>
+      Consider the following puzzle.  We'd like to use the clouds as
+      platforms to jump across to the cannon on the far right of the
+      screen.  But it's not possible because the spacing is wrong.
+      However, we can use our new model of controlling time &ndash;
+      green sparkly clouds always move forward in time! &ndash; to get
+      the spacing between the clouds just right:
+    </p>
+
+    <video width="70%" controls>
+      <source src="assets/braid_clouds.mp4" type="video/mp4"/>
+	Your browser does not support this video format
+    </video>
+
+    <p>
+      <em>Braid</em> continues in this way, with several more models
+      of time control, and dozens of puzzles whose solution requires
+      increasing virtuosity in using time control.
+    </p>
+    
+    <h3>
+      User interface primitives become basic mental representations
+      and operations
+    </h3>
+
+    <p>
+      When you play <em>Braid</em> intensely, you start to incorporate
+      the control of time as a primitive operation in your thinking.
+      I found myself wanting to rewind in everyday life.  And you
+      become increasingly adept at reasoning about time control.  The
+      time control operations are incorporated into your mental
+      lexicon.
+    </p>
+
+    <p>
+      In a similar way, people experiencing
+      the <a href="https://en.wikipedia.org/wiki/Tetris_effect">Tetris
+      effect</a> compulsively imagine rotating real-world objects, and
+      fitting them into slots in the environment.
+    </p>
+
+    <p>
+      Specific games are not (usually) durable parts of people's
+      lives, and this effect rapidly fades.
+    </p>
+
+    <p>
+      But many user interface operations are internalized as part of
+      our everyday thinking.  For instance, everyone is used to
+      clicking and dragging the mouse pointer to select part of a
+      document.  This seems simple and natural, but it is, of course,
+      an operation that was invented (in several stages).  For
+      instance, here's how Bill
+      Atkinson <a href="http://www.folklore.org/StoryView.py?story=MacPaint_Evolution.txt">invented</a>
+      the &ldquo;marching ants&rdquo; which were introduced in Apple's
+      Mac and Lisa systems, and are still used today in many selection
+      tools:
+    </p>
+
+    <img src="assets/atkinson.png"/>
+
+    <p>
+      Let's assume:
+    </p>
+    
+    <ul>
+      <li>We internalize external methods of representation we've
+	seen (words, maps, graphs, mathematical
+	notation, <em>etc</em>).</li>
+
+      <li>We internalize operations we've seen (selection, following
+	a link, cut-and-paste, <em>etc</em>).</li>
+
+      <li>Those internalized representations and operations are
+	incorporated into and maybe even become the basis for our
+	cognition.</li>
+    </ul>
+
+    <p>
+      It's common to say technology is augmenting human cognition.
+    </p>
+
+    <p>
+      The usual examples are things like search or maps, which
+      simplify problems that previously were quite difficult.
+    </p>
+
+    <p>
+      But I think there's a much more fundamental way of using
+      technology to augment cognition.
+    </p>
+    
+    <p>
+      We think of our minds as existing in a biological substrate.
+    </p>
+
+    <p>
+      But equally important as a substrate for thought are words,
+      sketches, mathematical symbols, musical notes, and so.  And
+      these are technologies: they're things people have invented.  By
+      inventing new representations and ways of interacting with them,
+      maybe we can change the way people think.
+    </p>
+    
+    <h3>
+      Monument Valley
+    </h3>
+
+    <p>
+      Another interesting UI is in the game <em>Monument Valley</em>.
+    </p>
+
+    <p>
+      (It's notable, by the way, that a lot of UI innovation happens
+      in games.)
+    </p>
+
+    <p>
+      In the following, you're the white character.  You're trying to
+      push the button on the left.  But you're blocked from getting
+      there by a black crow.  What do you do?
+    </p>
+
+    <video width="30%" controls>
+      <source src="assets/mv_gravity.mp4" type="video/mp4"/>
+	Your browser does not support this video format
+    </video>
+
+    <p>
+      Solving this puzzle depends crucially on understanding and
+      working within an unusual model of gravity.  Indeed, that
+      unusual model of gravity is what makes the puzzle possible.
+    </p>
+
+    <p>
+      Let's look at another example:
+    </p>
+    
+    <video width="30%" controls>
+      <source src="assets/mv_escher.mp4" type="video/mp4"/>
+      Your browser does not support this video format
+    </video>
+
+    <p>
+      This example relies on well-known hacks of the human perceptual
+      system.
+    </p>
+
+    <p>
+      Reality is 3d &rarr; 2d input device (eyes) &rarr; inverted by our brain to a 3d model.
+    </p>
+
+    <p>
+      There is no unique way of doing that inversion.  We rely on cues
+      from things like shadows etc.  Because of this non-uniqueness,
+      we can fool the brain into thinking that two points are
+      simultaneously: (1) at the same height; and (2) at different
+      heights.
+    </p>
+      
+    <p>
+      To solve the puzzle, we must learn to reason (at least in a
+      limited way) about such hacks of our perceptual system.  It's
+      notable that once we're up the stairs, the player never
+      &ldquo;climbs higher&rdquo;, yet ends up &ldquo;higher&rdquo; in
+      space.  Figuring out how to do that is really the point of this
+      puzzle.
+    </p>
+
+    <p>
+      <em>Monument Valley</em>
+      was <a href="https://unity3d.com/showcase/case-stories/monument-valley">built</a>
+      using <em>Unity</em>'s 3d game engine.  I don't know how this
+      worked &ndash; I don't think <em>Unity</em> is built to support
+      impossible structures!  I presume they used one-off hacks /
+      kludges to get the desired physics, not a genuine
+      model*<span class="marginnote">* Some circumstantial evidence:
+      the actions you can take in the game are extremely constrained.
+      I suspect this isn't an accident, but it is a deliberate design
+      choice to make the other kludges possible. </span>.
+    </p>
+
+    <p>
+      Could you build a game engine that wasn't 2d or 3d, as usually
+      construed, but rather <em>systematically</em> incorporated these
+      kinds of hacks of our perceptual system?  What data structures
+      would you use to model such systems?   
+    </p>
+
+    <h2>Miegakure: gaming in 4 dimensions</h2>
+
+    <iframe width="853" height="480"
+    src="https://www.youtube.com/embed/9yW--eQaA2I" frameborder="0"
+    allowfullscreen></iframe>
+
+    <p>
+      Again, we see the same pattern: problems in 4-dimensional
+      geometry become sources of game puzzles.
+    </p>
+
+    <p>
+      A general pattern is that deep insights from <em>outside</em>
+      computing can often be reified as interesting UI.
+    </p>
+
+    <p>
+      (Many of the ideas behind modern user interfaces were invented
+      by Alan Kay's group at Xerox PARC in the 1970s.  It's striking
+      that
+      Kay's <a href="http://www.squeakland.org/resources/books/readingList.jsp">recommended
+      reading</a> is mostly books <em>outside computing</em>.  In
+      published interviews, Kay has talked about how many of the ideas
+      in those books inspired interface ideas.)
+    </p>
+      
+    <h2> Why are time control, gravity change <em>etc</em>
+    interesting?
+    </h2>
+
+    <p>All are, loosely speaking, changes to the laws of physics.  But
+      so what?
+    </p>
+    
+    <p>
+      One (relatively) consistent rule change that can be applied
+      uniformly to many different contexts.
+    </p>
+
+    <p>
+      Lots of UI is only locally applicable.  We think of tools
+      &ndash; &ldquo;change this font!&rdquo; &ndash; which are
+      applied locally.  But in these cases we have a consistent
+      globally applied rule.  
+    </p>
+
+    <p>
+      Tentatively: prefer &ldquo;always on&rdquo; UI to UI tools that
+      have to be manually applied.
+    </p>
+
+    <p>
+      A benefit of always-on UI is that it becomes a condition in
+      which we live.  The rules are simple and fixed, and we're just
+      trying to understand new consequences of those rules.
+    </p>
+
+    <p>
+      This seems to be enormous fun for human beings, for reasons I
+      don't entirely understand.
+    </p>
+
+    <p>
+      It's also a contrast to the approach used in much UI: largely
+      static conditions, with tools to be explicitly applied.
+    </p>
+
+    <p>
+      The challenge is finding global rules which mean that simple
+      choices by the user lead to interesting emergent structure.  I
+      don't understand very well how to find such global rules.
+    </p>
+      
+    <h2>Things I'd like to do</h2>
+
+    <p>
+      Look at a much wider array of examples (text, programming
+      languages, standard iconography, dance and musical notation,
+      more games, traditional desktop apps, web apps, mobile apps, VR,
+      AR, brain-computer interfaces, <em>etc</em>).
+    </p>
+
+    <p>
+      What are the the most interesting and unusual interfaces?
+    </p>
+    
+    <p>
+      Distill principles and look for commonalities systematically.
+    </p>
+
+    <p>
+      Start to ask: what kind of problems will lead to powerful new UI
+      primitives?  What new UI primitives can we invent?  What are
+      good sources of UI primitives outside of computing?
+    </p>
+
+<!--    What makes good symbol?
+
+    Are there many symbols with multiple behaviours?
+    
+    What other new ideas?
+
+    How can we come up with new ideas?
+
+    
+    I don't know.  What can we learn?  Where do new ideas come from?
+    Where does new UI come from?  I'm struggling.  The notion of
+    pointing.  The notion of selection.  The notion of a thing.  The
+    notion of controlling a thing.  Visually representing a thing.
+    What do we have good visual representations of?
+
+    
+    
+    What can we learn?
+
+    Why is it gravity that matters?
+
+    HUman beings love to explore new physics.  (
+    
+    Monument Valley
+    
+    Tolkien on subcreation.
+
+    The laws of physics have this strange generative character.
+
+
+    Observations about Braid:
+
+    There are many possible models.
+
+    Each model gives rise to new
+
+    Playing with something fundamental.
+
+    Maybe it'd be better if we got to see all possible futures.
+
+    
+    What are the Braid models?
+
+    Common patterns: ways of visualizing time; ways of going backward
+    and forward in time; pointing and naming; reifying new kinds of
+    thing; reifying deep ideas about the world;
+
+    Brainstorm: different models of time.  time and xmas.  make
+    checkpoints.  Superpose different models of time.  superpose
+    different sets of actions.  make time scriptable.  can we pipe to
+    time?  could we use the braid mechanic in word?  
+
+    Let me think about this stuff.
+
+    I'm most drawn to the alphavet.  WHy does it matter?  
+    -->
+
+  </body>
+</html>
