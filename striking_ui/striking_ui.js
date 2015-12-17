@@ -1,3 +1,5 @@
+// This is a quick hack.  I may rewrite it in a future iteration.
+
 (function() {
     // Buffer at the bottom of the visible window.  Elements from this
     // buffer on will be greyed out.  It's set to 10% of window
@@ -26,8 +28,10 @@
 
     function isElementOpaque (elt) {
 	// Checks whether elt should be opaque, applying a cutoff
-	// bottomBuffer pixels from the bottom of the viewport.
-	return (elt.getBoundingClientRect().bottom <= window.innerHeight-bottomBuffer);
+	// bottomBuffer pixels from the bottom of the viewport.  Note
+	// that elements near the bottom of the document are also made opaque
+	return (elt.getBoundingClientRect().bottom <= window.innerHeight-bottomBuffer  ||
+	       elt.getBoundingClientRect().bottom > document.body-20);
     }
 
     function getOpaqueElements() {
