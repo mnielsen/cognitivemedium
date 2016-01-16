@@ -266,12 +266,12 @@
 	  icon_bar("proof");
 	</run>
 	<ticker></ticker>
-	<icon x="596" y="30" src="images/matrix_2.png" name="matrix"></icon>
-	<icon x="596" y="94" src="images/axes.png" name="axes"></icon>
-	<icon x="596" y="158" src="images/unit_vectors.png" name="unit_vectors"></icon>
+	<icon x="596" y="36" src="images/matrix_2.png" name="matrix"></icon>
+	<icon x="596" y="100" src="images/axes.png" name="axes"></icon>
+	<icon x="596" y="164" src="images/unit_vectors.png" name="unit_vectors"></icon>
 
 	<pause delay="1500"></pause>
-	<ticker>We start by selecting the matrix icon</ticker>
+	<ticker>We start by setting up an unknown two by two matrix</ticker>
 	<pause delay="1000"></pause>
 
 	<select_icon name="matrix"></select_icon>
@@ -439,7 +439,7 @@
 	  of <em class="prototype_math">Ms</em></ticker>
 	<pause delay="5000"></pause>
 
-	<ticker>Maybe that's relevant to figuring out the maximal stretching</ticker>
+	<ticker>Maybe that's useful for figuring out the maximal stretching</ticker>
 	<pause delay="6000"></pause>
 
 	<ticker>Let's make a conjecture:</ticker>
@@ -454,10 +454,10 @@
 
 	<ticker>To do this, suppose the tangent <em>isn't</em>
 	orthogonal to <em class="prototype_math">Ms</em></ticker>
-	<pause delay="4000"></pause>
+	<pause delay="5000"></pause>
 
 	<ticker>We'll show this leads to a contradiction</ticker>
-	<pause delay="5000"></pause>
+	<pause delay="4000"></pause>
 
 	<ticker>And so conclude that the tangent must have been
 	orthogonal to <em class="prototype_math">Ms</em></ticker>
@@ -494,12 +494,12 @@
 	</run>
 	<init_pointer x="298" y="48"></init_pointer>
 	
-	<pause delay="4000"></pause>
+	<pause delay="6000"></pause>
 	
 	<ticker>We can see that there's a problem</ticker>
-	<pause delay="2000"></pause>
+	<pause delay="3000"></pause>
 	<ticker>If we move along the image curve near <em class="prototype_math">Ms</em> the vector gets longer</ticker>
-	<pause delay="5000"></pause>
+	<pause delay="6000"></pause>
 	<move_mouse x="310" y="88"></move_mouse>
 	<kill_pointer></kill_pointer>
 	<pause delay="500"></pause>
@@ -567,38 +567,40 @@
       </prototype>
 
       <p>
-	Let's fill in the algebra skipped above.  When we move along
-	the image curve near $Ms$, the vector can be written as
-	$Ms+\Delta Mt + O(\Delta^2)$ for some small parameter
-	$\Delta$.  The squared length of that vector is:
+	Let's fill in the algebra skipped above.  Let $T$ be the
+	tangent at $Ms$.  Because $T$ is the tangent to the image
+	curve, points on the image curve near $Ms$ can be written as
+	$Ms+\Delta T + O(\Delta^2)$ for some small parameter $\Delta$.
+	The squared length of that vector is:
       </p>
 
       <p>
-	$$\|Ms+\Delta Mt + O(\Delta^2)\|^2 = \|Ms\|^2+ 2 \Delta \, Ms \cdot Mt + O(\Delta^2)$$
+	$$\|Ms+\Delta T + O(\Delta^2)\|^2 = \|Ms\|^2+ 2 \Delta \, Ms
+	\cdot T + O(\Delta^2)$$
       </p>
       
       <p>
-	But $Ms \cdot Mt > 0$, so for small $\Delta$ we have
-	$\|Ms+\Delta Mt + O(\Delta^2)\|^2 > \|Ms\|^2$, i.e., moving
+	But $Ms \cdot T > 0$, so for small $\Delta$ we have
+	$\|Ms+\Delta T + O(\Delta^2)\|^2 > \|Ms\|^2$, i.e., moving
 	along the image curve does, indeed, give us a vector longer
 	than $Ms$.  That's a rigorous proof of what we wanted to show.
       </p>
 
 
       <p>
-	From our exploration we learned that the tangent to the image
-	curve at $Ms$ is orthogonal to $Ms$.  It'd be nice to make
-	this observation a little more explicit, expressing &ldquo;the
-	tangent&rdquo; in terms of existing quantities in our setup,
-	like $M$ and $s$.  This is pretty easy to do.  Recall that the
+	So we've learned that the tangent to the image curve at $Ms$
+	is orthogonal to $Ms$.  It'd be good to make this observation
+	more explicit, expressing the tangent $T$ in terms of existing
+	quantities like $M$ and $s$.  To do this, recall that the
 	image curve arose by applying $M$ to the unit circle.  It
 	should be plausible that the tangent to the image curve at
 	$Ms$ is just $Mt$ where $t$ is the tangent to the unit circle
 	at $s$.  This can be proved with a tiny bit of
 	calculus*<span class="marginnote">* I won't go through the
-	details, though it's a good exercise.  Incidentally, this is
-	the kind of knowledge that could easily be built into a
-	mathematical medium.</span>.  Let's illustrate the situation:
+	details, though it's a good exercise if it's not immediately
+	obvious.  Incidentally, this is standard calculus, and so
+	could easily be something the mathematical medium just
+	&ldquo;knows&rdquo;.</span>.  Let's illustrate the situation:
       </p>
 
       <prototype static="true" name="tangents">
@@ -616,7 +618,7 @@
 	</run>
 	<text x="345" y="148"><em class="prototype_math">s</em></text>
 	<text x="315" y="70"><em class="prototype_math">Ms</em></text>
-	<text x="230" y="115"><em class="prototype_math">t</em></text>
+	<text x="303" y="108"><em class="prototype_math">t</em></text>
 	<text x="235" y="60"><em class="prototype_math">Mt</em></text>
 
       </prototype>
@@ -625,10 +627,21 @@
       <p>
 	We can make things even more explicit, noting that the tangent
 	$t$ is orthogonal to $s$, since it's the tangent to a circle.
-	Let's redraw the above diagram, moving $t$ to the origin, to
-	emphasize the orthogonality a little more:
+	And so the previous observation the tangent to the image curve
+	at $Ms$ is orthogonal to $Ms$ can be rewritten as:
       </p>
 
+      <p>
+	<strong>Lemma:</strong> Let $s$ be the principal right
+	singular vector of $M$, and let $t$ be orthonormal to $s$.
+	Then $Ms$ is orthogonal to $Mt$.
+      </p>
+
+      <p>
+	Visually, we can illustrate this lemma, redrawing the above
+	diagram but moving $t$ to the origin, to emphasize that it's
+	orthogonal to $s$:
+      </p>
 
       <prototype static="true" name="tangents2">
 	<run>
@@ -649,21 +662,9 @@
 
       </prototype>
 
-      <p>
-	We can now write a more explicit form for the observation that
-	the tangent to the image curve at $Ms$ is orthogonal to $Ms$.
-	It becomes:
-      </p>
 
       <p>
-	<strong>Lemma:</strong> Let $s$ be the principal right
-	singular vector of $M$, and let $t$ be orthonormal to $s$.
-	Then $Ms \perp Mt$, where by $\perp$ we mean &ldquo;is
-	orthogonal to&rdquo;.
-      </p>
-
-      <p>
-	This lemma tells us that the principal right singular vector
+	The lemma tells us that the principal right singular vector
 	$s$ is a very special vector.  For orthonormal vectors $s$ and
 	$t$ it usually is <em>not</em> the case that $Ms$ is
 	orthonormal to $Mt$.  What we learn from the lemma is that
@@ -676,9 +677,9 @@
 	\times 2$ matrices.  Let's use the lemma to explicitly
 	construct each of the rotation-rescaling-rotation steps, in
 	terms of $s, t, Ms$ and $Mt$.  As before press
-	&ldquo;Play&rdquo; on the demo below.  Note, incidentally,
-	that this is no longer intended to represent a prototype
-	cognitive medium, for reasons that will become apparent later.
+	&ldquo;Play&rdquo; on the demo below.  Note that this is no
+	longer intended to represent a prototype cognitive medium, for
+	reasons that will become apparent later.
       </p>
 
       <prototype text="Play" name="see_svd">
@@ -860,12 +861,13 @@
       <p>
         To recap, the SVD first rotates the principal right singular
         vector $s$ to the first co-ordinate axis.  This rotation
-        automatically rotates a vector $t$ orthonormal to $s$ to the
-        second co-ordinate axes.  We then rescale the first
-        co-ordinate axis by a factor $\|Ms\|$, and the second
+        automatically rotates a vector $t$ (which is orthonormal to
+        $s$) to the second co-ordinate axis.  We then rescale the
+        first co-ordinate axis by a factor $\|Ms\|$, and the second
         co-ordinate axis by a factor $\|Mt\|$.  And finally we rotate
-        the rescaled vectors to $Ms$ and $Mt$.  This last step is
-        possible because $Ms$ and $Mt$ are orthogonal.
+        the rescaled vectors to $Ms$ and $Mt$.  This last step makes
+        crucial use of the lemma, since it's only possible because
+        $Ms$ and $Mt$ are orthogonal.
       </p>
 
       <p>
@@ -883,7 +885,7 @@
 	all that's required is that $Ms \perp Mt$ for some orthonormal
 	vectors $s$ and $t$.  We could have proved the SVD even if $s$
 	wasn't the principal right singular vector.  In $2d$ there are
-	easy proofs that such vectors exist which don't use the notion
+	easy proofs that such vectors exist, without using the notion
 	of the principal right singular vector.  However, such proofs
 	do not, so far as I know, generalize to higher dimensions,
 	while the current proof <em>does</em> generalize easily to
@@ -892,13 +894,13 @@
 
       <p>
 	Well, that's pretty nice!  We started out with a question
-	about how much a matrix stretches space, and as a result of
-	our exploration we've discovered the singular value
-	decomposition.  In fact, while our proof of the SVD was in $2$
-	dimensions, with just a little work our proof can be extended
-	to $n$ dimensions.  Since it's a little incidental to the main
-	point of this essay, I've sketched out how the general proof
-	works in <a href="#appA">Appendix A</a>.
+	about how much a matrix stretches space, and were led to
+	discover the singular value decomposition with only a little
+	extra imagination.  In fact, while our proof of the SVD was in
+	$2$ dimensions, as noted earlier our proof can be extended to
+	$n$ dimensions.  That generalization is actually somewhat
+	incidental to the main point of this essay, so I've sketched
+	it out in <a href="#appA">Appendix A</a>.
       </p>
 
       <p>
@@ -908,14 +910,17 @@
 	mirrors what often happens in real mathematical work &ndash;
 	you may not solve the problem you originally intended to
 	solve, but you learn something interesting anyway!  In fact,
-	with a little extra effort it's possible to solve our original
-	problem, finding the maximal stretching.  Again, this is
-	somewhat incidental to the main point of this essay, and so I
-	describe how to do it in <a href="#appB">Appendix B</a>.
+	it's possible to use the SVD to solve our original problem,
+	finding the maximal stretching.  Again, this is somewhat
+	incidental to the main point of this essay, and so I describe
+	how to do it in <a href="#appB">Appendix B</a>.
       </p>
 
 
-            <p>
+      <p>
+	The explanation just given is simple enough, but it's not
+	really an ideal exposition.
+
 	It's worth noting that this medium is <em>not</em> ideal as an
 	explanatory medium.  It's not intended to be.  The point of
 	this essay is only secondarily about explaining the SVD.  The
@@ -1401,14 +1406,14 @@ SFC: Mt has entries -0.15, 0.5
 
       <p>
 	In the main body of the essay we learned how to prove the
-	singular value decomposition in 2 dimensions.  In fact,
-	essentially the same ideas work to prove the SVD in $n$
-	dimensions.  I'll sketch how the proof works in this appendix.
-	It begins with exactly the same argument as we used earlier,
+	singular value decomposition in 2 dimensions.  In fact, the
+	same ideas can be used to prove the SVD in $n$ dimensions.
+	I'll briefly sketch how the proof works in this appendix.  It
+	begins with exactly the same argument as we used earlier,
 	showing that if $s$ is the principal right singular vector of
-	$M$, and $t$ is orthonormal to $s$, then $Ms \perp Mt$.  No
-	modification is needed for this proof &ndash; it simply goes
-	straight through.
+	$M$, and $t$ is any vector orthonormal to $s$, then $Ms$ is
+	orthogonal to $Mt$.  No modification is needed to establish
+	this &ndash; the proof goes straight through.
       </p>
 
       <p>
@@ -1417,33 +1422,37 @@ SFC: Mt has entries -0.15, 0.5
       </p>
 
       <p>
-	$$M = R \begin{bmatrix} s_1 & 0 \\ 0 & M' \end{bmatrix} R'$$
+	$$M = U_1 \begin{bmatrix} s_1 & 0 \\ 0 & M' \end{bmatrix} V_1$$
       </p>
 
       <p>
-	where $M'$ is an $n-1 \times n-1$ submatrix.  Proving this is
-	pretty straightforward, although it may be more or less
-	tedious, depending on your comfort with linear algebra.  I
-	won't go through the details.  We can repeat this
-	decomposition, breaking $M'$ up in terms of rotations in $n-1$
-	dimensions and an $n-2 \times n-2$ submatrix $M''$.
-	Continuing in this way we eventually obtain:
+	where $U_1$ and $V_1$ are orthogonal matrices, and $M'$ is an
+	$n-1$ by $n-1$ submatrix.  Proving this is pretty
+	straightforward, although it may be tedious if you're not so
+	comfortable with linear algebra.  I won't go through the
+	details.  We can repeat this decomposition, breaking $M'$ up
+	in terms of orthogonal matrices in $n-1$ dimensions and an
+	$n-2$ by $n-2$ submatrix $M''$.  Continuing in this way until
+	we reach two dimensions, we obtain
       </p>
 
       <p>
-	$$M = R_1 R_2 \ldots \mbox{diag}(s_1, s_2, \ldots, s_n) \ldots R_2' R_1'.$$
+	$$M = U_1 U_2 \ldots {\rm diag}(s_1, s_2, \ldots, s_n) \ldots V_2 V_1,$$
       </p>
 
       <p>
-	Since a product of rotations is itself a rotation, we obtain
+	where $U_1, V_1, U_2, V_2, \ldots$ are all orthogonal
+	matrices.  Since a product of orthogonal matrices is itself an
+	orthogonal matrix, we obtain
       </p>
 
       <p>
-	$$M = R \mbox{s_1, s_2, \ldots, s_n) R',$$
+	$$M = U \, {\rm diag}(s_1, s_2, \ldots, s_n) \, V$$
       </p>
 
       <p>
-	which is the singular value decomposition.
+	for orthogonal matrices $U$ and $V$. This is the singular
+	value decomposition.
       </p>
 	
       <p><a name="appB"></a>
