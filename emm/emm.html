@@ -1,0 +1,3362 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Toward an exploratory medium for mathematics</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <div id="header">
+      <h1>Toward an exploratory medium for mathematics</h1>
+      <p>
+	<a href="http://michaelnielsen.org">Michael Nielsen</a> &nbsp; / &nbsp;
+	<a href="http://www.recurse.com">Recurse Center</a> &nbsp; / &nbsp; Jan 2016
+      </p>
+    </div>
+
+    <div id="container">
+
+      <p>
+	During
+	an <a href="https://www.aip.org/history-programs/niels-bohr-library/oral-histories/5020-5">interview</a>
+	with the theoretical physicist Richard Feynman, the historian
+	of science Charles Weiner casually describes Feynman's
+	notebooks as a &ldquo;record of the day-to-day work&rdquo;.
+	Feynman corrects him, saying &ldquo;I actually did the work on
+	the paper&rdquo;.  After some back-and-forth, Weiner tries to
+	restate his point: &ldquo;Well, the work was done in your head
+	but the record of it is still here.&rdquo; But Feynman
+	insists: &ldquo;No, it's not a record, not really, it's
+	working.  You have to work on paper and this is the
+	paper. OK?&rdquo;
+      </p>
+
+      <p>
+	The interview was recorded in 1973, when paper-and-pencil was
+	the most commonly used medium for exploratory mathematical
+	work.  In the years since, media environments such
+	as <em>Mathematica</em> and <em>Matlab</em> have been
+	developed.  These media help users explore mathematics in
+	powerful new ways, ways essentially different from
+	paper-and-pencil.  But although useful, I believe these
+	programs are merely first steps toward far more powerful media
+	for doing mathematics.
+      </p>
+      
+      <p>
+	This essay is about the question: how can we design a more
+	powerful computational medium for mathematics?  To make
+	progress on that question, we'll experiment with some simple
+	prototype media forms, with (very) loosely the flavour of a
+	kind of &ldquo;Photoshop-for-mathematics&rdquo;.  Through this
+	experimentation, we'll distill some principles which can help
+	in the design of a powerful medium for mathematics.
+      </p>
+
+      <p>
+	Much work on media for mathematics is done in the context of
+	toy problems, of the kind seen in school textbooks.  We'll
+	take a different approach, developing our prototypes as we
+	work through a piece of genuine mathematics.  It's one of my
+	favourite mathematical theorems, a result in linear algebra
+	called the <em>singular value decomposition</em>,
+	or <em>SVD</em> for short.  This is less accessible than
+	working through a toy problem, but forces us to confront and
+	(partially!)  overcome exactly the kinds of problems which
+	arise in real mathematical work.
+      </p>
+
+
+      <p>
+	If you're not familiar with the SVD, it's a way of breaking a
+	matrix up into three simple components.  For example, for a
+	real $2 \times 2$ matrix $M$, the SVD guarantees that it's
+	always possible to break $M$ up into a rotation about the
+	origin, followed by a rescaling of the axes, followed by a
+	second rotation about the origin.  Each of these three
+	components is easy to reason about individually, and that
+	often makes it easy to reason about the matrix as a whole.
+	The great thing about the SVD is that it guarantees
+	that <em>every</em> $2 \times 2$ matrix can be broken up in
+	this way, for suitable choices of rotations and
+	rescaling*<span class="marginnote">* Actually, the full
+	statement of the SVD is slightly more complex.  I'll explain
+	it in a moment.</span>.  It's a bit like the way knowing the
+	prime factorization of a number can make it easier to reason
+	about that number.
+      </p>
+
+      
+      <p>
+        The SVD doesn't just apply to $2 \times 2$ matrices.  For a
+        real $n \times n$ matrix $M$, the SVD says such a matrix can
+        always be decomposed as*<span class="marginnote">* There are
+        versions of the SVD which apply to non-square matrices, to
+        infinite matrices and linear operators, and to matrices over
+        fields other than the real numbers.  For our purpose, the $n
+        \times n$ real case is a good level of generality, and many of
+        the ideas can, in any case, be reused in more general
+        contexts. </span>
+      </p>
+
+      <p>
+	\begin{eqnarray}
+	M = U \, {\rm diag}(s_1, s_2, \ldots, s_n) \, V.
+	\end{eqnarray}
+      </p>
+
+      <p>
+	Here, the matrices $U$ and $V$ are real $n \times
+	n$ <em>orthogonal</em> matrices.  As you may guess from the
+	earlier discussion, orthogonal matrices are generalizations of
+	the 2-dimensional rotations.  In particular, they're simply
+	matrices which <em>preserve length</em> in $n$ dimensions,
+	just as rotations preserve length in 2 dimensions.  That is,
+	if $U$ is an orthogonal matrix and $v$ is any vector, then the
+	length $\|U v\|$ is always the same as the length $\|v\|$.
+	Formally, a square matrix $U$ is defined to be orthogonal if
+	$U^T U = I$, where $T$ is the transpose operation, and $I$ is
+	the identity matrix*<span class="marginnote">* To see how this
+	relates to length preservation, observe that $\|v\|^2 = v^T
+	v$, i.e., the sum of the squares of the components of $v$.
+	Using this observation we have $\|Uv \|^2 = v^T U^T U v = v^T
+	v = \|v\|^2$, where we substituted $U^T U = I$ to obtain the
+	second equality.</span>.  And so in the case of the SVD we
+	have $U^TU = I$ and $V^T V$.
+      </p>
+
+      <p>
+	The other part of the singular value decomposition $(1)$ was
+	the diagonal matrix ${\rm diag}(s_1, s_2, \ldots, s_n)$.  The
+	diagonal entries $s_1 \geq s_2 \geq \ldots \geq s_n \geq 0$
+	are known as the <em>singular values</em> of the matrix $M$.
+	These singular values simply rescale the corresponding
+	directions in $n$-dimensional vector space. Putting it all
+	together, the SVD tells us that any matrix can be broken up
+	into an orthogonal &ldquo;rotation&rdquo;, followed by a
+	rescaling, followed by another orthogonal
+	&ldquo;rotation&rdquo;*<span class="marginnote">* I told a
+	small lie in my explanation of the $2 \times 2$ case.  The $2
+	\times 2$ orthogonal matrices include not just rotations, but
+	also reflections.  As an example, consider the matrix
+	$\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$, which
+	reflects about the $x$ axis.  It's easily verified that this
+	is an orthogonal matrix.  In fact, you can show that an
+	arbitrary $2 \times 2$ orthogonal matrix is either a rotation,
+	or can be written as a product of $\begin{bmatrix} 1 & 0 \\ 0
+	& -1 \end{bmatrix}$ with a rotation.  In practice, you mostly
+	won't be led astray if you ignore the reflections, and think
+	of orthogonal matrices as rotations in $n$ dimensions.</span>.
+      </p>
+
+      <p>
+	While we're going to prove the SVD, the proof is not the main
+	point of the essay.  It's merely a stalking horse, a goal to
+	pursue as part of a larger research agenda of understanding
+	how to create more powerful user interfaces for mathematics.
+	As such, I will take it for granted that you're willing to
+	believe the SVD is interesting.  This means we won't get
+	deeply into the applications of the SVD: it's just not the
+	point of the essay.
+      </p>
+
+      <p>
+	With that said, it's worth knowing that the SVD is a very
+	widely-used tool, for applications ranging
+	from <a href="https://en.wikipedia.org/wiki/Latent_semantic_analysis">natural
+	language processing</a>
+	to <a href="https://en.wikipedia.org/wiki/Schmidt_decomposition">quantum
+	computing</a> to
+	the <a href="https://en.wikipedia.org/wiki/Kabsch_algorithm">comparison
+	of protein structures</a>.  Indeed, it's one of the most
+	useful tools in linear algebra, and arguably in all of
+	mathematics.
+      </p>
+
+      <p>
+	To read the essay, you will need to be comfortable with basic
+	linear algebra, at about the level already required to follow
+	this introduction.  In particular, you should be comfortable
+	with notions such as the transpose, matrix multiplication,
+	orthonormality, and so on.
+      </p>
+
+      <p>
+	<h2>1. A proof of the SVD for $2 \times 2$ matrices</h2>
+      </p>
+
+      <p>
+	In this section I explain the proof of the SVD in the case
+	when $M$ is a $2 \times 2$ matrix.  This proof turns out to
+	contain all the essential ideas needed for the general proof.
+	We'll return later to the general proof.
+      </p>
+
+      <p>
+	Rather than attack the problem head-on, let's start with a
+	simpler (and arguably more natural) problem that at first
+	appears unrelated.  In fact, as we attempt to solve this
+	problem our explorations will lead us to re-discover the SVD.
+      </p>
+
+      <p>
+	The simpler problem is the question of how much a $2 \times 2$
+	matrix $M$ <em>stretches</em> space?  To understand what I
+	mean by stretching space, consider the matrix
+      </p>
+
+      $$M = \begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix}.$$
+
+      <p>
+	If we let this matrix act on the vector $(1, 0) \equiv
+	\begin{bmatrix} 1 \\ 0 \end{bmatrix}$ the vector becomes
+      </p>
+
+      $$M \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \\
+      1 \end{bmatrix} $$
+
+      <p>
+	The input vector $(1, 0)$ has length $1$, while the output
+	vector $(1, 1)$ has length $\sqrt 2$.  So the matrix has
+	stretched the input to become a factor $\sqrt{2}$ longer.
+      </p>
+
+      <p>
+	Of course, $(1, 0)$ isn't the only possible input vector.  If
+	the input were, say, $(0, 1)$ the output would be $M(0, 1) =
+	(1, 0)$, which is the same length as the input.  In that
+	direction, $M$ doesn't stretch space at all.
+      </p>
+
+      <p>
+	The question we'll investigate is this: what is
+	the <em>maximal</em> degree of stretching associated to some
+	given matrix, $M$?  In other words, if we consider all unit
+	vectors $v$, what is the maximal value for the length $\| M
+	v\|$?
+      </p>
+
+      <p>
+	Of course, I'm abusing terminology here &ndash; $M$ might
+	actually shrink unit vectors in every direction.  But the term
+	&ldquo;stretch&rdquo; is evocative, so we'll keep using
+	it*<span class="marginnote">* Stretching is not a standard
+	mathematical term.  Mathematicians often refer to this maximal
+	stretching as the matrix norm, or, a little more formally, as
+	the matrix norm induced by the Euclidean distance.</span>.
+      </p>
+
+      <p>
+	We won't solve this problem immediately, but will do a little
+	exploration that helps us understand the problem.  The
+	exploration will be done in a demo of a rough prototype of a
+	visual environment for doing linear algebra.  To start the
+	demo, please click &ldquo;Play&rdquo; below.  Of course, in a
+	real medium, you'd be able to interrupt, do your own
+	exploration, and so on.  But this is just a prototype, and so
+	I haven't built things out that far.  Here it is:
+      </p>
+
+ 
+      <prototype text="Play" name="proof">
+	<init_pointer></init_pointer>
+	<run>
+	  icon_bar("proof");
+	</run>
+	<ticker></ticker>
+	<icon x="596" y="30" src="images/matrix_2.png" name="matrix"></icon>
+	<icon x="596" y="94" src="images/axes.png" name="axes"></icon>
+	<icon x="596" y="158" src="images/unit_vectors.png" name="unit_vectors"></icon>
+
+	<pause delay="1500"></pause>
+	<ticker>We start by selecting the matrix icon</ticker>
+	<pause delay="1000"></pause>
+
+	<select_icon name="matrix"></select_icon>
+	<run>
+	  var img = image("images/matrix1.png", 10, 40);
+	  img.id = "matrix1";
+	  document.getElementById("prototype0").appendChild(img);
+	</run>
+
+	<pause delay="2000"></pause>
+	<ticker>This creates a 2 by 2 matrix</ticker>
+
+	<pause delay="2000"></pause>
+	<ticker>We'll give the matrix a name, <em class="prototype_math">M</em></ticker>
+
+	<pause delay="500"></pause>
+	<move_mouse x="25" y="55"></move_mouse>
+
+	<pause delay="250"></pause>
+	
+	<run>
+	  document.getElementById("matrix1").style.display = "none";
+	  animate_frames(
+	   0, ["images/matrix2.png", "images/matrix3.png",
+	       "images/matrix4.png", "images/matrix5.png"], [800, 800, 800, 0], 10, 40);
+	</run>
+	
+	<pause delay="3500"></pause>
+	<ticker>Then display a set of axes</ticker>
+	<pause delay="1000"></pause>
+	
+	<select_icon name="axes"></select_icon>
+
+	<run>
+          plot_axes("proof")
+	</run>
+
+	<pause delay="2000"></pause>
+	<ticker>Next, plot all the unit vectors</ticker>
+	<pause delay="500"></pause>
+	
+	<select_icon name="unit_vectors"></select_icon>
+
+	<run>
+	  var ctx = document.getElementById("proof").getContext("2d");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	</run>
+
+	<pause delay="2000"></pause>
+	<ticker>Apply the matrix to the unit vectors</ticker>
+	<pause delay="500"></pause>
+
+	<move_mouse x="30" y="60"></move_mouse>
+	<pause delay="250"></pause>
+	<change_mouse_pointer name="images/matrix_mouse_pointer.png" x="10" y="40"></change_mouse_pointer>
+	
+	<move_mouse x="190" y="130" interrupt="96">
+	  var ctx = document.getElementById("proof").getContext("2d");
+	  ctx.clear();
+	  ctx.filledRectangle(596, 0, 660, 400, "#ddd", "#ddd", 0);
+	  plot_axes("proof");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), "yellow", 6);
+	</move_mouse>
+
+	<pause delay="400"></pause>
+
+	<change_mouse_pointer name="images/cursor.png" x="205" y="145"></change_mouse_pointer>
+
+	<run>
+	  var ctx = document.getElementById("proof").getContext("2d");
+	  ctx.clear();
+	  ctx.filledRectangle(596, 0, 660, 400, "#ddd", "#ddd", 0);
+	  plot_axes("proof");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  plot_image("proof");
+	</run>
+
+	<pause delay="500"></pause>
+
+	<ticker>The orange curve shows <em class="prototype_math">Ms</em> for all unit vectors <em class="prototype_math">s</em></ticker>
+	
+	<pause delay="3000"></pause>
+
+	<ticker>We'll talk about this curve quite a bit, so we'll give it a name</ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>We'll call it the <em>image of the unit circle</em> or just the <em>image curve</em></ticker>
+	<pause delay="4000"></pause>
+	
+	  
+	<ticker>Pick out the unit
+	vector <em class="prototype_math">s</em> which becomes the
+	longest</ticker>
+	<pause delay="4000"></pause>
+	<ticker>We will call <em class="prototype_math">s</em>
+	the <em>principal right singular vector</em></ticker>
+	<pause delay="5000"></pause>
+	<ticker>The reason for the name will become apparent later</ticker>
+	<pause delay="4000"></pause>
+	<move_mouse x="30" y="60"></move_mouse>
+	<run>
+	  var img = image("images/prsv_menu_1.png", 35, 62);
+	  img.id = "prsv_menu_1";
+	  document.getElementById("prototype0").appendChild(img);
+	</run>
+	<pause delay="300"></pause>
+	<move_mouse x="55" y="75" interrupt="20">
+	  deleteElement(document.getElementById("prsv_menu_1"));
+	  var img2 = image("images/prsv_menu_2.png", 35, 62);
+	  img2.id = "prsv_menu_2";
+	  document.getElementById("prototype0").appendChild(img2);
+	</move_mouse>
+	<pause delay="2500"></pause>
+	<run>
+	  deleteElement(document.getElementById("prsv_menu_2"));
+	</run>
+	
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="310" y="60"><em class="prototype_math">Ms</em></text>
+	<run>
+	  var ctx = document.getElementById("proof").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<pause delay="5000"></pause>
+
+	<ticker>Notice that <em class="prototype_math">Ms</em> is, as expected, the longest vector on the image curve</ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>Let's look at the tangent to the image curve at <em class="prototype_math">Ms</em></ticker>
+	<move_mouse x="315" y="65"></move_mouse>
+	<pause delay="300"></pause>
+	<run>
+	  var img1 = image("images/tangent_vector_menu_1.png", 320, 67);
+	  img1.id = "tangent_vector_menu_1";
+	  document.getElementById("prototype0").appendChild(img1);
+	</run>
+	<pause delay="300"></pause>
+	<move_mouse x="350" y="75" interrupt="20">
+	  deleteElement(document.getElementById("tangent_vector_menu_1"));
+	  var img2 = image("images/tangent_vector_menu_2.png", 320, 67);
+	  img2.id = "tangent_vector_menu_2";
+	  document.getElementById("prototype0").appendChild(img2);
+	</move_mouse>
+	<pause delay="3000"></pause>
+	<run>
+	  deleteElement(document.getElementById("tangent_vector_menu_2"));
+	  var ctx = document.getElementById("proof").getContext("2d");
+	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]),
+	    xs(Ms_vec[0]+Mt_vec[0]), ys(Ms_vec[1]+Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<pause delay="5000"></pause>
+	
+	<ticker>Visually, it's plausible the tangent is orthogonal
+	  to <em class="prototype_math">Ms</em> (tangent
+	  &perp; <em class="prototype_math">Ms</em>)</ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>What's more, the tangent <em>isn't</em> &perp; at most
+	places on the image curve</ticker>
+	<pause delay="6000"></pause>
+
+	<ticker>So the tangent being &perp;
+	  at <em class="prototype_math">Ms</em> is a special property
+	  of <em class="prototype_math">Ms</em></ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>Maybe that's relevant to figuring out the maximal stretching</ticker>
+	<pause delay="6000"></pause>
+
+	<ticker>Let's make a conjecture:</ticker>
+	<pause delay="2000"></pause>
+	<text x="15" y="337"><strong>Conj:</strong> The tangent to the
+	image curve at <em class="prototype_math">Ms</em> is
+	orthogonal to <em class="prototype_math">Ms</em></text>
+	<pause delay="7000"></pause>
+
+	<ticker>Let's try to prove the tangent is orthogonal to <em class="prototype_math">Ms</em></ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>To do this, suppose the tangent <em>isn't</em>
+	orthogonal to <em class="prototype_math">Ms</em></ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>We'll show this leads to a contradiction</ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>And so conclude that the tangent must have been
+	orthogonal to <em class="prototype_math">Ms</em></ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>Okay, suppose the tangent has a component in the
+	<em class="prototype_math">Ms</em> direction</ticker>
+	<pause delay="4000"></pause>
+	<move_mouse x="264" y="73"></move_mouse>
+	<pause delay="500"></pause>
+	<run>
+	  var k = 0;
+	  function animate_attempt() {
+  	    var ctx = document.getElementById("proof").getContext("2d");
+	    ctx.clear();
+	    plot_axes("proof");
+	    icon_bar("proof");
+	    ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	    var Mt_interp = [(1-k/50)*Mt_vec[0] + (k/50)*Mt_fake_vec[0],
+	                     (1-k/50)*Mt_vec[1] + (k/50)*Mt_fake_vec[1]];
+	    plot_image_partial("proof", Mt_interp, k/50);
+	    ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]), xs(Mt_interp[0]+Ms_vec[0]),
+	      ys(Mt_interp[1]+Ms_vec[1]), IMAGE_COLOR, 2);
+	    $("#pointer0").css("left", xs(Mt_interp[0]+Ms_vec[0])+"px").css(
+	      "top", ys(Mt_interp[1]+Ms_vec[1])+"px");
+	    if (k < 50) {
+		    k++;
+		    window.requestAnimationFrame(animate_attempt);
+	    }
+	 }
+	 animate_attempt();
+	</run>
+	<init_pointer x="298" y="48"></init_pointer>
+	
+	<pause delay="4000"></pause>
+	
+	<ticker>We can see that there's a problem</ticker>
+	<pause delay="2000"></pause>
+	<ticker>If we move along the image curve near <em class="prototype_math">Ms</em> the vector gets longer</ticker>
+	<pause delay="5000"></pause>
+	<move_mouse x="310" y="88"></move_mouse>
+	<kill_pointer></kill_pointer>
+	<pause delay="500"></pause>
+	<run>
+	  var k = 0;
+	  function run_along_curve() {
+  	    var ctx = document.getElementById("proof").getContext("2d");
+	    ctx.clear();
+	    plot_axes("proof");
+	    icon_bar("proof");
+	    ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	    plot_image_partial("proof", Mt_fake_vec, 1);
+	    var position = vector_image_partial(Mt_fake_vec, 1, 0.5*k/50);
+	    ctx.arrow(xs(0), ys(0), xs(position[0]), ys(position[1]), IMAGE_COLOR, 1);
+	    ctx.beginPath();
+	    ctx.arc(xs(position[0]), ys(position[1]), 3, 2*Math.PI, false), 
+	    ctx.fillStyle = '#555';
+	    ctx.fill();
+	    ctx.lineWidth = 0;
+	    ctx.stroke();
+	    if (k < 50) {
+		    k++;
+		    window.requestAnimationFrame(run_along_curve);
+	    }
+	  }
+          run_along_curve();
+	</run>
+	<pause delay="1500"></pause>
+	<init_pointer x="295" y="71"></init_pointer>
+	<pause delay="500"></pause>
+	<move_mouse x="270" y="55"></move_mouse>
+	
+	<ticker>The reason is that we're moving further out in the
+	direction of <em class="prototype_math">Ms</em></ticker>
+	<pause delay="6000"></pause>
+	
+	<ticker>To rigorously prove this, we need to do a few lines of
+	algebra</ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>We'll do that in a bit, but take it for granted right
+	now</ticker>
+	<pause delay="3000"></pause>
+	
+	<ticker>Main point: moving along the image curve gives us a
+	  vector longer
+	  than <em class="prototype_math">Ms</em></ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>This is impossible,
+	since <em class="prototype_math">Ms</em> was the longest
+	vector</ticker>
+	<pause delay="5000"></pause>
+	
+	<ticker>And so our assumption that the tangent is not &perp;
+	must have been wrong</ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>And so the conjecture is true</ticker>
+	<pause delay="7000"></pause>
+
+	
+      </prototype>
+
+      <p>
+	Let's fill in the algebra skipped above.  When we move along
+	the image curve near $Ms$, the vector can be written as
+	$Ms+\Delta Mt + O(\Delta^2)$ for some small parameter
+	$\Delta$.  The squared length of that vector is:
+      </p>
+
+      <p>
+	$$\|Ms+\Delta Mt + O(\Delta^2)\|^2 = \|Ms\|^2+ 2 \Delta \, Ms \cdot Mt + O(\Delta^2)$$
+      </p>
+      
+      <p>
+	But $Ms \cdot Mt > 0$, so for small $\Delta$ we have
+	$\|Ms+\Delta Mt + O(\Delta^2)\|^2 > \|Ms\|^2$, i.e., moving
+	along the image curve does, indeed, give us a vector longer
+	than $Ms$.  That's a rigorous proof of what we wanted to show.
+      </p>
+
+
+      <p>
+	From our exploration we learned that the tangent to the image
+	curve at $Ms$ is orthogonal to $Ms$.  It'd be nice to make
+	this observation a little more explicit, expressing &ldquo;the
+	tangent&rdquo; in terms of existing quantities in our setup,
+	like $M$ and $s$.  This is pretty easy to do.  Recall that the
+	image curve arose by applying $M$ to the unit circle.  It
+	should be plausible that the tangent to the image curve at
+	$Ms$ is just $Mt$ where $t$ is the tangent to the unit circle
+	at $s$.  This can be proved with a tiny bit of
+	calculus*<span class="marginnote">* I won't go through the
+	details, though it's a good exercise.  Incidentally, this is
+	the kind of knowledge that could easily be built into a
+	mathematical medium.</span>.  Let's illustrate the situation:
+      </p>
+
+      <prototype static="true" name="tangents">
+	<run>
+  	  var ctx = document.getElementById("tangents").getContext("2d");
+          plot_axes("tangents");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(s_vec[0]), ys(s_vec[1]),
+	    xs(s_vec[0]+t_vec[0]), ys(s_vec[1]+t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  plot_image("tangents");
+	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]),
+	    xs(Ms_vec[0]+Mt_vec[0]), ys(Ms_vec[1]+Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="315" y="70"><em class="prototype_math">Ms</em></text>
+	<text x="230" y="115"><em class="prototype_math">t</em></text>
+	<text x="235" y="60"><em class="prototype_math">Mt</em></text>
+
+      </prototype>
+
+      
+      <p>
+	We can make things even more explicit, noting that the tangent
+	$t$ is orthogonal to $s$, since it's the tangent to a circle.
+	Let's redraw the above diagram, moving $t$ to the origin, to
+	emphasize the orthogonality a little more:
+      </p>
+
+
+      <prototype static="true" name="tangents2">
+	<run>
+  	  var ctx = document.getElementById("tangents2").getContext("2d");
+          plot_axes("tangents2");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  plot_image("tangents2");
+	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]),
+	    xs(Ms_vec[0]+Mt_vec[0]), ys(Ms_vec[1]+Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="315" y="70"><em class="prototype_math">Ms</em></text>
+	<text x="230" y="115"><em class="prototype_math">t</em></text>
+	<text x="235" y="60"><em class="prototype_math">Mt</em></text>
+
+      </prototype>
+
+      <p>
+	We can now write a more explicit form for the observation that
+	the tangent to the image curve at $Ms$ is orthogonal to $Ms$.
+	It becomes:
+      </p>
+
+      <p>
+	<strong>Lemma:</strong> Let $s$ be the principal right
+	singular vector of $M$, and let $t$ be orthonormal to $s$.
+	Then $Ms \perp Mt$, where by $\perp$ we mean &ldquo;is
+	orthogonal to&rdquo;.
+      </p>
+
+      <p>
+	This lemma tells us that the principal right singular vector
+	$s$ is a very special vector.  For orthonormal vectors $s$ and
+	$t$ it usually is <em>not</em> the case that $Ms$ is
+	orthonormal to $Mt$.  What we learn from the lemma is that
+	this is, however, true for the principal right singular
+	vector.  That's a powerful thing to know.
+      </p>
+
+      <p>
+	In fact, it actually lets us (easily!) prove the SVD for $2
+	\times 2$ matrices.  Let's use the lemma to explicitly
+	construct each of the rotation-rescaling-rotation steps, in
+	terms of $s, t, Ms$ and $Mt$.  As before press
+	&ldquo;Play&rdquo; on the demo below.  Note, incidentally,
+	that this is no longer intended to represent a prototype
+	cognitive medium, for reasons that will become apparent later.
+      </p>
+
+      <prototype text="Play" name="see_svd">
+
+	<comment>Initial setup</comment>
+	<ticker></ticker>
+	<run>
+	  var ctx = document.getElementById("see_svd").getContext("2d");
+	  plot_axes("see_svd");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="219" y="118"><em class="prototype_math">t</em></text>
+
+	<ticker>Let's consider <em class="prototype_math">s</em>
+	and <em class="prototype_math">t</em></ticker>
+	<pause delay="3000"></pause>
+
+	<ticker>Goal:
+	rotate-rescale-rotate <em class="prototype_math">s</em>
+	and <em class="prototype_math">t</em> to get
+	to <em class="prototype_math">Ms</em>
+	and <em class="prototype_math">Mt</em></ticker>
+	<pause delay="5000"></pause>
+	<run>
+	  var ctx = document.getElementById("see_svd").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+	<text x="200" y="176"><em class="prototype_math">Mt</em></text>
+	<pause delay="5000"></pause>
+
+	<ticker>To explain the operations, we'll focus
+	on <em class="prototype_math">s</em>
+	and <em class="prototype_math">t</em>
+	</ticker>
+	<pause delay="4500"></pause>
+
+	<ticker>We'll ghost <em class="prototype_math">Ms</em>
+	and <em class="prototype_math">Mt</em> out</ticker>
+	<pause delay="4000"></pause>
+
+	<run>
+	  var ctx = document.getElementById("see_svd").getContext("2d");
+	  ctx.clear();
+	  plot_axes("see_svd");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 0.5);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 0.5);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="219" y="118"><em class="prototype_math">t</em></text>
+	<text x="300" y="60"><em class="prototype_math ghost">Ms</em></text>
+	<text x="200" y="176"><em class="prototype_math ghost">Mt</em></text>
+	<pause delay="3000"></pause>
+
+	<ticker>But leave slightly visible as reminder of goals
+	  for <em class="prototype_math">s</em>
+	  and <em class="prototype_math">t</em></ticker>
+	<pause delay="5000"></pause>
+	
+	<comment>First rotation</comment>
+	<ticker>We start by rotating <em class="prototype_math">s</em>
+	and
+	  <em class="prototype_math">t</em> to the co-ordinate
+	  axes</ticker>
+	<pause delay="4000"></pause>
+	<comment>A crude hack to hide the labels</comment>
+	<text x="345" y="148"><em class="prototype_math" style="color: #eee">s</em></text>
+	<text x="219" y="118"><em class="prototype_math" style="color: #eee">t</em></text>
+	<pause delay="1000"></pause>
+	<run>
+	  var theta = 0.0;
+	  function plot_rotation_1() {
+	    var ctx = document.getElementById("see_svd").getContext("2d");
+	    ctx.clear();
+	    plot_axes("see_svd");
+	    var rot = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+	    var s_rot_vec = m_times_v(rot, s_vec);
+	    var t_rot_vec = m_times_v(rot, t_vec);
+	    theta -= 0.003;
+	    ctx.arrow(xs(0), ys(0), xs(s_rot_vec[0]), ys(s_rot_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(t_rot_vec[0]), ys(t_rot_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 0.7);
+	    ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 0.7);
+            if (theta > -phi) {window.requestAnimationFrame(plot_rotation_1)};
+          }
+	  plot_rotation_1();
+	</run>
+	<pause delay="4500"></pause>
+
+	<ticker>We can do this
+	because <em class="prototype_math">s</em>
+	and <em class="prototype_math">t</em> are orthonormal</ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>Rescale axes by factors $\|Ms\|$ and $\|Mt\|$</ticker>
+	<pause delay="2000"></pause>
+	<run>
+          var Ms_length = length_vec(Ms_vec);
+	  var Mt_length = length_vec(Mt_vec);
+
+	  function interpolate(k, len) {
+	    return (k/100.0) * len + (1-k/100.0) * 1.0;
+	  }
+	  
+	  function rescale(k) {
+	    // k will vary from 0 to 100
+	    var ctx = document.getElementById("see_svd").getContext("2d");
+	    ctx.clear();
+	    plot_axes("see_svd");
+	    var e1_rescale = [interpolate(k, Ms_length), 0];
+	    var e2_rescale = [0, interpolate(k, Mt_length)];
+	    ctx.arrow(xs(0), ys(0), xs(e1_rescale[0]), ys(e1_rescale[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(e2_rescale[0]), ys(e2_rescale[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 0.7);
+	    ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 0.7);
+            if (k < 100) {
+              window.requestAnimationFrame(function() {rescale(k+1)})
+		    };
+          }
+	  rescale(0);
+	</run>
+	<pause delay="4500"></pause>
+
+	<ticker>This leaves the rescaled vectors the &ldquo;right&rdquo; lengths, $\|Ms\|$ and $\|Mt\|$</ticker>
+	<pause delay="5000"></pause>
+	
+	<ticker>Rotate rescaled axes
+	to <em class="prototype_math">Ms</em>
+	and <em class="prototype_math">Mt</em></ticker>
+	<run>
+          var Ms_length = length_vec(Ms_vec);
+	  var Mt_length = length_vec(Mt_vec);
+
+	  var theta = 0.0;
+	  function plot_rotation_2() {
+	    var ctx = document.getElementById("see_svd").getContext("2d");
+	    ctx.clear();
+	    plot_axes("see_svd");
+	    var rot = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+	    var e1_rescale = [Ms_length, 0];
+	    var e2_rescale = [0, Mt_length];
+	    var e1_rot_vec = m_times_v(rot, e1_rescale);
+	    var e2_rot_vec = m_times_v(rot, e2_rescale);
+	    theta += 0.005;
+	    ctx.arrow(xs(0), ys(0), xs(e1_rot_vec[0]), ys(e1_rot_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(e2_rot_vec[0]), ys(e2_rot_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 0.5);
+	    ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 0.5);
+            if (theta < psi) {window.requestAnimationFrame(plot_rotation_2)};
+          }
+	  plot_rotation_2();
+
+	</run>
+	<pause delay="6000"></pause>
+	
+	<ticker>We can do this
+	because <em class="prototype_math">Ms</em>
+	&#8869; <em class="prototype_math">Mt</em></ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>The net effect is to
+	take <em class="prototype_math">s</em>
+	to <em class="prototype_math">Ms</em> and
+	  <em class="prototype_math">t</em>
+	  to <em class="prototype_math">Mt</em>, as desired</ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>It may help to rewatch this to grok all the
+	operations</ticker>
+	<pause delay="5000"></pause>
+	
+      </prototype>
+
+      <p>
+        To recap, the SVD first rotates the principal right singular
+        vector $s$ to the first co-ordinate axis.  This rotation
+        automatically rotates a vector $t$ orthonormal to $s$ to the
+        second co-ordinate axes.  We then rescale the first
+        co-ordinate axis by a factor $\|Ms\|$, and the second
+        co-ordinate axis by a factor $\|Mt\|$.  And finally we rotate
+        the rescaled vectors to $Ms$ and $Mt$.  This last step is
+        possible because $Ms$ and $Mt$ are orthogonal.
+      </p>
+
+      <p>
+	By construction, this rotation-rescaling-rotation combination
+	takes $s$ to $Ms$ and $t$ to $Mt$.  In fact, it follows that
+	the rotation-rescaling-rotation combination does the same as
+	$M$ for <em>all</em> possible inputs.  The reason is that $s$
+	and $t$ form a basis for the vector space.  Since both $M$ and
+	the rotation-rescaling-rotation act linearly on vectors, it
+	follows that $M$ and the rotation-rescaling-rotation have the
+	same action on <em>all</em> vectors.  Thus, $M$ is equal to
+	the rotation-rescaling-rotation operation.  And so we've
+	proved the singular value decomposition for $2 \times 2$
+	matrices*<span class="marginnote">* Note that to prove the SVD
+	all that's required is that $Ms \perp Mt$ for some orthonormal
+	vectors $s$ and $t$.  We could have proved the SVD even if $s$
+	wasn't the principal right singular vector.  In $2d$ there are
+	easy proofs that such vectors exist which don't use the notion
+	of the principal right singular vector.  However, such proofs
+	do not, so far as I know, generalize to higher dimensions,
+	while the current proof <em>does</em> generalize easily to
+	higher dimensions.</span>.
+      </p>
+
+      <p>
+	Well, that's pretty nice!  We started out with a question
+	about how much a matrix stretches space, and as a result of
+	our exploration we've discovered the singular value
+	decomposition.  In fact, while our proof of the SVD was in $2$
+	dimensions, with just a little work our proof can be extended
+	to $n$ dimensions.  Since it's a little incidental to the main
+	point of this essay, I've sketched out how the general proof
+	works in <a href="#appA">Appendix A</a>.
+      </p>
+
+      <p>
+	An interesting aspect of the proof is that we
+	actually <em>haven't</em> solved our original problem: to
+	figure out what the maximal degree of stretching is.  This
+	mirrors what often happens in real mathematical work &ndash;
+	you may not solve the problem you originally intended to
+	solve, but you learn something interesting anyway!  In fact,
+	with a little extra effort it's possible to solve our original
+	problem, finding the maximal stretching.  Again, this is
+	somewhat incidental to the main point of this essay, and so I
+	describe how to do it in <a href="#appB">Appendix B</a>.
+      </p>
+
+
+            <p>
+	It's worth noting that this medium is <em>not</em> ideal as an
+	explanatory medium.  It's not intended to be.  The point of
+	this essay is only secondarily about explaining the SVD.  The
+	primary point is about understanding more about media for
+	doing the exploratory work that occurs in real mathematical
+	problem solving.  Such work is inherently a messy and <em>ad
+	hoc</em> process.  You explore, looking for connections,
+	following up leads, trying to develop your understand.  In
+	that context, you can think of the words at the top of the
+	prototype as (very roughly speaking) a record of what might be
+	thought by a person as they explore. In an ideal explanation,
+	by contrast, there is a much more pristine and cleaned up
+	narrative.  That sort of easily-followed explanation isn't the
+	goal here.
+      </p>
+
+      <p>
+	<h2>2 Semi-concrete reasoning</h2>
+      </p>
+
+      <p>
+	<h3>2.1 The problem</h3>
+      </p>
+      
+      <p>
+	I glossed over a very interesting moment in our proof of the
+	SVD.  It's the point at which we asked what would happen if
+	the tangent vector had a component in the direction of
+	$Ms$. Let me show you again what happens.  It takes just a few
+	seconds:
+      </p>
+
+      XXX
+
+      <p>
+	From the user's point of view this looks simple and natural.
+	But actually something remarkably sophisticated would need to
+	happen under the hood.  To understand why that's the case,
+	let's think in more detail about how the medium would model
+	these actions.  A natural approach is to start with a matrix
+	$M$ which has some generic values filled in.  In fact, the
+	values for $s, t, \ldots$ shown above are produced by the
+	following matrix $M$:
+      </p>
+
+      <p>
+      $$M = \begin{bmatrix} 0.70 & -0.28 \\ 1.27 & 0.86 \end{bmatrix} $$
+      </p>
+
+      <p>
+	So, for example, the image curve is computed by applying this
+	particular $M$ to the points making up the unit circe.  And
+	the principal right singular vector $s$ is computed from $M$.
+	And so on, for all the properties that are computed.
+      </p>
+
+      <p>
+	What we're doing here is somewhat peculiar.  Our goal is
+	reason about some general class of objects &ndash; all the $2
+	\times 2$ matrices.  But to do that our medium has picked out
+	one $2 \times 2$ matrix in particular, and is using it as a
+	generic example.  The benefit is that this lets the medium do
+	all computations explicitly, so we can reason from concrete,
+	easily-understood and visualized examples.  At the same time,
+	because the matrix chosen was generic, we have a chance of
+	reaching general conclusions.  So, for instance, using a
+	concrete example makes it easy to notice that $Ms$ is
+	orthogonal to $Mt$ when $s$ is the principal right singular
+	vector, and $t$ is orthogonal to $s$.  Of course, this
+	observation holds only for this specific matrix $M$.  But the
+	fact that the example is generic makes it plausible that this
+	phenomenon holds for any $2 \times 2$ matrix $M$.  Indeed, it
+	would be easy to check for other choices of $M$, though I
+	didn't explicitly show that happening.
+      </p>
+
+      <p>
+	Mathematicians routinely use this kind of reasoning from
+	concrete-but-generic examples to gain insight.  That's been
+	common practice all through mathematical history, but has
+	become especially attractive with the relatively recent advent
+	of computers*<span class="marginnote">* The strategy of using
+	concrete-but-generic examples sometimes fails.  There's an art
+	to picking out good generic examples, examples that won't
+	mislead you.  That's not a problem I'm going to discuss in
+	detail, but it's a fascinating subject.  If you want to
+	develop a good medium for doing mathematics, I suspect it's a
+	subject which would need to be investigated in great
+	depth.</span>.
+      </p> 
+
+      <p>
+	Now, what happens when we change $Mt$ from its real value to the
+	trial value, not orthogonal to $Ms$?
+      </p>
+
+      XXX
+
+      <p>
+      Before the change the medium was keeping track of the following objects:
+      </p>
+      
+      <p>
+	<pre>
+M:  a 2 by 2 matrix, with entries 0.70, -0.28, ...
+The unit circle
+The image of the unit circle under M
+s:  the principal right singular vector, with entries 0.89, 0.46
+Ms: the result of applying M to s, with entries 0.49, 1.52
+The tangent to the image at Ms, with entries -0.57, 0.18
+	</pre>
+      </p>
+
+      <p>
+	What happens to the internal state of the medium when we
+	change the tangent?  Of course, our internal representation of
+	the tangent must change.  But, in fact, we're in something of
+	a pickle, since there is no matrix $M$ which has the desired
+	values for $Ms$ and the tangent.  So we declare the value of
+	$M$ to be <code>undefined</code>.  If we do that, then $s$,
+	the principal right singular vector of $M$, is
+	also <code>undefined</code>.  Indeed, the entire image of the
+	unit circle under $M$ would be <code>undefined</code>.  In
+	fact, the only thing which is still defined is the unit
+	circle, which had nothing to do with $M$!
+      </p>
+      
+      <p>
+	In a sense, the problem here is that we're in an impossible
+	world. When we change the value of the tangent we actually
+	move into a world which does not exist.  And yet we'd like to
+	be able to continue reasoning.  That means developing an
+	internal model that lets us keep going.  Can't simply set our
+	values to be <code>undefined</code>.  That means giving up.
+	To support this kind of reasoning we need more powerful ideas
+	about how to represent what's going on.
+      </p>
+
+      <p>
+	A mathematician working with paper and pencil finds it easy
+	and natural to carry out this kind of reasoning.
+	Paper-and-pencil does no computation or constraint-checking
+	whatsoever.  That imposes a heavy burden on the mathematician,
+	who must do the computations and constraint-checking
+	themselves.  But it also gives them a lot of flexibility to
+	easily carry out this kind of hypothetical reasoning.
+      </p>
+
+      <p>
+	What we'd like is a medium which supports a kind of
+	<em>semi-concrete reasoning</em>.  It would simultaneously
+	provide: (1) the ability to compute concretely, to apply
+	constraints, and to make inferences; and (2) the benefits of
+	paper-and-pencil, notably the flexibility to explore and make
+	inferences about impossible worlds.  Our earlier discussion
+	shows there is tension between these requirements.  Yet both
+	must be satisfied simultaneously in a powerful exploratory
+	medium for mathematics.
+      </p>
+
+      <p>
+	In the next section I sketch an approach to building a system
+	for semi-concrete reasoning.  The treatment is not complete.
+	As we shall see, the problem is in general a deep problem,
+	with an open-ended component which is about the psychology of
+	the user, and what constitues &ldquo;natural&rdquo; modes of
+	mathematical inference.  And so the purpose of the following
+	discussion is to identify some core questions and principles
+	to be followed in such a system.
+      </p>
+
+      <h3>
+	2.2 Principles of semi-concrete reasoning
+      </h3>
+
+      <p>
+	In our earlier reasoning, we used the data as a way of
+	representing mathematical reality. Because of this it was
+	important to find and resolve contradictions.  It's possible,
+	however, to proceed in a different fashion.  Rather than using
+	the data as representing mathematical reality, we can treat
+	the data as representing
+	<em>our current state of knowledge of the system</em>.  In
+	this point of view user interface operations gradually build
+	up a complex state of knowledge.  So, for instance, after
+	creating the tangent vector, but before drawing the connection
+	to $t$, the state of knowledge may be depicted as:
+      </p>
+
+      <img src="images/initial_data.png"/>
+
+      <p>
+	Here, left-to-right denotes the time ordering in which we
+	build these objects up, and arrows show dependencies between
+	objects.  Each time we apply the user interface to create a
+	new mathematical object, the graph changes.  So, for instance,
+	when we create the image curve it is added to the graph,
+	connected to the matrix $M$ and the unit circle, since it is
+	determined by $M$ and by the points on the unit circle.  Then
+	we add the principal right singular vector $s$, which is
+	determined by $M$ alone.  And so on for $Ms$ and the tangent
+	vector as well.  I've greyed out the matrix $M$ since $M$ is
+	not explicitly shown by the user interface, while all other
+	elements are.
+      </p>
+	
+      <p>
+	Using the data to represent our current state of knowledge
+	makes sense in an exploratory medium.  As part of our
+	exploration, we can modify that state of knowledge.  So, for
+	instance, we may simply edit our mathematical world:
+      </p>
+
+      XXX: change the tangent.  delete the image.  Sketch in a
+      modified image.
+
+      <prototype text="Play" name="simple_edit">
+	<init_pointer></init_pointer>
+	<run>
+	  icon_bar("simple_edit");
+	</run>
+	<ticker></ticker>
+	<icon x="596" y="30" src="images/matrix_2.png" name="matrix"></icon>
+	<icon x="596" y="94" src="images/axes.png" name="axes"></icon>
+	<icon x="596" y="158" src="images/unit_vectors.png" name="unit_vectors"></icon>
+	<icon x="596" y="222" src="images/prsv.png" name="prsv"></icon>
+	<icon x="596" y="286" src="images/orthogonal_icon.png" name="orthogonal"></icon>
+
+	<run>
+	  var ctx = document.getElementById("simple_edit").getContext("2d");
+          plot_axes("simple_edit")
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  ctx.filledRectangle(596, 0, 660, 400, "#ddd", "#ddd", 0);
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  plot_image("simple_edit");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]),
+	  xs(Ms_vec[0]+Mt_vec[0]), ys(Ms_vec[1]+Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+	<text x="110" y="325"><strong>Conj:</strong> The tangent
+	at <em class="prototype_math">Ms</em> is $\perp$ to
+	  <em class="prototype_math">Ms</em></text>
+
+	<ticker>Let's modify the tangent vector</ticker>
+	<pause delay="3000"></pause>
+	<run>
+	  var k = 0;
+	  function animate_attempt() {
+  	    var ctx = document.getElementById("proof").getContext("2d");
+	    ctx.clear();
+	    plot_axes("proof");
+	    ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	    plot_image("proof");
+	    ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	    var Mt_interp = [(1-k/50)*Mt_vec[0] + (k/50)*Mt_fake_vec[0] + Ms_vec[0],
+	                     (1-k/50)*Mt_vec[1] + (k/50)*Mt_fake_vec[1] + Ms_vec[1]];
+	    ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]), xs(Mt_interp[0]), ys(Mt_interp[1]), IMAGE_COLOR, 2);
+	    $("#pointer0").css("left", xs(Mt_interp[0])+"px").css("top", ys(Mt_interp[1])+"px");
+	    if (k < 50) {
+		    k++;
+		    window.requestAnimationFrame(animate_attempt);
+	    } else {
+		    k = 0;
+		    vanish_image()
+	    }
+	  }
+          function vanish_circle() {
+  	    var ctx = document.getElementById("proof").getContext("2d");
+	    ctx.clear();
+	    plot_axes("proof");
+	    ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	    plot_image("proof", 2-k/10);
+	    ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	    ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]), xs(Ms_vec[0]+Mt_vec[0]),
+		    ys(Ms_vec[1]+Mt_vec[1]), IMAGE_COLOR, 2);
+	    if (k < 20) {
+		    k++;
+		    window.requestAnimationFrame(vanish_circle);
+	    }
+	 }
+		    
+	  animate_attempt();
+	</run>
+
+	<ticker>And so on</ticker>
+      </prototype>
+
+
+      <p>
+	This sequence of edits roughly corresponds to the kind of
+	operations that might be performed by a human mathematician on
+	paper.  The internal state of the medium after the edits would
+	be:
+      </p>
+
+      <img src="images/revised_data.png"/>
+
+      <p>
+	The original image curve and tangent have been greyed out,
+	since they are no longer visible.  Note that the edited does
+	not depend on the original value for the tangent.
+      </p>
+	
+      <p>
+	In this approach, just as with paper-and-pencil, it is up to
+	the human user of the system to make inferences about how
+	changes in one mathematical object propagate to affect other
+	mathematical objects.
+      </p>
+
+      <p>
+	Of course, a big benefit of computers is that they can be used
+	to make such inferences.  In an exploratory medium, the
+	purpose of the user interface is to give the user control over
+	how these inferences are made, making the inferences easy to
+	perform (so exploration is easy), and making it easy for the
+	user to track the chain of reasoning.
+      </p>
+
+      <p>
+	In this specific instance what should the interface do?  When
+	we modify the tangent, we could plausibly modify $Ms$:
+      </p>
+
+      XXX
+
+      <p>
+	Or, since the tangent is $Mt$, maybe it would cause a change
+	to $t$:
+      </p>
+
+      XXX
+
+      <p>
+	How is the medium to know that the intended change is to the
+	image curve?
+      </p>
+
+      XXX
+
+      <p>
+	In fact, there is <em>a priori</em> no logical way the medium
+	can know. All of these (and others) might be appropriate in
+	different contexts.  However, consider the way in which the
+	tangent was built up:
+      </p>
+
+      XXX
+      
+      <p>
+	That is, the tangent was a function of $Ms$ and the image
+	curve.  When we change the tangent there is a corresponding
+	space of possible values for $Ms$ and the image curve:
+      </p>
+
+      XXX
+
+      <p>
+	The task of the user interface is to present the user with a
+	way of selecting from amongst that space.  The simplest
+	possible interface simply allows one to edit, and requires all
+	inference to be done manually.  This approach mirrors
+	paper-and-pencil.
+      </p>
+
+      <p>
+	A more sophisticated interface may do more sophisticated
+	inference:
+      </p>
+
+      XXX
+
+      <p>
+	This appears simple enough, but in fact something quite
+	complex is going on.  How does the interface know that the
+	curve segment doesn't look like:
+      </p>
+
+      XXX
+
+      <p>
+	or
+      </p>
+
+      XXX
+
+      <p>
+	In fact a reasonable answer to this question is XXX.
+      </p>
+
+      <p>
+	
+	
+      <p>
+	Is this the only option?  No, it is not.  In fact, it's perfec
+      </p>
+
+      
+      <p>
+	Of course, many of our mathematical objects may depend on two
+	or more previous objects.  In that case, we may wish to
+	consider situations in which both prior objects change:
+      </p>
+
+      XXX
+
+      <p>
+	A challenge with this is that if two prior objects change, and
+	we then continue to track changes further back, then the
+	number of choices we have to make may quickly explode in
+	complexity.  It's tempting to conclude that there is something
+	wrong going on.
+      </p>
+
+     
+	
+      <p>
+	The interface will necessarily explode in complexity.  This
+	looks bad. 
+	
+      <p>
+	Which is the right interface?
+	
+      More generally: we build up mathematical objects as functions of
+      earlier objects: XXX.  The task of the interface is to
+      
+	
+	
+
+
+	What we learn:
+
+	Use a data state that reflects our state of knowledge, built
+	up through user interface operations.
+
+	Enable 
+	
+      <p>
+	Now, when we make the Now, when we make the change to $Mt$, we immediately update
+	the SFC entries,
+      </p>
+
+      <pre>
+SFC: Mt has entries -0.15, 0.5
+      </pre>
+
+      <p>
+	But we don't otherwise change the representation.  This is
+	despite the fact that this change to $Mt$ <em>must</em> imply
+	many changes to other SFC facts. And so we are, for the sake
+	of concreteness, tolerating a certain amount of contradiction.
+      </p>
+
+	
+      <p>
+	In this sense, paper-and-pencil remains superior 
+	
+	Our prototype attempts to combine the flexibility of paper and
+	pencil with the support for computation that digital media
+	make possible.
+
+      </p>
+
+      Better than paper.  Why does this matter?
+      
+      <p>
+	<em>Thanks to Dave Albert, Darius Bacon, Kovas Boguta, Ilona
+	  Brand, Jesse Tasse Gonzalez, Max McCrea, Prabhakar Ragde,
+	  Omar Rizwan, and John Workman for comments that helped
+	  improve this essay.</em>
+      </p>
+
+	
+      <p><a name="appA"></a>
+	<h2>Appendix A: the proof of the SVD in $n$
+	dimensions</h2>
+      </p>
+
+      <p>
+	In the main body of the essay we learned how to prove the
+	singular value decomposition in 2 dimensions.  In fact,
+	essentially the same ideas work to prove the SVD in $n$
+	dimensions.  I'll sketch how the proof works in this appendix.
+	It begins with exactly the same argument as we used earlier,
+	showing that if $s$ is the principal right singular vector of
+	$M$, and $t$ is orthonormal to $s$, then $Ms \perp Mt$.  No
+	modification is needed for this proof &ndash; it simply goes
+	straight through.
+      </p>
+
+      <p>
+	From this, it can be shown using a construction similar to the
+	$2 \times 2$ case that
+      </p>
+
+      <p>
+	$$M = R \begin{bmatrix} s_1 & 0 \\ 0 & M' \end{bmatrix} R'$$
+      </p>
+
+      <p>
+	where $M'$ is an $n-1 \times n-1$ submatrix.  Proving this is
+	pretty straightforward, although it may be more or less
+	tedious, depending on your comfort with linear algebra.  I
+	won't go through the details.  We can repeat this
+	decomposition, breaking $M'$ up in terms of rotations in $n-1$
+	dimensions and an $n-2 \times n-2$ submatrix $M''$.
+	Continuing in this way we eventually obtain:
+      </p>
+
+      <p>
+	$$M = R_1 R_2 \ldots \mbox{diag}(s_1, s_2, \ldots, s_n) \ldots R_2' R_1'.$$
+      </p>
+
+      <p>
+	Since a product of rotations is itself a rotation, we obtain
+      </p>
+
+      <p>
+	$$M = R \mbox{s_1, s_2, \ldots, s_n) R',$$
+      </p>
+
+      <p>
+	which is the singular value decomposition.
+      </p>
+	
+      <p><a name="appB"></a>
+	<h2>Appendix B: finding the maximal stretching for a matrix</h2>
+      </p>
+
+      <p>
+	Earlier in the essay we learnt that the degree of stretching
+	for a matrix $M$ is equal to the largest singular value $s_1$.
+	That is, suppose $M$ has singular value decomposition
+      </p>
+
+      <p>
+	$$M = R \,\mbox{diag}(s_1, s_2, \ldots, s_n) R'$$
+      </p>
+
+      <p>
+	with singular values $s_1 \geq s_2 \geq \ldots \geq s_n \geq
+	0$.  Then the maximal degree of stretching is just
+      </p>
+
+      <p>
+	$$\max_{\|v \| = 1} \| Mv \| = s_1.$$
+      </p>
+
+      <p>
+	This is a nice connection, but it's not obvious it helps us
+	figure out the maximal degree of stretching.  Fortunately,
+	with just a little work we can figure out $s_1$.  To do this,
+	observe that from the SVD we have
+      </p>
+
+      <p>
+	$$M^T M = R'^T \mbox{diag}(s_1^2, s_2^2, \ldots, s_n^2) R'$$
+      </p>
+
+      <p>
+	since $R$ is a rotation, and thus satisfies $R^T R = I$.
+	Inspecting the last displayed equation, we see that the
+	eigenvalues of $M^TM$ are just $s_1^2, s_2^2, \ldots$.  And so
+	$s_1$ is just the square root of the largest eigenvalue of
+	$M^TM$.  This eigenvalue <em>is</em> easy to compute, which
+	makes the singular value $s_1$ easy to compute.  And that, in
+	turn, makes it easy to compute the maximal degree of
+	stretching.
+      </p>
+
+      <p>
+	To sum up, the maximal degree of stretching for a matrix $M$
+	is just the square root of the largest eigenvalue of $M^TM$.
+	This provides us with an easy, computationally feasible way of
+	computing the stretching, solving the original problem we
+	started with!
+      </p>
+
+      
+      <p>
+	<h2>OLD: The proof for $2 \times 2$ matrices</h2>
+      </p>
+      
+      <p>
+	I'll begin by explaining the proof of the SVD in the case when
+	$M$ is a $2 \times 2$ matrix.  This proof turns out to contain
+	all the essential ideas needed for the general proof.  We'll
+	return later to the general proof.
+      </p>
+
+      <p>
+	Let's begin with a demonstration to explain one of the key
+	concepts we'll need, the <em>principal right singular
+	vector</em>.  Press &ldquo;Play&rdquo; to see the concept
+	explained. Feel free to restart the demo at the end.
+      </p>
+
+      <prototype text="Play" name="psv">
+	<init_pointer></init_pointer>
+	<run>
+	  icon_bar("psv");
+	</run>
+	
+	<icon x="596" y="30" src="images/matrix_2.png" name="matrix"></icon>
+	<icon x="596" y="94" src="images/axes.png" name="axes"></icon>
+	<icon x="596" y="158" src="images/unit_vectors.png" name="unit_vectors"></icon>
+	<icon x="596" y="222" src="images/prsv.png" name="prsv"></icon>
+	<icon x="596" y="286" src="images/orthogonal_icon.png" name="orthogonal"></icon>
+
+	<ticker></ticker>
+	<pause delay="1500"></pause>
+	<ticker>We start by selecting the matrix icon</ticker>
+	<pause delay="1000"></pause>
+
+	<select_icon name="matrix"></select_icon>
+	<run>
+	  var img = image("images/matrix1.png", 10, 40);
+	  img.id = "matrix1";
+	  document.getElementById("prototype0").appendChild(img);
+	</run>
+
+	<pause delay="2000"></pause>
+	<ticker>This creates a 2 by 2 matrix</ticker>
+
+	<pause delay="2000"></pause>
+	<ticker>We'll give the matrix a name, <em class="prototype_math">M</em></ticker>
+
+	<pause delay="500"></pause>
+	<move_mouse x="25" y="55"></move_mouse>
+
+	<pause delay="250"></pause>
+	
+	<run>
+	  document.getElementById("matrix1").style.display = "none";
+	  animate_frames(
+	   0, ["images/matrix2.png", "images/matrix3.png",
+	       "images/matrix4.png", "images/matrix5.png"], [800, 800, 800, 0], 10, 40);
+	</run>
+	
+	<pause delay="3500"></pause>
+	<ticker>Then display a set of axes</ticker>
+	<pause delay="1000"></pause>
+	
+	<select_icon name="axes"></select_icon>
+
+	<run>
+          plot_axes("psv")
+	</run>
+
+	<pause delay="2000"></pause>
+	<ticker>Next, plot all the unit vectors</ticker>
+	<pause delay="500"></pause>
+	
+	<select_icon name="unit_vectors"></select_icon>
+
+	<run>
+	  var ctx = document.getElementById("psv").getContext("2d");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	</run>
+
+	<pause delay="2000"></pause>
+	<ticker>Apply the matrix to the unit vectors</ticker>
+	<pause delay="500"></pause>
+
+	<move_mouse x="30" y="60"></move_mouse>
+	<pause delay="250"></pause>
+	<change_mouse_pointer name="images/matrix_mouse_pointer.png" x="10" y="40"></change_mouse_pointer>
+	
+	<move_mouse x="190" y="130" interrupt="85">
+	  var ctx = document.getElementById("psv").getContext("2d");
+	  ctx.clear();
+	  ctx.filledRectangle(596, 0, 660, 400, "#ddd", "#ddd", 0);
+	  plot_axes("psv");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0)+4, UNIT_COLOR, 1);
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0)-4, UNIT_COLOR, 1);
+	</move_mouse>
+
+	<pause delay="400"></pause>
+
+	<change_mouse_pointer name="images/cursor.png" x="205" y="145"></change_mouse_pointer>
+
+	<run>
+	  var ctx = document.getElementById("psv").getContext("2d");
+	  ctx.clear();
+	  ctx.filledRectangle(596, 0, 660, 400, "#ddd", "#ddd", 0);
+	  plot_axes("psv");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  plot_image("psv");
+	</run>
+
+	<pause delay="500"></pause>
+
+	<ticker>The orange curve shows <em class="prototype_math">Ms</em> for all unit vectors <em class="prototype_math">s</em></ticker>
+	
+	<pause delay="3000"></pause>
+
+	<ticker>Pick out the unit
+	vector <em class="prototype_math">s</em> which becomes the
+	longest</ticker>
+
+	<pause delay="2000"></pause>
+
+	<ticker><em class="prototype_math">s</em> is called
+	the <em>principal right singular vector</em></ticker>
+
+	<pause delay="500"></pause>
+
+	<select_icon name="prsv"></select_icon>
+	  
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+
+	<run>
+	  var ctx = document.getElementById("psv").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	</run>
+
+	<pause delay="5000"></pause>
+
+	<ticker>
+      </prototype>
+
+      <p>
+	This demo is a rough prototype of a visual environment for
+	doing linear algebra.  Of course, I could have explained the
+	principal right singular vector with static illustrations, and
+	without the simulated mouse pointer, icons, and so on.  But I
+	want you to think of this as a prototype medium for someone
+	doing real, live mathematical work &ndash; maybe someone
+	explaining the SVD in a classroom, or someone trying to
+	understand the SVD on their own.  The commentary at the top is
+	what the person is saying or thinking as they work.  Of
+	course, in a real application, you'd be able to interrupt, do
+	your own exploration, and so on.  But this is just a
+	prototype, to explore ideas.
+      </p>
+
+      <p>
+	Having defined the principal right singular vector, $s$, let's
+	also define a vector $t$ orthogonal to $s$, and investigate
+	its properties:
+      </p>
+
+      <prototype text="Play" name="orthogonal">
+	<init_pointer></init_pointer>
+
+	<run>
+	  icon_bar("orthogonal");
+	</run>
+	
+	<icon x="596" y="30" src="images/matrix_2.png" name="matrix"></icon>
+	<icon x="596" y="94" src="images/axes.png" name="axes"></icon>
+	<icon x="596" y="158" src="images/unit_vectors.png" name="unit_vectors"></icon>
+	<icon x="596" y="222" src="images/prsv.png" name="prsv"></icon>
+	<icon x="596" y="286" src="images/orthogonal_icon.png" name="orthogonal"></icon>
+
+	<run>
+	  var img = image("images/matrix5.png", 10, 40);
+	  img.id = "matrix5";
+	  document.getElementById("prototype1").appendChild(img);
+	  var ctx = document.getElementById("orthogonal").getContext("2d");
+	  plot_axes("orthogonal");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  plot_image("orthogonal");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	</run>
+
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+
+	<ticker>We set up as before</ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>We ask for a vector orthonormal to <em class="prototype_math">s</em></ticker>
+	<select_icon name="orthogonal"></select_icon>
+	<run>
+	  var ctx = document.getElementById("orthogonal").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	</run>
+	<text x="219" y="118"><em class="prototype_math">t</em></text>
+	<pause delay="3000"></pause>
+
+	<ticker>Then apply <em class="prototype_math">M</em> to <em class="prototype_math">t</em></ticker>
+	<move_mouse x="30" y="60"></move_mouse>
+	<pause delay="250"></pause>
+	<change_mouse_pointer name="images/matrix_mouse_pointer.png" x="10" y="40"></change_mouse_pointer>
+	<move_mouse x="230" y="130"></move_mouse>
+	<run>
+	  var ctx = document.getElementById("orthogonal").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="200" y="176"><em class="prototype_math">Mt</em></text>
+	<change_mouse_pointer name="images/cursor.png"></change_mouse_pointer>
+	<pause delay="2000"></pause>
+
+	<ticker>Looking closely, it's
+	plausible <em class="prototype_math">Mt</em> is orthogonal to
+	  <em class="prototype_math">Ms</em></ticker>
+	
+	<pause delay="4000"></pause>
+
+	<ticker>Is <em class="prototype_math">Mt</em> orthogonal
+	to <em class="prototype_math">Ms</em>?</ticker>
+	
+	<pause delay="4000"></pause>
+
+      </prototype>
+
+      <p>
+	As noted, it's plausible that $Ms$ is orthogonal to $Mt$.  In
+	fact, proving this claim turns out to be the key step in the
+	proof of the SVD.  Just to restate:
+      </p>
+
+      <p>
+	<strong>Key claim:</strong> Let $s$ be the principal right
+	singular vector of $M$, and let $t$ be orthonormal to $s$.
+	Then $Ms \perp Mt$, where by $\perp$ we mean &ldquo;is
+	orthogonal to&rdquo;.
+      </p>
+
+      <p>
+	We'll prove this claim shortly.  For now, let's see how it
+	enables us to prove the SVD.  In particular, we'll explicitly
+	construct each of the rotation-rescaling-rotation steps, in
+	terms of $s, t, Ms$ and $Mt$.
+      </p>
+
+      <prototype text="Play" name="see_svd">
+
+	<comment>Initial setup</comment>
+	<ticker></ticker>
+	<run>
+	  var ctx = document.getElementById("see_svd").getContext("2d");
+	  plot_axes("see_svd");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="219" y="118"><em class="prototype_math">t</em></text>
+
+	<ticker>Let's consider <em class="prototype_math">s</em>
+	and <em class="prototype_math">t</em></ticker>
+	<pause delay="3000"></pause>
+
+	<ticker>Goal:
+	rotate-rescale-rotate <em class="prototype_math">s</em>
+	and <em class="prototype_math">t</em> to get
+	to <em class="prototype_math">Ms</em>
+	and <em class="prototype_math">Mt</em></ticker>
+	<pause delay="5000"></pause>
+	<run>
+	  var ctx = document.getElementById("see_svd").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+	<text x="200" y="176"><em class="prototype_math">Mt</em></text>
+	<pause delay="5000"></pause>
+
+	<ticker>To explain the operations, we'll focus
+	on <em class="prototype_math">s</em>
+	and <em class="prototype_math">t</em>
+	</ticker>
+	<pause delay="4500"></pause>
+
+	<ticker>We'll ghost <em class="prototype_math">Ms</em>
+	and <em class="prototype_math">Mt</em> out</ticker>
+	<pause delay="4000"></pause>
+
+	<run>
+	  var ctx = document.getElementById("see_svd").getContext("2d");
+	  ctx.clear();
+	  plot_axes("see_svd");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 0.5);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 0.5);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="219" y="118"><em class="prototype_math">t</em></text>
+	<text x="300" y="60"><em class="prototype_math ghost">Ms</em></text>
+	<text x="200" y="176"><em class="prototype_math ghost">Mt</em></text>
+	<pause delay="3000"></pause>
+
+
+	<ticker>But leave slightly visible as reminder of goals
+	  for <em class="prototype_math">s</em>
+	  and <em class="prototype_math">t</em></ticker>
+	<pause delay="5000"></pause>
+	
+	<comment>First rotation</comment>
+	<ticker>We start by rotating <em class="prototype_math">s</em>
+	and
+	  <em class="prototype_math">t</em> to the co-ordinate
+	  axes</ticker>
+	<pause delay="4000"></pause>
+	<comment>A crude hack to hide the labels</comment>
+	<text x="345" y="148"><em class="prototype_math" style="color: #eee">s</em></text>
+	<text x="219" y="118"><em class="prototype_math" style="color: #eee">t</em></text>
+	<pause delay="1000"></pause>
+	<run>
+	  var theta = 0.0;
+	  function plot_rotation_1() {
+	    var ctx = document.getElementById("see_svd").getContext("2d");
+	    ctx.clear();
+	    plot_axes("see_svd");
+	    var rot = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+	    var s_rot_vec = m_times_v(rot, s_vec);
+	    var t_rot_vec = m_times_v(rot, t_vec);
+	    theta -= 0.003;
+	    ctx.arrow(xs(0), ys(0), xs(s_rot_vec[0]), ys(s_rot_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(t_rot_vec[0]), ys(t_rot_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 0.7);
+	    ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 0.7);
+            if (theta > -phi) {window.requestAnimationFrame(plot_rotation_1)};
+          }
+	  plot_rotation_1();
+	</run>
+	<pause delay="4500"></pause>
+
+	<ticker>We can do this
+	because <em class="prototype_math">s</em>
+	and <em class="prototype_math">t</em> are orthonormal</ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>Rescale axes by factors &#8214;Ms&#8214; and &#8214;Mt&#8214;</ticker>
+	<pause delay="2000"></pause>
+	<run>
+          var Ms_length = length_vec(Ms_vec);
+	  var Mt_length = length_vec(Mt_vec);
+
+	  function interpolate(k, len) {
+	    return (k/100.0) * len + (1-k/100.0) * 1.0;
+	  }
+	  
+	  function rescale(k) {
+	    // k will vary from 0 to 100
+	    var ctx = document.getElementById("see_svd").getContext("2d");
+	    ctx.clear();
+	    plot_axes("see_svd");
+	    var e1_rescale = [interpolate(k, Ms_length), 0];
+	    var e2_rescale = [0, interpolate(k, Mt_length)];
+	    ctx.arrow(xs(0), ys(0), xs(e1_rescale[0]), ys(e1_rescale[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(e2_rescale[0]), ys(e2_rescale[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 0.7);
+	    ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 0.7);
+            if (k < 100) {
+              window.requestAnimationFrame(function() {rescale(k+1)})
+		    };
+          }
+	  rescale(0);
+	</run>
+	<pause delay="4000"></pause>
+
+	<ticker>Rotate rescaled axes
+	to <em class="prototype_math">Ms</em>
+	and <em class="prototype_math">Mt</em></ticker>
+	<run>
+          var Ms_length = length_vec(Ms_vec);
+	  var Mt_length = length_vec(Mt_vec);
+
+	  var theta = 0.0;
+	  function plot_rotation_2() {
+	    var ctx = document.getElementById("see_svd").getContext("2d");
+	    ctx.clear();
+	    plot_axes("see_svd");
+	    var rot = [[Math.cos(theta), -Math.sin(theta)], [Math.sin(theta), Math.cos(theta)]];
+	    var e1_rescale = [Ms_length, 0];
+	    var e2_rescale = [0, Mt_length];
+	    var e1_rot_vec = m_times_v(rot, e1_rescale);
+	    var e2_rot_vec = m_times_v(rot, e2_rescale);
+	    theta += 0.005;
+	    ctx.arrow(xs(0), ys(0), xs(e1_rot_vec[0]), ys(e1_rot_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(e2_rot_vec[0]), ys(e2_rot_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 0.5);
+	    ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 0.5);
+            if (theta < psi) {window.requestAnimationFrame(plot_rotation_2)};
+          }
+	  plot_rotation_2();
+
+	</run>
+	<pause delay="6000"></pause>
+	
+	<ticker>We can do this
+	because <em class="prototype_math">Ms</em>
+	&#8869; <em class="prototype_math">Mt</em></ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>The net effect is to
+	take <em class="prototype_math">s</em>
+	to <em class="prototype_math">Ms</em> and
+	  <em class="prototype_math">t</em>
+	  to <em class="prototype_math">Mt</em>, as desired</ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>It may help to rewatch this to grok all the
+	operations</ticker>
+	<pause delay="5000"></pause>
+	
+      </prototype>
+
+      <p>
+        We can now see what the singular value decomposition does, in
+        the 2-dimensional case.  It rotates the principal right
+        singular vector $s$ to the first co-ordinate axis.  This
+        rotation automatically rotates a vector $t$ orthonormal to $s$
+        to the second co-ordinate axes.  We then rescale the first
+        co-ordinate axis by a factor $\|Ms\|$, and the second
+        co-ordinate axis by a factor $\|Mt\|$.  And finally we rotate
+        the rescaled vectors to $Ms$ and $Mt$.  This last step is
+        possible because $Ms$ and $Mt$ are orthogonal.
+      </p>
+
+      <p>
+	By construction, this rotation-rescaling-rotation combination
+	takes $s$ to $Ms$ and $t$ to $Mt$.  In fact, it follows that
+	the rotation-rescaling-rotation combination does the same as
+	$M$ for <em>all</em> possible inputs.  The reason is that $s$
+	and $t$ form a basis for the vector space, and both $M$ and
+	the rotation-rescaling-rotation act linearly on vectors.  It
+	follows that $M$ is equal to the rotation-rescaling-rotation
+	operation.  And so we've proved the singular value
+	decomposition for $2 \times 2$ matrices.
+      </p>
+
+      <p>
+	<h2>Proving the key claim</h2>
+      </p>
+
+      <p>
+	Alright, let's back up and prove the key claim.  Let me remind
+	you of the setup:
+      </p>
+
+      <prototype static="true" name="reminder">
+	<run>
+          plot_axes("reminder")
+	  var ctx = document.getElementById("reminder").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 2);
+	  plot_image("reminder", 0.5);
+	  plot_st_rangle("reminder");
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+	<text x="230" y="115"><em class="prototype_math">t</em></text>
+	<text x="200" y="170"><em class="prototype_math">Mt</em></text>
+
+      </prototype>
+	 
+      <p>
+	Our goal is to show that $Ms$ is orthogonal to $Mt$.  Now, a
+	natural thing to wonder is what happens if $Ms$
+	is <em>not</em> orthogonal to $Mt$.  Without loss of
+	generality, let's assume $Ms \cdot Mt >
+	0$*<span class="marginnote">* The other possibility is $Ms
+	\cdot Mt < 0$.  If that's the case, then we can replace $t$ by
+	$-t$.  $s$ and $-t$ are still orthonormal, but we will have
+	$Ms \cdot M(-t) > 0$.</span>:
+      </p>
+
+      <prototype static="true" name="assumption">
+	<run>
+	  plot_axes("assumption");
+	  var ctx = document.getElementById("assumption").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_fake_vec[0]), ys(Mt_fake_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+	<text x="235" y="140"><em class="prototype_math">Mt</em></text>
+
+      </prototype>
+
+      <p>
+	We'll use this assumption to derive a contradiction, from
+	which we'll conclude that $Ms$ must have been orthogonal to
+	$Mt$.
+      </p>
+      
+      <p>
+	Now, the tangent to the unit circle at $s$ is just the vector
+	orthonormal to $s$.  That is, it's the vector $t$:
+      </p>
+
+      <prototype static="true" name="tangent">
+	<run>
+	  plot_axes("tangent");
+	  var ctx = document.getElementById("tangent").getContext("2d");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  // tangent vector
+	  ctx.arrow(xs(s_vec[0]), ys(s_vec[1]),
+	    xs(s_vec[0]+t_vec[0]), ys(s_vec[1]+t_vec[1]), UNIT_COLOR, 2)
+	</run>
+	<text x="330" y="110">tangent to circle
+	at <em class="prototype_math">s</em>
+	is <em class="prototype_math">t</em></text>
+
+      </prototype>
+
+      <p>
+	What about the tangent of the image of the unit circle at Ms?
+	Let's look up close at the image, near $Ms$.  It is likely
+	plausible to you, and can easily be
+	proved*<span class="marginnote">* An outline proof of this is
+	that near $s$, points on the unit circle can be written $s +
+	\Delta t + O(\Delta^2)$, for small values of $\Delta$.  It
+	follows that near $Ms$, points on the image may be written
+	$M(s+ \Delta t+O(\Delta^2)) = Ms + \Delta Mt + O(\Delta^2)$.
+	And so the tangent to $Ms$ is $Mt$.  If this is unclear, I
+	encourage you to find your own proof.</span>, that the tangent
+	here is just $Mt$:
+      </p>
+
+      <prototype static="true" name="image_tangent">
+	<run>
+	  plot_axes("image_tangent");
+	  var ctx=document.getElementById("image_tangent").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  plot_partial_image("image_tangent");
+	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]),
+	    xs(Ms_vec[0]+Mt_fake_vec[0]), ys(Ms_vec[1]+Mt_fake_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="315" y="80"><em class="prototype_math">Ms</em></text>
+	<text x="305" y="35"><em class="prototype_math">Mt</em></text>
+      </prototype>
+      
+      <p>
+	Eyeballing this, we can see that there's a problem.  $Ms$ is
+	no longer the longest vector on the image curve.  In
+	particular, if we move just a small way along the image curve
+	in the direction of $Mt$, the vector must get longer:
+      </p>
+
+      <prototype static="true" name="the_problem">
+	<run>
+	  plot_axes("the_problem");
+	  var ctx=document.getElementById("the_problem").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  plot_partial_image("the_problem");
+	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]),
+	    xs(Ms_vec[0]+Mt_fake_vec[0]), ys(Ms_vec[1]+Mt_fake_vec[1]), IMAGE_COLOR, 2);
+	  plot_longer_vec("the_problem");
+	  //ctx.arrow(250, 58, 290, 70, "#aaa", 1);
+	</run>
+	<text x="315" y="80"><em class="prototype_math">Ms</em></text>
+	<text x="102" y="58">Vector longer than <em class="prototype_math">Ms</em></text>
+      </prototype>
+
+      <p>
+	That is, we can get a vector longer than $Ms$ by moving along
+	the image curve.  Now, that's actually impossible: by
+	assumption, $Ms$ was the longest vector on the image curve.
+	So we have a contradiction, and it follows that our initial
+	assumption $Ms \cdot Mt > 0$ must be wrong.  In fact, we must
+	have had $Ms \cdot Mt = 0$, i.e., $Ms$ is orthogonal to $Mt$,
+	as we desired.
+      </p>
+
+      <p>
+	The argument I gave is a heuristic argument, based on
+	eyeballing the curve.  But it's easy to prove in general with
+	a little algebra*<span class="marginnote">* The mathematics
+	here is a little more complex than earlier, and I've rendered
+	it using MathJax.  This introduces this some short display
+	delays. It's mildly annoying, but hopefully not too
+	distracting.</span>:
+      </p>
+
+      <prototype name="proof_getting_longer">
+	<text x="348" y="160">$s$</text>
+	<run>
+	  plot_axes("proof_getting_longer");
+	  var ctx=document.getElementById("proof_getting_longer").getContext("2d");
+	  ctx.line(xs(0), ys(-1.25), xs(0), ys(-2), "#eee", 2); // hack to make y axis shorter
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	</run>
+	<pause delay="3500"></pause>
+
+	<ticker>Consider a unit vector close to $s$</ticker>
+	<pause delay="4000"></pause>
+
+	<run>
+	  var ctx=document.getElementById("proof_getting_longer").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Math.cos(phi+0.2)), ys(Math.sin(phi+0.2)), UNIT_COLOR, 1);
+	</run>
+	<pause delay="3000"></pause>
+
+	<ticker>Since $t$ is the tangent at $s$...</ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>... the vector can be written $s+\Delta t+O(\Delta^2)$ for some small $\Delta$</ticker>
+	<text x="336" y="142">$s+\Delta t + O(\Delta^2)$</text>
+	<pause delay="5000"></pause>
+
+	<ticker>Applying $M$ to both vectors we obtain...</ticker>
+	<pause delay="3000"></pause>
+
+	<run>
+	  var ctx=document.getElementById("proof_getting_longer").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  plot_partial_image("proof_getting_longer");
+	  plot_longer_vec("proof_getting_longer");
+	</run>
+	<text x="315" y="80">$Ms$</text>
+	<text x="120" y="60">$Ms+\Delta Mt + O(\Delta^2)$</text>
+	<pause delay="5000"></pause>
+
+	<ticker>Let's compute the squared length of $Ms+\Delta Mt + O(\Delta^2)$</ticker>
+	<pause delay="4000"></pause>
+
+	<text x="110" y="315">$\|Ms+\Delta Mt + O(\Delta^2)\|^2$</text>
+	<pause delay="4000"></pause>
+	
+	<text x="310" y="315">$= \|Ms\|^2+ 2 \Delta \, Ms \cdot Mt + O(\Delta^2)$</text>
+	<pause delay="7000"></pause>
+
+	<ticker>But $Ms \cdot Mt > 0$, so for small $\Delta$...</ticker>
+        <pause delay="5000"></pause>
+
+	<text x="310" y="350">$ > \|Ms\|^2$</text>
+	<pause delay="5000"></pause>
+
+	<ticker>And so moving along the image curve gives us a vector
+	longer than $Ms$</ticker>
+	<pause delay="5000"></pause>
+
+	<ticker>Just as we wanted to show</ticker>
+	<pause delay="5000"></pause>
+      </prototype>
+
+
+      <p>
+	<h2>Semi-concrete reasoning</h2>
+      </p>
+
+      <p>
+	In the last section I proved the key claim using a series of
+	still images.  In so doing, I switched away from our prototype
+	cognitive medium.  The reason is interesting.  We were
+	considering $Ms$ and $Mt$, and asked ourselves what would
+	happen if $Ms$ was not orthogonal to $Mt$?
+      </p>
+
+      <prototype static="true" name="assumption_redux">
+	<run>
+	  plot_axes("assumption_redux");
+	  var ctx = document.getElementById("assumption_redux").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_fake_vec[0]), ys(Mt_fake_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+	<text x="235" y="140"><em class="prototype_math">Mt</em></text>
+
+      </prototype>
+      
+      <p>
+	In fact, we ultimately show that $Ms$ and $Mt$ are necessarily
+	orthogonal, and so there's no matrix $M$ which has the values
+	for $Ms$ and $Mt$ illustrated above.  It's impossible, though
+	we didn't know that at first.  And so the diagram above
+	actually depicts an impossible world.
+      </p>
+
+      <p>
+	Mathematicians engage in this kind of counterfactual reasoning
+	all the time. They're happy to imagine an impossible world,
+	and then play a game, saying: &ldquo;What would happen if this
+	world actually existed?&rdquo;
+      </p>
+
+      <p>
+        I mention this because systems for doing mathematics by
+	computer, such as Matlab and Mathematica, are often terrific
+	at doing computations with concrete objects.  They can verify
+	in a flash that $Ms$ is orthogonal to $Mt$ for any specific
+	choice of matrix $M$.  But they don't necessarily make it so
+	easy to do counterfactual reasoning.  You can't ask Matlab to
+	suppose that $Ms$ is not orthogonal to $Mt$.  There's simply
+	no facility in the program to do that.  And, curiously, this
+	actually makes it harder to discover the fact that $Ms$ is
+	always orthogonal to $Mt$, for any $2 \times 2$ matrix $M$.
+      </p>
+
+      <p>
+	When doing mathematics with a static medium such as paper and
+	pencil there is no automatic computation or constraint
+	checking.  The medium doesn't tell us it's not possible to
+	change from
+      </p>
+
+      <prototype static="true" name="reminder_redux">
+	<run>
+          plot_axes("reminder_redux")
+	  var ctx = document.getElementById("reminder_redux").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+	<text x="200" y="170"><em class="prototype_math">Mt</em></text>
+
+      </prototype>
+
+      <p>
+	to
+      </p>
+
+      <prototype static="true" name="assumption_redux_redux">
+	<run>
+	  plot_axes("assumption_redux_redux");
+	  var ctx = document.getElementById("assumption_redux_redux").getContext("2d");
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_fake_vec[0]), ys(Mt_fake_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="300" y="60"><em class="prototype_math">Ms</em></text>
+	<text x="235" y="140"><em class="prototype_math">Mt</em></text>
+
+      </prototype>
+
+      <p>
+	despite the fact that there is no matrix $M$ having those
+	values for $Ms$ and $Mt$.  This lack of constraint checking is
+	both a feature and a bug.  Because paper and pencil doesn't
+	enforce this kind of constraint checking, it relies on the
+	mathematician to do the constraint-checking in their head in a
+	principled way*<span class="marginnote">* In this, it's much
+	like the way weakly-typed programming languages rely on
+	programmers to be careful about what gets passed to a
+	function.  Incidentally, I suspect the right answer to the
+	question &ldquo;Should my language be strong or weakly
+	typed?&rdquo; is &ldquo;Both!&rdquo;.</span>.  That's a
+	substantial cognitive burden.  But it also gives the
+	mathematician the freedom to carry out arguments like we did
+	in the last section.
+      </p>
+	
+      <p>
+	Now, let's suppose we were to attempt to do this in our
+	prototype medium.  Here's how we'd start:
+      </p>
+
+      <prototype text="Play" name="attempt">
+
+	<run>
+	  icon_bar("attempt");
+	</run>
+	<icon x="596" y="30" src="images/matrix_2.png" name="matrix"></icon>
+	<icon x="596" y="94" src="images/axes.png" name="axes"></icon>
+	<icon x="596" y="158" src="images/unit_vectors.png" name="unit_vectors"></icon>
+	<icon x="596" y="222" src="images/prsv.png" name="prsv"></icon>
+	<icon x="596" y="286" src="images/orthogonal_icon.png" name="orthogonal"></icon>
+	<ticker>We set up as before</ticker>
+	
+	<run>
+	  var img = image("images/matrix5.png", 10, 40);
+	  img.id = "matrix5";
+	  document.getElementById("prototype12").appendChild(img);
+	  var ctx = document.getElementById("attempt").getContext("2d");
+	  plot_axes("attempt");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  plot_image("attempt");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="219" y="118"><em class="prototype_math">t</em></text>
+	<text x="315" y="70"><em class="prototype_math">Ms</em></text>
+	<text x="200" y="176"><em class="prototype_math">Mt</em></text>
+	<init_pointer></init_pointer>
+	<pause delay="5000"></pause>
+
+	<ticker>Our goal is to show
+	that <em class="prototype_math">Mt</em> is orthogonal to
+	  <em class="prototype_math">Ms</em></ticker>
+	<pause delay="4000"></pause>
+
+	
+	<ticker>Let's suppose <em class="prototype_math">Mt</em> is
+	not orthogonal to <em class="prototype_math">Ms</em></ticker>
+	<pause delay="3000"></pause>
+	<move_mouse x="224" y="195"></move_mouse>
+	<pause delay="500"></pause>
+	<text x="200" y="176"><em class="prototype_math" style="color: #eee">Mt</em></text>
+	<run>
+	  var k = 0;
+	  function animate_attempt() {
+  	    var ctx = document.getElementById("attempt").getContext("2d");
+	    ctx.clear();
+	    plot_axes("attempt");
+	    ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	    plot_image("attempt");
+	    ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	    var Mt_interp = [(1-k/50)*Mt_vec[0] + (k/50)*Mt_fake_vec[0],
+	                     (1-k/50)*Mt_vec[1] + (k/50)*Mt_fake_vec[1]];
+	    ctx.arrow(xs(0), ys(0), xs(Mt_interp[0]), ys(Mt_interp[1]), IMAGE_COLOR, 2);
+	    $("#pointer12").css("left", xs(Mt_interp[0])+"px").css("top", ys(Mt_interp[1])+"px");
+	    if (k < 50) {
+		    k++;
+		    window.requestAnimationFrame(animate_attempt);
+	    }
+	  }
+	  animate_attempt();
+	</run>
+	<pause delay="1400"></pause>
+	<text x="250" y="147"><em class="prototype_math">Mt</em></text>
+	<pause delay="2500"></pause>
+
+	
+	<comment>The manual mouse move means that we need to
+	re-initialize the pointer, to get the right x_pointer and
+	y_pointer values. Yes, this is a hack.  Note that for the x
+	and y values I have simply manually entered the values for
+	Mt_fake_vec.  If those were to change I'd need to modify the
+	code as well.  More hackery.</comment>
+	<init_pointer x="258" y="170"></init_pointer>
+
+	<ticker>There's a problem though</ticker>
+	<pause delay="4000"></pause>
+
+
+	<ticker>When we change <em class="prototype_math">Mt</em>, the
+	image should change as well</ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>We know this because the tangent
+	at <em class="prototype_math">Ms</em> should be
+	  <em class="prototype_math">Mt</em></ticker>
+	<pause delay="4000"></pause>
+	<run>
+	  var ctx = document.getElementById("attempt").getContext("2d");
+	  ctx.clear();
+	  plot_axes("attempt");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  plot_image("attempt");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_fake_vec[0]), ys(Mt_fake_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]), xs(Ms_vec[0]+Mt_fake_vec[0]), ys(Ms_vec[1]+Mt_fake_vec[1]),
+	    IMAGE_COLOR, 2);
+	</run>
+	<pause delay="4000"></pause>
+
+	<ticker>The fact that it's not tells us the old image is wrong</ticker>
+	<pause delay="4000"></pause>
+
+	<ticker>But how should the image change?</ticker>
+	<run>
+	  var ctx = document.getElementById("attempt").getContext("2d");
+	  ctx.clear();
+	  plot_axes("attempt");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_fake_vec[0]), ys(Mt_fake_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]), xs(Ms_vec[0]+Mt_fake_vec[0]), ys(Ms_vec[1]+Mt_fake_vec[1]),
+	    IMAGE_COLOR, 2);
+	</run>
+	<pause delay="4000"></pause>
+
+	<ticker>Ideally, the image would disappear and be replaced by
+	a partial image with the correct tangent</ticker>
+	</ticker>
+	<run>
+	  plot_partial_image("attempt");
+	</run>
+	<pause delay="6000"></pause>
+
+	<ticker>It would then be possible to continue the proof, along
+	the lines discussed earlier</ticker>
+	<pause delay="5000"></pause>
+      </prototype>
+
+      <p>
+	
+      <p>
+      That looks reasonable enough, but actually something remarkably
+      sophisticated would need to be happening under the hood.  Think
+      about what would need to happen to get to the initial plot of
+      the image:
+      </p>
+
+      <prototype static="true" name="initial_image">
+	<run>
+	  icon_bar("initial_image");
+	</run>
+	<ticker></ticker>
+	<icon x="596" y="30" src="images/matrix_2.png" name="matrix"></icon>
+	<icon x="596" y="94" src="images/axes.png" name="axes"></icon>
+	<icon x="596" y="158" src="images/unit_vectors.png" name="unit_vectors"></icon>
+	<icon x="596" y="222" src="images/prsv.png" name="prsv"></icon>
+	<icon x="596" y="286" src="images/orthogonal_icon.png" name="orthogonal"></icon>
+	
+	<run>
+	  var img = image("images/matrix5.png", 10, 40);
+	  img.id = "matrix5";
+	  document.getElementById("prototype13").appendChild(img);
+	  var ctx = document.getElementById("initial_image").getContext("2d");
+	  plot_axes("initial_image");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  plot_image("initial_image");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_vec[0]), ys(Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="219" y="118"><em class="prototype_math">t</em></text>
+	<text x="315" y="70"><em class="prototype_math">Ms</em></text>
+	<text x="200" y="176"><em class="prototype_math">Mt</em></text>
+      </prototype>
+      
+      <p>
+	A natural way of doing this is to have the cognitive medium
+	start with a matrix $M$ which has some generic values filled
+	in.  In fact, the values for $s$, $t$, $\ldots$ shown above
+	are produced by the following matrix $M$:
+      </p>
+
+      <p>
+      $$M = \begin{bmatrix} 0.70 & -0.28 \\ 1.27 & 0.86 \end{bmatrix} $$
+      </p>
+
+      <p>
+	So, for example, the image is computed by literally applying
+	$M$ to the points making up the unit circle.
+      </p>
+
+      <p>
+	So while we're trying to reason about some general class of
+	objects &ndash; all the $2 \times 2$ matrices &ndash; in fact
+	we've picked out one in particular, and use it as a generic
+	example, for the sake of doing trial computations.  The
+	benefit of this strategy is that it lets us reason from
+	concrete, easily-understood examples, but at the same time
+	having a chance of reaching general conclusions.  So, for
+	instance, using a concrete example makes it easy to notice
+	that $Ms$ is orthogonal to $Mt$ when $s$ is the principal
+	right singular vector, and $t$ is orthogonal to $s$.  Of
+	course, this observation holds only for this specific matrix
+	$M$.  But the fact that the example is generic makes it
+	plausible that this phenomenon holds for any $2 \times 2$
+	matrix $M$.  Mathematicians have done this kind of reasoning
+	from concrete-but-generic examples all through history. And
+	the relatively recent advent of computers has made it even
+	more convenient to explore such concrete-but-generic examples.
+      </p>
+
+      <p>
+	This strategy of using concrete-but-generic examples sometimes
+	fails.  There's an art to picking out good generic examples,
+	examples that won't mislead you.  That's not a topic I'm going
+	to discuss in much detail here.  However, it's a deep subject.
+	And if you wanted to develop a good medium for doing
+	mathematics, it's likely a subject you'd need to investigate
+	in some depth.  So it'd be worth investigating in detail.
+      </p>
+
+      <p>
+	Now, what happens when we change $Mt$ from its real value to
+	the trial value, not orthogonal to $Ms$?
+      </p>
+
+      <prototype static="true" name="fake_image">
+	<run>
+	  icon_bar("fake_image");
+	</run>
+	<ticker></ticker>
+	<icon x="596" y="30" src="images/matrix_2.png" name="matrix"></icon>
+	<icon x="596" y="94" src="images/axes.png" name="axes"></icon>
+	<icon x="596" y="158" src="images/unit_vectors.png" name="unit_vectors"></icon>
+	<icon x="596" y="222" src="images/prsv.png" name="prsv"></icon>
+	<icon x="596" y="286" src="images/orthogonal_icon.png" name="orthogonal"></icon>
+	
+	<run>
+	  var img = image("images/matrix5.png", 10, 40);
+	  img.id = "matrix5";
+	  document.getElementById("prototype14").appendChild(img);
+	  var ctx = document.getElementById("fake_image").getContext("2d");
+	  plot_axes("fake_image");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  plot_image("fake_image");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Mt_fake_vec[0]), ys(Mt_fake_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="345" y="148"><em class="prototype_math">s</em></text>
+	<text x="219" y="118"><em class="prototype_math">t</em></text>
+	<text x="315" y="70"><em class="prototype_math">Ms</em></text>
+	<text x="250" y="147"><em class="prototype_math">Mt</em></text>
+      </prototype>
+
+      <p>
+	Before the change the medium was keeping track of the
+	following objects:
+      </p>
+
+      <p>
+	<pre>
+M:  a 2 by 2 matrix, with entries 0.70, -0.28, ...
+s:  the principal right singular vector, with entries 0.89, 0.46
+Ms: the result of applying M to s, with entries 0.49, 1.52
+t:  a vector orthonormal to s, with entries -0.46, 0.89
+Mt: the result of applying M to t, with entries -0.57, 0.18
+The unit circle
+The image of the unit circle under M
+	</pre>
+      </p>
+
+      <p>
+	What happens to this internal state of the medium when we
+	change $Mt$?
+      </p>
+
+      <p>
+	Obviously, our internal representation of $Mt$ must change,
+	since we've changed the value.
+      </p>
+
+      <p>
+	But what about all the other objects the medium is tracking
+	the internal state of?
+      </p>
+
+      <p>
+	Well, first, the value of $M$ itself is no longer the same.
+	In fact, there is no matrix $M$ which has the desired values
+	for $Ms$ and $Mt$.  So we might be tempted to declare the
+	value for $M$ to be <code>undefined</code>.
+      </p>
+
+      <p>
+	If we do that, then $s$, the principal right singular vector
+	of $M$ is also <code>undefined</code>.  And so $Ms$ must
+	be <code>undefined</code>.  Furthermore, $t$, which is
+	orthonormal to $s$, must also be <code>undefined</code>, as is
+	$Mt$.  Indeed, the entire image of the unit circle under $M$
+	would be <code>undefined</code>.
+      </p>
+
+      <p>
+	In fact, the only thing which is still defined is the unit
+	circle, which had nothing to do with $M$!
+      </p>
+
+      <p>
+	In actual fact, although this approach seems plausible, it
+	isn't a good way of proceeding.  It's too pessimistic.
+      </p>
+
+      <p>
+	There's another problem in this picture.  We start by
+	supposing a particular value for $M$, which implies a
+	particular value for the principal right singular vector, $s$,
+	which implies a value for $t$.  And so when we change the
+	value of $Mt$ we actually get an <em>immediate</em>
+	contradiction.
+      </p>
+
+      <p>
+	Let's try to develop an alternate internal representation.
+      </p>
+
+      <p>
+	Recall that in our first step we started by selecting the
+	matrix icon.
+      </p>
+
+      <p>
+	Internally, our medium will represent this as a 2 by 2 matrix
+	with unspecified entries.  But we will <em>suppose for
+	concreteness (SFC)</em> that $M$ has entries $0.70, -0.28,
+	\ldots$.  These are not supposed by the medium to be the
+	actual entries in the matrix.  Rather, they are merely
+	presumed entries, to be used for purposes of concrete
+	representation and manipulation in a user interface, and which
+	can be used (if necessary) for future computations.  At this
+	stage our cognitive medium has the following internal
+	representation:
+      </p>
+
+      <pre>
+M:   a 2 by 2 matrix
+SFC: M has entries 0.70, -0.28, ...
+      </pre>
+
+      <p>
+	Our next step was to ask for the principal right singular
+	vector, $s$.  In the internal representation, we now have:
+      </p>
+
+      <pre>
+M:   a 2 by 2 matrix
+SFC: M has entries 0.70, -0.28, ...
+s:   principal right singular vector of M
+SFC: s has entries 0.89, 0.46
+      </pre>
+
+      <p>
+	Again, the entries for $s$ are not supposed by the medium to
+	be actual values.  Rather, they are for purpose of concrete
+	representation and manipulation in the user interface.
+      </p>
+
+      <p>
+	Our medium is thus keeping track of two different types of
+	fact.  One is mathematical assertions &ndash ``$M$ is a $2
+	\times 2$ matrix'' or ``$s$ is the principal right singular
+	vector of $M$'' &ndash; which are supposed to be literally
+	true.  And the other are assertions &ndash; ``$s$ has entries
+	$0.89, 0.46$'' which are supposed to be true for the sake of
+	concrete illustration, but which are not supposed to be
+	literally true.
+      </p>
+
+      <p>
+	We continue in this way, building up a more complex internal
+	representation, eventually arriving at:
+      </p>
+
+      <pre>
+M:   a 2 by 2 matrix
+SFC: M has entries 0.70, -0.28, ...
+the unit circle
+SFC: the image of the unit circle
+s:   principal right singular vector of M
+SFC: s has entries 0.89, 0.46
+Ms:  the result of applying M to s
+SFC: Ms has entries 0.49, 1.52
+t:   a vector orthonormal to s
+SFC: t has entries -0.46, 0.89
+Mt:  the result of applying M to t
+SFC: Mt has entries -0.57, 0.18
+      </pre>
+
+      <p>
+	Now, when we make the change to $Mt$, we immediately update
+	the SFC entries,
+      </p>
+
+      <pre>
+SFC: Mt has entries -0.15, 0.5
+      </pre>
+
+      <p>
+	But we don't otherwise change the representation.  This is
+	despite the fact that this change to $Mt$ <em>must</em> imply
+	many changes to other SFC facts. And so we are, for the sake
+	of concreteness, tolerating a certain amount of contradiction.
+      </p>
+
+      <p>
+	Now, there are quite a few options at this point.  It's worth
+	thinking them all through in detail.
+      </p>
+
+      <p>
+	I rather suspect I would have done better to actually make $t$
+	arise in a different way.  In particular, I should have made
+	$t$ arise as the tangent to $s$ on the unit circle.  And I
+	should have made $Mt$ arise as the tangent to $Ms$ on the
+	image.
+      </p>
+
+      <p>
+	Alright, let's make that update:
+      </p>
+
+      <pre>
+M:   a 2 by 2 matrix
+SFC: M has entries 0.70, -0.28, ...
+the unit circle
+SFC: the image of the unit circle
+s:   principal right singular vector of M
+SFC: s has entries 0.89, 0.46
+Ms:  the result of applying M to s
+SFC: Ms has entries 0.49, 1.52
+t:   a vector orthonormal to s
+SFC: t has entries -0.46, 0.89
+Mt:  the result of applying M to t
+SFC: Mt has entries -0.57, 0.18
+      </pre>
+
+      <h2>
+	Restructuring
+      </h2>
+
+      <p>
+	The cognitive medium as an environment in which to think and
+	discover.  The medium is a prototype; not a real medium. Both
+	very rough in some ways and rather idealized in others.
+	Please try to look past the rough edges. In this section the
+	focus will be on the mathematics.  In the next section we'll
+	extract some lessons about cognitive media in general.
+      </p>
+
+
+      <p>
+	Heuristically, at least, think about what we're informally
+	doing when we change $Mt$ to be non-orthogonal to $Ms$.
+	Informally, we're saying: let's suppose there is a
+	hypothetical $M$ which has these explicit values for $s$,
+	$Ms$, $t$ and $Mt$.  We don't know
+      </p>
+      
+	In a sense, the medium's model of the mathematical situation
+	must actually have completely changed. 
+
+	ZZZ: Think this next stuff through. In other words, we're
+	actually subselecting a set of facts.  Now, at some level,
+	we're actually getting a contradiction immediately. .  They
+	have different ontological statuses.  I need to simply think
+	this stuff through.  That is all.  Basically, take myself off
+	and think about it for a while.  I'll get it.  I won't
+	necessarily solve the problem.
+
+	The right question: we'd like to maximize our ability to
+	reason from concrete examples, to use the computer's ability
+	at computation.  So what internal representations should we
+	use?  The old
+
+	NOTES: The obvious way to represent the objects simply does
+	not work.  I make what seems from the point of view of the
+	interface a tiny change.  And yet it must completely changes
+	the underlying model.  What is needed is a richer underlying
+	model which allows a completely different type of mathematical
+	reasoning.  And yet it seems as though it's identical.
+
+	MORE NOTES: Describing at checkins.  "Let me try to give you
+the flavour of the problem I'm working on. So I'm working on user
+interface ideas for mathematics.  And in my prototype interface I've
+found a situation where we need two completely different models for
+the same mathematical objects.  Okay: one situation.  Two entirely
+different representations.  If you know databases, it's a bit like a
+really extreme case of denormalization.  And what I'm trying to do is
+to find a single, unified model which gives both as a special case.
+Finding that single unified model is key to "
+
+
+	
+	<p>
+	  In the movie <em>The Fellowship of the Ring</em> there is an
+	  early scene where the wizard Gandalf passes his hat and
+	  staff to the hobbit Bilbo.  In the DVD commentary the
+	  director says this was extremely difficult to make work on
+	  film.  The reason is that Gandalf is about 24 inches taller
+	  than Bilbo, but the actors are only about 5 inches different
+	  in height.  Mostly the filmakers dealt with the height
+	  disparity by clever use of camera angles.  But when directly
+	  passing the hat and staff this was not possible.  Rather,
+	  digital effects had to be used to seamlessly make the
+	  transition between Gandalf and Bilbo.
+	</p>
+
+
+	
+	At some point I'll need to do some background reading, lit
+	review.
+	
+
+	
+	
+      <p>
+	The great advantage of the computer is that it lets us very
+	easily do conrete reasoning.  But it's also problematic.  In
+	the art of problem-solving, what you know (or suspect) changes
+	as you proceed.  You learn things rapidly.  And so what you
+	can conclude changes a lot.
+      </p>
+
+      <p>
+	In particular, at this point we're computing on the whole image:
+      </p>
+
+      <p>
+	XXX
+      </p>
+
+      <p>
+	But now we're computing just at the tangent:
+      </p>
+
+      <p>
+	XXX
+      </p>
+
+      <p>
+	Now, we can try sketching something out:
+      </p>
+
+      <p>
+	XXX (deformed ellipse)
+      </p>
+
+      <p>
+	But that's not actually a computed image for a real matrix.
+	It can't be: no matrix has that.  Rather, it's an evocation.
+      </p>
+
+      <p>
+	So what happens &ndash; part of the art of doing mathematics
+	&ndash; is to show concrete images which evoke as much of the
+	current situation as possible.
+      </p>
+
+      <p>
+	So what should we do about this?  How should we cope with it?
+      </p>
+
+      <p>
+	I honestly don't know.
+      </p>
+
+      <p>
+	It means there's a fundamentally different status to this
+	image (computed):
+      </p>
+
+      <p>
+	XXX
+      </p>
+
+      <p>
+	to this image (computed at a point, but otherwise an
+	evocation):
+      </p>
+
+      <p>
+	XXX
+      </p>
+
+      <p>
+	One possible puritanical response is to say &ldquo;Oh, we
+	shouldn't do the former, this kind of thing isn't
+	allowed.&rduo;
+      </p>
+
+      <p>
+	While that would be convenient, it'd also be putting our heads
+	into the ground.  Real mathematicians engage in this kind of
+	reasoning <em>all the time</em>.  Indeed, the ability to
+	engage in this kind of reasoning seems to be essential to
+	mathematical discovery.  If we throw the ability out, then we
+	greatly weaken our medium of discovery.
+      </p>
+
+      <p>
+	The ideal is to make use of the computer to do as much
+	computation as possible to support.
+      </p>
+
+      <p>
+      Issue: the fact that sometimes it may be possible to do
+      computations in multiple ways.  I don't currently have a good
+      example.  Actually, maybe I do: are we assuming that the matrix
+      has a particular value or not?  In other words, on what do we
+      base the computation of the image?
+      </p>
+      
+      <p>
+	This is not a trivial point.  The main purpose of this essay
+	is to name the phenomenon, and to idnetify some of the key
+	issues asccoaited to it.  The advantage of naming it is that
+	it makes it easy to recognize
+      </p>
+
+      <p>
+	I don't think there's likely a silver bullet solution.
+	Rather, these are issues that need to be addressed over and
+	over and over again as part of good interface design.  Part of
+	the reason I'm naming these phenomena is to make it easy to
+	recognize the phenomena, and to respond to them.
+      </p>
+
+      The UI should be responsive to and reflect what we currently
+      know and what we currently assume.  That condition oc 
+
+      Sometimes, this means there are choices to be made.
+
+      Human beings are extremely good at juggling multiple points of
+      view.  That juggling is not something that is typically thought
+      of as central to user interface design.  Polyviewing.
+
+      My instinct, somehow, is that sometimes there may be two or more
+      choices to be made.  So, for example, in viewing this
+
+      The purpose here is to identify an issue, and some partial solutions.
+      
+
+      the user
+      interface needs to change to reflect that.  This is not a
+      trivial thing.
+
+      
+
+      When we do counterfactual reasoning we make very good use of
+      partial theories.
+
+      
+
+      If you're a mathematician sketching this on paper, you never
+      actually computed anything in the first place.  You just made a
+      guess:
+
+      XXX
+
+      
+      And so you also make a guess when
+
+      
+      
+
+      
+      This looks simple and natural, but in fact looks are deceiving.
+      Think about the recomputation step for the image:
+
+      XXX
+
+      There are two natural possibilities to use here.
+
+      The reason is that there are, in fact, two natural possibilities
+      to use when computing the image.
+
+      One is to start 
+
+      
+      
+
+      The problem of semi-concrete reasoning.
+      
+      
+      Actually, I don't know what it should look like here, to be
+      honest.  There are several possibilities.  One is to have the
+      image adjust
+      
+      Now, there's much that's interesting here.
+      
+      ZZZ
+
+
+      
+      
+      
+      Thinking: what's important here?
+
+      I'm not sure what to say next.  I have an instinct that
+      something extremely important is going on.  In particular, I
+      think there is a phenomenon here that can teach us something
+      about desirable properties for user interfaces for mathematics.
+      But I don't acytually know what it is.  The thing to do is to
+      dig down deep, to try and figure it all out.
+
+
+
+      <p>
+	Mentally, mathematicians keep track of two separate worlds
+	here.  They understand that 
+      </p>
+
+
+      Cyc has micro-theories which are required to be free from
+      contradictions.
+
+
+      Questions
+      
+      What makes this possible: I actually don't really understand.
+
+      What would you need to make this work?
+
+      Is there a connection to Lenat's work on Cyc?  The ability to
+      find contradictions is overrated.x
+
+      WHy would we have considered this approach to start?
+      
+      
+
+	
+	suppose, for example that $Ms \cdot Mt > 0$.  In the context
+	of our app, that would mean doing something like the
+	following:
+      </p>
+
+
+      <p>
+	That all looked very reasonable.  But there's a very
+	interesting thing here.  There is, in fact, no matrix $M$
+	which has the values for $Ms$ and $Mt$ illustrated above.
+	It's actually <em>impossible</em>.
+      </p>
+
+	
+      <p>
+	It is possible to make these kinds of counterfactual
+	assumptions in proof assistants such as Coq.  In a simple
+	case, suppose we want to prove that $\sqrt{2}$ is irrational.
+	The standard proof is to start by supposing it is rational, so
+	$\sqrt{2} = m/n$ for natural numbers $m$ and $n$.  We then
+	shows that this leads to a contradiction.  In Coq it's
+	possible to prove a theorem whose form is &ldquo;Suppose there
+	are natural numbers $m$ and $n$ such that $\sqrt{2} = m/n$.
+	Then absurdity follows.&rdquo;
+      </p>
+	
+	
+	In Coq we can do this 
+      
+      
+
+      
+	
+	
+	
+      <p>
+	Now, imagine you're a mathematician working with paper and
+	pencil, and are hoping to prove that $Ms$ and $Mt$ are
+	orthogonal.  
+
+      <p>
+	How might that look?  We won't get a proof straight away.
+	Rather, we'll just do some exploratory play that shows how it
+	might look:
+      </p>
+
+      <prototype text="Play the demo" name="unnamed2">
+
+	<ticker>Let's move $Mu$ so $Mu \cdot Mt > 0$</ticker>
+
+
+	<pause delay="2000"></pause>
+
+	<ticker>Suppose we apply $M$ to <em>all</em> the unit
+	vectors</ticker>
+
+	<drag>
+	</drag>
+
+
+	<ticker>You can see the problem</ticker>
+
+	<pause delay="2000"></pause>
+
+	<ticker>We've actually gone beyond the value for the principal
+	singular vector</ticker>
+
+      </prototype>
+
+      <p>
+	Alright, that's not a proof, though it does explain heuristically
+	what's going on.
+      </p>
+
+      <p>
+	Can we get an actual proof?
+      </p>
+
+      
+
+      <prototype text="Play the demo" name="unnamed3">
+
+	<ticker>Select the $t$ vector and the unit circle, and ask for
+	  the tangent at $t$</ticker>
+
+	<ticker>We see that it's $u$, the vector orthogonal to $t$</ticker>
+
+	<ticker>Then apply $M$ to the circle</ticker>
+
+	<ticker>We see that the tangent at the principal singular
+	  vector is $Mu$</ticker>
+
+	<ticker>Now, if $Mu \cdot Mt > 0$ then the line is getting
+	longer</ticker>
+      </prototype>
+
+      <p>
+	So what do we learn from all this?
+      </p>
+
+      <p>
+	We learn that $Mu$ is orthogonal to $Mt$.
+      </p>
+
+      <p>
+	Or, to recap all that we've learnt: if $M$ is a $2 \times 2$
+	matrix, $t$ is the principal singular vector, and $u$ is
+	perpendicult to $t$, then $Mu$ is perpendicular to $Mt$.
+      </p>
+
+      <p>
+	This has some nice consequences.
+      </p>
+
+      <p>
+	Think about what $M$ does.  We can think of it as first
+	rotating $t to the unit vector $e_x$ in the $x$ direction, and
+	$u$ to the unit vector $e_y$ in the $y$ direction:
+      </p>
+
+      XXX
+
+      <p>
+	We'll call the corresponding rotation matrix $V$.
+      </p>
+      
+      <p>
+	After that, rescale $e_x$ to be a length $s_1 \equiv \| M t
+	\|$, and $e_y$ to be a length $s_2 \equiv \| Mu \|$:
+      </p>
+
+      XXX
+      
+
+      <p>
+	Finally, define a rotation $U$ which rotates $e_x$ to be a
+	unit vector in the direction of $Mt$, and $e_y$ to be a unit
+	vector in the direction of $Mu$.  This is a legitimate
+	rotation matrix because $Mu$ is orthogonal to $Mt$.
+      </p>
+
+      XXX
+
+      <p>
+	Summing up, we have:
+      </p>
+	
+      <p>
+	$$M = U {\rm diag}(s_1, s_2) V$$
+      </p>
+
+      <p>
+	This is just the singular value decomposition.
+      </p>
+
+	
+      
+	
+
+
+	What am I doing this for?  I believe that it's possible to build far
+	more powerful cognitive media for both explanation and discovery.  Who
+	cares?  Well, I want to help build those tools for thought.  But the
+	only way to build them is to make essays into the craft.  This is
+	looking through one in particular.  What can we learn?
+
+	I still don't know why I'm doing this.  Why does it really matter?
+	Well, it's an early example.  I'm trying to learn what I need to learn
+	in order to develop a good congitive medium.
+
+
+
+
+
+
+	The picture that says it all: draw it.  Principal singular vector.
+	Unit circle.  Tangent vector, u.  Image.  Tangent to image, Mu.  This
+	must be perp to Mt in order that this length be maximal, so u _|_ t
+	implies Mu _|_ Mt.
+
+
+
+	Now, there's a very interesting thing going on here.
+
+
+
+
+
+
+
+
+
+
+	The nub of the proof is to show that Mu _|_ Mt.  If we're using
+	concrete values, then in fact that will automatically be the case.
+	But the way a mathematician reasons, it's extremely helpful to suppose
+	not.
+
+	So the problem here is that a mathematician actually wants to do
+	concrete reasoning about a world that doesn't actually entirely exist.
+
+
+
+
+
+	On the prototypical nature: If you look, you'll see much of it is
+	faked.  For this kind of project, the challenge isn't in the innards.
+	It's in understanding the interface.  The difficult thing in a system
+	like this isn't in understanding
+
+
+      <p>
+	<h2>Media for explanation versus media for exploration</h2>
+      </p>
+
+      <p>
+	In the essay so far I've provided an explanation of the
+	singular value decomposition.  It's one thing
+	to <em>explain</em> a result.  It's quite another
+	to <em>discover</em> the result.
+      </p>
+
+      <p>
+	In particular, a medi
+      </p>
+      
+	There are two things: one is to explain, the other is to
+	provide an environment for explanation, an environment in which the
+	proof.  These are not at all the same thing. I'm going to start by
+	looking at the former.  Later I'll have some remarks on the latter.
+
+
+
+
+	Writing science and mathematics on the open web
+
+	I've written several hundred thousand words about science and
+	mathematics on the open web.  It can be extremely rewarding.
+	I've
+
+
+	
+	Why do this?
+
+	At some level, it looks unserious.  Yes, it's pleasant to see
+	these ideas come together.  But there's a wide gap between
+	this of prototype and real, running software.  Is it just
+	flashy stuff, fun but not ultimately useful?
+
+	Another way of saying it: why not be building systems rather
+	than building prototypes?
+
+	The case for that: over the long run, we want running systems.
+
+	Ideas and understanding also matter.  
+
+
+
+	      OLD INTRO
+      
+      <p>
+	Can we improve on paper and pencil as a medium for doing
+	mathematics?  In this interactive essay I work through some
+	toy prototype media, exploring properties we would like such a
+	medium to have.  As an example, I'll use a piece of genuine
+	mathematics, a proof of a famous result in linear algebra
+	known as the <em>singular value decomposition</em> (SVD).
+	Rather than presenting a conventional proof of the SVD, I'll
+	explore alternate presentations.
+      </p>
+
+      <p>
+	The essay isn't an introduction to the singular value
+	decomposition, nor is it primarily about mathematics, although
+	you may find it of mathematical interest.  Rather, the intent
+	is to explore and prototype ways of doing mathematics in a
+	dynamic medium.  For this reason I'll assume you're already
+	comfortable with concepts of elementary linear algebra &ndash;
+	things like orthogonal matrices, diagonal matrices, and so on.
+      </p>
+
+The singular value decomposition is a furphy, a stalking horse.  Of
+course, I believe the essay has value as an explanation of the SVD.
+But the real game afoot is to think about what properties a cognitive
+medium that supports mathematics might have.
+
+      Most systems for doing mathematics by computer are concrete.
+      But an advantage of paper and pencil is that sometimes you can
+      do impossible things.
+
+      In other words, this is an instance where the computer is
+      actually being asked to do less.  It's being asked to ignore
+      constraints.  And this actually lets us do more.
+
+      (This is surprisingly common in the history of symbol-making.
+      Doing less is often more.)
+
+
+      Alternate proof: Incidentally, our proof only relied on there
+      being orthonormal vectors $s$ and $t$ such that $Ms$ and $Mt$
+      are orthonormal.  Another proof: cos e_1 + sin e_2.  Etc.
+
+      OLD:
+
+      Ask for review: Prabhakaer Ragde.  Katherine Ye.
+
+
+      I think I want to say that it is not at all trivial to figure
+      out a medium for doing mathematics in.
+      
+
+
+Hassan comment: Concretely, it’s a visual proof of a key result in
+mathematics (the singular value decomposition).  The proof is
+beautiful, but there’s a much larger game afoot.  The essay is really
+about the question: how can we develop media for exploring
+mathematical worlds?  What principles should such media follow?  And,
+in particular, how can we get all the benefits of paper and pencil
+(especially flexibility in exploration) with the benefits of the
+computer (the ability to compute and impose constraints)?  This turns
+out to be a really hard problem: there is actually a _tension_ between
+these two things, which makes it difficult to resolve.  And so that’s
+what the essay is about.
+
+With paper and pencil this is a tedious, difficult process unless
+you've already mastered a huge amount of technique.
+
+
+    </div>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]},
+      "HTML-CSS": 
+      {scale: 92},
+      TeX: { equationNumbers: { autoNumber: "AMS" }}});
+    </script>
+    <script type="text/javascript" src="mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="prototype.css">
+    <script type="text/javascript" src="emm.js"></script>
+    <script type="text/javascript" src="prototype.js"></script>
+    <script type="text/javascript" src="canvas.js"></script>
+
+  </body>
+</html>
+

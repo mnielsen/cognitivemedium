@@ -1,9 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    margin: 0;
+    padding: 0;
+    background-color: #ccc;
+}
+
+#header h1 {
+    font-family: Times New Roman;
+    font-size: 56px;
+    padding-left: 15%;
+    padding-top: 10px;
+    padding-bottom: 0;
+    margin: 0;
+}
+
+#header p {
+    font-family: Georgie;
+    font-size: 24px;
+    padding-top: 8px;
+    padding-left: 15%;
+    padding-bottom: 8px;
+    margin: 0;
+}
+
 #main {
-    font-family: "Georgia";
-    font-size: "20px";
+    font-family: Georgia;
+    font-size: 24px;
     margin: 0 15% 0 15%;
     padding: 0;
     color: #555;
+}
+
+#main p {
+    line-height: 1.5;
 }
 
 a {

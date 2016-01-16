@@ -1,0 +1,67 @@
+.prototype_div {
+    position: relative;
+    width: 660px;
+    height: 400px;
+    background-color: "gray";
+}
+
+.prototype {
+    position: absolute;
+    margin: 0px;
+    line-height: 1.2;
+    font-family: Gill Sans, Arial Narrow, Arial;
+}
+
+.prototype_title {
+    position: absolute;
+    top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: Helvetica, Arial;
+    font-size: 36px;
+    color: #666;
+}
+
+.prototype_img { /* used for the play arrow overlaid */
+    left: 256px;
+    top: 100px;
+    position: absolute;
+    display: block;
+}
+
+.prototype_math { /* used for math text in both the ticker and on the main prototype */
+    font-family: Times New Roman;
+}
+
+.pointer {
+    position: absolute;
+    margin: 0px;
+    line-height: 1;
+    color: red;
+}
+
+.ticker {
+    position: absolute;
+    margin: 0px;
+    top: 0px;
+    height: 30px;
+    background: #ddd;
+    left: 0px;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 3px;
+    width: 96%;
+    overflow: hidden;
+}
+
+.ticker-text {
+    display: inline-block;
+    font-family: Gill Sans, Arial Narrow, Calibri, Arial;
+    font-size: 22px;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
