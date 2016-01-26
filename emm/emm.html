@@ -17,56 +17,189 @@
 
     <div id="container">
 
+
       <p>
-	During
-	an <a href="https://www.aip.org/history-programs/niels-bohr-library/oral-histories/5020-5">interview</a>
-	with the theoretical physicist Richard Feynman, the historian
-	of science Charles Weiner casually describes Feynman's
-	notebooks as a &ldquo;record of the day-to-day work&rdquo;.
-	Feynman corrects him, saying &ldquo;I actually did the work on
-	the paper&rdquo;.  After some back-and-forth, Weiner tries to
-	restate his point: &ldquo;Well, the work was done in your head
-	but the record of it is still here.&rdquo; But Feynman
-	insists: &ldquo;No, it's not a record, not really, it's
-	working.  You have to work on paper and this is the
-	paper. OK?&rdquo;
+	The world's oldest complete piece of surviving music is the
+	3,400 year
+	old <a href="https://en.wikipedia.org/wiki/Hurrian_songs">Hurrian
+	cult hymn</a>.  A transcription of the hymn was found
+	inscribed on clay tablets excavated from the ancient city of
+	Ugarit, located in modern-day Syria.  Unfortunately, the idea
+	of using notation to record music was subsequently lost.
+	Writing 2,000 years later, in the seventh century CE, the
+	polymath Isidore of Seville stated that &ldquo;unless
+	[musical] sounds are held by the memory of man, they perish,
+	because they cannot be written down.&rdquo;
       </p>
 
       <p>
-	The interview was recorded in 1973, when paper-and-pencil was
-	the most commonly used medium for exploratory mathematical
-	work.  In the years since, media environments such
-	as <em>Mathematica</em> and <em>Matlab</em> have been
-	developed.  These media help users explore mathematics in
-	powerful new ways, ways essentially different from
-	paper-and-pencil.  But although useful, I believe these
-	programs are merely first steps toward far more powerful media
-	for doing mathematics.
+	In the ninth century, European musicians began experimenting
+	with notations to record plainchant.  The initial notations
+	were rough.  They didn't precisely denote either pitch or
+	rhythm.  They were probably intended more as an aid to memory
+	than as a recording medium.  But they gradually improved.  In
+	the 11th century, Guido of Arezzo introduced the musical
+	staff, making it easy to record pitch.  And in the 13th
+	century, Franco of Cologne suggested using a written note's
+	appearance to signify its duration.  These and many other
+	ideas led to modern musical notation.
       </p>
+
+      <p>
+	Modern written music may have originated as a recording
+	medium, but it gradually became a creative medium in its own
+	right.  It made it much easier to compose complex, intricate
+	music for many instruments and many voices.  This paved the
+	way for Bach's fugues, Beethoven's symphonies, and so much
+	else.  Written music became a medium for thought, a medium
+	which helped expand the range of musical ideas a composer
+	could have, and thus changed music itself.  It's an example of
+	what I shall call a <em>cognitive medium</em> &ndash; an
+	environment to support and enable thought.
+      </p>
+
+      <p>
+	In the modern day, digital computers have spurred the
+	invention of many new cognitive media.  Consider a program
+	such as Photoshop.  Regular users of Photoshop gradually
+	internalize tools such as the lassoo, the eyedropper, the
+	clone stamp, and so on.  These tools become part of the way
+	adept users think about image manipulation, and expand the
+	range of graphical ideas they can have.
+      </p>
+
+      <p>
+	Photoshop is just one of many recently invented cognitive
+	media.  Other examples include musical scorewriting programs
+	such as Finale and Sibelius, 3d modelling programs such as
+	Blender and 3ds Max, and video game engines such as Unity and
+	Unreal.  Such media enable users to think and create in ways
+	that would otherwise be difficult or impossible.  They are a
+	way of augmenting human intellect.
+      </p>
+
+      <p>
+	This essay is about the question: how can we design cognitive
+	media for mathematics?  Of course, there are many existing
+	cognitive media for mathematics, including programs such as
+	Mathematica, Matlab, and Sage.  But although these programs
+	are useful, I believe we will one day develop far more
+	powerful cognitive media, media that will radically change how
+	we think about mathematics.  Over the past few years, numerous
+	experiments pointing in this direction have been done, by
+	people such as <a href="http://worrydream.com/">Bret
+	Victor</a>, <a href="https://acko.net/about/">Steven
+	Wittens</a>, <a href="http://ncase.me/">Nicky
+	Case</a>, <a href="http://colah.github.io/">Chris Olah</a>,
+	and others.
+      </p>
+
+      <p>
+	As a step in this direction, in this essay we'll develop a
+	simple prototype medium which lets the user explore some ideas
+	in linear algebra.  The prototype is based on three
+	heuristics:
+      </p>
+
+      <p>
+	<strong>1. A concrete, graphical medium:</strong> When using
+	pencil and paper (or its close cousin, blackboard and chalk),
+	mathematicians often explore using informal, concrete,
+	graphical
+	representations*<span class="marginnote">* <a href="https://commons.wikimedia.org/wiki/File:HD.3A.053_(10481714045).jpg">Photo
+	credit:</a> United States Department of Energy.</span>:
+      </p>
+
       
+      <img src="images/blackboard.jpg" width="400px"/>
+
       <p>
-	This essay is about the question: how can we design a more
-	powerful computational medium for mathematics?  To make
-	progress on that question, we'll experiment with some simple
-	prototype media forms, with (very) loosely the flavour of a
-	kind of &ldquo;Photoshop-for-mathematics&rdquo;.  Through this
-	experimentation, we'll distill some principles which can help
-	in the design of a powerful medium for mathematics.
+	This kind of exploration is often difficult in existing
+	computer-based cognitive media.  While systems such as
+	Mathematica are good at producing graphical output, they are
+	not geared toward directly manipulating those graphical
+	representations.  This make it difficult to reason in the
+	concrete, graphical way common with pencil and paper.  We'll
+	develop a concrete, graphical medium that makes this kind of
+	direct manipulation possible.  The hope is to combine the
+	flexibility and concreteness of paper-and-pencil with the
+	automated reasoning that is the raison d'être of traditional
+	systems for doing mathematics by computer. The resulting user
+	interface is something like a (very simple) &ldquo;Photoshop
+	for linear algebra&rdquo;.
+      </p>
+	
+      <p>
+	<strong>2. A medium for exploration and discovery, not
+	  explanation:</strong> Some cognitive media, such as
+	  Mathematica, are exploratory environments that make it easy
+	  to ask questions about mathematical objects.  By contrast,
+	  many of the experimental media I mentioned above are
+	  oriented toward explanation.  Both are valuable, but they're
+	  different goals.  We'll be working toward exploratory media.
       </p>
 
       <p>
-	Much work on media for mathematics is done in the context of
-	toy problems, of the kind seen in school textbooks.  We'll
-	take a different approach, developing our prototypes as we
-	work through a piece of genuine mathematics.  It's one of my
-	favourite mathematical theorems, a result in linear algebra
-	called the <em>singular value decomposition</em>,
-	or <em>SVD</em> for short.  This is less accessible than
-	working through a toy problem, but forces us to confront and
-	(partially!)  overcome exactly the kinds of problems which
-	arise in real mathematical work.
+	<strong>3. Work with genuine mathematical problems, not toy
+	problems:</strong> We'll develop our prototype as we work
+	through a piece of genuine mathematics. It's a beautiful
+	result in linear algebra called the <em>singular value
+	decomposition</em>, or <em>SVD</em> for short. This is less
+	accessible than working through a toy problem, but has the
+	benefit of forcing us to confront and (partially!) overcome
+	the sort of problems which arise in real mathematical work.
+	Of course, ideally we'd go much farther, and use the medium to
+	discover new mathematics.  Ultimately, the right test of
+	whether a medium is useful is whether it enables the
+	development of essentially new mathematical ideas?  That's a
+	useful goal for the future.
       </p>
 
+      <p>
+	<strong>What do we learn?</strong> While the proof of the SVD
+	is hopefully fun and informative, the proof is not the point
+	of the essay.  Indeed, even the prototype cognitive medium is
+	not the point of the essay &ndash;
+	Photoshop-for-linear-algebra is a fun idea, but it's not
+	terribly novel.  Rather, the point is what we learn about
+	cognitive media from the prototype.
+      </p>
+
+      <p>
+	We'll identify a fundamental problem in the design of
+	cognitive media.  On the one hand, we want the medium to be
+	concrete and flexible, giving the user the expressiveness
+	available in a medium such as paper-and-pencil.  This means
+	the ability to make changes and edit our assumptions on the
+	fly.  On the other hand, we also want the medium to help
+	automate routine computations and enforcing of mathematical
+	constraints.  We will show that the ability to flexibly edit
+	our assumptimes sometimes makes it difficult or impossible to
+	enforce constraints in other parts of the system.  This causes
+	two problems: (1) an inability to the &ldquo;ground
+	truth&rdquo; state to the system; and (2) difficulties in
+	designing the user interface to reconcile these possibilities.
+      </p>
+
+      <p>
+	These problems are .  Rather, I will argue .  
+
+	The ability to flexibly edit our assumptions sometimes makes
+it difficult or impossible to enforce constraints in other parts of
+the system.  There can be conflicts and contradictions, making it
+difficult to discern both what the "true" state of the system is, and
+also causing tensions in the user interface design.  I'll describe
+these problems in detail, and identify some general principles which
+can help address the problems.
+      </p>
+
+
+I'll show that there is a fundamental tension between these two
+ideals.  
+
+      <p>
+	<h2>1.Introducing the SVD</h2>
+      </p>
 
       <p>
 	If you're not familiar with the SVD, it's a way of breaking a
@@ -151,19 +284,14 @@
       </p>
 
       <p>
-	While we're going to prove the SVD, the proof is not the main
-	point of the essay.  It's merely a stalking horse, a goal to
-	pursue as part of a larger research agenda of understanding
-	how to create more powerful user interfaces for mathematics.
-	As such, I will take it for granted that you're willing to
+	While we're going to prove the SVD, the proof is not, as
+	mentioned in the introduction, the main point of the essay. As
+	such, I will take it for granted that you're willing to
 	believe the SVD is interesting.  This means we won't get
-	deeply into the applications of the SVD: it's just not the
-	point of the essay.
-      </p>
-
-      <p>
-	With that said, it's worth knowing that the SVD is a very
-	widely-used tool, for applications ranging
+	deeply into the applications or meaning of the SVD.  It's just
+	not the point not the point of the essay.  But with that said,
+	it's worth knowing that the SVD is a very widely-used tool,
+	for applications ranging
 	from <a href="https://en.wikipedia.org/wiki/Latent_semantic_analysis">natural
 	language processing</a>
 	to <a href="https://en.wikipedia.org/wiki/Schmidt_decomposition">quantum
@@ -175,29 +303,29 @@
       </p>
 
       <p>
-	To read the essay, you will need to be comfortable with basic
-	linear algebra, at about the level already required to follow
-	this introduction.  In particular, you should be comfortable
-	with notions such as the transpose, matrix multiplication,
-	orthonormality, and so on.
+	To read the remainder of the essay, you will need to be
+	comfortable with basic linear algebra, at about the level
+	already required in this section.  In particular, you should
+	be comfortable with notions such as the transpose, matrix
+	multiplication, orthonormality, and so on.
       </p>
 
       <p>
-	<h2>1. A proof of the SVD for $2 \times 2$ matrices</h2>
+	<h2>2. A proof of the SVD for $2 \times 2$ matrices</h2>
       </p>
 
       <p>
 	In this section I explain the proof of the SVD in the case
 	when $M$ is a $2 \times 2$ matrix.  This proof turns out to
 	contain all the essential ideas needed for the general proof,
-	which we'll work through later.
+	which we'll describe later.
       </p>
 
       <p>
 	Rather than attack the problem head-on, let's start with a
-	simpler (and arguably more natural) problem that at first
-	appears unrelated.  In fact, as we attempt to solve this
-	problem our explorations will lead us to re-discover the SVD.
+	simpler and more natural problem.  This problem will appear
+	unrelated, but as we attempt to solve this problem our
+	explorations will lead us to re-discover the SVD.
       </p>
 
       <p>
@@ -256,7 +384,10 @@
 	demo, please click &ldquo;Play&rdquo; below.  Of course, in a
 	real medium, you'd be able to interrupt, do your own
 	exploration, and so on.  But this is just a prototype, and so
-	I haven't built things out that far.  Here it is:
+	I haven't built things out that far.  Here it
+	is*<span class="marginnote">* When shipped, I will replace
+	this with a video with audio voiceover, making it easy to move
+	backward and forward through the demo.</span>:
       </p>
 
  
@@ -568,10 +699,12 @@
 
       <p>
 	Let's fill in the algebra skipped above.  Let $T$ be the
-	tangent at $Ms$.  Because $T$ is the tangent to the image
-	curve, points on the image curve near $Ms$ can be written as
-	$Ms+\Delta T + O(\Delta^2)$ for some small parameter $\Delta$.
-	The squared length of that vector is:
+	tangent vector at $Ms$.  We're assuming $T$ has a component in
+	the direction of $Ms$, that is, $Ms \cdot T > 0$.  Because $T$
+	is the tangent to the image curve, vectors on the image curve
+	near $Ms$ can be written as $Ms+\Delta T + O(\Delta^2)$ for
+	some small parameter $\Delta$.  The squared length of that
+	vector on the image curve is:
       </p>
 
       <p>
@@ -588,19 +721,20 @@
 
 
       <p>
-	So we've learned that the tangent to the image curve at $Ms$
-	is orthogonal to $Ms$.  It'd be good to make this observation
-	more explicit, expressing the tangent $T$ in terms of existing
-	quantities like $M$ and $s$.  To do this, recall that the
-	image curve arose by applying $M$ to the unit circle.  It
-	should be plausible that the tangent to the image curve at
-	$Ms$ is just $Mt$ where $t$ is the tangent to the unit circle
-	at $s$.  This can be proved with a tiny bit of
+	We learned from the above explorations that the tangent to the
+	image curve at $Ms$ is orthogonal to $Ms$.  We can make this
+	observation more explicit by expressing the tangent $T$ in
+	terms of existing quantities like $M$ and $s$.  To do this,
+	recall that the image curve arose by applying $M$ to the unit
+	circle.  It should be plausible that the tangent to the image
+	curve at $Ms$ is just $Mt$ where $t$ is the tangent to the
+	unit circle at $s$.  This can be proved with a tiny bit of
 	calculus*<span class="marginnote">* I won't go through the
 	details, though it's a good exercise if it's not immediately
 	obvious.  Incidentally, this is standard calculus, and so
 	could easily be something the mathematical medium just
-	&ldquo;knows&rdquo;.</span>.  Let's illustrate the situation:
+	&ldquo;knows&rdquo;.</span>.  It's easiest to see the
+	situation through an illustration:
       </p>
 
       <prototype static="true" name="tangents">
@@ -627,8 +761,8 @@
       <p>
 	We can make things even more explicit, noting that the tangent
 	$t$ is orthogonal to $s$, since it's the tangent to a circle.
-	And so the previous observation the tangent to the image curve
-	at $Ms$ is orthogonal to $Ms$ can be rewritten as:
+	And so the previous observation that the tangent to the image
+	curve at $Ms$ is orthogonal to $Ms$ can be rewritten as:
       </p>
 
       <p>
@@ -636,32 +770,6 @@
 	singular vector of $M$, and let $t$ be orthonormal to $s$.
 	Then $Ms$ is orthogonal to $Mt$.
       </p>
-
-      <p>
-	Visually, we can illustrate this lemma, redrawing the above
-	diagram but moving $t$ to the origin, to emphasize that it's
-	orthogonal to $s$:
-      </p>
-
-      <prototype static="true" name="tangents2">
-	<run>
-  	  var ctx = document.getElementById("tangents2").getContext("2d");
-          plot_axes("tangents2");
-	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
-	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
-	  ctx.arrow(xs(0), ys(0), xs(t_vec[0]), ys(t_vec[1]), UNIT_COLOR, 2);
-	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
-	  plot_image("tangents2");
-	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]),
-	    xs(Ms_vec[0]+Mt_vec[0]), ys(Ms_vec[1]+Mt_vec[1]), IMAGE_COLOR, 2);
-	</run>
-	<text x="345" y="148"><em class="prototype_math">s</em></text>
-	<text x="315" y="70"><em class="prototype_math">Ms</em></text>
-	<text x="230" y="115"><em class="prototype_math">t</em></text>
-	<text x="235" y="60"><em class="prototype_math">Mt</em></text>
-
-      </prototype>
-
 
       <p>
 	The lemma tells us that the principal right singular vector
@@ -679,7 +787,9 @@
 	terms of $s, t, Ms$ and $Mt$.  As before press
 	&ldquo;Play&rdquo; on the demo below.  Note that this is no
 	longer intended to represent a prototype cognitive medium, for
-	reasons that will become apparent later.
+	reasons that will become apparent later.  Note also that I've
+	moved $t$ and $Mt$ to the origin, emphasizing that $t$ is
+	orthogonal to $s$, and $Mt$ is orthogonal to $Ms$.
       </p>
 
       <prototype text="Play" name="see_svd">
@@ -872,24 +982,26 @@
 
       <p>
 	By construction, this rotation-rescaling-rotation combination
-	takes $s$ to $Ms$ and $t$ to $Mt$.  In fact, it follows that
-	the rotation-rescaling-rotation combination does the same as
-	$M$ for <em>all</em> possible inputs.  The reason is that $s$
-	and $t$ form a basis for the vector space.  Since both $M$ and
-	the rotation-rescaling-rotation act linearly on vectors, it
-	follows that $M$ and the rotation-rescaling-rotation have the
-	same action on <em>all</em> vectors.  Thus, $M$ is equal to
-	the rotation-rescaling-rotation operation.  And so we've
-	proved the singular value decomposition for $2 \times 2$
+	takes $s$ to $Ms$ and $t$ to $Mt$.  In fact, we can use this
+	to conclude that the rotation-rescaling-rotation combination
+	must do the same as $M$ for <em>all</em> possible inputs.  The
+	reason is that $s$ and $t$ form a basis for the vector space.
+	Since both $M$ and the rotation-rescaling-rotation act
+	linearly on vectors, it follows that $M$ and the
+	rotation-rescaling-rotation have the same action
+	on <em>all</em> vectors.  Thus, $M$ is equal to the
+	rotation-rescaling-rotation operation.  And so we've proved
+	the singular value decomposition for $2 \times 2$
 	matrices*<span class="marginnote">* Note that to prove the SVD
-	all that's required is that $Ms \perp Mt$ for some orthonormal
-	vectors $s$ and $t$.  We could have proved the SVD even if $s$
-	wasn't the principal right singular vector.  In $2d$ there are
-	easy proofs that such vectors exist, without using the notion
-	of the principal right singular vector.  However, such proofs
-	do not, so far as I know, generalize to higher dimensions,
-	while the current proof <em>does</em> generalize easily to
-	higher dimensions.</span>.
+	all that's required is that $Ms$ is orthogonal to $Mt$ for
+	some orthonormal vectors $s$ and $t$.  We could have proved
+	the SVD even if $s$ wasn't the principal right singular
+	vector.  In $2d$ there are easy proofs that such vectors
+	exist, without using the notion of the principal right
+	singular vector.  However, such proofs do not, so far as I
+	know, generalize to higher dimensions, while we'll see that
+	the current proof <em>does</em> generalize easily to higher
+	dimensions.</span>.
       </p>
 
       <p>
@@ -898,9 +1010,9 @@
 	discover the singular value decomposition with only a little
 	extra imagination.  In fact, while our proof of the SVD was in
 	$2$ dimensions, as noted earlier our proof can be extended to
-	$n$ dimensions.  That generalization is actually somewhat
-	incidental to the main point of this essay, so I've sketched
-	it out in <a href="#appA">Appendix A</a>.
+	$n$ dimensions.  That generalization is incidental to the main
+	point of this essay, so I've sketched it out
+	in <a href="#appA">Appendix A</a>.
       </p>
 
       <p>
@@ -911,9 +1023,9 @@
 	you may not solve the problem you originally intended to
 	solve, but you learn something interesting anyway!  In fact,
 	it's possible to use the SVD to solve our original problem,
-	finding the maximal stretching.  Again, this is somewhat
-	incidental to the main point of this essay, and so I describe
-	how to do it in <a href="#appB">Appendix B</a>.
+	finding the maximal stretching.  Again, this is incidental to
+	the main point of this essay, and so I describe how to do it
+	in <a href="#appB">Appendix B</a>.
       </p>
 
 
@@ -938,11 +1050,11 @@
       </p>
 
       <p>
-	<h2>2 Semi-concrete reasoning</h2>
+	<h2>3. Semi-concrete reasoning</h2>
       </p>
 
       <p>
-	<h3>2.1 The problem</h3>
+	<h3>3.1 The problem</h3>
       </p>
       
       <p>
@@ -953,17 +1065,21 @@
 	seconds:
       </p>
 
-      XXX
+      <p>
+	XXX --- video excerpt from the earlier demo, showing what
+	happens when we click-and-drag on the tangent (and the
+	corresponding adjustment of the image curve)
+      </p>
 
       <p>
 	From the user's point of view this looks simple and natural.
-	But actually something remarkably sophisticated would need to
-	happen under the hood.  To understand why that's the case,
-	let's think in more detail about how the medium would model
-	these actions.  A natural approach is to start with a matrix
+	But actually something remarkably sophisticated must be going
+	on under the hood.  To understand why that's the case, let's
+	think in more detail about how the medium would model the
+	actions shown.  A natural approach is to start with a matrix
 	$M$ which has some generic values filled in.  In fact, the
-	values for $s, t, \ldots$ shown above are produced by the
-	following matrix $M$:
+	values for $s, t, Ms, Mt \ldots$ shown above are produced by
+	the following matrix $M$:
       </p>
 
       <p>
@@ -972,55 +1088,55 @@
 
       <p>
 	So, for example, the image curve is computed by applying this
-	particular $M$ to the points making up the unit circe.  And
-	the principal right singular vector $s$ is computed from $M$.
-	And so on, for all the properties that are computed.
+	particular $M$ to the points making up the unit circle.  And
+	the principal right singular vector $s$ is computed from this
+	$M$.  And so on, for all the properties computed by the
+	medium.
       </p>
 
       <p>
-	What we're doing here is somewhat peculiar.  Our goal is
-	reason about some general class of objects &ndash; all the $2
-	\times 2$ matrices.  But to do that our medium has picked out
-	one $2 \times 2$ matrix in particular, and is using it as a
-	generic example.  The benefit is that this lets the medium do
-	all computations explicitly, so we can reason from concrete,
-	easily-understood and visualized examples.  At the same time,
-	because the matrix chosen was generic, we have a chance of
-	reaching general conclusions.  So, for instance, using a
-	concrete example makes it easy to notice that $Ms$ is
-	orthogonal to $Mt$ when $s$ is the principal right singular
-	vector, and $t$ is orthogonal to $s$.  Of course, this
-	observation holds only for this specific matrix $M$.  But the
-	fact that the example is generic makes it plausible that this
-	phenomenon holds for any $2 \times 2$ matrix $M$.  Indeed, it
-	would be easy to check for other choices of $M$, though I
-	didn't explicitly show that happening.
+	Of course, our goal here is to reason about some general class
+	of objects &ndash; all the $2 \times 2$ matrices.  But to do
+	that our medium has picked out one particular $2 \times 2$
+	matrix, and is using it as a generic example.  The benefit is
+	that this lets the medium do all computations explicitly, so
+	we can reason from concrete, easily-understood and visualized
+	examples.  At the same time, because the matrix chosen was
+	generic, we have a chance of reaching general conclusions.
+	So, for instance, using a concrete example makes it easy to
+	notice that $Ms$ is orthogonal to $Mt$ when $s$ is the
+	principal right singular vector, and $t$ is orthogonal to $s$.
+	Of course, the medium is only showing this for this specific
+	matrix $M$.  But the fact that the example is generic makes it
+	plausible that this phenomenon holds for any $2 \times 2$
+	matrix $M$.  Indeed, it would be easy to check for other
+	choices of $M$, though I didn't explicitly show that
+	happening.
       </p>
 
       <p>
 	Mathematicians routinely use this kind of reasoning from
 	concrete-but-generic examples to gain insight.  That's been
 	common practice all through mathematical history, but has
-	become especially attractive with the relatively recent advent
-	of computers*<span class="marginnote">* The strategy of using
+	become especially attractive with the advent of digital
+	computers*<span class="marginnote">* The strategy of using
 	concrete-but-generic examples sometimes fails.  There's an art
-	to picking out good generic examples, examples that won't
-	mislead you.  That's not a problem I'm going to discuss in
-	detail, but it's a fascinating subject.  If you want to
-	develop a good medium for doing mathematics, I suspect it's a
-	subject which would need to be investigated in great
-	depth.</span>.
+	to picking out generic examples that don't mislead.  That's
+	not a problem I'm going to discuss in detail, but it's a
+	fascinating subject.  If you want to develop a good medium for
+	doing mathematics, I suspect it's a subject which would need
+	to be investigated in great depth.</span>.
       </p> 
 
       <p>
-	Now, what happens when we change $Mt$ from its real value to the
-	trial value, not orthogonal to $Ms$?
+	Now, what happens when we change the tangent from its real
+	value to the trial value, not orthogonal to $Ms$, as shown in
+	the short video above?
       </p>
 
-      XXX
-
       <p>
-      Before the change the medium was keeping track of the following objects:
+	Well, before the change the medium was keeping track of the
+	following mathematical objects:
       </p>
       
       <p>
@@ -1030,33 +1146,33 @@ The unit circle
 The image of the unit circle under M
 s:  the principal right singular vector, with entries 0.89, 0.46
 Ms: the result of applying M to s, with entries 0.49, 1.52
-The tangent to the image at Ms, with entries -0.57, 0.18
+The tangent to the image curve at Ms, with entries -0.57, 0.18
 	</pre>
       </p>
 
       <p>
 	What happens to the internal state of the medium when we
 	change the tangent?  Of course, our internal representation of
-	the tangent must change.  But, in fact, we're in something of
-	a pickle, since there is no matrix $M$ which has the desired
-	values for $Ms$ and the tangent.  So we declare the value of
-	$M$ to be <code>undefined</code>.  If we do that, then $s$,
-	the principal right singular vector of $M$, is
+	the tangent must change.  But, in fact, there is no matrix $M$
+	which has the desired values for $Ms$ and the tangent.  So one
+	natural approach is to declare the value of $M$ to
+	be <code>undefined</code>.  If we do that, then $s$, the
+	principal right singular vector of $M$, is
 	also <code>undefined</code>.  Indeed, the entire image of the
 	unit circle under $M$ would be <code>undefined</code>.  In
 	fact, the only thing which is still defined is the unit
-	circle, which had nothing to do with $M$!
+	circle!
       </p>
       
       <p>
-	In a sense, the problem here is that we're in an impossible
-	world. When we change the value of the tangent we actually
-	move into a world which does not exist.  And yet we'd like to
-	be able to continue reasoning.  That means developing an
-	internal model that lets us keep going.  Can't simply set our
-	values to be <code>undefined</code>.  That means giving up.
-	To support this kind of reasoning we need more powerful ideas
-	about how to represent what's going on.
+	In a sense, the problem here is that we're trying to describe
+	an impossible world. When we change the value of the tangent
+	we're moving into a world which does not exist.  And yet we'd
+	like to be able to continue reasoning.  That means developing
+	an internal model that lets us keep going.  If we set the
+	values to <code>undefined</code>, then that means giving up.
+	To support this kind of reasoning we will need more powerful
+	ideas about how to represent what's going on.
       </p>
 
       <p>
@@ -1075,21 +1191,20 @@ The tangent to the image at Ms, with entries -0.57, 0.18
 	provide: (1) the ability to compute concretely, to apply
 	constraints, and to make inferences; and (2) the benefits of
 	paper-and-pencil, notably the flexibility to explore and make
-	inferences about impossible worlds.  Our earlier discussion
-	shows there is tension between these requirements.  Yet both
-	must be satisfied simultaneously in a powerful exploratory
-	medium for mathematics.
+	inferences about impossible worlds. As we've seen, there is
+	tension between these two requirements.  Yet it is highly
+	desirable that both be satisfied simultaneously if we are to
+	build a powerful, concrete medium for doing mathematics.
       </p>
 
       <p>
 	In the next section I sketch an approach to building a system
-	for semi-concrete reasoning.  The treatment is not complete.
-	As we shall see, the problem is in general a deep problem,
-	with an open-ended component which is about the psychology of
-	the user, and what constitues &ldquo;natural&rdquo; modes of
-	mathematical inference.  And so the purpose of the following
-	discussion is to identify some core questions and principles
-	to be followed in such a system.
+	for semi-concrete reasoning.  We shall see that the problem is
+	a deep problem, with an open-ended component which is about
+	the psychology of the user, and what constitues
+	&ldquo;natural&rdquo; modes of mathematical inference.  And so
+	the purpose of the following discussion is to identify some
+	core questions and principles to be followed in such a system.
       </p>
 
       <h3>
@@ -1100,14 +1215,13 @@ The tangent to the image at Ms, with entries -0.57, 0.18
 	In our earlier reasoning, we used the data as a way of
 	representing mathematical reality. Because of this it was
 	important to find and resolve contradictions.  It's possible,
-	however, to proceed in a different fashion.  Rather than using
-	the data as representing mathematical reality, we can treat
-	the data as representing
-	<em>our current state of knowledge of the system</em>.  In
-	this point of view user interface operations gradually build
-	up a complex state of knowledge.  So, for instance, after
-	creating the tangent vector, but before drawing the connection
-	to $t$, the state of knowledge may be depicted as:
+	however, to proceed in a different fashion.  Rather than
+	treating the data as representing mathematical reality, we can
+	treat the data as representing <em>the user's current state of
+	knowledge of the system</em>.  In this view, user interface
+	operations are associated to gradually build up a complex
+	state of knowledge.  So, for instance, after creating the
+	tangent vector, the state of knowledge may be depicted as:
       </p>
 
       <img src="images/initial_data.png"/>
@@ -1116,11 +1230,11 @@ The tangent to the image at Ms, with entries -0.57, 0.18
 	Here, left-to-right denotes the time ordering in which we
 	build these objects up, and arrows show dependencies between
 	objects.  Each time we apply the user interface to create a
-	new mathematical object, the graph changes.  So, for instance,
+	new mathematical object, the graph changes.  For instance,
 	when we create the image curve it is added to the graph,
-	connected to the matrix $M$ and the unit circle, since it is
-	determined by $M$ and by the points on the unit circle.  Then
-	we add the principal right singular vector $s$, which is
+	connected to the matrix $M$ and the unit circle, since it is a
+	function of $M$ and the points on the unit circle.  Then we
+	add the principal right singular vector $s$, which is
 	determined by $M$ alone.  And so on for $Ms$ and the tangent
 	vector as well.  I've greyed out the matrix $M$ since $M$ is
 	not explicitly shown by the user interface, while all other
@@ -1267,8 +1381,8 @@ The tangent to the image at Ms, with entries -0.57, 0.18
       XXX
 
       <p>
-	In fact, there is <em>a priori</em> no logical way the medium
-	can know. All of these (and others) might be appropriate in
+	In fact, <em>a priori</em> there is no way the medium can
+	know. All of these (and others) might be appropriate in
 	different contexts.  However, consider the way in which the
 	tangent was built up:
       </p>
@@ -1313,17 +1427,13 @@ The tangent to the image at Ms, with entries -0.57, 0.18
       XXX
 
       <p>
-	In fact a reasonable answer to this question is XXX.
+	One possible answer to this question is to do some sort of
+	interpolation based on the original curve and the modified
+	tangent.  When this is done, we get the
+	&ldquo;obviously&rdquo; correct behaviour for the modified
+	curve.
       </p>
 
-      <p>
-	
-	
-      <p>
-	Is this the only option?  No, it is not.  In fact, it's perfec
-      </p>
-
-      
       <p>
 	Of course, many of our mathematical objects may depend on two
 	or more previous objects.  In that case, we may wish to
@@ -1340,7 +1450,13 @@ The tangent to the image at Ms, with entries -0.57, 0.18
 	wrong going on.
       </p>
 
-     
+      
+      Relationship to typing: There is a relationship between
+      semi-concrete reasoning and the old debate between strong typed
+      versus weakly typed programming languages.
+
+      Relationship to 
+      
 	
       <p>
 	The interface will necessarily explode in complexity.  This
@@ -1390,6 +1506,8 @@ SFC: Mt has entries -0.15, 0.5
       </p>
 
       Better than paper.  Why does this matter?
+
+      
       
       <p>
 	<em>Thanks to Dave Albert, Darius Bacon, Kovas Boguta, Ilona
@@ -1398,6 +1516,7 @@ SFC: Mt has entries -0.15, 0.5
 	  improve this essay.</em>
       </p>
 
+      Ask for feedback: Sriram.  Nicky.  Jamie Brandon.  Bret.
 	
       <p><a name="appA"></a>
 	<h2>Appendix A: the proof of the SVD in $n$
@@ -1461,12 +1580,15 @@ SFC: Mt has entries -0.15, 0.5
 
       <p>
 	Earlier in the essay we learnt that the degree of stretching
-	for a matrix $M$ is equal to the largest singular value $s_1$.
-	That is, suppose $M$ has singular value decomposition
+	for a $2 \times 2$ matrix $M$ is equal to the largest singular
+	value $s_1$.  In fact, it's straightforward to adapt the
+	reasoning in Appendix A to show that this is true also for an
+	$n \times n$ matrix.  That is, suppose an $n \times n$ matrix
+	$M$ has singular value decomposition
       </p>
 
       <p>
-	$$M = R \,\mbox{diag}(s_1, s_2, \ldots, s_n) R'$$
+	$$M = U \,\mbox{diag}(s_1, s_2, \ldots, s_n) V,$$
       </p>
 
       <p>
@@ -1479,33 +1601,33 @@ SFC: Mt has entries -0.15, 0.5
       </p>
 
       <p>
-	This is a nice connection, but it's not obvious it helps us
+	While this is a nice connection, it's not obvious it helps us
 	figure out the maximal degree of stretching.  Fortunately,
-	with just a little work we can figure out $s_1$.  To do this,
+	with a little work we can figure out $s_1$.  To do this,
 	observe that from the SVD we have
       </p>
 
       <p>
-	$$M^T M = R'^T \mbox{diag}(s_1^2, s_2^2, \ldots, s_n^2) R'$$
+	$$M^T M = V^T \mbox{diag}(s_1^2, s_2^2, \ldots, s_n^2) V$$
       </p>
 
       <p>
-	since $R$ is a rotation, and thus satisfies $R^T R = I$.
-	Inspecting the last displayed equation, we see that the
+	since $U$ is an orthogonal matrix, and thus satisfies $U^T U =
+	I$.  Inspecting the last displayed equation, we see that the
 	eigenvalues of $M^TM$ are just $s_1^2, s_2^2, \ldots$.  And so
 	$s_1$ is just the square root of the largest eigenvalue of
 	$M^TM$.  This eigenvalue <em>is</em> easy to compute, which
 	makes the singular value $s_1$ easy to compute.  And that, in
 	turn, makes it easy to compute the maximal degree of
-	stretching.
+	stretching for $M$.
       </p>
 
       <p>
-	To sum up, the maximal degree of stretching for a matrix $M$
-	is just the square root of the largest eigenvalue of $M^TM$.
-	This provides us with an easy, computationally feasible way of
-	computing the stretching, solving the original problem we
-	started with!
+	Summing up, the maximal degree of stretching for a matrix $M$
+	is equal to the square root of the largest eigenvalue of
+	$M^TM$.  This gives an easy, computationally feasible way of
+	computing the maximal degree of stretching, and thus solves
+	the original problem we started with.
       </p>
 
       
@@ -1816,8 +1938,9 @@ SFC: Mt has entries -0.15, 0.5
       <p>
 	A natural way of doing this is to have the cognitive medium
 	start with a matrix $M$ which has some generic values filled
-	in.  In fact, the values for $s$, $t$, $\ldots$ shown above
-	are produced by the following matrix $M$:
+	in.  In fact, the values for $s$, $t$, $Ms$, $Mt$, \ldots$
+	shown in the last section are produced by the following matrix
+	$M$:
       </p>
 
       <p>
@@ -2706,6 +2829,35 @@ what the essay is about.
 
 With paper and pencil this is a tedious, difficult process unless
 you've already mastered a huge amount of technique.
+
+      OLD
+      
+<p>
+	During
+	an <a href="https://www.aip.org/history-programs/niels-bohr-library/oral-histories/5020-5">interview</a>
+	with the theoretical physicist Richard Feynman, the historian
+	of science Charles Weiner casually describes Feynman's
+	notebooks as a &ldquo;record of the day-to-day work&rdquo;.
+	Feynman corrects him, saying &ldquo;I actually did the work on
+	the paper&rdquo;.  After some back-and-forth, Weiner tries to
+	restate his point: &ldquo;Well, the work was done in your head
+	but the record of it is still here.&rdquo; But Feynman
+	insists: &ldquo;No, it's not a record, not really, it's
+	working.  You have to work on paper and this is the
+	paper. OK?&rdquo;
+      </p>
+
+      <p>
+	The interview was recorded in 1973, when paper-and-pencil was
+	the most commonly used medium for exploratory mathematical
+	work.  In the years since, media environments such
+	as <em>Mathematica</em> and <em>Matlab</em> have been
+	developed.  These media help users explore mathematics in
+	powerful new ways, ways essentially different from
+	paper-and-pencil.  But although useful, I believe these
+	programs are merely first steps toward far more powerful media
+	for doing mathematics.
+      </p>
 
 
     </div>
