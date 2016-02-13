@@ -167,7 +167,8 @@ function plot_rescaled_axes(elt, xscale, yscale) {
     ctx.arrow(xs(0), ys(0), xs(0), ys(yscale), "#2A6EA6", 2);
 }
 
-function plot_image(elt, line_width) {
+function plot_image(elt, line_width, color) {
+    var color = color || IMAGE_COLOR;
     line_width = selfOrDefault(line_width, 2);
     var ctx = document.getElementById(elt).getContext("2d");
     var theta;
@@ -181,7 +182,7 @@ function plot_image(elt, line_width) {
     }
     ctx.closePath();
     ctx.lineWidth = line_width;
-    ctx.strokeStyle = IMAGE_COLOR;
+    ctx.strokeStyle = color;
     ctx.stroke();
 }
 
