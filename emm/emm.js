@@ -33,12 +33,17 @@ function icon_bar(id) {
 function m_times_v(m, v) {
     // return the product of the matrix m with the vector v
     var answer = Array(m.length);
-    var sum;
     for (var j=0; j < m.length; j++) {
 	answer[j] = 0;
 	for (var k=0; k < v.length; k++) {answer[j] += m[j][k]*v[k];}
     }
     return answer;
+}
+
+function matrix_inverse(m) {
+    // return the inverse of the matrix m
+    var det = m[0][0]*m[1][1]-m[0][1]*m[1][0];
+    return [[m[1][1]/det, -m[0][1]/det], [-m[1][0]/det, m[0][0]/det]];
 }
 
 function xs(x) {
@@ -207,8 +212,9 @@ function plot_image_partial(elt, tangent, p) {
     // to 1 at the end.
     //
     // The method of interpolation was found by trial and error, and
-    // so is directly applicable in all situations; finding a
-    // generally applicable approach is an interesting problem.
+    // so is not necessarily directly applicable in all situations;
+    // finding a generally applicable approach is an interesting
+    // problem.
     var range = 0.7;
     var ctx = document.getElementById(elt).getContext("2d");
     ctx.beginPath();

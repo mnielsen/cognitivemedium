@@ -33,6 +33,11 @@
     <div id="container">
 
       <p>
+	XXX: Note that when I write XXX it means something that needs
+	fixing, i.e., it's not part of the main document.
+      </p>
+	
+      <p>
 	The world's oldest complete piece of surviving music is the
 	3,400 year
 	old <a href="https://en.wikipedia.org/wiki/Hurrian_songs">Hurrian
@@ -148,9 +153,10 @@
 	manipulation easy.  The intent is to combine the flexibility
 	and concreteness of paper-and-pencil with the automated
 	inference that is the raison d'être of traditional systems for
-	doing mathematics by computer. The resulting user interface is
-	something like a (very simple and bare bones) &ldquo;Photoshop
-	for linear algebra&rdquo;.
+	doing mathematics by computer. Think something like
+	&ldquo;Photoshop for linear algebra&rdquo;.  That grossly
+	overstates what we'll do, but has the benefit of conveying the
+	right gist.
       </p>
 
 
@@ -420,9 +426,10 @@
 	be able to interrupt, do your own exploration, and so on.  But
 	this is just a prototype, to explore ideas, and so I haven't
 	built the medium out to do that.  Here it
-	is*<span class="marginnote">* When the essay ships, I will
-	replace this with a video with audio voiceover, making it easy
-	to move backward and forward through the demo.</span>:
+	is*<span class="marginnote">* XXX: When the essay ships, I
+	will replace this with a video with audio voiceover rather
+	than ticker-tape, making it easy to move backward and forward
+	through the demo.</span>:
       </p>
  
       <prototype text="Play" name="proof">
@@ -1292,13 +1299,9 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	Having adopted this point of view, the question is how the
 	medium can best support the user's exploration and reasoning.
 	The simplest approach is to allow the user to manually edit
-	the mathematical world:
+	the mathematical world, with little assistance from the
+	computer in doing inference:
       </p>
-
-      XXX: This demo isn't done yet.  The idea is for the user to do
-      the steps manually.  In particular, the user would click and
-      drag the tangent, but nothing else changes.  Then delete the
-      image curve, and sketch in a modified image curve.
 
       <prototype text="Play" name="simple_edit">
 	<init_pointer></init_pointer>
@@ -1315,7 +1318,6 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
  	  icon_bar("simple_edit");
 	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
 	  ctx.filledRectangle(596, 0, 660, 400, "#ddd", "#ddd", 0);
-	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
 	  plot_image("simple_edit");
 	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
 	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
@@ -1328,7 +1330,7 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	at <em class="prototype_math">Ms</em> is $\perp$ to
 	  <em class="prototype_math">Ms</em></text>
 
-	<ticker>Let's modify the tangent vector</ticker>
+	<ticker>Let's click and drag the tangent vector</ticker>
 	<pause delay="2000"></pause>
 	<move_mouse x="264" y="73"></move_mouse>
 	<pause delay="500"></pause>
@@ -1350,37 +1352,17 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	    if (k < 50) {
 		    k++;
 		    window.requestAnimationFrame(animate_attempt);
-	    } else {
-		    k = 0;
-		    vanish_circle()
 	    }
 	  }
-          function vanish_circle() {
-  	    var ctx = document.getElementById("simple_edit").getContext("2d");
-	    ctx.clear();
-            icon_bar("simple_edit");
-	    plot_axes("simple_edit");
-	    ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
-	    plot_image("simple_edit", 2-k/10);
-	    ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
-	    ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
-	    ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]), xs(Ms_vec[0]+Mt_vec[0]),
-		    ys(Ms_vec[1]+Mt_vec[1]), IMAGE_COLOR, 2);
-	    if (k < 20) {
-		    k++;
-		    window.requestAnimationFrame(vanish_circle);
-	    }
-	 }
-		    
 	  animate_attempt();
 	</run>
 	<init_pointer x="298" y="48"></init_pointer>
 	
 	<pause delay="2000"></pause>
-	<ticker>Delete the image curve</ticker>
+	<ticker>Then select and delete the image curve</ticker>
 	<pause delay="2000"></pause>
 	<move_mouse x="283" y="96" interrupt="95">
-	  plot_image("simple_edit", 2, "yellow");
+	  plot_image("simple_edit", 6, "yellow");
 	</move_mouse>
 	<pause delay="1000"></pause>
 	<run>
@@ -1397,10 +1379,27 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	      ys(Ms_vec[1]+Mt_fake_vec[1]), IMAGE_COLOR, 2);
 	</run>
 	<pause delay="500"></pause>
-	<ticker>
-	<ticker>And so on</ticker>
-
-	
+	<ticker>Then sketch in the modified image curve</ticker>
+	<pause delay="500"></pause>
+	<move_mouse x="295" y="71"></move_mouse>
+	<pause delay="500"></pause>
+	<run>
+	  var ctx = document.getElementById("simple_edit").getContext("2d");
+	  var theta = 0.6;
+	  var start = vector_image_partial(Mt_fake_vec, 1, theta);
+	  var next;
+	  function nextArcStep() {
+	    theta += -0.01;
+	    next = vector_image_partial(Mt_fake_vec, 1, theta);
+	  $("#pointer3").css("left", xs(next[0])+"px").css("top", ys(next[1])+"px");
+	    ctx.line(xs(start[0]), ys(start[1]), xs(next[0]), ys(next[1]), IMAGE_COLOR);
+	    if (theta > -0.6) {
+	      start = next;
+	      requestAnimationFrame(nextArcStep)
+	    }
+	  }
+	  nextArcStep();
+	</run>
       </prototype>
 
       <p>
@@ -1438,10 +1437,127 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	inferences, give the user control over how these inferences
 	are made, and make it easy for the user to understand and
 	track the chain of reasoning.  To appreciate the importance of
-	these ideas, consider a medium which violates them:
+	these principles, consider a medium which violates them:
       </p>
 
-      XXX --- show s and Ms swinging around as we edit the tangent
+      <prototype text="Play" name="illegible_edit">
+	<init_pointer></init_pointer>
+	<ticker></ticker>
+	<icon x="596" y="30" src="images/matrix_2.png" name="matrix"></icon>
+	<icon x="596" y="94" src="images/axes.png" name="axes"></icon>
+	<icon x="596" y="158" src="images/unit_vectors.png" name="unit_vectors"></icon>
+	<icon x="596" y="222" src="images/prsv.png" name="prsv"></icon>
+	<icon x="596" y="286" src="images/orthogonal_icon.png" name="orthogonal"></icon>
+
+	<run>
+	  var ctx = document.getElementById("illegible_edit").getContext("2d");
+          plot_axes("illegible_edit")
+ 	  icon_bar("illegible_edit");
+	  ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	  ctx.filledRectangle(596, 0, 660, 400, "#ddd", "#ddd", 0);
+	  plot_image("illegible_edit");
+	  ctx.arrow(xs(0), ys(0), xs(s_vec[0]), ys(s_vec[1]), UNIT_COLOR, 2);
+	  ctx.arrow(xs(0), ys(0), xs(Ms_vec[0]), ys(Ms_vec[1]), IMAGE_COLOR, 2);
+	  ctx.arrow(xs(Ms_vec[0]), ys(Ms_vec[1]),
+	  xs(Ms_vec[0]+Mt_vec[0]), ys(Ms_vec[1]+Mt_vec[1]), IMAGE_COLOR, 2);
+	</run>
+	<text x="346" y="150" id="s_swinging"><em class="prototype_math">s</em></text>
+	<text x="310" y="65" id="Ms_swinging"><em class="prototype_math">Ms</em></text>
+
+	<ticker>Let's try clicking and dragging the tangent vector again</ticker>
+	<pause delay="3000"></pause>
+	<move_mouse x="264" y="73"></move_mouse>
+	<pause delay="500"></pause>
+	<comment>
+	  Let me explain the mathematics here, so this is
+	  understandable later.
+
+	  We'll move the mouse pointer exactly as before, defining a
+	  vector which we'll call interp.  In previous widgets this
+	  was called Mt_interp, but we rename since it can't really be
+	  understood in terms of an interpolated (and displaced) Mt.
+
+	  What we want is to find a unit vector sp (for s prime) such
+	  that:
+
+	  interp - M sp is tangent to M sp on the image curve
+
+	  For this to be the case, we must have
+
+	  interp - M sp proportional to M sp_perp,
+
+	  where sp_perp is the tangent to sp on the unit circle.  We
+	  can rewrite this as:
+
+	  interp - M sp = c M sp_perp
+
+	  for some constant c.  Multiplying by M^{-1} and taking
+	  inner products we have:
+
+	  M^{-1} interp . sp = 1
+
+	  M^{-1} interp . sp_perp = c
+
+	  And so 1+c^2 = ||M^{-1} interp||^2
+
+	  We can solve for c:
+
+	  c = pm sqrt(||M^{-1} interp||^2-1)
+
+	  Thinking about the geometry of our situation, it should be
+	  +.  Of course, in general we'd need to do a (rather
+	  tedious!) case analysis.
+	  
+	  c = sqrt(||M^{-1} interp||^2-1)
+
+	  Our earlier equation can also be written:
+
+	  M^{-1} interp = (I+c F) sp
+
+	  where F = [[0, -1], [1, 0]].
+
+	  We can then use this to solve for sp:
+
+	  c = sqrt{||M^{-1} interp||^2-1}
+
+	  sp = (I+c F)^{-1} M^{-1} interp
+
+	  These final two equations let us figure out a suitable value
+	  for sp, and then for M sp.
+
+	  There's a lot to do here.  But there's nothing difficult!
+	</comment>
+	<run>
+	  var k = 0;
+	  function animate_attempt_2() {
+  	    var ctx = document.getElementById("illegible_edit").getContext("2d");
+	    ctx.clear();
+	    icon_bar("illegible_edit");
+	    plot_axes("illegible_edit");
+	    ctx.circle(xs(0), ys(0), xs(1)-xs(0), UNIT_COLOR, 2);
+	    plot_image("illegible_edit");
+	    var interp = [(1-k/50)*Mt_vec[0] + (k/50)*Mt_fake_vec[0] + Ms_vec[0],
+	      (1-k/50)*Mt_vec[1] + (k/50)*Mt_fake_vec[1] + Ms_vec[1]];
+	    var inverse_interp = m_times_v(matrix_inverse(M), interp);
+	    var c = Math.sqrt(Math.pow(length(inverse_interp), 2)-1);
+	    var temp = [[1, -c], [c, 1]];
+	    var sp = m_times_v(matrix_inverse(temp), inverse_interp);
+	    ctx.arrow(xs(0), ys(0), xs(sp[0]), ys(sp[1]), UNIT_COLOR, 2);
+	    var M_sp = m_times_v(M, sp);
+	    ctx.arrow(xs(0), ys(0), xs(M_sp[0]), ys(M_sp[1]), IMAGE_COLOR, 2);
+	    ctx.arrow(xs(M_sp[0]), ys(M_sp[1]), xs(interp[0]), ys(interp[1]), IMAGE_COLOR, 2);
+	    $("#pointer4").css("left", xs(interp[0])+"px").css("top", ys(interp[1])+"px");
+	    $("#s_swinging").css("left", (xs(sp[0])+5)+"px").css("top", (ys(sp[1])-23)+"px");
+	    $("#Ms_swinging").css("left", (xs(M_sp[0]))+"px").css("top", (ys(M_sp[1])-23)+"px");
+	    if (k < 50) {
+		    k++;
+		    window.requestAnimationFrame(animate_attempt_2);
+	    }
+	  }
+	  animate_attempt_2();
+	</run>
+	<pause delay="3000"></pause>
+      </prototype>
 
       <p>
 	Mathematically speaking, this is just fine.  Indeed, there's a

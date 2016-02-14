@@ -265,10 +265,9 @@ function run_prototype(j, prototype) {
     function text(elt, next_step) {
 	var x = parseInt(elt.getAttribute("x")) || 0;
 	var y = parseInt(elt.getAttribute("y")) || 0;
-	var id = elt.getAttribute("id");
+	var id = elt.getAttribute("id") || "text"+j+"_"+k; 
 	var t = elt.innerHTML;
 	var name = elt.getAttribute("name");
-	var id = "text"+j+"_"+k;
 	div.append("<p class='prototype' id='"+id+"' style=\"display: 'none'; left: "+x+"px; top: "+y+"px;\">"+t+"</p>");
 	MathJax.Hub.Typeset($("#"+id)[0]);
 	//$("#"+id)[0].style.display = "none";
