@@ -33,8 +33,8 @@
     <div id="container">
 
       <p>
-	XXX: Note that when I write XXX it means something that needs
-	fixing, i.e., it's not part of the main document.
+	<em>XXX: Note that when I write XXX it means something that
+	  needs fixing, i.e., it's not part of the main document.</em>
       </p>
 	
       <p>
@@ -426,10 +426,10 @@
 	be able to interrupt, do your own exploration, and so on.  But
 	this is just a prototype, to explore ideas, and so I haven't
 	built the medium out to do that.  Here it
-	is*<span class="marginnote">* XXX: When the essay ships, I
+	is*<span class="marginnote">* <em>XXX: When the essay ships, I
 	will replace this with a video with audio voiceover rather
 	than ticker-tape, making it easy to move backward and forward
-	through the demo.</span>:
+	through the demo.</em></span>:
       </p>
  
       <prototype text="Play" name="proof">
@@ -448,7 +448,7 @@
 
 	<select_icon name="matrix"></select_icon>
 	<run>
-	  var img = image("images/matrix1.png", 10, 40);
+	  var img = image("images/matrix_1.png", 10, 40);
 	  img.id = "matrix1";
 	  document.getElementById("prototype0").appendChild(img);
 	</run>
@@ -1071,9 +1071,9 @@
       </p>
 
       <p>
-	XXX --- video excerpt from the earlier demo, showing the
+	<em>XXX --- video excerpt from the earlier demo, showing the
 	moment at which we click-and-drag on the tangent, and the
-	corresponding adjustment of the image curve.
+	corresponding adjustment of the image curve.</em>
       </p>
 
       <p>
@@ -1289,16 +1289,22 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	reality, we can instead <em>use the medium's data model to
 	represent the user's current state of mathematical
 	knowledge</em>.  This makes sense, since in an exploratory
-	medium the key issue is not what is true &ndash; by
+	medium we are not trying to describe what is true &ndash; by
 	assumption, we don't know that, and are trying to figure it
 	out &ndash; but rather what the user currently knows, and how
-	to best support further inference.  Having adopted this point
-	of view, user interface operations correspond to changes in
-	the user's state of mathematical knowledge, and thus also make
-	changes in the medium's model of that state.  There is no
-	problem with inconsistency, because the medium's job is only
-	to model the user's current state of knowledge, and that state
-	of knowledge may well be inconsistent.
+	to best support further inference.
+      </p>
+
+      <p>
+	Having adopted this point of view, user interface operations
+	correspond to changes in the user's state of mathematical
+	knowledge, and thus also make changes in the medium's model of
+	that state.  There is no problem with inconsistency, because
+	the medium's job is only to model the user's current state of
+	knowledge, and that state of knowledge may well be
+	inconsistent.  In a sense, we're actually asking the computer
+	to do less, at least in some ways, by ignoring constraints.
+	And that makes for a more powerful medium.
       </p>
 
       <p>
@@ -1406,6 +1412,7 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	  }
 	  nextArcStep();
 	</run>
+	<pause delay="3000"></pause>
       </prototype>
 
       <p>
@@ -1429,11 +1436,9 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
       <p>
 	This is not a consistent mathematical world.  It doesn't need
 	to be, since the purpose of our medium's data model is no
-	longer to represent a consistent mathematical world.  Rather,
-	it's to represent the user's current state of mathematical
-	knowledge and to support further inference.  And it does that
-	job well, just as paper-and-pencil does at a similar stage in
-	a paper-and-pencil proof.
+	longer to represent a consistent mathematical world, but to
+	represent the user's current state of mathematical knowledge,
+	and to support further inference.
       </p>
 
       <p>
@@ -1582,11 +1587,11 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	particular, in general we'd like to use our medium to reason
 	about a large number of mathematical objects.  There is
 	potentially an exponentially large number of ways changing one
-	object can propagate to cause inferred changes to others.  In
-	order for the user to understand what is going on, the way
-	inferred changes propagate needs to communicated.  In
-	particular, the medium needs to be designed so the user can
-	easily navigate the many possible chains of inference.
+	object can cause inferred changes in others.  In order for the
+	user to understand what is going on, the way inferred changes
+	propagate needs to clearly communicated.  In particular, the
+	medium must be designed so the user can easily navigate the
+	many possible chains of inference.
       </p>
 
       <p>
@@ -1594,16 +1599,21 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	upon what relationships we know between objects in the system.
 	In this case, we know of just a single direct relationship
 	between the tangent vector and other objects: the tangent is a
-	function of the base point and the image curve:
+	function of the base point and the image
+	curve*<span class="marginnote">* Note that later in the proof
+	we learn that the tangent is equal to $Mt$.  That's a second
+	important relationship.  However, I am speaking of what the
+	user knows at the particular moment in time we're focused
+	on.</span>:
       </p>
 
 	<img src="images/input_output.png"/>
 
       <p>
 	If we're using paper-and-pencil, we must use this relationship
-	to deduce the implications of changing the tangent, since it's
-	the only relevant thing we know.  Effectively, we choose a way
-	of inverting the relationship:
+	to deduce the implications of changing the tangent.  The
+	reason is that it's the only relevant thing we know.
+	Effectively, we're inverting the relationship:
       </p>
 
       <img src="images/input_output_inverted.png">
@@ -1611,196 +1621,130 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
       <p>
 	In this particular case, we want the base vector $Ms$ to
 	remain unchanged, by assumption.  Given that, we can infer
-	what the image curve &ldquo;must have been&rdquo;, gvien the
+	what the image curve &ldquo;must have been&rdquo;, given the
 	modifed value for the tangent.  Of course, the modified image
 	curve is not uniquely determined, and so with paper-and-pencil
-	we sketch an illustrative curve segment.
+	we sketch an illustrative curve segment.  That illustrative
+	curve segment is <em>not</em> supposed to literally be the
+	implied curve segment; rather, it is a curve segment with
+	approximately the right shape, and where the base point and
+	tangent are exactly correct.
       </p>
       
       <p>
 	The paper-and-pencil reasoning is strikingly different to the
-	medium shown earlier.  In that medium, changing the tangent
-	vector caused a change to $s$.  With paper-and-pencil any such
-	inference would have required a two-step reasoning process:
-	first, figure out how changing the tangent changes $Ms$, and
-	then figure out how changing $Ms$ changes $s$.
+	earlier medium.  In that medium, changing the tangent vector
+	caused an immedate change to $s$.  With paper-and-pencil any
+	such inference would have required a two-step reasoning
+	process: first, figure out what changing the tangent means for
+	$Ms$, and then figure out what that change to $Ms$ means for
+	$s$.
       </p>
 
-      ZZZ
-
       <p>
-	We could potentially adopt a similar approach to developing
-	our medium.  In such a medium, for every interface
+	We could adopt a similar single-step inference approach to our
+	exploratory medium.  In such a medium, for every interface
 	operation <em>generating</em> a new relationship between
 	objects, there would be a corresponding interface operation
-	allowing us to make inferences about changes in one of those
-	objects affect the other objects.  In the specific case we've
-	been considering, this means the task of the medium is to
-	present the user from a way of selecting from amongst the
-	space of base vectors and (segments of) image
+	enabling us to infer how changes in any one of those objects
+	affects the other objects.  In the specific case we've been
+	considering, this means the task of the medium is to present
+	the user a way of selecting from amongst the space of base
+	vectors and segments of image
 	curves*<span class="marginnote">* A point I've glossed over is
-	how the medium knows what shape to use for the edited curve
-	segment.  One possible answer to this question is to do some
-	sort of interpolation based on the original curve and the
-	modified tangent. This is the strategy I used in the
-	prototype, and it seems to work reasonably well.</span>.
+	how the medium knows what shape to use for the curve segment.
+	One possible answer is to interpolate based on the original
+	curve and the modified tangent. This is the strategy I used in
+	the prototype, and it seems to work reasonably well.</span>.
       </p>
 
       <img src="images/input_output_inverted.png">
 
       <p>
-	What makes the medium superior to paper-and-pencil is that
-	with paper-and-pencil this inversion needs to be computed
-	mechanically.  With good design, it can be computed
-	automatically, by the medium, freeing the user to think at a
-	higher level.  It is perhaps best viewed as a strengthening of
-	paper-and-pencil, which supports the user in making (possibly
-	rather tricky) inferences.
+	With paper-and-pencil, this inversion needs to be performed
+	mechanically.  In an exploratory medium, the medium itself can
+	guide us in doing the inversion.  Of course, in this instance
+	the inference isn't especially hard, so this is only a small
+	win, but it nonetheless does help free the user to concentrate
+	on higher-level reasoning.
       </p>
 
       <p>
-	Using medium to support only a single stage of inference has a
-	number of benefits.  It naturally makes the chain of inference
-	legible, since it mirrors the way we do inference with
-	paper-and-pencil, every step made explicit, while removing the
-	tedious computational scut work that's often involved.  It's
-	also natural psychologically, since the user is already
-	thinking in terms of these relationships, having defined the
-	objects this way.  Finally, and perhaps most importantly, it
-	limits the scope of the interface design problem, since we
-	need not design separate interfaces for the possibly
-	unlimited(!) number of possible inferences.  Rather, for every
-	interface operation generating an object, we need to design an
-	interface to propagate changes.  That's a challenging but
-	finite design problem.  Indeed, in the worst case, a
-	&ldquo;completely manual&rdquo; interface like that presented
-	earlier may in general be used.
+	Using the medium to support only a single stage of inference
+	has several benefits.  It naturally makes the chain of
+	inference legible, since it mirrors the way we do inference
+	with paper-and-pencil, every step made explicit, while
+	reducing tedious computational work.  It's also natural
+	psychologically, since the user is already thinking in terms
+	of these relationships, having defined the objects this way.
+	Finally, and perhaps most importantly, it limits the scope of
+	the interface design problem, since we need not design
+	separate interfaces for the possibly unlimited(!) number of
+	possible inferences.  Rather, for every interface operation
+	generating an object, we need to design an interface to
+	propagate changes.  That's a challenging but finite design
+	problem.  Indeed, in the worst case, a &ldquo;completely
+	manual&rdquo; interface like that presented earlier may in
+	general be used.
       </p>
 
       <p>
-        With all this said, one could imagine mediums which perform
-        multiple stages of inference in a single step, like the medium
-        we saw earlier, which modified $s$ in response to changes in
-        the tangent.  Designing such a medium would be substantially
-        more challenging, since potentially many more relationships
-        are involved, and it is substantially harder to explain what
-        is going on to the user.
+        With that said, one could imagine mediums which performs
+        multiple stages of inference in a single step, such as our
+        earlier medium modifying $s$ in response to changes in the
+        tangent.  Designing such a medium would be much more
+        challenging, since potentially many more relationships are
+        involved (meaning more interfaces need to be exposed to the
+        user), and it is also substantially harder to make the chain
+        of reasoning legible to the user.
       </p>
 
       <p>
-	To sum up this perspective, the idea is that the medium tracks
-	known relationships between objects, e.g.:
-      </p>
-
-      XXX
-
-      <p>
-	And we propagate changes through such known relationships.
-	Given a change to an input or output, the task of the medium
-	is to present the user with a way of doing that propagation.
-	In certain cases this is easy.  For example, when we're
-	modifying the input:
-      </p>
-
-      XXX
-
-      <p>
-	the most natural thing is to hold the other inputs constant,
-	and to modify the output.  More difficult is when we're
-	modifying the output.  In that case the task of the medium
-	is to present you with some view of possible inputs which
-	could give rise to the desired (changed) output:
-      </p>
-      
-	XXX
-      
-      <p>
-	How to best do this is an open-ended empirical and
-	psychological question.  It's an empirical question insofar as
-	different modes of inference may be useful in different
-	mathematical proofs.  And it is a psychological question,
-	insofar as different interfaces may be more or less natural
-	for the user.  Every kind of relationship possible in the
-	medium will require its own interface, and thus present a new
-	design challenge.  The simplest way to meet that challenge is
-	to use a default-to-manual-editing strategy, like that above.
-	This mirrors the power of paper-and-pencil as a medium.  But
-	by providing additional inference options it is possible to
-	support more powerful reasoning, and to strictly surpass
-	paper-and-pencil.  Part of the benefit of naming the
-	phenomenon of semi-concrete reasoning is to make it easy to
-	recognize these design challenges.
+	Even with the simplification of doing single-step inference,
+	there are still many challenging design problems to be solved.
+	Most obviously, we've left open the problem of designing
+	interfaces to support these single stages of inference.  We've
+	seen two possible approaches for the particular case of
+	relating the tangent to the base point and image curve.  In
+	general, solving this interface design problem is an
+	open-ended empirical and psychological question.  It's an
+	empirical question insofar as different modes of inference may
+	be useful in different mathematical proofs.  And it is a
+	psychological question, insofar as different interfaces may be
+	more or less natural for the user.  Every kind of relationship
+	possible in the medium will require its own interface, and
+	thus present a new design challenge.  The simplest way to meet
+	that challenge is to use a default-to-manual-editing strategy,
+	mirror paper-and-pencil.  But by providing additional
+	inference options we can support more powerful reasoning, and
+	strictly surpass paper-and-pencil.
       </p>
 
       <p>
-	What of the particular case of interest to us, that of the
-	image curve, base point, and tangent vector?  Speaking
-	anecdotally, my own experience in proofs involving changing
-	tangent vectors is that it's common to keep the base point
-	fixed and to modify the curve.  This corresponds to the case
-	we need in this particular proof.  But anecdotal impressions
-	aside, this is a question for empirical testing.
+	A second design problem is the profusion of possible ways in
+	which inference may occur.  Later in the proof we connect the
+	tangent not just to $Ms$ and the image curve, but also to
+	$Mt$.  At that point the user would be aware of two seaprate
+	direct relationships involving the tangent vector:
       </p>
+
+      <img src="images/tangent_all_relationships.png">
 
       <p>
-	Having adopted this point of view, let's make some
-	observations about design problems that would need to be
-	addressed in a full-scale exploratory medium.  Prescribing
-	full solutions is beyond the scope of this essay, but it's
-	worth noting the problems.
+	The medium would then need to allow the user to make
+	inferences about how changes to the tangent
+	changed <em>either</em> $Mt$ <em>or</em> $Ms$ and the image
+	curve.  In general, the medium needs to allow the user to make
+	choices between <em>multiple types of inference</em> possible
+	at any given stage.  This seems complex.  But it mirrors the
+	complexity inherent in the problem.  The problem solver must
+	make choices about how to investigate the effects of changes
+	in assumption.  The medium is merely reifying the choices that
+	have to be made to make those inferences.  The benefit of the
+	medium is that it provides support to make those inferences
+	and track their impact.
       </p>
 
-      <p>
-	<strong>Multiple types of propagation:</strong> We've focused
-	on the relationship between the tangent, the image curve, and
-	$Ms$.  This makes sense, since we initially specify the
-	tangent in terms of the image curve and $Ms$.  In a fully
-	built-out medium, the user would later also discover the
-	relationship between the tangent and $Mt$, where $t$ is the
-	tangent to $s$ on the unit circle:
-      </p>
-
-      XXX
-
-      <p>
-	And so the user would be aware of two separate direct
-	relationships involving the tangent vector:
-      </p>
-
-      XXX
-
-      <p>
-	Changes to the tangent might propagate to cause changes to
-	$Ms$ and the image curve, as we've already considered.  Or
-	perhaps it would propagate to cause changes to $t$.  Or
-	perhaps to some combination of all of them.  The medium would
-	need to allow all of these possibilities.
-      </p>
-
-      <p>
-	This seems complex.  But it mirrors the complexity inherent in
-	the problem.  The problem solver must make choices about how
-	to investigate the effects of changes in assumption.  The
-	medium is merely reifying the choices that have to be made to
-	propagate those changes.  The benefit of the medium is that it
-	provides support to track the impact of those choices.
-      </p>
-
-      <p>
-	<strong>Cascading stages of propagation:</strong> We've
-	focused on how a change to the tangent vector may cause a
-	change to the image curve or to $Ms$. But changes to those may
-	cause further changes to other mathematical objects.  For
-	instance, a change to $Ms$ may then cause a change to $s$.
-	And so on.  This cascade of changes isn't necessary to pursue
-	in our particular problem, but does arise frequently in proofs
-	by contradiction, and would need to be built into the medium.
-	A challenge would be a rapid explosion of changes in other
-	objects in the system.  Again, this mirrors the real problems
-	inherent in mathematical problem solving: one needs to choose
-	from among a large number of possible ways of understanding
-	the impact of choices.  This is a difficult design problem.
-      </p>
 
       <p>
 	<strong>Outlook:</strong> In discussions of systems of
@@ -1840,87 +1784,30 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
       <p>
 	To conclude, a personal observation.  I began thinking
 	seriously about the design of cognitive media just a few years
-	ago.  This is my first essay on the subject.  I discovered
-	over and over that interface design is deeper than I thought.
-	A powerful medium reifies the deepest ideas we have about a
-	subject.  To the extent it is possible to reify those ideas,
-	mastering the medium becomes the same as mastering the
-	subject.  In a sense, a well-defined exploraroy medium should
-	reify what we truly, systematically know about a subject,
-	using the most powerful representations possible. And so the
-	task of designing exploratory media becomes one of designing
-	tools to transform and extend our ability to think and create.
+	ago.  This is my first essay on the subject.  I repeatedly
+	discovered that interface design is deeper than I at first
+	appreciated.  A powerful medium reifies the deepest ideas we
+	have about a subject: it becomes an active carrier for those
+	ideas.  And to the extent it is successful in reifying those
+	ideas, mastering the medium becomes the same as mastering the
+	subject.  In this view, designing exploratory media is about
+	designing tools which can transform and extend our ability to
+	think, create, and discover.
       </p>
 
       <p>
-	are generated by single actions within the user interface .
-	That is, when we apply the action to get the tangent, a
-	relationship like the above becomes part of what the user
-	"knows", and thus part of the medium's data model.  Keep in
-	mind that the user is not necessarily tracking all the
-	details; rather, they know at a high level that the tangent
-	vector was generated as a function of the base point and the
-	image curve.
+	<em>XXX: There's many ways one could go further.  Developing
+	the reasoning system in detail -- the notion of developing a
+	sort of type system to denote ontolological and
+	epistemological status is particularly fun.  But I'm uncertain
+	about doing this.  The results obtained are fun, but (at least
+	so far) seem relatively minor.  Of course, if I pushed on to
+	build a system that really implemented semi-concrete reasoning
+	that'd be worth recounting in detail.  But I haven't done
+	that, and it somehow seems like the wrong choice at this point
+	in time.</em>
       </p>
-
-      OLD
-      
-      Ontological status.  I won't try to state that.
-
-      <p>
-	The great advantage of the computer is that it lets us very
-	easily do conrete reasoning.  But it's also problematic.  In
-	the art of problem-solving, what you know (or suspect) changes
-	as you proceed.  You learn things rapidly.  And so what you
-	can conclude changes a lot.
-      </p>
-
-
-
-
-
-      <p>
-	It means there's a fundamentally different status to this
-	image (computed):
-      </p>
-
-      <p>
-	XXX
-      </p>
-
-      <p>
-	to this image (computed at a point, but otherwise an
-	evocation):
-      </p>
-
-      <p>
-	XXX
-      </p>
-
-
-      In a sense, the medium's model of the mathematical situation
-      must actually have completely changed. 
-
-
-
-      Human beings are extremely good at juggling multiple points of
-      view.  The user interface needs to change to reflect our current
-      state of knowledge, even if it not entirely consistent.  That
-      type of juggling is not something conventionally thought of as
-      central to user interface design.
-
-
-
-      If you're a mathematician sketching this on paper, you never
-      actually computed anything in the first place.
-      
-
-      In other words, this is an instance where the computer is
-      actually being asked to do less.  It's being asked to ignore
-      constraints.  And this actually lets us do more.
-
-      (This is surprisingly common in the history of symbol-making.
-      Doing less is often more.)
+	
 
 
       <p>
