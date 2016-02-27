@@ -6,6 +6,12 @@
 var WIDTH=660;
 var HEIGHT=400;
 
+// rescale delays by this amount, a good baseline is 1 (no slowing or
+// speeding), make it say 1.2 if you want to slow things down by 20
+// percent
+var SCALE_TIME = 1.2;
+
+
 var prototype_status;  // array to store status of each prototype, using the following status codes
 var STATIC = 0;   // prototype is completely static, no need to run it
 var UNRUN = 1;    // prototype has never run
@@ -209,7 +215,7 @@ function run_prototype(j, prototype) {
     function pause(elt, next_step) {
 	var delay = elt.getAttribute("delay") || 1000;
 	window.setTimeout(
-	    function() {next_or_restart(next_step);}, delay);
+	    function() {next_or_restart(next_step);}, delay*SCALE_TIME);
     }
 
     function run(elt, next_step) {

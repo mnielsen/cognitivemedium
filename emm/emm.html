@@ -14,11 +14,12 @@
       TeX: { equationNumbers: { autoNumber: "AMS" }}});
     </script>
     <script type="text/javascript" src="mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
-    <!-- My libraries -->
+    <!-- <script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script> -->
+    <!-- My libraries, no longer needed since it's all been converted to (easily rewindable) video -->
+    <!--
     <script type="text/javascript" src="emm.js"></script>
     <script type="text/javascript" src="prototype.js"></script>
-    <script type="text/javascript" src="canvas.js"></script>
+    <script type="text/javascript" src="canvas.js"></script> -->
   </head>
 
   <body>
@@ -26,7 +27,7 @@
       <h1>Toward an exploratory medium for mathematics</h1>
       <p>
 	<a href="http://michaelnielsen.org">Michael Nielsen</a> &nbsp; / &nbsp;
-	<a href="http://www.recurse.com">Recurse Center</a> &nbsp; / &nbsp; February 2016
+	<a href="http://www.recurse.com">Recurse Center</a> &nbsp; / &nbsp; 27 February 2016
       </p>
     </div>
 
@@ -83,7 +84,7 @@
       <p>
 	Photoshop is just one of many cognitive media enabled by
 	digital computers.  Other examples include musical
-	scorewriting programs such as Finale and Sibelius, modelling
+	scorewriting programs such as Finale and Sibelius, modeling
 	programs such as Blender and 3ds Max, and game engines such as
 	Unity and Unreal.  Such media enable users to think and create
 	in ways that would otherwise be difficult or impossible.  They
@@ -122,75 +123,81 @@
 	based on three main ideas:
       </p>
 
+	<h3>1. A concrete, graphical medium based on direct
+	manipulation</h3>
+
       <p>
-	<strong>1. A concrete, graphical medium based on direct
-	manipulation:</strong> When using paper-and-pencil (or its
+	When using paper-and-pencil (or its
 	close cousin, blackboard-and-chalk), mathematicians often
 	explore using informal, concrete, graphical representations,
 	like those shown in the image to the right.
 	<img src="images/blackboard.jpg" width="350px" style="float:
 	right; margin: 5px 0px 5px 10px;"/>
-	<span class="marginnote" style="margin-top: 32px;"><a href="https://commons.wikimedia.org/wiki/File:HD.3A.053_(10481714045).jpg">Photo
+	<span class="marginnote" style="margin-top:
+	32px;"><a href="https://commons.wikimedia.org/wiki/File:HD.3A.053_(10481714045).jpg">Photo
 	credit:</a> United States Department of Energy.</span> Such
 	exploration is often difficult in existing computer-based
 	cognitive media.  While systems such as Mathematica are good
 	at producing graphical output, they're not aimed primarily at
-	direct manipulation of those graphical representations.  This
-	make it difficult to reason in the concrete, graphical way
-	common with paper-and-pencil.  In this sense, paper-and-pencil
-	has never been surpassed as a medium for mathematical work.
-	Is it possible to strictly improve on paper-and-pencil as a
-	medium for doing mathematics?  Our prototype medium will aim
-	to make direct manipulation easy.  The intent is to combine
-	the flexibility and concreteness of paper-and-pencil with the
+	direct manipulation of those graphical representations.  In
+	this sense, they fall short of paper-and-pencil.  Is it
+	possible to strictly improve on paper-and-pencil as a medium
+	for doing mathematics?  Our prototype medium will aim to make
+	direct manipulation easy.  The intent is to combine the
+	flexibility and concreteness of paper-and-pencil with the
 	automated inference that is the raison d'être of traditional
 	systems for doing mathematics by computer. Think something
 	like &ldquo;Photoshop for linear algebra&rdquo;.  That grossly
 	overstates what we'll achieve, but conveys the right gist.
       </p>
 
+      <h3>2. A medium for exploration and discovery, not
+	explanation</h3>
+      
       <p>
-	<strong>2. A medium for exploration and discovery, not
-	  explanation:</strong> Many experimental cognitive media are
-	  intended as <em>explanations</em> &ndash; see, for a
-	  beautiful example, Vi Hart and Nicky
-	  Case's <a href="http://ncase.me/polygons/">explanation</a>
-	  of one of the economist Thomas
-	  Schelling's <a href="refs/Schelling1971a.pdf">models of
-	  social behavior</a>.  By contrast, the prototype medium
-	  we'll develop is intended as part of an open-ended
-	  environment for exploration and discovery.  Of course,
-	  exploration and discovery is a very different process to
-	  explanation, and so requires a different kind of medium.
+	Many experimental cognitive media are intended
+	as <em>explanations</em> &ndash; see, for a beautiful example,
+	Vi Hart and Nicky
+	Case's <a href="http://ncase.me/polygons/">explanation</a> of
+	one of the economist Thomas
+	Schelling's <a href="refs/Schelling1971a.pdf">models of social
+	behavior</a>.  By contrast, the prototype medium we'll develop
+	is intended as part of an open-ended environment for
+	exploration and discovery.  Of course, exploration and
+	discovery is a very different process to explanation, and so
+	requires a different kind of medium.
       </p>
 
+      <h3>3. Work on a genuine mathematical problem, not a toy
+	or &ldquo;educational&rdquo; problem</h3>
+
       <p>
-	<strong>3. Work on a genuine mathematical problem, not a toy
-	or &ldquo;educational&rdquo; problem:</strong> We'll use our
-	prototype to develop a piece of genuine mathematics, a
-	beautiful result in linear algebra called the <em>singular
-	value decomposition</em>, or <em>SVD</em> for short. This is
-	in contrast to many experimental cognitive media, which often
-	aim at toy mathematical problems.  Aiming at the SVD makes the
-	essay less accessible than working with a toy problem, but has
-	the great benefit of forcing us to confront and overcome the
-	kind of problems which arise in real mathematical work.  In
-	essence, we'll be using the medium to re-discover the SVD.  Of
-	course, ideally we'd go even further than re-discovering
-	existing mathematics, and use the medium to discover new
-	mathematics.  We won't achieve that here, but over the long
-	run, that's the right test of an exploratory cognitive medium:
-	does it enable the development of important new mathematical
-	ideas?
+	We'll use our prototype to develop a piece of genuine
+	mathematics, a beautiful result in linear algebra called
+	the <em>singular value decomposition</em>, or <em>SVD</em> for
+	short. This is in contrast to many experimental cognitive
+	media, which often aim at toy mathematical problems.  Aiming
+	at the SVD makes the essay less accessible than working with a
+	toy problem, but has the great benefit of forcing us to
+	confront and overcome the kind of problems which arise in real
+	mathematical work.  In essence, we'll be using the medium to
+	re-discover the SVD.  Of course, ideally we'd go even further
+	than re-discovering existing mathematics, and use the medium
+	to discover new mathematics.  We won't achieve that here, but
+	over the long run, that's the right test of an exploratory
+	cognitive medium: does it enable the development of important
+	new ideas?
       </p>
 
 
+	<h3>What do we learn about exploratory cognitive
+	media?</h3>
+
       <p>
-	<strong>What do we learn about exploratory cognitive
-	media?</strong>  The prototype itself is not the main point of
-	the essay.  Rather, the point is what general lessons we can
-	learn from the prototype.  We'll use our prototype to identify
-	a fundamental problem in the design of exploratory cognitive
+	The prototype itself is not the main point of the essay.
+	Rather, the point is what general lessons we can learn from
+	the prototype.  We'll use our prototype to identify a
+	fundamental problem in the design of exploratory cognitive
 	media.  This problem arises from desiring a medium that
 	simultaneously: (1) automates computation and inference, as we
 	expect a computer-based medium to do; and (2) allows the user
@@ -200,15 +207,16 @@
 	in the system, but rather multiple ground truths.  These
 	inconsistencies are not an accident or specific to our
 	particular medium.  Rather, they are inevitable in any
-	cognitive medium that tries to simultaneously get the benefits
-	of paper-and-pencil and the ability to automatically do
+	cognitive medium that has both the flexibility of
+	paper-and-pencil and the ability to automatically do
 	computations and inference.  To resolve this problem, we must
 	develop an internal data model for the medium and a user
 	interface that lets us reason about these multiple ground
-	truths.  We'll identify a set of principles that enable us to
-	do this kind of <em>semi-concrete reasoning</em>.  I believe
-	that semi-concrete reasoning will be an important part of any
-	concrete, exploratory medium for mathematics.
+	truths.  We'll identify a set of principles that enable a
+	medium to support this kind of <em>semi-concrete
+	reasoning</em>.  I believe semi-concrete reasoning will be an
+	important part of any concrete, exploratory medium for
+	mathematics.
       </p>
 
 
@@ -217,7 +225,9 @@
       </p>
 
       <p>
-	If you're not familiar with the SVD, it's a way of breaking a
+	Before getting to our exploratory medium, it helps to learn a
+	little about the singular value decomposition (SVD).  If
+	you're not familiar with the SVD, it's a way of breaking a
 	matrix up into three simple components.  It's most easily
 	understood for a real $2 \times 2$ matrix $M$, where the SVD
 	guarantees that it's always possible to break $M$ up into a
@@ -242,7 +252,7 @@
         always be decomposed as*<span class="marginnote">* There are
         versions of the SVD which apply to non-square matrices, to
         infinite matrices and linear operators, and to matrices over
-        fields other than the real numbers.  For our purpose, the $n
+        fields other than the real numbers.  For our purposes, the $n
         \times n$ real case is a good level of generality.  Many of
         the ideas can, in any case, be applied in more general
         contexts. </span>
@@ -394,17 +404,14 @@
 	be able to interrupt, do your own exploration, and so on.  But
 	this is just a prototype, to explore ideas, and so I haven't
 	built the medium out to do that.  Here it
-	is*<span class="marginnote">* <em>XXX: There is supposed to be
-	a ticker-tape at the top, but apparently it doesn't show up in
-	some browsers.  If that's the case, you'll find this very
-	confusing (and should change browser &ndash; Chrome seems to
-	have no trouble).  When the essay ships, I will replace this
-	with a video with audio voiceover rather than ticker-tape,
-	making it easy to move backward and forward through the demo.
-	That's why I didn't worry about cross-browser compatibility
-	while writing this.</em></span>:
+	is:
       </p>
- 
+
+      <video width="656" controls>
+	<source src="images/exploration.mp4" type="video/mp4">
+      </video>
+
+      <!--
       <prototype text="Play" name="proof">
 	<init_pointer></init_pointer>
 	<run>
@@ -709,18 +716,22 @@
 	<pause delay="4000"></pause>
 	
       </prototype>
-
+      -->
+      
       <p>
 	Let's fill in the steps skipped above, to take the proof of
 	the conjecture from geometric idea to rigorous proof.  Let $T$
 	be the tangent vector at $Ms$.  Recall that we're trying to
 	prove that $T$ is orthogonal to $Ms$.  Our strategy is to
 	assume $T$ has a component in the direction of $Ms$, that is,
-	$Ms \cdot T > 0$, and to try to deduce a contradiction.
-	Because $T$ is the tangent to the image curve, vectors on the
-	image curve near $Ms$ can be written as $Ms+\Delta T +
-	O(\Delta^2)$ for some small parameter $\Delta$.  The squared
-	length of that vector on the image curve is:
+	$Ms \cdot T > 0$, and to try to deduce a
+	contradiction*<span class="marginnote">* It might also be that
+	$Ms \cdot T < 0$, in which case we would replace $T$ by $-T$,
+	i.e., use the tangent in the other direction along the
+	curve.</span>.  Because $T$ is the tangent to the image curve,
+	vectors on the image curve near $Ms$ can be written as
+	$Ms+\Delta T + O(\Delta^2)$ for some small parameter $\Delta$.
+	The squared length of such a vector is:
       </p>
 
       <p>
@@ -744,16 +755,18 @@
 	recall that the image curve arose by applying $M$ to the unit
 	circle.  It should be plausible that the tangent to the image
 	curve at $Ms$ is just $Mt$ where $t$ is the tangent to the
-	unit circle at $s$.  This can be proved with a tiny bit of
+	unit circle at $s$.  This can be proved with a little
 	calculus*<span class="marginnote">* I won't go through the
 	details, though it's a good exercise if it's not immediately
 	obvious.  Incidentally, this is standard calculus, and could
-	easily be something the medium automatically
-	&ldquo;knows&rdquo;, and suggests to the user through the
-	interface.</span>.  It's easiest to see the situation through
-	an illustration:
+	be something the medium automatically &ldquo;knows&rdquo;, and
+	suggests to the user through the interface.</span>.  It's
+	easiest to see the situation through an illustration:
       </p>
 
+      <img src="images/tangent_definition.png"/>
+
+      <!--
       <prototype static="true" name="tangents">
 	<run>
   	  var ctx = document.getElementById("tangents").getContext("2d");
@@ -773,7 +786,7 @@
 	<text x="235" y="60"><em class="prototype_math">Mt</em></text>
 
       </prototype>
-
+      -->
       
       <p>
 	We can make things even more explicit, noting that the tangent
@@ -801,14 +814,17 @@
 	In fact, it actually lets us prove the SVD for $2 \times 2$
 	matrices.  Let's use the lemma to explicitly construct each of
 	the rotation-rescaling-rotation steps, in terms of $s, t, Ms$
-	and $Mt$.  As before press &ldquo;Play&rdquo; on the demo
-	below.  Note that this is no longer intended to represent a
-	prototype cognitive medium, for reasons that will become
-	apparent later.  Note also that I've moved $t$ and $Mt$ to the
-	origin, emphasizing that $t$ is orthogonal to $s$, and $Mt$ is
+	and $Mt$.  To see how this works, please play the video demo
+	below.  Note that I've moved $t$ and $Mt$ to the origin,
+	emphasizing that $t$ is orthogonal to $s$, and $Mt$ is
 	orthogonal to $Ms$.
       </p>
 
+      <video width="654" controls>
+	<source src="images/svd.mp4" type="video/mp4">
+      </video>
+
+      <!--
       <prototype text="Play" name="see_svd">
 
 	<comment>Initial setup</comment>
@@ -984,7 +1000,8 @@
 	<pause delay="5000"></pause>
 	
       </prototype>
-
+      -->
+      
       <p>
         To recap, we rotate the principal right singular vector $s$ to
         the first co-ordinate axis.  This rotation automatically
@@ -994,7 +1011,12 @@
         co-ordinate axis by a factor $\|Mt\|$.  And finally we rotate
         the rescaled vectors to $Ms$ and $Mt$.  This last step makes
         crucial use of the lemma, since it's only possible because
-        $Ms$ and $Mt$ are orthogonal.
+        $Ms$ and $Mt$ are orthogonal*<span class="marginnote">* A
+        point I glossed over in the visual proof is that it may be
+        necessary to reflect one of the axes.  If that's the case the
+        reflection can be absorbed into the rotation, and it'll still
+        be an orthogonal matrix. This is why the SVD is stated in
+        terms of orthogonal matrices, rather than rotations.</span>.
       </p>
 
       <p>
@@ -1003,22 +1025,27 @@
 	the rotation-rescaling-rotation combination must do the same
 	as $M$ for <em>all</em> possible inputs.  The reason is that
 	$s$ and $t$ form a basis for the vector space, and since both
-	$M$ and the rotation-rescaling-rotation act linearly on
-	vectors, $M$ and the rotation-rescaling-rotation have the same
-	action on <em>all</em> vectors.  Thus, $M$ is equal to the
-	rotation-rescaling-rotation operation.  And so we've proved
-	the singular value decomposition for $2 \times 2$ matrices.
+	$M$ and the rotation-rescaling-rotation act linearly, they
+	must therefore have the same action on all vectors.  Thus, $M$
+	is equal to the rotation-rescaling-rotation operation.  And so
+	we've proved the singular value decomposition for $2 \times 2$
+	matrices.
       </p>
 
       <p>
 	Well, that's pretty nice!  We started out with a question
 	about how much a matrix stretches space, and the singular
 	value decomposition more or less dropped out of our
-	exploration.  In fact, while our proof of the SVD was in $2$
-	dimensions, the proof is easily extended to $n$ dimensions.
-	That generalization is incidental to the main point of this
-	essay, so I've sketched it out in <a href="#appA">Appendix
-	A</a>.
+	exploration.  Indeed, if you carefully review the key ideas in
+	the proof, the SVD is an almost obvious consequence of two
+	simple and easily-visualized geometric ideas: (1) $Ms$ must be
+	orthogonal to $Mt$, otherwise it would be possible to go
+	&ldquo;further out&rdquo; along the image curve; and (2) the
+	rotation-rescaling-rotation sequence just visualized.  What's
+	more, while our proof of the SVD was in $2$ dimensions, the
+	proof is easily extended to $n$ dimensions.  That
+	generalization is incidental to the main point of this essay,
+	so I've sketched it out in <a href="#appA">Appendix A</a>.
       </p>
 
       <p>
@@ -1059,8 +1086,8 @@
 	why, let's think about how the medium would model the actions
 	shown.  A natural approach is to start with a matrix $M$ which
 	has some generic values filled in.  In fact, the values for
-	$s, t, Ms$ <em>etcetera</em> shown above are produced by the
-	following matrix $M$:
+	$s, t, Ms$ and so on shown above are produced by the following
+	matrix $M$:
       </p>
 
       <p>
@@ -1093,17 +1120,16 @@
 	Indeed, it would be easy to check for other choices of $M$,
 	though I didn't explicitly show that happening.  This practice
 	of using concrete-but-generic examples to gain insight has
-	been common practice all through mathematical history, but is
-	made especially easy with digital
-	computers*<span class="marginnote">* There's an art to picking
-	out generic examples that don't mislead.  That's not a problem
-	I'm going to discuss in detail, but it's a fascinating
-	subject.  To develop a good concrete medium for doing
-	mathematics, I suspect it's a subject which would need to be
-	investigated in great depth.  Incidentally, in his
+	been common all through history, but is made especially easy
+	with digital computers*<span class="marginnote">* There's an
+	art to picking out generic examples that don't mislead.
+	That's not a problem I'm going to discuss in detail, but it's
+	a fascinating subject.  To develop a good concrete medium for
+	doing mathematics, I suspect it's a subject which would need
+	to be investigated in great depth.  Incidentally, in the
 	essay <a href="http://worrydream.com/LadderOfAbstraction/">Up
 	and Down the Ladder of Abstraction</a>, Bret Victor has
-	explored a powerful approach whereby it's sometimes possible
+	described powerful techniques which sometimes make it possible
 	to eschew generic examples, and instead work with concrete
 	visualizations representing the space of all
 	examples. </span>.
@@ -1159,13 +1185,15 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	pencil-and-paper has no trouble continuing at this point.  The
 	reason this is possible is that a static medium like
 	paper-and-pencil does no computation or constraint-checking.
-	The medium doesn't tell us it's not possible to edit
+	The medium doesn't tell us it's not possible to make changes
+	to a sketch like
       </p>
 
       <img src="images/paper1.jpg"/>
 
       <p>
-	erasing and modifying the tangent and image curve so the image becomes
+	erasing and modifying the tangent and image curve so the
+	sketch becomes
       </p>
 
 
@@ -1180,13 +1208,8 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	This lack of constraint checking is both a feature and a bug.
 	Because paper-and-pencil doesn't enforce this kind of
 	constraint checking, it relies on the mathematician to do the
-	constraint-checking in their head in a principled
-	way*<span class="marginnote">* In this, it's much like the way
-	weakly-typed programming languages rely on programmers to be
-	careful about what gets passed to a function.  I suspect the
-	right answer to the question &ldquo;Should my language be
-	strong or weakly typed?&rdquo; is &ldquo;Both!&rdquo;.</span>.
-	That's a substantial cognitive burden.  But it also gives the
+	constraint checking in their head in a principled way.  That's
+	a substantial cognitive burden.  But it also gives the
 	mathematician a lot of freedom to carry out counterfactual
 	reasoning, like we did in the last section.
       </p>
@@ -1209,8 +1232,8 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	concrete objects.  They can verify in a flash that $Ms$ is
 	orthogonal to $Mt$ for any specific choice of matrix $M$.  But
 	they don't always make it easy to do counterfactual reasoning.
-	You can't easily ask Matlab to suppose that $Ms$ is not
-	orthogonal to $Mt$.  And this actually makes it harder to
+	There's no easy way of asking Matlab to suppose that $Ms$ is
+	not orthogonal to $Mt$.  And this actually makes it harder to
 	prove that $Ms$ is always orthogonal to $Mt$, for any $2
 	\times 2$ matrix $M$.  If we make counterfactual reasoning
 	difficult, then we greatly weaken our medium of discovery.
@@ -1227,7 +1250,7 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	notably the flexibility to explore and make inferences about
 	impossible worlds.  As we've seen, there is tension between
 	these two requirements.  Yet is is highly desirable that both
-	be satisifed simultaneously if we are to build a powerful
+	be satisfied simultaneously if we are to build a powerful
 	exploratory medium for doing mathematics.  That is true not
 	just in the medium I have described, but in any exploratory
 	medium.
@@ -1244,10 +1267,51 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	system for semi-concrete reasoning.
       </p>
 
+      <p>
+	Before moving to those principles, let me briefly mention some
+	connections between semi-concrete reasoning and existing
+	systems.  One connection is to constraint-based media.
+	Pioneered by the graphics medium Sketchpad, such media enable
+	users to build systems by declaring constraints on those
+	systems. The idea is that the medium finds a solution
+	(possibly approximate) satisfying the constraints, often by
+	minimizing some sort of cost
+	function*<span class="marginnote">* There is a large
+	literature on this.  A good starting point for comparison to
+	the current work is the work
+	on <a href="refs/Borning1992a.pdf">Constraint Hierarchies</a>
+	by Alan Borning, Bjorn Freeman-Benson, and Molly Wilson
+	(1992).</span>.  This idea has found application in many
+	areas, including graphics, computer-aided design, simulation,
+	user interface design, and programming languages.</p>
 
-      <h3>
+      <p>
+	Our medium differs from such systems in that it deliberately
+	maintains, and attempts to make reasoned inferences from, a
+	constraint violation.  There's no cost to be minimized, and
+	we're not trying to find a solution, approximate or otherwise.
+	Rather, the goal is to understand the implications of the
+	constraint violation in a step-by-step way, a way where the
+	inferences being made are clearly legible to the user.
+      </p>
+
+      <p>
+	Another connection is to proof assistants and systems for
+	automated reasoning, such as Coq and Agda.  Such systems do
+	enable proofs by contradiction and other forms of
+	counterfactual reasoning.  However, the aim of such systems is
+	different to what I'm describing.  They're typically aimed
+	toward helping human users develop formal proofs, rather than
+	presenting a user interface to enable informal, concrete,
+	exploratory reasoning, and thus have very different interface
+	goals.
+      </p>
+      
+
+
+      <h2>
 	Principles of semi-concrete reasoning
-      </h3>
+      </h2>
 
       <p>
 	In our earlier discussion, we implicitly assumed our medium
@@ -1290,6 +1354,11 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	assistance from the computer in doing inference:
       </p>
 
+      <video width="654" controls>
+	<source src="images/manual.mp4" type="video/mp4">
+      </video>
+
+      <!--
       <prototype text="Play" name="simple_edit">
 	<init_pointer></init_pointer>
 	<ticker></ticker>
@@ -1370,6 +1439,10 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	<pause delay="500"></pause>
 	<move_mouse x="295" y="71"></move_mouse>
 	<pause delay="500"></pause>
+	<comment>
+	  Note, incidentally, the ugliness of #pointer3 below.  This
+	  should really be fixed, and may cause unexpected bugs.
+	</comment>
 	<run>
 	  var ctx = document.getElementById("simple_edit").getContext("2d");
 	  var theta = 0.6;
@@ -1389,7 +1462,8 @@ The tangent to the image curve at Ms, with entries -0.57, 0.18
 	</run>
 	<pause delay="3000"></pause>
       </prototype>
-
+      -->
+      
       <p>
 	This sequence of operations corresponds roughly to the
 	operations performed by a human mathematician with
@@ -1423,9 +1497,15 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	inferences, give the user control over how these inferences
 	are made, and make it easy for the user to understand and
 	track the chain of reasoning.  To appreciate the importance of
-	these principles, consider the following medium:
+	these principles, consider the following medium, which behaves
+	differently again when we modify the tangent:
       </p>
 
+      <video width="656" controls>
+	<source src="images/multistage.mp4" type="video/mp4">
+      </video>
+
+      <!--
       <prototype text="Play" name="illegible_edit">
 	<init_pointer></init_pointer>
 	<ticker></ticker>
@@ -1513,6 +1593,10 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 
 	  There's a lot to do here.  But there's nothing difficult!
 	</comment>
+	<comment>
+	  Note, incidentally, the ugliness of #pointer4 here.  This
+	  should really be fixed, and may cause unexpected bugs.
+	</comment>
 	<run>
 	  var k = 0;
 	  function animate_attempt_2() {
@@ -1544,7 +1628,8 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	</run>
 	<pause delay="3000"></pause>
       </prototype>
-
+      -->
+      
       <p>
 	In this medium, as we move the end of the tangent vector, the
 	medium finds a new corresponding base point $Ms$ on the image
@@ -1565,8 +1650,8 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	cause inferred changes in others.  In order for the user to
 	understand what is going on, the way inferred changes
 	propagate needs to clearly communicated.  In particular, the
-	medium must be designed so the user can easily navigate the
-	many possible chains of inference.
+	medium must be designed so the user can easily select from
+	amongst the many possible chains of inference.
       </p>
 
       <p>
@@ -1577,9 +1662,9 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	function of the base point and the image
 	curve*<span class="marginnote">* Note that later in the proof
 	we learn that the tangent is equal to $Mt$.  That's a second
-	important relationship.  However, I am speaking of what the
-	user knows at the particular moment in time we're focused
-	on.</span>:
+	important relationship.  However, at the time we're discussing
+	that relationship is not yet known to the user, and so isn't
+	part of the medium's model of the user's knowledge.</span>:
       </p>
 
 	<img src="images/input_output.png"/>
@@ -1597,7 +1682,7 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	In this particular case, we want the base vector $Ms$ to
 	remain unchanged, by assumption.  Given that, we can infer
 	what the image curve &ldquo;must have been&rdquo;, given the
-	modifed value for the tangent.  Of course, the modified image
+	modified value for the tangent.  Of course, the modified image
 	curve is not uniquely determined, and so with paper-and-pencil
 	we sketch an illustrative curve segment.  That illustrative
 	curve segment is <em>not</em> supposed to literally be the
@@ -1608,12 +1693,11 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
       
       <p>
 	The paper-and-pencil reasoning is strikingly different to the
-	earlier medium.  In that medium, changing the tangent vector
-	caused an immedate change to $s$.  With paper-and-pencil any
-	such inference would have required a two-step reasoning
-	process: first, figure out what changing the tangent means for
-	$Ms$, and then figure out what that change to $Ms$ means for
-	$s$.
+	medium last shown, where changing the tangent vector caused an
+	immediate change to $s$.  With paper-and-pencil any such
+	inference would have required a two-step reasoning process:
+	first, figure out what changing the tangent means for $Ms$,
+	and then figure out what that change to $Ms$ means for $s$.
       </p>
 
       <p>
@@ -1637,11 +1721,11 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 
       <p>
 	With paper-and-pencil, this inversion needs to be performed
-	mechanically.  In an exploratory medium, the medium itself can
-	guide us in doing the inversion.  Of course, in this instance
-	the inference isn't especially hard, so this is only a small
-	win, but it nonetheless does help free the user to concentrate
-	on higher-level reasoning.
+	mechanically.  In an exploratory medium, the medium can guide
+	us in doing the inversion.  Of course, in this instance the
+	inference isn't especially hard, so this is only a small win,
+	but it nonetheless helps free the user to concentrate on
+	higher-level reasoning.
       </p>
 
       <p>
@@ -1649,23 +1733,25 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	has several benefits.  It naturally makes the chain of
 	inference legible, since it mirrors the way we do inference
 	with paper-and-pencil, every step made explicit, while
-	reducing tedious computational work.  It's also natural
-	psychologically, since the user is already thinking in terms
-	of these relationships, having defined the objects this way.
-	Finally, and perhaps most importantly, it limits the scope of
-	the interface design problem, since we need not design
-	separate interfaces for the unlimited(!) number of possible
-	inferences.  Rather, for every interface operation generating
-	an object, we need to design an interface to propagate
-	changes.  That's a challenging but finite design problem.
-	Indeed, in the worst case, a &ldquo;completely manual&rdquo;
-	interface like that presented earlier may in general be used.
+	nonetheless reducing tedious computational work, and helping
+	the user understand what inferences are possible.  It's also
+	natural psychologically, since the user is already thinking in
+	terms of these relationships, having defined the objects this
+	way.  Finally, and perhaps most importantly, it limits the
+	scope of the interface design problem, since we need not
+	design separate interfaces for the unlimited(!)  number of
+	possible inferences.  Rather, for every interface operation
+	generating a mathematical object, we need to design a
+	corresponding interface to propagate changes.  That's a
+	challenging but finite design problem.  Indeed, in the worst
+	case, a &ldquo;completely manual&rdquo; interface like that
+	presented earlier may in general be used.
       </p>
 
       <p>
         With that said, one could imagine media which perform multiple
-        stages of inference in a single step, such as our earlier
-        medium modifying $s$ in response to changes in the tangent.
+        stages of inference in a single step, such as our medium
+        modifying $s$ in response to changes in the tangent.
         Designing such a medium would be much more challenging, since
         potentially many more relationships are involved (meaning more
         interfaces need to be exposed to the user), and it is also
@@ -1677,9 +1763,7 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	Even with the simplification of doing single-step inference,
 	there are still many challenging design problems to be solved.
 	Most obviously, we've left open the problem of designing
-	interfaces to support these single stages of inference.  We've
-	seen two possible approaches for the particular case of
-	relating the tangent to the base point and image curve.  In
+	interfaces to support these single stages of inference. In
 	general, solving this interface design problem is an
 	open-ended empirical and psychological question.  It's an
 	empirical question insofar as different modes of inference may
@@ -1714,30 +1798,26 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	complexity inherent in the problem.  The problem solver must
 	make choices about how to investigate the effects of changes
 	in assumption.  The medium is merely reifying the choices that
-	have to be made to make those inferences.  The benefit of the
-	medium is that it provides support to make those inferences
-	and track their impact.
+	have to be made to support those inferences.  The benefit of
+	the medium is that it will help do the computational work in
+	making those inferences, and help track their impact.
       </p>
 
+	<h3>Outlook</h3>
+
       <p>
-	<strong>Outlook:</strong> In discussions of systems of
-	reasoning it is sometimes assumed that the informal, intuitive
-	systems used by humans are things to be &ldquo;fixed
-	up&rdquo;, turned into so-called proper, rigorous reasoning.
-	If the purpose of reasoning were merely verifying correctness,
-	then that would be a reasonable point of view.  But if the
-	purpose of reasoning is exploration and discovery, then it is
-	wrong.  Exploration and discovery require a logic that is
-	different to, and at least as valuable as, conventionally
-	&ldquo;correct&rdquo; reasoning*<span class="marginnote">*
-	Related problems are addressed, using rather different ideas,
-	by proof assistants such as Coq and Agda, constraint systems
-	such as <a href="refs/Sutherland1963.pdf">Sketchpad</a> and
-	its descendants, and by reasoning systems such as Prolog, Cyc
-	and their descendants.</span>.  The idea of semi-concrete
-	reasoning is a step toward media to support such exploration
-	and discovery, and perhaps toward new ways of thinking about
-	mathematics.
+	In discussions of systems of reasoning it is sometimes assumed
+	that the informal, intuitive systems used by humans are things
+	to be &ldquo;fixed up&rdquo;, turned into so-called proper,
+	rigorous reasoning.  If the purpose of reasoning were merely
+	verifying correctness, then that would be a reasonable point
+	of view.  But if the purpose of reasoning is exploration and
+	discovery, then it is wrong.  Exploration and discovery
+	require a logic that is different to, and at least as valuable
+	as, conventionally &ldquo;correct&rdquo; reasoning.  The idea
+	of semi-concrete reasoning is a step toward media to support
+	such exploration and discovery, and perhaps toward new ways of
+	thinking about mathematics.
       </p>
 
       <p>
@@ -1747,47 +1827,35 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	carrying capacity for <em>discovery</em> of the
 	computer?&rdquo; In this essay we've made progress on that
 	question using a simple strategy: develop a prototype medium
-	to represent mathematics in a new way, and carefully observe
-	what happens and what we can learn when we use the prototype
-	to attack a serious mathematical problem.  In future, it'd be
-	of interest to pursue a similar strategy with other problems,
-	and with more adventurous interface ideas.
+	to represent mathematics in a new way, and carefully
+	investigate what we can learn when we use the prototype to
+	attack a serious mathematical problem.  In future, it'd be of
+	interest to pursue a similar strategy with other problems, and
+	with more adventurous interface ideas.  And, of course, it
+	would be of interest to build out a working system that
+	develops the best ideas fully, not merely prototypes.
       </p>
 
       <p>
-	To conclude, a personal observation.  I began thinking
-	seriously about the design of cognitive media just a few years
-	ago.  I've repeatedly found that interface design is deeper
-	than I suspected.  A powerful medium reifies the deepest ideas
-	we have about a subject: it becomes an active carrier for
-	those ideas.  And to the extent it is successful in reifying
-	those ideas, mastering the medium becomes the same as
-	mastering the subject.  In this view, designing exploratory
-	media is about designing tools which can transform and extend
-	our ability to think, create, and discover.
+	To conclude, a personal observation.  I began thinking about
+	the design of cognitive media just a few years ago.  I've
+	repeatedly found that interface design is deeper than I
+	suspected.  A powerful medium reifies the deepest ideas we
+	have about a subject: it becomes an active carrier for those
+	ideas.  And to the extent it is successful in reifying those
+	ideas, mastering the medium becomes the same as mastering the
+	subject.  In this view, designing exploratory media is about
+	designing tools which can transform and extend our ability to
+	think, create, and discover.
       </p>
 
       <p>
-	<em>TODO: Address determinant issue; address assumption of a
-	positive inner product.  Try to make it clearer that multiple
-	inferences could be made about the same object.  Emphasize at
-	least once more that this is about exploration, not
-	explanation: it's about how a person explores and discovers,
-	not an explanation.  Try to figure out ways of cutting the
-	dryness of the SVD stuff (meta-commentary, cutting, tucking
-	details away).  Think about ways of making key takeaways pop
-	out a little more. Comment about it not being a full-scale
-	system.</em></p>
-
-
-      <p>
-	<em><strong>Acknowledgements:</strong> Thanks to Dave Albert,
-	  Darius Bacon, Kovas Boguta, Ilona Brand, Jesse Tasse
-	  Gonzalez, Max McCrea, Chris Olah, Prabhakar Ragde, Omar
-	  Rizwan, and John Workman for helpful conversations.
-	  Especial thanks to Joe Edelman, Chris Olah, Omar Rizwan,
-	  John Workman, and Devon Zuegel for commenting on a draft of
-	  the essay.</em>
+	<em><strong>Acknowledgments:</strong> Thanks to Dave Albert,
+	  Darius Bacon, Kovas Boguta, Ilona Brand, Joe Edelman, Jesse
+	  Tasse Gonzalez, Max McCrea, Chris Olah, Prabhakar Ragde,
+	  Omar Rizwan, John Workman, and Devon Zuegel for helpful
+	  conversations and for comments on a draft of this
+	  essay.</em>
       </p>
 
 	
@@ -1884,7 +1952,8 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 	A powerful exploratory medium for mathematics would build in
 	such representational ideas, and would understand how to use
 	them to support the transition from informal reasoning about
-	low-dimensional representations to high-dimensional proofs.
+	low-dimensional representations to rigorous high-dimensional
+	proofs.
       </p>
 
       
@@ -1930,14 +1999,13 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 
       <p>
 	since $U$ is an orthogonal matrix, and thus satisfies $U^T U =
-	I$.  Inspecting the last displayed equation, we see that the
-	eigenvalues of $M^TM$ are just the squares of the singular
-	values, $s_1^2, s_2^2, \ldots$.  And so $s_1$ is just the
-	square root of the largest eigenvalue of $M^TM$.  This
-	eigenvalue <em>is</em> easy to compute, which makes the
-	singular value $s_1$ easy to compute.  And that, in turn,
-	makes it easy to compute the maximal degree of stretching for
-	$M$.
+	I$.  Inspecting this equation, we see that the eigenvalues of
+	$M^TM$ are just the squares of the singular values, $s_1^2,
+	s_2^2, \ldots$.  And so $s_1$ is just the square root of the
+	largest eigenvalue of $M^TM$.  This eigenvalue <em>is</em>
+	easy to compute, which makes the singular value $s_1$ easy to
+	compute.  And that, in turn, makes it easy to compute the
+	maximal degree of stretching for $M$.
       </p>
 
       <p>
@@ -1954,4 +2022,5 @@ The edited tangent to the image curve at Ms, with entries -0.15, 0.5
 
   </body>
 </html>
+
 
