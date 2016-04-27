@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Making invisible understanding visible</title>
+    <style>
+      body {
+        margin: 0 30% 0 8%;
+        padding: 0;
+        font-family: Georgia;
+        font-size: 140%;
+        line-height: 1.4;
+      }
+      a {
+        text-decoration: none;
+        color: #57f;
+      }
+      .marginnote {
+        position: absolute;
+        left: 72%;
+        right: 8%;
+        font-size: 50%;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <h1>Making invisible understanding visible</h1>
+
+    <p>
+      Let me show you
+      a <a href="https://acko.net/files/gltalks/toolsforthought/#28">wonderful
+      visualization</a> of the Fourier transform, done
+      by <a href="https://acko.net">Steven Wittens</a>.  Turn on your
+      system sound, and take a moment to page through the
+      visualization.
+    </p>
+    
+      <iframe src="https://acko.net/files/gltalks/toolsforthought/#28" width="900" height="600"></iframe>
+
+      
+    <p>
+      A natural response to this visualization is to admire its beauty
+      and the technical virtuosity involved (as of 2016) in
+      implementing it in a web browser.  But what's interesting about
+      the visualization goes well beyond beauty and technical
+      virtuosity.
+    </p>
+
+    <p>
+      When I saw Wittens present this demo, my jaw dropped.  I glanced
+      across the room to my
+      friend <a href="http://colah.github.io/">Chris Olah</a>, and he
+      was looking similarly awed.  Talking later to Chris, we agreed
+      that much of the impact of Wittens' demo was that <em>he was
+      vividly showing us aspects of the Fourier transform that we'd
+      both long understood, but had never before seen made explicitly
+      visible</em>.
+    </p>
+
+    <p>
+      When one begins learning about a mathematical object &ndash;
+      say, the Fourier transform &ndash; one begins by reading the
+      definition, seeing some examples, understanding some theorems
+      about the object, and so on.  Those are all external
+      representations related to the object.  After a lot of practice
+      working with those external representations, one internalizes
+      and becomes fluent with them.  They're no longer awkward
+      external properties, but rather fluid and natural parts of your
+      thought.
+    </p>
+
+    <p>
+      Most people &ndash; even those who think of themselves as
+      &ldquo;good at mathematics&rdquo; never get beyond this stage.
+      But if you continue to work hard with the mathematical object,
+      if you solve more and more difficult problems with it, your
+      understanding deepens further still.  You begin to develop a
+      sense that goes even beyond extant external representations.
+      The <a href="http://mathoverflow.net/questions/38639/thinking-and-explaining">best
+      description</a> I know of this comes from the mathematician
+      William Thurston, who framed it as a question to himself:
+    </p>
+
+    <p>
+      <blockquote>
+	How big a gap is there between how you think about mathematics
+	and what you say to others? Do you say what you're thinking?
+	&hellip; We have complex minds evolved over many millions of
+	years, with many modules always at work. A lot we don't
+	habitually verbalize, and some of it is very challenging to
+	verbalize or to communicate in any medium. Whether for this or
+	other reasons, I'm under the impression that mathematicians
+	often have unspoken thought processes guiding their work which
+	may be difficult to explain, or they feel too inhibited to
+	try.  One prototypical situation is this: there's a
+	mathematical object that's obviously (to you) invariant under
+	a certain transformation. For instant, a linear map might
+	conserve volume for an &lsquo;obvious&rsquo; reason. But you
+	don't have good language to explain your reason &mdash; so
+	instead of explaining, or perhaps after trying to explain and
+	failing, you fall back on computation. You turn the crank and
+	without undue effort, demonstrate that the object is indeed
+	invariant. &hellip; Once I mentioned this phenomenon to Andy
+	Gleason; he immediately responded that when he taught algebra
+	courses, if he was discussing cyclic subgroups of a group, he
+	had a mental image of group elements breaking into a formation
+	organized into circular groups. He said that &lsquo;we&rsquo;
+	never would say anything like that to the students. His words
+	made a vivid picture in my head, because it fit with how I
+	thought about groups. I was reminded of my long struggle as a
+	student, trying to attach meaning to &lsquo;group&rsquo;,
+	rather than just a collection of symbols, words, definitions,
+	theorems and proofs that I read in a textbook.
+      </blockquote>
+
+      <p>
+	In other words, when you undersand mathematics deeply, you
+	begin to develop internal representations that are not well
+	captured or easy to explain using existing external
+	representations, but which nonetheless provide powerful ways
+	of thinking.
+      </p>
+
+      <p>
+	What makes Wittens' demo amazing is that it captured something
+	of my <em>internal</em> representation of the Fourier
+	transform, and made it externally visible.  It was invisible
+	understanding made visible.
+      </p>
+
+      <p>
+	This is not to say that I previously thought of the Fourier
+	Transform in the way Wittens shows.  I did not.  Nonetheless,
+	there was still a shock of recognition, a sense that Wittens'
+	representation captured aspects of the Fourier transform that
+	I felt, but which were not present in conventional
+	representations.
+      </p>
+
+      <p>
+	Of course, this visualization is intended as a demo.  It's not
+	a working representation; it doesn't have a fully developed
+	interface which one can use to work with and reason about the
+	Fourier tranform.  Still, it's tempting to muse: might it be
+	possible to build out an interface based on this
+	representation?  Might such an interface reify important facts
+	about the Fourier transform, facts which are not obvious in
+	traditional representations?
+      </p>
+
+      <p>
+	I'm not sure how that would work*<span class="marginnote">*
+	The ideas that follow in this paragraph arose in conversation
+	with Chris Olah.</span>.  One nice property of the Fourier
+	transform is that the Fourier transform of a convolution of
+	functions is the product of the Fourier transforms of the
+	individual functions.  (This has many nice consequences,
+	including making it almost trivial to prove the central limit
+	theorem.)  Might this beautiful theorem have an insight-giving
+	representation in this approach?  Might it, in consequence,
+	then be possible to more deeply understand results like the
+	central limit theorem?
+      </p>
+
+      <p>
+	Marshall McLuhan wrote &ldquo;we shape our tools and
+	afterwards our tools shape us&rdquo;.  When we invent powerful
+	new external representations of concepts like the Fourier
+	transform, that opens up a path to deeper understanding, and
+	thereafter to the invention of still more powerful
+	representations, in a kind of virtuous circle.
+      </p>
+
+      <p>
+	So what, if any, conclusion can we draw from this?  I think
+	it's something like this.  Pick any phenomenon in the world.
+	Ask if existing representations reveal the deepest possible
+	understanding of that phenomenon.  If not, there's an
+	opportunity.  How can we develop more powerful representations
+	that let us see and act more deeply?
+      </p>
+
+      <p>
+	<strong>The notion of mathematical beauty:</strong>
+	Mathematicians often talk of finding beauty in mathematics;
+	equally often, non-mathematicians are bewildered by this.
+	They look at a page of mathematics and see what appears to be
+	a bunch of largely disconnected and incomprehensible
+	scribbles.  The page itself may not be much more directly
+	meaningful to a mathematician.  But they can use it as a
+	bridge to connect them to their deeper internal
+	representations.  And that's the level at which they find
+	beauty: in sudden, unexpected connections, revealing
+	surprising order.
+      </p>
+
+      <p>
+	The non-mathematician's experience of mathematics may thus be
+	compared to the experience of a severely short-sighted person
+	visiting an art museum.  It is difficult to appreciate a
+	Rembrandt when all you see is a blur.  You are not seeing
+	Rembrandt; indeed, you have no direct access to what Rembrandt
+	was doing at all.
+      </p>
+
+      <p>
+	<strong>Connection to Plato's caves:</strong> One might wonder
+	if there's any connection to Platonic forms, and questions
+	like whether mathematics is invented or discovered.  I don't
+	have a strong opinion.  I will say that, to the extent one
+	believes Plato's story, the purpose of building external
+	representations is to better reveal the true underlying forms.
+	And so this is perhaps a useful framing.
+      </p>
+      
+      <p>
+	<strong>Tacit knowledge:</strong> There's a connection here to
+	the concept
+	of <a href="https://en.wikipedia.org/wiki/Tacit_knowledge">tacit
+	knowledge</a> developed by Michael Polanyi.  One might suppose
+	that I am proposing that we can use interfaces to make
+	explicit what was previously tacit knowledge.  I don't
+	entirely disagree with this, but I don't entirely agree with
+	it, either.  The issue is that I'm not sure all of what
+	Polanyi called tacit knowledge is necessarily reifiable in an
+	interface. Conversely, I'm not sure we only want to reify
+	tacit knowledge in an interface.  There's all sorts of
+	emotional content and affordances that we want to reify as
+	well (at a minimum).  So I think it would be a mistaken
+	oversimplification to think merely of reifying tacit
+	knowledge.
+      </p>
+
+
+      <p>
+	<strong>Acknowledgements:</strong> Thanks to Chris Olah and
+	Toph Tucker for the conversations that led to these notes.
+	And thanks to Steven Wittens' for making his wonderful
+	visualization.
+      </p>
+
+  </body>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44208967-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</html>
