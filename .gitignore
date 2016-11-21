@@ -1,0 +1,5 @@
+*~
+*.org
+*.pyc
+.DS_Store
+ehi/ehi_plan.org

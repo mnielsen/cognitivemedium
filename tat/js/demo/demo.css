@@ -1,0 +1,54 @@
+.demo {
+    position: relative;
+    background-color: #FFF;
+    border: 1px solid #BBB;
+    border-radius: 4px;
+    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2), -2px 3px 2px rgba(0, 0, 0, 0.2);
+    padding-top: 3px; /* needed to avoid crop of rounded corners */
+    margin: 10px 0px 10px 0px;
+}
+
+.demo_message {
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 70px;
+    top: calc(100% - 120px);
+    left: 0px;
+    text-align: center;
+    color: #7F7F7F;
+    padding: 0 10px 0 10px;
+    font-size: 18px;
+}
+
+.demo_button {
+    background-color: #BBB;
+    color: #FFF;
+    height: 40px;
+    width: 50px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    font-size: 24px;
+    -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2), -2px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+.demo_button:hover {
+    background-color: #55f;
+}
+
+.demo_button_container {
+    position: absolute;
+    top: calc(100% - 50px);
+    height: 40px;
+    font-size: 18px;
+}
+
+.demo_icon {
+    border: 1px solid #000000;
+    background-color: #dddddd;
+    color: #555555;
+    font-family: "arial narrow";
+    font-size: 22px;
+    position: absolute;
+}
