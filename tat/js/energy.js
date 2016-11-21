@@ -1077,7 +1077,7 @@
 	    "In particular, if we look down on the trajectories from above, in the <em>x-v</em> "
 		+"plane, we see that the trajectories are mirrored around the <em>x</em> axis");
 	mirrorImg = document.createElement("img");
-	mirrorImg.setAttribute("src", "images/mirror_image.png");
+	mirrorImg.setAttribute("src", "assets/mirror_image.png");
 	mirrorImg.style["z-index"] = "10";
 	mirrorImg.style.position = "absolute";
 	mirrorImg.style.left = "24px";
