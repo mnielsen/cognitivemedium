@@ -691,7 +691,7 @@
 	"That's a much more powerful level of insight",
 	"While I've shown some ways the energy surface leads to insight, "+
 	    "it's not yet part of an interface that can be used to explore and generate understanding",
-	"Let's take a look at a prototype interface which lets us manipulate the energy surface");
+	"Let's take a look at a very rough prototype interface which lets us manipulate the energy surface");
     
     energyDemo.addSlide(function(callback) {
 	energyDemo.addMessage("Here it is");
@@ -709,7 +709,7 @@
 	mouse = new Mouse(energyDemo, 450, 150);
 	drawPotentialIcon = new Icon(energyDemo, "draw potential", 600, 0, 120);	
 	energySurfaceIcon = new Icon(energyDemo, "energy surface", 600, 32, 120);
-	massSlider = new Slider(energyDemo, "&nbsp;mass:", 600, 64, 120, 55, 5, 0, 1, 0.5);
+	massSlider = new Slider(energyDemo, "&nbsp;&nbsp;mass:", 600, 64, 120, 55, 5, 0, 1, 0.5);
 	cutSurfaceIcon = new Icon(energyDemo, "cut surface", 600, 96, 120);
 	callback();
     });
@@ -917,7 +917,7 @@
 	energyDemo.addMessage("Here's one trajectory");
 	mouseToFirstTrajectory();
 	function mouseToFirstTrajectory() {
-	    mouse.move(481, 206, delayedFn(highlightFirstTrajectory));
+	    mouse.move(481, 210, delayedFn(highlightFirstTrajectory));
 	}
 	function highlightFirstTrajectory() {
 	    manyMeshes[0].material.color.set(GOLD);
@@ -935,7 +935,7 @@
 	energyDemo.addMessage("And here'a disconnected trajectory, over here, with the same energy");
 	mouseToSecondTrajectory();
 	function mouseToSecondTrajectory() {
-	    mouse.move(137, 222, delayedFn(highlightSecondTrajectory));
+	    mouse.move(141, 224, delayedFn(highlightSecondTrajectory));
 	}
 	function highlightSecondTrajectory() {
 	    manyMeshes[1].material.color.set(GOLD);

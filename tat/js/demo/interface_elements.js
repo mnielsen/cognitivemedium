@@ -164,9 +164,9 @@ function Icon(demo, text, x, y, width, height, img_filename) {
 
 Icon.prototype.display = function() {
     if (!this.mouseover) {
-	this.span.style["background-color"] = "#dddddd";
+	this.span.style["background-color"] = "#EEE";
     } else {
-	this.span.style["background-color"] = "#cccccc";
+	this.span.style["background-color"] = "#DDD";
     }
 }
 
@@ -205,7 +205,7 @@ function Slider(demo, text, x, y, width, x0bar, x1bar, t0, t1, t, N) {
     this.bar.style.right = x1bar+"px";
     this.bar.style.top = "16px";
     this.bar.style.height = "3px";
-    this.bar.style.backgroundColor = "#555555";
+    this.bar.style.backgroundColor = "#555";
     this.span.appendChild(this.bar);
     this.x0bar = x0bar;
     this.x1bar = x1bar;
