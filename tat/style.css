@@ -77,7 +77,7 @@ body {
 }
 
 #container a {
-    color: rgb(217, 100, 89);
+    color: #31782A; /* darker version of base color */
     text-decoration: none;
 }
 

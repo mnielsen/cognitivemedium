@@ -221,7 +221,7 @@ var GHOSTBORDER = "#7777dd";
     var traj, stone;
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
-	    "The projectile moves freeely, accelerating under gravity only.  We "+
+	    "The projectile moves freeely, accelerating under gravity.  We "+
 		"neglect air friction");
 	var t0=0, t=t0, t1 = 20, delta = 0.2, j=0;
 	traj = new Trajectory(projectileDemo, t0, t1, delta,
@@ -235,7 +235,8 @@ var GHOSTBORDER = "#7777dd";
     
     var traj1, traj2, object1, object2;
     projectileDemo.addSlide(function(callback) {
-	projectileDemo.addMessage("Suppose two target objects are also flying around");
+	projectileDemo.addMessage(
+	    "Now suppose we have two target objects also flying around");
         var t0=0, t=t0, t1 = 20, delta = 0.2, j=0;
 	traj1 = new Trajectory(projectileDemo, t0, t1, delta, positionObject1, xScale, yScale);
 	traj2 = new Trajectory(projectileDemo, t0, t1, delta, positionObject2, xScale, yScale);
@@ -257,15 +258,17 @@ var GHOSTBORDER = "#7777dd";
     
     projectileDemo.addMessageSlides(
 	"The target trajectories are arbitrary &ndash; think of the targets as drones which "+
-	    "can move in any fashion",
+	    "can move in any fashion at all",
 	"With our current aim, the projectile misses both targets");
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
-	    "Let's watch it again, noticing the projectile miss both targets");
+	    "Let's watch again, noticing the projectile miss the targets");
 	mySetTimeout(function() {play(callback)}, 1000);
     });
     projectileDemo.addSlide(function(callback) {
-	projectileDemo.addMessage("If we aim the projectile differently, it may hit one of the targets");
+	projectileDemo.addMessage(
+	    "If we aim the projectile differently, we can certainly make sure it hits "+
+		"one of the targets");
 	projectileDemo.removeObject(traj);
 	projectileDemo.removeObject(stone);
 	var t0=0, t=t0, t1 = 20, delta = 0.2, j=0;
@@ -277,24 +280,25 @@ var GHOSTBORDER = "#7777dd";
 	mySetTimeout(function() {play(callback)}, 1000);
     });
     projectileDemo.addMessageSlides(
-	"Is it possible to launch the projectile so it intersects both targets?",
-	"&ldquo;Killing two drones with one stone&rdquo;, so to speak?",
-	"To solve this problem seems to me to be a difficult problem in mechanics",
-	"I tried solving it through a conventional algebraic approach.  No luck!",
-	"But using an interface building in powerful ideas from mechanics, we'll discover "+
-	    "some interesting insights",
+	"But is it possible to launch the projectile so it intersects both targets?",
+	"It'll be &ldquo;killing two drones with one stone&rdquo;, so to speak",
+	"To solve this problem seems to me a non-trivial problem in mechanics",
+	"I spent a little time trying to solve it using a conventional algebraic approach",
+	"I didn't succeed",
+	"But using an interface building in powerful ideas from mechanics, we'll make "+
+	    "some real progress",
 	"We won't solve the problem completely. But we will gain lots of understanding!",
-	"As a warmup, let's figure out when it's possible to hit a single target",
+	"As a warmup, let's work through the case with just a single target",
 	"If you've ever spent much time throwing a ball, you probably know intuitively "+
 	    "that this is always possible",
 	"It's great to have that everyday intuition",
-	"But it's also desirable to have a justification for the everyday intuition, based "+
+	"But it's also desirable to have a justification for the intuition, based "+
 	    "on the laws of mechanics",
 	"Building up comfort and understanding and &ndash; eventually &ndash; intuition "+
 	    "based on those laws ultimately leads to a more 'scalable' understanding "+
 	    "of particle motion",
-	"I'll switch to showing a prototype interactive medium where we attack "+
-	    "this problem");
+	"I'll switch now to showing a rough prototype interface where we attack "+
+	    "the single-target problem");
     
     var playIcon, timeSlider, resetTimeIcon, playForwardIcon, playBackwardIcon;
     var mouse, stoneVelocity;
@@ -339,9 +343,9 @@ var GHOSTBORDER = "#7777dd";
     })
 
     projectileDemo.addMessageSlides(
-	"An elementary result of mechanics says that between any start point and any end point "+
+	"An elementary theorem of mechanics says that between any start point and any end point "+
 	    "there is always a range of trajectories",
-	"We can build this into the interface"
+	"We can build this theorem into the interface"
     );
 
     projectileDemo.addSlide(function(callback) {
@@ -473,7 +477,7 @@ var GHOSTBORDER = "#7777dd";
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
 	    "Then displace the stone forward in time.  Informally, we're using the interface to "+
-		"\"throw the stone earlier\"");
+		"\"throw the stone earlier in time\"");
 	mySetTimeout(function() {object1.color = GOLD; stone.clickBy(mouse, stoneColor);}, 0);
 	function stoneColor() {
 	    object1.color = Obj1Color;
@@ -568,14 +572,12 @@ var GHOSTBORDER = "#7777dd";
     });
 
     projectileDemo.addMessageSlides(
-	"What we learn from this argument is that <strong>from any starting point</strong> "+
-	    "we can hit our target, <strong>at any point along its trajectory</strong>",
-	"This is an extremely useful operation &ndash; enough so that I will build it "+
-	    "(implicitly) into other parts of the interface");
-
+	"What we learn from this argument is that from any starting point "+
+	    "we can hit our target, at any point along its trajectory");
+    
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
-	    "Let's return to our original problem: casting our stone to hit two target objects");
+	    "Let's return to our original problem: casting our projectile to hit two target objects");
 	projectileDemo.removeObject(traj);
 	projectileDemo.removeObject(traj1);
 	projectileDemo.removeObject(stone);
@@ -597,7 +599,7 @@ var GHOSTBORDER = "#7777dd";
     })
 
     projectileDemo.addSlide(function(callback) {
-	projectileDemo.addMessage("Let's watch our target objects move");
+	projectileDemo.addMessage("Let's remind ourselves of how the target objects move");
 	playIcon.clickBy(mouse, secondSetup);
 	function secondSetup() {
 	    play(callback);
@@ -719,7 +721,7 @@ var GHOSTBORDER = "#7777dd";
 	    function interp() {
 		j++;
 		projectileDemo.display(j);
-		if (j === 65) {
+		if (j === 50) {
 		    projectileDemo.addMessage(
 			"The interface shows the wavefront of all possible trajectories "+
 			    "going through the first target");
@@ -730,9 +732,9 @@ var GHOSTBORDER = "#7777dd";
     })
 
     projectileDemo.addMessageSlides(
-	"If we watch closely we see that the wavefront crosses the other target object, "+
-	    "and so there must be a trajectory intersecting both objects",
-	"Let's watch again");
+	"If we watch closely we see that the wavefront crosses the second target, "+
+	    "and so there must be a trajectory intersecting both targets",
+	"Let's watch again, carefully, since it happens quickly");
 
     projectileDemo.addSlide(function(callback) {
 	// same code as before
@@ -746,7 +748,8 @@ var GHOSTBORDER = "#7777dd";
 		j++;
 		projectileDemo.display(j);
 		if (j === 58) {
-		    projectileDemo.addMessage("Boom!");
+		    projectileDemo.addMessage(
+			"Boom, there it is, the wavefront crossed the second target");
 		}
 		if (j < 100) {mySetTimeout(interp, 200)} else {callback();}
 	    }
@@ -754,20 +757,26 @@ var GHOSTBORDER = "#7777dd";
     });
 
     projectileDemo.addMessageSlides(
-	"The nice thing is that most of the details of the trajectory of the other target "+
+	"The great thing is that most of the details of the trajectory of the second target "+
 	    "<em>don't matter</em>",
-	"Provided the target started to the 'southeast' of the first target, and its velocity is bounded, "+
-	    "it must eventually cross the wavefront",
-	"The essential reason is that the boundaries of the region are asymptotes of the wavefront "+
-	    "for small times",
-	"(You can give a rigorous proof using the intermediate value theorem)",
-	"(The target's bounded velocity ensures it can't 'run away' too fast)",
+	"What matters is that the second target starts to what I'll call the 'southeast' of the first "+
+	    "target, that is, in the region to the right of the bounding vertical line, and below "+
+	    "this other bounding line",
+	"The reason is that the boundaries of the southeast region are asymptotes of the wavefront",
+	"The vertical line is an asymptote because the nearby trajectories arise when we hurl the "+
+	    "projectile very high, and it comes hurtling down incredibly fast",
+	"And the other bounding line is an asymptote because the nearby trajectories arise when "
+	    + "we hurl the projectile very fast almost directly toward the intersection point",
+	"You can give a rigorous proof using the intermediate value theorem "
+	    + "but that's the basic idea",
+	"One caveat to making the proof work is that the target's velocity must be bounded, "
+	    + "so it can't 'run away' from the wavefront too fast",
 	"And so we've discovered something very interesting:",
 	"Provided the targets have bounded velocity, and at some time one is to the "+
 	    "'southeast' of the other, we can throw a stone so as to pass through both trajectories",
 	"This isn't a complete answer to the question 'When can we ensure a projectile passes through "+
 	    "two targets?'",
-	"But it's a good start, a non-trivial insight, a discovery"
+	"But it's a good start, a non-trivial insight, a small discovery"
     );
 
     
