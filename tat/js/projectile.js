@@ -11,16 +11,21 @@
 // sign: in our co-ordinate system, with increasing y being "up", the
 // acceleration is -g.
 var g = 1;
-var GHOSTCOLOR = "#ccccff";
-var GHOSTBORDER = "#7777dd";
+var GHOSTCOLOR = "#707FF3"; // same as trajectory color in other medium
+var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 
 (function() {
     "use strict";
     // Configuration
     var DEBUGGING = false;
-    var STARTSLIDE = 0;
-    var StoneColor = "#ff5555",	Obj1Color = "#99cc00", Obj2Color = "#00cc99";
-    var ObjectRadius = 6; // used for stone and both other objects
+    var STARTSLIDE = 19;
+    var StoneColor = "#0420F4"; // same as ball color in other medium
+    // use a triad with distance 80 degrees (Paletton) to determine
+    // the other two colors.  Note the second is darkened somewhat
+    var Obj1Color = "#FC0036";
+    var Obj2Color = "#649600";
+    var HighlightTraj = DARKGOLD; // darker version of GOLD, provided by Paletton
+    var ObjectRadius = 7; // used for stone and both other objects
 
     
     // setup scales: map x = 0 to 200 to 40 to 660 and y = 0 to 100 to
@@ -157,7 +162,7 @@ var GHOSTBORDER = "#7777dd";
 
     Ghost.prototype.display = function() {
 	this.checkMouseover(mouse);
-	var col = ((this.mouseover) && (!this.suppressFlag)) ? GOLD : GHOSTCOLOR;
+	var col = ((this.mouseover) && (!this.suppressFlag)) ? HighlightTraj : GHOSTCOLOR;
         for (var j=0; j < this.positions.length-1; j++) {
 	    projectileDemo.ctx.line(
 		xScale(this.positions[j].x), yScale(this.positions[j].y),
@@ -267,7 +272,7 @@ var GHOSTBORDER = "#7777dd";
     });
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
-	    "If we aim the projectile differently, we can certainly make sure it hits "+
+	    "If we aim the projectile differently, we can ensure it hits "+
 		"one of the targets");
 	projectileDemo.removeObject(traj);
 	projectileDemo.removeObject(stone);
@@ -281,22 +286,21 @@ var GHOSTBORDER = "#7777dd";
     });
     projectileDemo.addMessageSlides(
 	"But is it possible to launch the projectile so it intersects both targets?",
-	"It'll be &ldquo;killing two drones with one stone&rdquo;, so to speak",
-	"To solve this problem seems to me a non-trivial problem in mechanics",
-	"I spent a little time trying to solve it using a conventional algebraic approach",
-	"I didn't succeed",
+	"So it'll be &ldquo;killing two drones with one stone&rdquo;, so to speak?",
+	"To solve this problem seems to me a non-trivial challenge in mechanics",
+	"I spent a little time trying to solve it using a conventional algebraic approach, "
+	    + "but didn't succeed",
 	"But using an interface building in powerful ideas from mechanics, we'll make "+
 	    "some real progress",
 	"We won't solve the problem completely. But we will gain lots of understanding!",
 	"As a warmup, let's work through the case with just a single target",
-	"If you've ever spent much time throwing a ball, you probably know intuitively "+
-	    "that this is always possible",
+	"If you've ever spent much time throwing a ball, you know intuitively "+
+	    "that it's always possible to hit such a target",
 	"It's great to have that everyday intuition",
 	"But it's also desirable to have a justification for the intuition, based "+
 	    "on the laws of mechanics",
-	"Building up comfort and understanding and &ndash; eventually &ndash; intuition "+
-	    "based on those laws ultimately leads to a more 'scalable' understanding "+
-	    "of particle motion",
+	"Building up our understanding of those laws ultimately leads to a deeper "
+	    + "understanding of particle motion",
 	"I'll switch now to showing a rough prototype interface where we attack "+
 	    "the single-target problem");
     
@@ -304,7 +308,7 @@ var GHOSTBORDER = "#7777dd";
     var mouse, stoneVelocity;
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
-	    "Here's the medium.  I've started out showing the stone, its launch velocity, and a "+
+	    "Here it is.  I've started out showing the stone, its launch velocity, and a "+
 		"single target object");
 	// reset time
 	projectileDemo.k = 0;
@@ -397,7 +401,7 @@ var GHOSTBORDER = "#7777dd";
 		    tempBall = new StaticBall(
 			projectileDemo, ObjectRadius, GOLD, xScale(100), yScale(43.74));
 		    projectileDemo.scene.push(tempBall);
-		    traj1.col = GOLD;
+		    traj1.col = HighlightTraj;
 		}
 		if (j < steps) {myRequestAnimationFrame(interp)} else {
 		    delete traj1.col;
@@ -436,7 +440,8 @@ var GHOSTBORDER = "#7777dd";
     projectileDemo.addMessageSlide(
 	"The stone doesn't hit the target trajectory at the right time");
 
-    projectileDemo.addMessageSlide("But we can address that, simply by timing the throw");
+    projectileDemo.addMessageSlide(
+	"But we can address that, by changing the timing of the throw");
 
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage("Let's reset the time to the start");
@@ -698,7 +703,8 @@ var GHOSTBORDER = "#7777dd";
 	var t = j*0.2;
 	var phi;
 	var steps = 200;
-	var angle = Math.acos(this.deltay/Math.sqrt(this.deltax*this.deltax+this.deltay*this.deltay));
+	var angle = Math.acos(
+	    this.deltay/Math.sqrt(this.deltax*this.deltax+this.deltay*this.deltay));
 	var x0, y0, x1, y1;
 	for (var k=1; k < steps-1; k++) {
 	    phi = (k/steps)*angle;
@@ -706,12 +712,14 @@ var GHOSTBORDER = "#7777dd";
 	    y0 = this.y(phi, t);
 	    x1 = this.x(phi+angle/steps, t);
 	    y1 = this.y(phi+angle/steps, t);
-	    projectileDemo.ctx.line(xScale(x0), yScale(y0), xScale(x1), yScale(y1), "#555555");
+	    projectileDemo.ctx.line(
+		xScale(x0), yScale(y0), xScale(x1), yScale(y1), trajectoryColor);
 	}
     }
     
     projectileDemo.addSlide(function(callback) {
-	projectileDemo.addMessage("We can play all the trajectories forward from the collision");
+	projectileDemo.addMessage(
+	    "We can play all the trajectories forward from the collision");
 	playIcon.clickBy(mouse, launchWave);
 	function launchWave() {
 	    var wave = new Wave(0, 80, 100, 43.74, 10);
@@ -723,8 +731,8 @@ var GHOSTBORDER = "#7777dd";
 		projectileDemo.display(j);
 		if (j === 50) {
 		    projectileDemo.addMessage(
-			"The interface shows the wavefront of all possible trajectories "+
-			    "going through the first target");
+			"The interface shows a kind of wavefront of all possible "
+			    + "trajectories going through the first target");
 		}
 		if (j < 100) {mySetTimeout(interp, 200)} else {callback();}
 	    }
@@ -772,8 +780,9 @@ var GHOSTBORDER = "#7777dd";
 	"One caveat to making the proof work is that the target's velocity must be bounded, "
 	    + "so it can't 'run away' from the wavefront too fast",
 	"And so we've discovered something very interesting:",
-	"Provided the targets have bounded velocity, and at some time one is to the "+
-	    "'southeast' of the other, we can throw a stone so as to pass through both trajectories",
+	"Provided the targets have bounded velocity, and one is to the "+
+	    "'southeast' of the other at some point in time, we can throw "
+	    + "a stone so as to pass through both trajectories",
 	"This isn't a complete answer to the question 'When can we ensure a projectile passes through "+
 	    "two targets?'",
 	"But it's a good start, a non-trivial insight, a small discovery"

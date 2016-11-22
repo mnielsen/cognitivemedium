@@ -1,5 +1,6 @@
-var trajectoryColor = "#aaaaaa";
+var trajectoryColor = "#888888";
 var GOLD = "#FFe766";
+var DARKGOLD = "#f5d31a";
 var ICON_HIGHLIGHT = GOLD; // Different to the demo_button:hover
 			   // background-color in demo.css
 
@@ -94,8 +95,9 @@ function Trajectory(demo, t0, t1, delta, position, xScale, yScale) {
 }
 
 Trajectory.prototype.display = function() {
-    var col = (this.mouseover)? GOLD : trajectoryColor;
+    var col = (this.mouseover)? DARKGOLD : trajectoryColor;
     if (this.col) {col = this.col}; // hack override
+    this.demo.ctx.lineWidth = 1.2;
     for (var j=0; j < this.positions.length-1; j++) {
 	this.demo.ctx.line(
 	    this.xScale(this.positions[j].x), this.yScale(this.positions[j].y),
