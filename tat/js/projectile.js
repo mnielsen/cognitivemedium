@@ -368,12 +368,8 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	    mySetTimeout(moveToLaunchPoint, 300);
 	}
 	function moveToLaunchPoint() {
-	    mouse.move(xScale(0), yScale(80), function() {mySetTimeout(addStoneAgain, 300)});
-	}
-	function addStoneAgain() {
-	    projectileDemo.scene.push(stone);
-	    projectileDemo.display();
-	    mySetTimeout(moveToOther, 300);
+	    mouse.move(xScale(0), yScale(80),
+		       function() {mySetTimeout(moveToOther, 300)});
 	}
 	var ghosts, tempBall;
 	function moveToOther() {
@@ -426,6 +422,7 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	    traj.vx = vx; // we'll need these later, which is why they're being set
 	    traj.vy = vy;
 	    projectileDemo.scene.push(traj);
+	    projectileDemo.scene.push(stone);
 	    stone.trajectory = traj;
 	    projectileDemo.display();
 	    callback();
@@ -433,7 +430,8 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
     })
     
     projectileDemo.addSlide(function(callback) {
-	projectileDemo.addMessage("Let's see how the stone moves along it's new trajectory");
+	projectileDemo.addMessage(
+	    "Let's see how the stone moves along its new trajectory");
 	playIcon.clickBy(mouse, function() {play(callback)})
     })
 
@@ -469,9 +467,11 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	    }
 	}
 	function highlight() {
-	    playForwardIcon.span.style.color = "#555555";
+	    playForwardIcon.span.style.color = "#777";
 	    var oldColor = object1.color;
 	    object1.color = GOLD;
+	    projectileDemo.removeObject(object1);
+	    projectileDemo.scene.push(object1);
 	    projectileDemo.display();
 	    object1.color = oldColor;
 	    callback();
@@ -483,6 +483,8 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	projectileDemo.addMessage(
 	    "Then displace the stone forward in time.  Informally, we're using the interface to "+
 		"\"throw the stone earlier in time\"");
+	projectileDemo.removeObject(stone);
+	projectileDemo.scene.push(stone);
 	mySetTimeout(function() {object1.color = GOLD; stone.clickBy(mouse, stoneColor);}, 0);
 	function stoneColor() {
 	    object1.color = Obj1Color;
@@ -553,6 +555,10 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	    object1.trajectory = traj1;
 	    stone.localDisplacement = 0;
 	    projectileDemo.k = 0;
+	    projectileDemo.removeObject(stone);
+	    projectileDemo.scene.push(stone);
+	    projectileDemo.removeObject(object1);
+	    projectileDemo.scene.push(object1);
 	    // now do the actual backward movement
 	    var j = 88;
 	    playBackwardIcon.span.style.color = GOLD;
@@ -563,7 +569,7 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 		projectileDemo.display();
 		if (j > 0) {mySetTimeout(interp, 35)}
 		else {
-		    playBackwardIcon.span.style.color = "#555555";
+		    playBackwardIcon.span.style.color = "#777";
 		    callback();
 		};
 	    }
@@ -667,7 +673,8 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 		    projectileDemo.removeObject(ghosts);
 		}
 		if (j > steps-8) {
-		    projectileDemo.ctx.ball(xScale(100), yScale(43.74), 5, GOLD);
+		    projectileDemo.ctx.ball(
+			xScale(100), yScale(43.74), ObjectRadius, GOLD);
 		}
 		if (j < steps) {myRequestAnimationFrame(interp)} else {callback()};
 	    }

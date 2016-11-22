@@ -231,9 +231,9 @@ Slider.prototype.constructor = Slider;
 
 Slider.prototype.display = function(k) {
     if (!this.mouseover) {
-	this.span.style["background-color"] = "#dddddd";
+	this.span.style["background-color"] = "#EEE";
     } else {
-	this.span.style["background-color"] = "#cccccc";
+	this.span.style["background-color"] = "#DDD";
     }
     if (this.N) {var frac = k/this.N;} // fraction of the way the slider is across
     this.tick.style.left = (this.x0bar+frac*(this.width-this.x1bar-this.x0bar)-1)+"px";
