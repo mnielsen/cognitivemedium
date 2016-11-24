@@ -1,4 +1,4 @@
-var trajectoryColor = "#888888";
+var trajectoryColor = "#777";
 var GOLD = "#FFe766";
 var DARKGOLD = "#f5d31a";
 var ICON_HIGHLIGHT = GOLD; // Different to the demo_button:hover

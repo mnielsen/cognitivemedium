@@ -210,8 +210,10 @@
 	Images such as these are not natural or obvious.  No-one would
 	ever have these visual thoughts without the cognitive
 	technologies developed by Picasso, Edgerton, Beck, and many
-	other pioneers.  But once those technologies are known, we can
-	all learn to think in these new ways.
+	other pioneers.  Of course, in practice many people never do
+	internalize these ways of visual thinking.  But in principle,
+	once the technologies have been invented, we can all learn to
+	think in these new ways.
       </p>
 
       <p>
@@ -286,20 +288,20 @@
       
       <p>
 	By doing this, they can expand the range of thoughts we can
-	think.  It was such an expansion that made <em>MacPaint</em>
-	so exciting: it expanded the range of ways I could think
-	visually.  More generally, what makes an interface
-	transformational is when it introduces new elements of
-	cognition that enable powerful new modes of thought.
+	think.  This is what made <em>MacPaint</em> so exciting: it
+	expanded the range of ways I could think visually.  More
+	generally, what makes an interface transformational is when it
+	introduces new elements of cognition that enable new modes of
+	thought.
       </p>
 
       <h2>How can we invent new elements of cognition?</h2>
 	
       <p>
 	Of course, most interfaces are much less exciting.  They're
-	built from standard elements, and don't introduce any powerful
-	new elements of cognition.  Are there good heuristics to help
-	us invent new elements of cognition?
+	built from standard elements, and don't introduce any new
+	elements of cognition.  Are there good heuristics to help us
+	invent new elements of cognition?
       </p>
 
       <p>
@@ -325,7 +327,9 @@
       <p>
 	Note also that the prototype begins with some background
 	explanation, before showing an actual interface.  Here it
-	is:
+	is*<span class="marginnote">* An archived copy of this video
+	is
+	available <a href="assets/energy_surface.mp4">here</a>.</span>::
       </p>
 
 
@@ -498,8 +502,8 @@
 	those into an interface?  What about other subjects?  I've
 	used examples from physics and mathematics because that's my
 	training, but I believe that for most subjects of any depth,
-	experts have hidden representations that could inspire
-	powerful new interface ideas reifying those representations.
+	experts have hidden representations that could inspire new
+	interface ideas reifying those representations.
       </p>
 
       <p>
@@ -636,8 +640,8 @@
 	through the medium of Lisp programs.  In our terms, the book
 	implements a new Lisp-based interface to classical mechanics,
 	complete with many interesting new elements of cognition.  It
-	provides powerful new ways of thinking about classical
-	mechanics, but is not a visual interface.
+	thus provides new ways of thinking about classical mechanics,
+	but is not a visual interface.
       </p>
 	
       <p>
@@ -720,7 +724,7 @@
 	about writing. That makes it possible to
 	master <em>Word</em>'s interface without becoming even a
 	passable writer.  This isn't a criticism of <em>Word</em>;
-	rather, the issue is that we have few really powerful ideas
+	rather, the issue is that we have few really strong ideas
 	about how to be a good writer.
       </p>
 
@@ -745,10 +749,21 @@
 	different.  It's also more ambitious than the prototype for
 	one-dimensional motion, in that I'll use it to attack a
 	problem I didn't know how to solve before building the
-	interface.  Let's take a look:
+	interface.  As before, it's a rough sketch, and presumes
+	comfort with (and interest in) basic mechanics and
+	mathematics.  Let's take a look*<span class="marginnote">* An
+	archived copy of this video is
+	available <a href="assets/projectile.mp4">here</a>.</span>:
       </p>
 
-      
+      <center>
+	<iframe width="640" height="400" src="https://www.youtube.com/embed/3NPAbHHsvgg?modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+      </center>
+
+      <!--
+      	  Original JavaScript (ES5) demo for Chrome 53 on OS X
+	  Mavericks, replaced by video recording with voiceover.
+
       <center>
 	<div class="demo" style="relative; width: 700px; height: 620px;">
 	  <div id="projectile" style="width: 700px; height: 500px; font-size: 18px;"></div>
@@ -765,38 +780,35 @@
 	<script src="js/projectile.js"></script>
       </center>
 
+      -->
+      
       <p>
-	As with the energy surface prototype, this prototype is based
-	on a representation &ndash; in this case, the fan of
-	trajectories &ndash; familiar to many experts, but not known
-	to most students of physics.  What's more this fan is a based
-	on a fundamental theorem of mechanics, expressing the range of
-	trajectories that can pass through a particular point.  And
-	so, again, our two heuristics are helping us devise powerful
-	interface ideas.
+	This prototype uses both our heuristics.  It uses
+	representations &ndash; the fan of multiple trajectories and
+	the wavefront of projectile positions &ndash; known to many
+	experts, but unknown to most students of physics.  And those
+	representations, in turn, reify a fundamental theorem of
+	mechanics, expressing the range of trajectories that can pass
+	through two specified points.
       </p>
 
       <p>
-	One notable thing about the energy surface and projectile
-	prototypes is how different they are.  In the traditional
-	algebraic approach, one- and two-dimensional motion are
-	represented in similar ways.  But that similarity is
-	superficial and misleading.  In fact, very different ideas are
-	useful to understand motion in one and two dimensions.  For
-	instance, the trajectory fan is very useful in two dimensions,
-	but much less useful in one dimension, where all the particle
-	can do is move back and forward on the line.  As another
-	example, in one dimension the trajectories are completely
-	determined by the principle of conservation of energy.  In two
-	dimensions, the situation is more complicated, and the
-	principle is much less informative than in one dimension.
-	Differences like these are obscured in the traditional
-	representation, and experts take years to really internalize
-	them.  But in interfaces reifying the deepest ideas about a
-	system, these differences are immediately
-	evident*<span class="marginnote">* XXX: A problem in this
-	paragraph is that I use trajectory to mean both a trajectory
-	in x-v space, and in position space alone.</span>.
+	The energy surface and projectile prototypes are very
+	different.  In the traditional algebraic approach, one- and
+	two-dimensional motion are represented in similar ways.  But
+	that similarity is superficial and misleading.  In fact, very
+	different ideas are useful to understand motion in one and two
+	dimensions.  For instance, the trajectory fan is useful in two
+	dimensions, but less useful in one dimension, where all the
+	particle can do is move back and forward on the line.  As
+	another example, in one dimension the trajectories are
+	completely determined by the principle of conservation of
+	energy.  In two dimensions, the situation is more complicated,
+	and the principle is less informative.  Differences like these
+	are obscured in the traditional representation, and experts
+	take years to internalize them.  But in interfaces reifying
+	the deepest ideas about a system, these differences are
+	immediately evident.
       </p>
 
 	
@@ -904,7 +916,7 @@
       </p>
 
 	
-      <h2>Acknowledgements</h2>
+      <h3>Acknowledgements</h3>
 
       <p>
 	Thanks to David Albert, Hannah Davis, Chaim Gingold, May-Li
@@ -915,7 +927,7 @@
 	completed at <a href="http://ycr.org">YC Research</a>.
       </p>
 
-      <h2>Citation</h2>
+      <h3>Citation</h3>
 
       <p>
 	In academic work, please cite this essay as: <em>Michael
@@ -924,40 +936,40 @@
 	  (2016)</em>.
       </p>
 
+      <h3>Background</h3>
+
+      <p>
+	Detailed references are inline and in margin notes.  In this
+	section, I acknowledge materials that have had a strong broad
+	influence on this essay.
+      </p>
+
+      <p>
+	This essay arose out of my attempt to make sense of the work
+	of some of the great interface designers, including people
+	such as Douglas Engelbart, Alan Kay, and Bret Victor.
+      </p>
+
+      <p>
+	<em>On internalizing signs found in the external world:</em>
+	The work of Lev Vygotsky, especially &ldquo;Internalization of
+	Higher Psychological Functions&rdquo; Chapter 4 in an edited
+	and translated collection of some of Vygotsky's writing,
+	&ldquo;Mind in Society&rdquo;, Harvard University Press
+	(1978).
+      </p>
+
+      <p>
+	<em>On using using computers to create new
+	(micro-)worlds:</em> The work of Seymour Papert, especially
+	his book &ldquo;Mindstorms&rdquo;.
+      </p>
+
+
       <!--
 	  
-	<h2>Background Reading</h2>
-
-      <p>
-	Detailed references have been provided inline and in margin
-	notes.  However, some overall influences have been omitted, in
-	part because they relate less to specific points than to
-	overall point of view.  I've collected the most significant of
-	these here.
-      </p>
-      
-      <p>
-	The entire essay is strongly influenced by the ideas of Lev
-	Vygotsky.  Through his body of work, Vygotsky was a key figure
-	developing the notion of internalizing models found in the
-	external world, and then appropriating those models for use in
-	our own cognition.
-      </p>
-
-      <p>
-	The idea of using computers to create new (micro-)worlds was
-	described strikingly in Seymour Papert's book
-	&ldquo;Mindstorms&rdquo;.
-      </p>
-
-      This essay arose out of my attempt to make sense of the work of
-      some of the great interface designers, including people such as
-      Douglas Engelbart, Alan Kay, Bret Victor.  What is an interface
-      designer doing?
       
 
-      Wittens.  Victor.
-      
       ISSUES
 
       I don't have to address all these issues.  But they are
@@ -977,9 +989,6 @@
       Issue: I (perhaps) don't sufficiently emphasize the importance of
       discovery.  Why does this matter?
 
-      Issue: I haven't precisely explained what I mean by an element of
-      cognition.
-
       Bundle of issues: I don't distinguish very well between cognitive
       technologies and elements of cognition.  In fact, I think there's a
       whole lot of issues here, and they're global issues with the whole
@@ -988,11 +997,9 @@
       may take a while!  I talk a lot about representations.  Again, it's
       not so clear what is going on.
 
-      Issue: am I over-using the word powerful?
-
       Issue: I don't particularly like the discussion of what makes an
-      element of cognition powerful.  I should write out some criticisms of
-      the discussion, and respond to them.
+      element of cognition powerful.  I should write out some
+      criticisms of the discussion, and respond to them.
 
       Issue: will we become trapped by the elements of cognition used
       by an interface?  Might that be a bad thing?  Yes, it is
@@ -1073,35 +1080,9 @@
     to the user, and they can actively compute.  Each of these is a
     fundamental change.
 
-    Issue: Introduce the following material:
-    
-      <p>
-	Let me show an example of a more recent interface that
-	introduces novel elements of cognition.  It's a prototype
-	medium developed by the interface
-	designer <a href="http://worrydream.com">Bret Victor</a>.  The
-	prototype sketches a medium for working with difference
-	equations.  While it's not a full production environment, it
-	nonetheless contains some striking ideas.  Take a look:
-      </p>
 
-      <center>
-	<iframe src="http://player.vimeo.com/video/85480838?portrait=0"
-		width="800" height="500" frameborder="0" webkitallowfullscreen
-		mozallowfullscreen allowfullscreen></iframe>
-      </center>
-
-      <p>
-	This prototype introduces many new ways of understanding
-	difference equations: highlighted regions which you can
-	manipulate; search; tying variables together; many-way flows
-	of information between the algebraic expressions, the graph,
-	and the search box; and so on.  Each introduces one or more
-	new elements of cognition.
-      </p>
-
-      <p>
-	These elements combine to give a feeling of ease in
+<p>
+	MOVE: These elements combine to give a feeling of ease in
 	exploration, of having powerful new ways to think.  It's
 	plausible that if you worked extensively in a fully-developed
 	version of this environment, it would transform how you think
@@ -1167,23 +1148,13 @@
       Issue: I don't say enough about examples of new elements of
       cognition in computing.
 
-      Issue: Do I want to have a general discussion?  
-
       Issue: Why focus on interfaces?
 
       Issue: How could we make this a medium for both communication
       and exploration?
 
-      Issue: I don't really say what the benefits of the energy
-      surface medium are.  I think it's that we can change the
-      potential and immediately see how the trajectories 
-
       Issue: Old-fashioned elements of cognition are static.  They
       don't compute.  How does it matter that these can?  It certainly matters
-
-      Issue: How does it affect my story that 
-
-      Issue: How should I ask people to cite this?  
 
       Issue: Bret objects to some of my comment: rather than using
 	hidden representations, shouldn't we go back and think from
@@ -1198,9 +1169,8 @@
       available?
       
     Possibilities to ask for feedback: Maneesh.  Martin and Fernanda.
-    Andy.  Devon, Xavier.  Vi.  Emily.  Julia. Nic. Patrick, Nic,
-    Andy, Vi, Emily.  Tim Gowers.  Alan Kay.  Bret Victor.  Dan
-    Ingalls.
+    Devon, Xavier.  Vi.  Emily.  Julia. Nic. Patrick, Nic, Vi, Emily.
+    Tim Gowers.  Alan Kay.  Bret Victor.  Dan Ingalls.
 
           After publication, send to: Tim O'Reilly. Tyler Cowen.  Ken
           Perlin.
@@ -1223,8 +1193,9 @@
       commented out (but marked with an XXX) about how Euclid is
       limited.  I should revisit this and see what I want to do.
 
-      I'm writing this for liminal people, i.e., people on the edge of
-      doing this.  Nicky Case.  Guillermo Valle.  Devon. Omar.
+      Audience (Devon's comment): I'm writing this, at least in part,
+      for liminal people, i.e., people on the edge of doing this kind
+      fo thing.  Eg: Nicky Case.  Guillermo Valle.  Devon. Omar.
       Katherine.  Toph.
       
       -->

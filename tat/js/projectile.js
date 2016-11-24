@@ -1,7 +1,14 @@
 // projectile.js: A demo showing a prototype medium for reasoning
 // about projectile motion in two dimensions.
 //
-// By Michael Nielsen, July 2016
+// Very rough: the code has lots of inconsistent naming (and other
+// inconsistencies); scoping problems; problems with styling; various
+// kludges that would disappear in a well-designed system; and lots of
+// other problems.  I believe it's the second non-trivial JS program
+// I've written, and it shows.  Basically, it needs to be rewritten
+// from scratch.
+//
+// By Michael Nielsen, November 2016
 //
 // MIT License
 //
@@ -18,7 +25,7 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
     "use strict";
     // Configuration
     var DEBUGGING = false;
-    var STARTSLIDE = 19;
+    var STARTSLIDE = 0;
     var StoneColor = "#0420F4"; // same as ball color in other medium
     // use a triad with distance 80 degrees (Paletton) to determine
     // the other two colors.  Note the second is darkened somewhat
@@ -226,7 +233,7 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
     var traj, stone;
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
-	    "The projectile moves freeely, accelerating under gravity.  We "+
+	    "The projectile moves freeely, accelerating under gravity, and we "+
 		"neglect air friction");
 	var t0=0, t=t0, t1 = 20, delta = 0.2, j=0;
 	traj = new Trajectory(projectileDemo, t0, t1, delta,
@@ -234,7 +241,7 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 			      xScale, yScale);
 	stone = new Ball(projectileDemo, ObjectRadius, StoneColor, traj, xScale, yScale);
 	projectileDemo.scene.push(traj, stone);
-	mySetTimeout(function() {play(callback)}, 1000);
+	mySetTimeout(function() {play(callback)}, 1500);
     })
 
     
@@ -248,7 +255,7 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	object1 = new Ball(projectileDemo, ObjectRadius, Obj1Color, traj1, xScale, yScale);
 	object2 = new Ball(projectileDemo, ObjectRadius, Obj2Color, traj2, xScale, yScale);
 	projectileDemo.scene.push(traj1, traj2, object1, object2);
-	play(callback);
+	mySetTimeout(function() {play(callback)}, 1500);
     })
     function positionObject1(t) {
 	var x = 200-10*t;
@@ -264,7 +271,7 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
     projectileDemo.addMessageSlides(
 	"The target trajectories are arbitrary &ndash; think of the targets as drones which "+
 	    "can move in any fashion at all",
-	"With our current aim, the projectile misses both targets");
+	"With its current aim, the projectile misses both targets");
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
 	    "Let's watch again, noticing the projectile miss the targets");
@@ -301,7 +308,7 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	    "on the laws of mechanics",
 	"Building up our understanding of those laws ultimately leads to a deeper "
 	    + "understanding of particle motion",
-	"I'll switch now to showing a rough prototype interface where we attack "+
+	"So I'll switch now to showing a rough prototype interface where we attack "+
 	    "the single-target problem");
     
     var playIcon, timeSlider, resetTimeIcon, playForwardIcon, playBackwardIcon;
@@ -439,7 +446,7 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	"The stone doesn't hit the target trajectory at the right time");
 
     projectileDemo.addMessageSlide(
-	"But we can address that, by changing the timing of the throw");
+	"But we can address that by changing the timing of the throw");
 
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage("Let's reset the time to the start");
@@ -588,7 +595,8 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
     
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
-	    "Let's return to our original problem: casting our projectile to hit two target objects");
+	    "Okay, let's return to our original problem: casting our "
+		+ "projectile to hit not one but two target objects");
 	projectileDemo.removeObject(traj);
 	projectileDemo.removeObject(traj1);
 	projectileDemo.removeObject(stone);
@@ -642,6 +650,8 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	}
     })
 
+    projectileDemo.addMessageSlide("This point will do");
+    
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
 	    "And let's consider all trajectories for our stone that collide with "+
@@ -676,7 +686,12 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 		    projectileDemo.ctx.ball(
 			xScale(100), yScale(43.74), ObjectRadius, GOLD);
 		}
-		if (j < steps) {myRequestAnimationFrame(interp)} else {callback()};
+		if (j < steps) {myRequestAnimationFrame(interp)}
+		else {
+		    projectileDemo.removeObject(stone);
+		    projectileDemo.display();
+		    callback();
+		};
 	    }
 	}
     })
@@ -720,13 +735,15 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	    x1 = this.x(phi+angle/steps, t);
 	    y1 = this.y(phi+angle/steps, t);
 	    projectileDemo.ctx.line(
-		xScale(x0), yScale(y0), xScale(x1), yScale(y1), trajectoryColor);
+		xScale(x0), yScale(y0), xScale(x1), yScale(y1), StoneColor);
 	}
     }
     
     projectileDemo.addSlide(function(callback) {
 	projectileDemo.addMessage(
-	    "We can play all the trajectories forward from the collision");
+	    "We can play all the trajectories forward from the collision. "
+		+ "There's a kind of wavefront of all possible "
+		+ "trajectories emanating from the first target");
 	playIcon.clickBy(mouse, launchWave);
 	function launchWave() {
 	    var wave = new Wave(0, 80, 100, 43.74, 10);
@@ -736,19 +753,15 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	    function interp() {
 		j++;
 		projectileDemo.display(j);
-		if (j === 50) {
-		    projectileDemo.addMessage(
-			"The interface shows a kind of wavefront of all possible "
-			    + "trajectories going through the first target");
-		}
-		if (j < 100) {mySetTimeout(interp, 200)} else {callback();}
+		if (j < 100) {mySetTimeout(interp, 150)} else {callback();}
 	    }
 	}
     })
 
     projectileDemo.addMessageSlides(
-	"If we watch closely we see that the wavefront crosses the second target, "+
-	    "and so there must be a trajectory intersecting both targets",
+	"If you were watching closely, you may have noticed that the "
+	    + "wavefront collides with the second target",
+	"That tells us there is, indeed, a trajectory intersecting both targets",
 	"Let's watch again, carefully, since it happens quickly");
 
     projectileDemo.addSlide(function(callback) {
@@ -764,16 +777,17 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 		projectileDemo.display(j);
 		if (j === 58) {
 		    projectileDemo.addMessage(
-			"Boom, there it is, the wavefront crossed the second target");
+			"Boom, there it is, the wavefront collides with "
+			    + "the second target");
 		}
-		if (j < 100) {mySetTimeout(interp, 200)} else {callback();}
+		if (j < 100) {mySetTimeout(interp, 150)} else {callback();}
 	    }
 	}
     });
 
     projectileDemo.addMessageSlides(
-	"The great thing is that most of the details of the trajectory of the second target "+
-	    "<em>don't matter</em>",
+	"The great thing is that most of the details of the trajectory of "
+	    + "the second target <em>don't matter</em> to this argument",
 	"What matters is that the second target starts to what I'll call the 'southeast' of the first "+
 	    "target, that is, in the region to the right of the bounding vertical line, and below "+
 	    "this other bounding line",
@@ -782,14 +796,19 @@ var GHOSTBORDER = "#0420F4"; // same as ball color in other medium
 	    "projectile very high, and it comes hurtling down incredibly fast",
 	"And the other bounding line is an asymptote because the nearby trajectories arise when "
 	    + "we hurl the projectile very fast almost directly toward the intersection point",
-	"You can give a rigorous proof using the intermediate value theorem "
-	    + "but that's the basic idea",
+	"Using these facts and the intermediate value theorem it's possible to "
+	    + "give a rigorous proof that the wavefront and the target collide",
+	"I won't go through those details",
+	"But the basic idea is that the wavefront completely encloses the "
+	    + "region bounded by the asymptotes, and so must collide with the "
+	    + "target at some point",
 	"One caveat to making the proof work is that the target's velocity must be bounded, "
 	    + "so it can't 'run away' from the wavefront too fast",
-	"And so we've discovered something very interesting:",
+	"But provided that's true, the target can't escape!",
+	"The upshot of all this is that we've discovered something very interesting:",
 	"Provided the targets have bounded velocity, and one is to the "+
-	    "'southeast' of the other at some point in time, we can throw "
-	    + "a stone so as to pass through both trajectories",
+	    "'southeast' of the other at some point, we can throw "
+	    + "a stone so as to collide with both targets",
 	"This isn't a complete answer to the question 'When can we ensure a projectile passes through "+
 	    "two targets?'",
 	"But it's a good start, a non-trivial insight, a small discovery"
