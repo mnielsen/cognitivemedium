@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Systems to improve long-term memory</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div id="header">
+      <h1>Systems to improve long-term memory</h1>
+      <p>
+	<a href="http://michaelnielsen.org">Michael Nielsen</a> &nbsp; / &nbsp;	December 2016
+      </p>
+    </div>
+
+    <div id="container">
+      <p>
+	<em>Summary: An explanation of the spacing effect and the lag
+	effect in our long-term memory.  How these can be used to
+	build systems to improve long-term memory.  How many existing
+	practices actually violate these ideas.
+	</em>
+      </p>
+      
+    <p>
+      Let me show you a flashcard program
+      called <a href="http://ankirs.net">Anki</a>.  Here's one of my
+      flashcards, asking how much solar radiation is received at the
+      surface of the Earth:
+    </p>
+
+    <img src="assets/Anki_initial_card.png"/>
+
+    <p>
+      When shown a card, you pause to consider whether or not you know
+      the answer.  Then you ask Anki to reveal the correct answer, so
+      you can compare with your own response:
+    </p>
+
+    <img src="assets/Anki_initial_answer.png"/>
+
+    <p>
+      If you look at the bottom of the card you'll see buttons marked
+      &ldquo;Again&rdquo;, &ldquo;Hard&rdquo;, and so on.  These
+      buttons allow you to grade your response.  If you got the
+      question wrong you tell the program you want to see the card
+      &ldquo;Again&rdquo;.  If you got the question right, but
+      struggled, you select &ldquo;Hard&rdqu;.  If you got the
+      question right with relative ease, you select
+      &ldquo;Good&rdquo;.  Finally, if you found the question
+      trivially easy, you select &ldquo;Easy&rdquo;.
+    </p>
+    
+    <p>
+      Which option you select determines how long before you see the
+      card again.  If you selected &ldquo;Again&rdquo;, the card goes
+      back in the queue of current cards, i.e., cards to be shown as
+      soon as possible.  But if you selected any of the other three
+      options, Anki will delay some time before showing you the card
+      again.
+    </p>
+
+    <p>
+      How are the delays chosen?
+    </p>
+
+    <p>
+      In an ideal world, Anki would try to show you a card just as you
+      are on the verge of forgetting it.  There is a body of research
+      suggesting that being tested on a memory at that point is the
+      optimal time at which to be reminded of the content.  In
+      particular, that's the time at which the memory will be most
+      strengthened by a reminder.  And so you can minimize your total
+      study time by studying at those times.
+    </p>
+
+    <p>
+      In practice, Anki doesn't know exactly when is the right time to
+      show a card again.  So it uses some heuristics.  The initial
+      delay is 1 day.  If you select &ldquo;Good&rdquo; when you
+      answer, then that will be increased by a factor 2.5, to 2.5
+      days.  If you select &ldquo;Good&rdquo; again, it'll increase by
+      another factor 2.5, to 6.25 days.  And so on, through
+      ever-increasing delays.  If you select &ldquo;Hard&rdquo;, it
+      tells Anki that the card is a difficult one for you, and so the
+      factor 2.5 &ndash; known as the card's &ldquo;Ease&rdquo;
+      &ndash; is too large, and is adjusted to be smaller.  On the
+      other hand, if you select &ldquo;Easy&rdquo;, the card's ease
+      will be adjusted upward, and the delay between repetitions will
+      get even longer.  And finally, if you select
+      &ldquo;Again&rdquo;, the delay gets reset to the initial value.
+    </p>
+
+    <p>
+      Anki is an example of a memory aid.  In this essay, I will
+      review some of the cognitive science behind memory aids.  I will
+      review how these ideas may be incorporated into the design of a
+      wide range of software systems.  Not just flashcard programs,
+      but in fact a wide range of software can incorporate these
+      ideas.  I will also describe how current practices in many cases
+      not only fails to take advantage of these ideas, but actually
+      actively violates the ideas.  And I will sketch out several
+      ideas for integrating the ideas into software systems (and
+      everyday life) more generally.
+    </p>
+    
+    <h2>Distributed practice</h2>
+    
+    <p>
+      Anki is based around three ideas from cognitive science: the
+      spacing effect, the lag effect, and the testing effect.  I'll
+      now briefly describe each of these.  Each is actually quite
+      complicated, and not entirely understood, so this is a
+      caricature, to get our bearings.  I'll have more to say about
+      details later.
+    </p>
+
+    <P>
+      One of these ideas is called the <em>spacing effect</em>.
+      Suppose you're have 100 flashcards which you're using to study
+      100 words of Russian vocabulary.  In one approach to studying,
+      you review each card once today, taking you 10 minutes, and you
+      review each card again tomorrow, again taking you 10 minutes.
+      Another approach to studying is to review all the cards twice
+      each tomorrow, taking you 20 minutes.  The spacing effect
+      predicts that if you're tested in a week, you'll do much better
+      with the first approach: it's better to <em>space out</em> your
+      study, rather than to use <em>massed presentation</em> (i.e.,
+      cramming).  What's more, the effect is not small: even simple
+      spacing strategies can double or more the speed at which you
+      learn.
+    </P>
+
+    <p>
+      How should we space out our study?
+    </p>
+
+    <p>
+      In 1885, the German psychologist Hermann Ebbinghaus published
+      experiments*<span class="marginnote">* Published in a translated
+      English text
+      as <a href="https://archive.org/details/memoryacontribu00ebbigoog">Memory:
+      a Contribution to Experimental Psychology</a> (Teachers College,
+      Columbia University, 1913).</span> from which he empirically
+      deduced a <em>forgetting curve</em>.  The idea is that after
+      learning a new fact, an unused memory will decay exponentially.
+      In particular, the probability of later recall in a study
+      session will look like this:
+    </p>
+
+    <center>
+      <canvas id="forgetting" width="600" height="400"></canvas>
+      <script>
+      </script>
+    </center>
+
+    <p>
+      In an equation, the probability of later recall is given by
+    </p>
+
+    <p>
+      <em>p</em> = 2<sup>-<em>t</em> / <em>h</em></sup>,
+    </p>
+
+    <p>
+      where <em>p</em> is the probability of recall, <em>t</em> is the
+      time since the fact was last studied, and <em>h</em> is the
+      <em>half-life</em> of the memory, that is, the time at which the
+      probability.  The longer the half-life, the more strongly the
+      memory is stored.  Ideally, the half-life is <em>&infty;</em>,
+      that is, you'd never forget the fact, no matter how long you
+      wait.
+    </p>
+
+    <p>
+      The Ebbinghaus exponential decay model assumes that you don't do
+      anything to strengthen the memory before you're tested again.
+      What happens if you are repeatedly tested, as in as flashcard
+      program like Anki?  In that case, according to Ebbinghaus's
+      model you get repeated exponential decays:
+    </p>
+
+    <center>
+      <canvas id="forgetting_repeated" width="600" height="400"></canvas>
+      <script>
+      </script>
+    </center>
+
+    <p>
+      However, there's an important twist.  The twist is that the
+      memory half-life gets longer and longer.  Put differently, the
+      memory gets stored better and better, and so we can wait longer
+      and longer between practices.  This is why Anki keeps increasing
+      the time between showing you a flashcard.  And, as we'll discuss
+      shortly, this increase dramatically reduces the total amount of
+      time required to memorize a fact.
+    </p>
+
+    <p>
+      This gradual increase in half-life is known as the <em>lag
+	effect</em>.  When combined with the spacing effect we'll call
+	the idea <em>distributed practice</em>.
+    </p>
+
+    <p>
+      Anki is an example of a system for automating distributed
+      practice.  Anki's increasing delays is very large.  On average,
+      after more than a year of using Anki, I answer more than 94
+      percent of flashcards correctly.  If that holds, it means that
+      for a typical card I can expect about 16 study sessions before
+      an error.  With the way Anki increases the delays, that will
+      actually more than cover my lifetime.  In fact, about 11 study
+      sessions should cover the remainder of my life.  On average,
+      each study session takes about 8 seconds.  So that's a total of
+      under 2 minutes total lifetime study, to commit a fact to
+      memory. 
+    </p>
+
+    <p>
+      Now, there are many caveats to this discussion.  But it's useful
+      as a ballpark picture, to get an understanding of how
+      distributed practice works.
+    </p>
+
+    <h2>Better ways of choosing the time to the next practice</h2>
+
+    <p>
+      I've described how Anki chooses the time to schedule the next
+      practice.  Implicitly, we can think of that scheduling algorithm
+      as a (very rough) theory of how long to delay until the next
+    </p>
+
+    <p>
+      Is it possible to do better?
+    </p>
+
+    <p>
+      The website <a href="https://duolingo.com">Duolingo</a> attempts
+      to use machine learning to more accurately estimate the spacing
+      between repetitions.  Duolingo is a popular site for learning
+      new languages.  XXX - what Duolingo does.
+    </p>
+
+    <p>
+      Duolingo has XXX users.  Suppose I sign up for the site, and
+      starting learning Spanish.  Intuitively, it should be possible
+      for Duolingo to estimate my performance on future quizzes by
+      looking at the performance of other users whose profile of
+      performance is similar to mine.  In this way, Duolingo can 
+    </p>
+
+    <p>
+      A little more formally, Duolingo uses their existing data to
+      build a model to estimate the half-life as a function of a
+      student's past performance, and of the lexical complexity of the
+      current.  They call this procedure <em>half-life
+      regression</em>.  With that estimate, they can then estimate the
+      optimal time to quizz me again in the future.
+    </p>
+
+    <p>
+      I won't get into the details of their model.  Indeed, the model
+      is frankly rather arbitrary.
+    </p>
+    
+
+    <p>
+      <strong>The certainty effect:</strong> A big part of the benefit
+      of distributed practice for me is something that I dub the
+      certainty effect.  In the past if I was reading a paper or book,
+      memory was often uncertain.  I'm now able to attain certainty
+      for a large class of things: if I want to remember it, I can
+      simply <em>choose</em> to do so, by entering it into Anki.
+    </p>
+
+    <p>
+      I've tested this to some considerable extreme.  I memorized
+      perhaps 60 percent the first XXX of a book on the Bash shell.
+      Doing so was easy and relatively quick, though tedious.  The
+      result
+    </p>
+
+    <p>
+      <strong>Anki does not give operational fluency:</strong>
+    </p>
+    
+    Testing effect.  It's just a model.
+
+    Structure: Explain the testing effect. Show a screenshot.
+    Duolingo has recently begun using dist. practice.  But whereas
+    Anki has a very crude model, Duolingo tries to build a slightly
+    more sophisticated model.  In particular, they build a model which
+    is able to estimate the half-life, based on past student
+    behaviour, and on lexical knowledge of the word.  Intuitively, if
+    someone gets a word right, adjust half-life up; if someone gets a
+    word wrong, adjust half-life down, to oprimize some objective.
+    It's still a relatively crude model, but they get some
+    improvement.  Much more detailed work could be done.
+
+    
+
+    
+    
+    <h3>Distributed practice</h3>
+
+
+    <p>
+      A curiosity of the spacing effect is that it's so
+      underused. Ebbinghaus's work appeared in 1885, and immediately
+      had a big impact.  William James described it as XXX.  A steady
+      stream of followups were done, gradually growing into a flood.
+      The first review appeared in XXX.  While we have no more than a
+      very incomplete understanding of the basis for the effect (on
+      which more below), it's fair to say that the effect is: (a)
+      strong; (b) robust across materials; and (c)
+    </p>
+
+    <p>
+      All of which makes it curious that it's so underused.  It's not
+      used at scale in any educational system I'm aware of.  Indeed,
+      many educational practices actually run
+      directly <em>contrary</em> to the effect. Textbooks often bunch
+      similar practice problems together, rather than spreading them
+      out. Many educational systems are based around large, infrequent
+      exams, rather than One of the most cited papers on the effect
+      actually aims to understand why it's been so underused.
+    </p>
+
+    <p>
+      The systems which do allow
+      
+    A curiosity is that it's been relatively little used. One of the
+    most cited papers is actually to a discussion
+    
+
+    I said earlier that Anki will ideally show you a card just as you
+    are about to forget the contents of that card.  This is badly
+    broken when
+    
+    It's been studied a tremendous amount.  First review was in.
+    Steady stream ever since.  More .  The picture is somewhat
+    complex, a point I'll come back to. But the broad picture is 
+
+    
+
+    Why is this so little used?
+    
+    Curiosity: One strange thing about Sebasitan Leitner.  Piotr Wozniak.  One of the
+    most-cited papers on the effect is about
+    
+    What we're going to do: We're going to poke around.  We're going
+    to brainstorm
+
+    First, though, I need to digress to talk a little about the role
+    of cognitive science in all this.
+
+    <p>
+      <strong>Anti-patterns:</strong> It's not just that distributed
+      practice isn't widely used in .  In fact a lot of conventional
+      wisdom and widely used patterns of design <em>directly
+      contradict</em> what we know about memory.
+    </p>
+
+    <p>
+      For example, many textbooks clump subject matter together.  A
+      geography textbook may clump material into topical sections.
+      Everything on South Africa (including quiz questions) into this
+      section!  Everything on Madagascar into that section!  And so
+      on.  So you spend a day on South Africa, a day on Madagascar,
+      and so on.  It'd be better to have the material &ndash;
+      especially the quiz questions &ndash; spread out.
+    </p>
+
+    <p>
+      A friend of mine frequently complains about the length of books.
+      &ldquo;Good book&rdquo;, he'll say, &ldquo;but it got
+      repetitive.  The content could have been covered in a few
+      pages&rdquo;.  This is undoubtedly true of many books.  But I
+      wonder if the benefit of having it spread out over 300 pages
+      isn't to ensure some distributed practice.
+    </p>
+      
+    The effect is lesser
+    
+    The research 
+
+    <p>
+    
+
+    <a name="cargo_cults_and_design"></a>
+    <h2>The relationship between cognitive science and design</h2>
+
+    <p>
+      There's a genre of &ldquo;science&rdquo;-based books who use a
+       form that I trust you will recognize.
+    </p>
+
+    <p>
+      Let's say you're curious about meditation, and so you pick up a
+      book on the subject.  The book claims to be based on scientific!
+      studies! of meditation.  Every few pages the book drops in a
+      handful of references to scientific papers.  It will claim
+      &ldquo;studies show meditation improves your ability to
+      focus&rdquo;, and cite 3 or 4 papers.  It's kind of dropping the
+      authority of <strong>SCIENCE</strong> on your head, daring you
+      to disagree.
+    </p>
+
+    <p>
+      The conclusions of such an approach aren't always wrong.  But
+      there's many problems with the approach.
+    </p>
+
+    <p>
+      One problem is confirmation bias and motivated reasoning.  Maybe
+      20 studies have been done to understand how meditation relates
+      to focus.  The author quotes just 3 studies, which happens to be
+      the 3 studies most sympathetic to the conclusion they want to
+      support.
+    </p>
+
+    <p>
+      This sounds like malice, but it's not. Powerful forces push all
+      of us in this direction.  It's human nature to be more skeptical
+      of papers whose conclusions disagree with what you believe; and
+      to have like-minded friends and colleagues share and talk about
+      papers whose conclusions you like.  And so an intelligent author
+      can, without malice, end up with a very distorted view of what
+      is known.
+    </p>
+    
+    <p>
+      Other problems also arise.  Maybe all 20 studies are sympathetic
+      to the author's conclusion.  But the reason for this may well be
+      that the entire community doing the studying is too-sympathetic
+      to one particular point of view.
+    </p>
+
+    <p>
+      For example, early in her career the writer and psychologist
+      Susan Blackmore investigated parapsychology.  There's a
+      surprisingly large and active community of people attempting
+      scientific-appearing study of parapsychology, and finding
+      positive results.  Blackmore*<span class="marginnote">* Susan
+      Blackmore, <a href="assets/Blackmore1987.pdf">The Elusive Open
+      Mind: Ten Years of Negative Research in Parapsychology</a>
+      (1987).</span>  describes years of frustration at obtaining
+      negative results, and the response of her peers:
+    </p>
+
+    <blockquote>
+      Why did this study also fail? I had used trained subjects in
+      psi-conducive conditions and a method others had found
+      successful. The ultimate suggestion of most parapsychologists
+      was that it was an experimenter effect—more than that, it was a
+      psi-mediated experimenter effect. That is, either I was using my
+      own negative psi or I had some kind of personality defect, or
+      defect in belief, that suppressed the psi of other people. I was
+      a psi-inhibitory experimenter, so that whatever I did I would
+      always get negative results. I began to get the feeling that I
+      had some creeping sickness. I was a failure, a reject; there was
+      something in me that suppressed the true spiritual nature of
+      other people. I tried not to let it upset me, but I must admit
+      that there is something terribly unflattering about being
+      labeled &ldquo;psi-inhibitory&rdquo;!
+    </blockquote>
+
+    <p>
+      Parapsychology is an extreme case, but it's not that extreme.
+      In XXX, some of the most celebrated findings of psychology have
+      come under attack.  Consider the phenomenon of priming.  
+    </p>
+      
+    <p>
+      A second set of problems involves the appalling norms around
+      reporting in cognitive science.  Suppose a paper takes a group
+      of 20 people, mounts an intervention, and (say) finds that
+      certain test scores go up.  There's then a kind of shorthand way
+      this is reported: &ldquo;such-and-such an intervention causes
+      physics scores to go up!&rdquo;
+    </p>
+
+    <p>
+      Well, no.
+    </p>
+
+    <p>
+      So, what to learn from all this?  Well, there's many things.
+      Here are a few of the most important for our purposes:
+    </p>
+
+    <p>
+      <strong>If you want to understand what a result says, and how
+	strong the evidence is, you need to read the whole study in
+	detail:</strong>  
+    </p>
+
+    <p>
+      <strong>If you're looking for design inspiration, it's fine to
+      </strong>
+    </p>
+
+
+    Style 1: The kind that thinks it should all be justified by
+    cognitive science.  We hardly know anything about cognitive
+    science.
+
+    Our style: It will be to simultaneously keep in mind that we
+    hardly k
+
+    There's a kind of person who sneers at &ldquo;unscientific&rdquo;
+    self-help books.  But, in fact, many of the
+    &lsquo;scientific&rdquo; books are even worse, relying on a veneer
+    of respectability provided by the fact that they are &ldquo;backed
+    by scientific studies&rdquo;.
+
+    The only resolution I know of to these problems is to get in
+    fairly deeply to the details.  What was actually done?
+    
+    In the case of the spacing effect, a very large number of papers
+    have been written, studying many different variations of the
+    spacing effect.  The great majority show very strong .  
+
+
+      So I think the right rules are this:
+
+      + We're going to put imaginative design first.
+
+      + Use papers for inspiration.
+
+      + If you don't read for detail, you really don't know much.
+
+    What's the right schedule?  If it's 90+ percent, doesn't that
+    suggest that we're being too conservative?  Why not auto-adjust?
+
+    How useful is it all?  How useful is it to know the solar constant?
+
+    I wonder if we can do a reverse NMR thing, basically writing
+    thoughts?
+    
+    <h3>Acknowledgements</h3>
+
+    <p>
+      Rough working notes, based on a discussion with Caitlin Sikora,
+      Katherin Ye, Nicky Case, Xavier Snelgrove, and Yan Zhu.
+      Supported by <a href="http://ycr.org">Y Combinator Research</a>,
+      based on work begun at the <a href="http://recurse.com">Recurse
+      Center</a>.
+    </p>      
+
+    <h3>Citation</h3>
+
+    <p>
+      In academic work, please cite this essay as: <em>Michael
+	Nielsen, &ldquo;Tools to improve long-term memory&rdquo;,
+	available
+	at <a href="http://cognitivemedium.com/tat/index.html">http://cognitivemedium.com/ehi/improve_memory/index.html</a>
+	(2016)</em>.
+    </p>
+
+    <p>
+      In non-academic work, I'd appreciate it (and it would help me
+      out) if you could give me a shout-out, too!
+    </p>
+
+    </div>    
+
+    <div id="footer">
+      This work is licensed under a <a rel="license"
+	 href="http://creativecommons.org/licenses/by/4.0/">Creative
+	 Commons Attribution 4.0 International License</a>.  This
+	 means you're free to copy, share, and build on the work,
+	 provided you attribute it appropriately.  Please click on the
+	 following license link for details: <a rel="license"
+	 href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative
+	 Commons License" style="border-width: 0; height: 21px;"
+	 src="https://i.creativecommons.org/l/by/4.0/88x31.png"/></a>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-44208967-4', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+<!--    <script src="hybrid.js"></script> -->
+  </body>
+</html>  
+
+
+
+
+
+
