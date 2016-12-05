@@ -1,0 +1,103 @@
+/* Color scheme is campfire, from https://color.adobe.com/Campfire-color-theme-2528696/edit/?copy=true */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+
+body {
+    font: 24px Georgia;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: #74AF6E;
+    padding: 15px 0px 25px 0px;
+    line-height: 1;
+}
+
+#header > h1 {
+    margin-left: 5%;
+    font: 48px Verdana;
+    font-weight: bold;
+}
+
+#header > p {
+    margin-top: 12px;
+    margin-left: 5%;
+    font: 24px Verdana;
+}
+
+#container {
+    margin: 15px 30% 20px 5%;
+}
+
+#container > h2 {
+    font: 48px Verdana;
+    margin: 20px 0px 12px 0px;
+}
+
+#container > h3 {
+    font: 32px Verdana;
+    margin: 24px 0px 15px 0px;
+}
+
+#container p {
+    color: rgba(0, 0, 0, 0.8);
+    margin: 9px 0px 9px 0px;
+    font-size: 21px;
+}
+
+#container blockquote {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 80%;
+    margin: 5px 0px 5px 40px;
+}
+
+.marginnote {
+    position: absolute;
+    left: 72%;
+    right: 2%;
+    font-size: small;
+    
+}
+
+.equation {
+    padding-left: 40px;
+}
+
+#header a {
+    color: #000;
+    text-decoration: none;
+}
+
+#container a {
+    color: #31782A; /* darker version of base color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#footer {
+    background-color: #74AF6E;
+    padding: 15px 7% 15px 5%;
+    font-family: Verdana;
+    font-size: 18px;
+    line-height: 1.6em;
+}
+
+#footer > a {
+    text-decoration: none;
+    color: #000;
+}
+
+
+
+

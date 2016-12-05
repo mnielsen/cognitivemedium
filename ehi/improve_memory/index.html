@@ -34,21 +34,22 @@
     <img src="assets/Anki_initial_card.png"/>
 
     <p>
-      When shown a card, you pause to consider whether or not you know
-      the answer.  Then you ask Anki to reveal the correct answer, so
-      you can compare with your own response:
+      When shown a card, you pause to consider your answer to the
+      question.  Then you ask Anki to reveal the correct answer
+      &ndash; in this case, 1,367 Watts of power, per square meter
+      &ndash; and compare with your own response:
     </p>
 
     <img src="assets/Anki_initial_answer.png"/>
 
     <p>
-      If you look at the bottom of the card you'll see buttons marked
-      &ldquo;Again&rdquo;, &ldquo;Hard&rdquo;, and so on.  These
-      buttons allow you to grade your response.  If you got the
+      If you look closely at the bottom of the card you'll see buttons
+      marked &ldquo;Again&rdquo;, &ldquo;Hard&rdquo;, and so on.
+      These buttons allow you to grade your answer.  If you got the
       question wrong you tell the program you want to see the card
       &ldquo;Again&rdquo;.  If you got the question right, but
-      struggled, you select &ldquo;Hard&rdqu;.  If you got the
-      question right with relative ease, you select
+      struggled with it, you select &ldquo;Hard&rdquo;.  If you got
+      the question right with relative ease, you select
       &ldquo;Good&rdquo;.  Finally, if you found the question
       trivially easy, you select &ldquo;Easy&rdquo;.
     </p>
@@ -58,8 +59,7 @@
       card again.  If you selected &ldquo;Again&rdquo;, the card goes
       back in the queue of current cards, i.e., cards to be shown as
       soon as possible.  But if you selected any of the other three
-      options, Anki will delay some time before showing you the card
-      again.
+      options, Anki will delay before showing you the card again.
     </p>
 
     <p>
@@ -67,66 +67,59 @@
     </p>
 
     <p>
-      In an ideal world, Anki would try to show you a card just as you
-      are on the verge of forgetting it.  There is a body of research
-      suggesting that being tested on a memory at that point is the
-      optimal time at which to be reminded of the content.  In
-      particular, that's the time at which the memory will be most
-      strengthened by a reminder.  And so you can minimize your total
-      study time by studying at those times.
+      There is research to suggest that a memory is most strengthened
+      if you're tested on it just when you're on the verge of
+      forgetting it.  And so you can minimize your total study time by
+      studying at those times.
     </p>
 
     <p>
-      In practice, Anki doesn't know exactly when is the right time to
-      show a card again.  So it uses some heuristics.  The initial
-      delay is 1 day.  If you select &ldquo;Good&rdquo; when you
-      answer, then that will be increased by a factor 2.5, to 2.5
-      days.  If you select &ldquo;Good&rdquo; again, it'll increase by
-      another factor 2.5, to 6.25 days.  And so on, through
-      ever-increasing delays.  If you select &ldquo;Hard&rdquo;, it
-      tells Anki that the card is a difficult one for you, and so the
-      factor 2.5 &ndash; known as the card's &ldquo;Ease&rdquo;
-      &ndash; is too large, and is adjusted to be smaller.  On the
-      other hand, if you select &ldquo;Easy&rdquo;, the card's ease
-      will be adjusted upward, and the delay between repetitions will
-      get even longer.  And finally, if you select
-      &ldquo;Again&rdquo;, the delay gets reset to the initial value.
+      In practice, Anki does not know exactly when you're on the verge
+      of forgetting something.  So it uses some heuristics.  The
+      initial delay is 1 day.  If you select &ldquo;Good&rdquo; when
+      you answer, that is increased by a factor 2.5, to 2.5 days.  If
+      you select &ldquo;Good&rdquo; again, it increases by another
+      factor 2.5, to 6.25 days.  And so on, through ever-increasing
+      delays.  By contrast, if you select &ldquo;Hard&rdquo;, that
+      tells Anki you find the card difficult, and so the factor 2.5
+      &ndash; known as the card's &ldquo;Ease&rdquo; &ndash; is
+      adjusted to be smaller.  On the other hand, if you select
+      &ldquo;Easy&rdquo;, the card's ease is adjusted upward, and the
+      delay between repetitions gets even longer.
     </p>
 
     <p>
-      Anki is an example of a memory aid.  In this essay, I will
-      review some of the cognitive science behind memory aids.  I will
-      review how these ideas may be incorporated into the design of a
-      wide range of software systems.  Not just flashcard programs,
-      but in fact a wide range of software can incorporate these
-      ideas.  I will also describe how current practices in many cases
-      not only fails to take advantage of these ideas, but actually
-      actively violates the ideas.  And I will sketch out several
-      ideas for integrating the ideas into software systems (and
-      everyday life) more generally.
+      In this essay I discuss how software systems may aid or
+      long-term memory.  I'll review some of the cognitive science
+      behind memory aids &ndash; both what we know, and some of the
+      limits to our understanding.  I'll ask if there are ways we can
+      improve on systems such as Anki, and describe several design
+      ideas for building better systems.  We'll see how these these
+      ideas may be incorporated into the design not just of flashcard
+      programs, but a wide range of software systems.  And we'll see
+      that current practices in many cases not only fail to take
+      advantage of these ideas, but actively violate what we know
+      about how memory works.
     </p>
-    
+
     <h2>Distributed practice</h2>
     
     <p>
       Anki is based around three ideas from cognitive science: the
       spacing effect, the lag effect, and the testing effect.  I'll
-      now briefly describe each of these.  Each is actually quite
-      complicated, and not entirely understood, so this is a
-      caricature, to get our bearings.  I'll have more to say about
-      details later.
+      now give a broad overview of these, for orientation, omitting
+      many details.
     </p>
 
     <P>
-      One of these ideas is called the <em>spacing effect</em>.
-      Suppose you're have 100 flashcards which you're using to study
-      100 words of Russian vocabulary.  In one approach to studying,
-      you review each card once today, taking you 10 minutes, and you
-      review each card again tomorrow, again taking you 10 minutes.
-      Another approach to studying is to review all the cards twice
-      each tomorrow, taking you 20 minutes.  The spacing effect
-      predicts that if you're tested in a week, you'll do much better
-      with the first approach: it's better to <em>space out</em> your
+      Suppose you have 100 cardboard flashcards, which you're using to
+      study 100 words of Russian vocabulary.  One approach to studying
+      is to review each card once today, taking you 15 minutes, and
+      then each card once again tomorrow, again taking you 15 minutes.
+      Another approach is to review all the cards twice each tomorrow,
+      taking you 30 minutes.  The spacing effect predicts that if
+      you're tested in a week, you'll do much better with the first
+      approach.  That is, it's better to <em>space out</em> your
       study, rather than to use <em>massed presentation</em> (i.e.,
       cramming).  What's more, the effect is not small: even simple
       spacing strategies can double or more the speed at which you
@@ -152,7 +145,7 @@
 
     <center>
       <canvas id="forgetting" width="600" height="400"></canvas>
-      <script>
+      <script src="js/memory.js">
       </script>
     </center>
 
@@ -224,6 +217,60 @@
       distributed practice works.
     </p>
 
+    <h2>Anki in practice</h2>
+
+    <p>
+      Let me make a few personal observations, both positive and
+      negative, based on more than a year's regular use of Anki.  At
+      the outset, I will say that I've had a very positive experience
+      with Anki, and I won't try to hide that behind a false
+      appearance of &ldquo;objective&rdquo; neutrality.  On the other
+      hand, I also believe there are both significant drawbacks and
+      significant room for improvement in such systems, and am trying
+      to get to the bottom of that.  The observations that follow are
+      far from complete.  But they establish a few of the most
+      important observations I've made while using Anki.
+    </p>
+
+    <p>
+      <strong>Statistics:</strong> As I write these words, Anki's
+      statistics show that I've studied 341 of the past 381 days.
+      I've averaged 142 reviews and 20 minutes per day, on those days
+      I've studied.  Each review has taken an average of 8 seconds.
+      5,546 Anki cards have <em>matured</em> in that time, i.e., I've
+      reviewed them often enough that Anki considers the knowledge
+      reasonably reliably committed to memory.
+    </p>
+
+    <p>
+      <strong>The certainty effect:</strong> One of the biggest
+      benefits of Anki has been that if I want to remember something,
+      I can now simply <em>choose</em> to do so.  In the past, if I
+      was reading a paper or book, what I remembered was somewhat
+      unreliable.  Of course, if I made a substantial effort I could
+      guarantee recall of particular things.  But in general I was
+      somewhat at the mercy of an unreliable memory.  That's no longer
+      true.
+    </p>
+
+    <p>
+      I've tested this to some considerable extreme.  I memorized
+      perhaps 60 percent the first XXX of a book on the Bash shell.
+      Doing so was easy and relatively quick, though tedious.  The
+      result
+    </p>
+
+    <p>
+      <strong>Anki gives only the beginning of fluency:</strong> I've
+      used Anki to memorize a substantial part .  However, merely
+      memorizing the calls does not make one fluent.  There is 
+    </p>
+
+    Making good cards is an art: There are many mistakes one can make
+    in . And there are also There's actually a special kind of paying
+    attention involved.
+    
+    
     <h2>Better ways of choosing the time to the next practice</h2>
 
     <p>
@@ -266,25 +313,6 @@
     </p>
     
 
-    <p>
-      <strong>The certainty effect:</strong> A big part of the benefit
-      of distributed practice for me is something that I dub the
-      certainty effect.  In the past if I was reading a paper or book,
-      memory was often uncertain.  I'm now able to attain certainty
-      for a large class of things: if I want to remember it, I can
-      simply <em>choose</em> to do so, by entering it into Anki.
-    </p>
-
-    <p>
-      I've tested this to some considerable extreme.  I memorized
-      perhaps 60 percent the first XXX of a book on the Bash shell.
-      Doing so was easy and relatively quick, though tedious.  The
-      result
-    </p>
-
-    <p>
-      <strong>Anki does not give operational fluency:</strong>
-    </p>
     
     Testing effect.  It's just a model.
 
@@ -539,6 +567,8 @@
 
     I wonder if we can do a reverse NMR thing, basically writing
     thoughts?
+
+    Can we incorporate into editors?  Into IDEs?  
     
     <h3>Acknowledgements</h3>
 
