@@ -53,6 +53,12 @@ body {
     font-size: 21px;
 }
 
+li {
+    color: rgba(0, 0, 0, 0.8);
+    margin: 9px 0px 9px 20px;
+    font-size: 21px;
+}
+    
 #container blockquote {
     color: rgba(0, 0, 0, 0.8);
     font-size: 80%;
@@ -64,7 +70,6 @@ body {
     left: 72%;
     right: 2%;
     font-size: small;
-    
 }
 
 .equation {
