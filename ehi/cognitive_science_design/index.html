@@ -1,0 +1,670 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The role of cognitive science in the design of cognitive technologies</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div id="header">
+      <h1>The role of cognitive science in the design of cognitive technologies</h1>
+      <p>
+	<a href="http://michaelnielsen.org">Michael Nielsen</a> &nbsp; / &nbsp;	December 2016
+      </p>
+    </div>
+
+    <div id="container">
+      </span>
+
+      <p>
+	In
+	a <a href="http://cognitivemedium.com/ehi/improve_memory/index.html">recent
+	essay</a> I describe several systems for augmenting a person's
+	long-term memory.  Those systems are inspired by over a
+	century of study of memory by cognitive scientists.  The
+	success of such systems suggests that cognitive science may be
+	a good source of ideas for new cognitive technologies.
+      </p>
+
+      <p>
+	I believe cognitive science likely <em>is</em> a good source
+	of such ideas.  But it's also easy to use cognitive science in
+	ways which are mistaken.  In this essay I describe several
+	seductive-but-dangerous approaches to the cognitive science
+	literature.  The intent isn't to be a curmudgeon.  Rather, in
+	my own research work I've struggled to figure out the right
+	role for cognitive science.  And so this is a personal essay,
+	where I attempt to figure out a healthy approach to the use of
+	cognitive science in the design of new cognitive technologies.
+      </p>
+
+      <h2>&ldquo;Studies have shown&rdquo;</h2>
+      
+      <p>
+	Let me begin with the &ldquo;studies have shown&rdquo; trope.
+	This trope is common across a broad range of
+	&ldquo;science&rdquo;-based writing, not just writing related
+	to cognitive technologies.  I've seen it used, for example, in
+	books and articles on subjects such as: the benefits of more
+	and better sleep; the benefits of exercise for mental
+	functioning; the benefits of regular meditation; and so on.
+	Often, the author proclaims up front that their work is based
+	on <em>Scientific!  Studies!</em>  Every few paragraphs they
+	drop in a handful of references to scientific papers, e.g.:
+	&ldquo;Studies show one hour of extra sleep improves your
+	ability to concentrate [or whatever] in [such-and-such a
+	way]&rdquo;, with citations to 2 or 3 papers appended.
+      </p>
+
+      <p>
+	It's tempting to use this trope in thinking and writing about
+	cognitive technologies.  For instance, I use a form of the
+	trope in two recent essays,
+	on <a href="http://cognitivemedium.com/ehi/improve_medium/index.html">Systems
+	to Improve Long-term Memory</a>,
+	and <a href="http://cognitivemedium.com/tat/index.html">Thought
+	as a Technology</a>.  It's a way of giving readers an
+	entry-point into the scientific literature, and the ideas are
+	stimulating.  But while there are benefits, there are also
+	serious issues with the approach.
+      </p>
+      
+      <p>
+	The basic problem is that <strong>peer-reviewed scientific
+	papers are frequently
+	wrong</strong>*<span class="marginnote">* It's easy to cite
+	studies suggesting that serious errors are common in published
+	research, but in context I don't think you should be convinced
+	by such an argument!  So consider the rest of this essay as
+	conditional on this claim being true.
+
+	<br><br>That said, there is strong evidence for the claim, in
+	many fields.  A classic on the subject is John
+	Ioannidis's <a href="http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124">Why
+	most published research findings are false</a> (2005).
+	Perhaps fittingly, the claim in the title is, I believe, an
+	overstatement. However, if you look at the surrounding
+	literature, including a number of replication studies, the
+	evidence seems pretty clear: serious errors really are common
+	in published research.
+
+	<br><br>The claim also fits well with my anecdotal experience
+	as a scientist.  In Leonard Mlodinow's book &ldquo;Feynman's
+	Rainbow&rdquo; (Warner Books, 2003) Mlodinow tells a story of
+	working on a problem as a young physicist, and finding a
+	conflict between his results and an old paper.  He showed his
+	results to Feynman, who said &ldquo;you might find [the old
+	paper] is bullshit.&rdquo; Mlodinow objected &ldquo;But the
+	theory has been around for fifteen years&rdquo;.  &ldquo;Okay,
+	&rdquo; Feynman replied, &ldquo;So not only is it bullshit, it
+	is old bullshit.&rdquo; I believe most experienced scientists
+	have been on both sides of this anecdote. </span>.  The mere
+	fact that an author can find a paper or 3 to support a
+	conclusion means little.  Maybe 20 studies have been done to
+	understand how extra sleep relates to concentration.  And the
+	author just happens to quote the 3 studies most sympathetic to
+	the conclusion used in their narrative.  But perhaps there are
+	errors in those studies, and the truth lies elsewhere.
+      </p>
+
+      <p>
+	This sounds malicious, but it need not be.  Confirmation bias
+	and motivated reasoning push all of us in this direction.
+	It's human nature to be much more skeptical of papers whose
+	conclusions disagree with what you believe. What's more, even
+	if that isn't true of you, it likely is true of your
+	like-minded friends and colleagues, who naturally share and
+	talk more unskeptically about papers whose conclusions you
+	like.  It's hard to escape that bubble.  The result is that a
+	well-meaning author can easily end up with a distorted view of
+	what is known.  They think they're passing the
+	&ldquo;best&rdquo; 3 references onto their readers; in fact,
+	what they're passing on is an unconscious compromise between
+	the truly best work, and work supporting the conclusions
+	they'd like to be true.  What's more, most of us have trouble
+	really believing deep down that we're guilty of this.  Sure,
+	other people might suffer these biases, but we do not!  (I
+	wish I could say I am an exception, but I really struggle with
+	this.)  This belief itself has been studied, and has a name:
+	the <a href="https://en.wikipedia.org/wiki/Bias_blind_spot">bias
+	blind spot</a> suggests that while people are often pretty
+	good at identifying cognitive biases in others, they're not so
+	good at identifying them in themselves.
+      </p>
+
+      <p>
+	Another part of the problem is that <strong>it's common to
+	  over-generalize from the results of a study</strong>.  Maybe
+	  there are well-conducted studies of the effect of sleep on
+	  concentration.  But maybe the studies only apply to
+	  concentration on a very special kind of task?  Or maybe the
+	  size of the effect depends strongly on the time of day, and
+	  the experiments were done at the time that maximizes the
+	  effect?  Maybe at other times of day, more sleep hinders
+	  concentration, rather than helps?  Or maybe the experiment
+	  only studied people aged 20-50, and outside that range more
+	  sleep doesn't help?  Or maybe the effect is much stronger
+	  for men than for women, and the study happened to be of men?
+	  Or maybe the effect only holds for people with some gene
+	  common in the country where the research was done, but less
+	  common in many other countries?  In each case, a study that
+	  looks to support the sleep-improves-concentration-hypothesis
+	  in fact shows something much narrower.  You can multiply
+	  alternate hypotheses <em>ad infinitum</em>.  And so many
+	  claims of the form &ldquo;Studies have shown
+	  [&hellip;]&rdquo; really mean &ldquo;Studies have shown
+	  [&hellip;] under extremely special circumstances which
+	  don't generalize&rdquo;.
+      </p>
+
+      <p>
+	I'm making this point in the abstract, using a made-up
+	example.  But on one memorable occasion I had a person scream
+	angrily at me after: (a) they made a scientific claim; (b)
+	they backed it up with a few citations; and (c) I expressed
+	mild-but-firm reserve about the generality of the results of
+	those papers, along the lines above.  My screaming
+	interlocutor was using &ldquo;Science&rdquo; as a rhetorical
+	club to hit me with, and could not believe I dared to disagree
+	with capital-S Science.
+      </p>
+
+
+      <p>
+	Being screamed at is unusual.  But it's common for people to
+	over-estimate the strength of evidence a peer-reviewed paper
+	provides.  In much of cognitive science, it's possible to
+	publish papers showing only very weak evidence for a
+	hypothesis.  Many papers don't meet even basic standards:
+	they'll have small sample sizes, no attempt to control for
+	obvious confounding factors, no blinding, and be statistically
+	underpowered.  Of course, there are papers containing strong
+	evidence.  But publication standards in cognitive science are
+	such that <strong>the fact of publication alone does not
+	guarantee strong evidence</strong>.  This is true even in
+	prestigious journals.  The <em>only way</em> to be sure a
+	paper provides strong evidence is to dig into the details of
+	the methodology, analysis, and data, with a careful and
+	skeptical eye.  More often, strong evidence emerges from a
+	large web of papers.  Individually, each paper provides only
+	weak evidence.  But when you understand how the entire web of
+	papers relate to one another, including apparent
+	inconsistencies and discrepancies, a strong case can emerge.
+      </p>
+
+      <p>
+	There's an underlying story here: our understanding of the
+	human brain and of cognition is in its infancy.  The brain is
+	astoundingly complex, and the attempt to understand it is one
+	of the greatest and most difficult endeavors ever embarked
+	upon by scientists.  It's fair to say that we're still in the
+	early days of cognitive science*<span class="marginnote">* I
+	am using the term &ldquo;cognitive science&rdquo; broadly, to
+	include historical work on psychology and neuroscience, not
+	just work since the cognitive revolution of the 1950s.</span>.
+	Journals aren't publishing weak studies because of a failure
+	of policy.  Rather, in the early days of any science it's
+	common for people to scramble around, looking for purchase
+	somewhere, and to make a lot of false starts.  As better
+	theories are developed, standards of evidence gradually
+	ratchet up: better theory actually enables better experiments
+	and higher standards.  But that process can't be forced or
+	hurried.
+      </p>
+	
+      <p>
+	This situation affects even very robust results in cognitive
+	science.  As an example, consider the systems to improve
+	long-term memory that I mentioned in the introduction.  Those
+	systems take advantage of an extremely well-studied phenomenon
+	in cognitive science, the
+	<em>spaced repetition effect</em>.  This is the observation
+	that by using a well spaced-out study schedule, we can reduce
+	the amount of time required to commit something to long-term
+	memory.  Thousands of studies of spaced repetition and related
+	phenomena have been done.  The effect sizes are large and
+	apparently robust.  It seems like a clearcut case where we can
+	base a technology on knowledge from cognitive science.
+      </p>
+
+      <p>
+	And yet, consider how poorly we understand long-term memory.
+	We don't understand in detail how memories are formed &ndash;
+	what exact changes occur in the brain, what triggers them, and
+	why. It's easy to miss this point when reading textbooks,
+	which deluge you with facts about memory, but sometimes fail
+	to emphasize the enormous gaps in our understanding, and lack
+	of a good overall theory.  Similarly, we don't understand in
+	detail what causes memories to fade; nor do we understand in
+	detail why some people have excellent memories, and other
+	people do not.  Our understanding of memory is analogous to
+	folk healers' understanding of medicine: we know many
+	interesting individual facts, but there's an even larger
+	number of facts we don't know, and we don't have anything like
+	a good, comprehensive theory.
+      </p>
+
+      <p>
+	Lacking a good theory of memory, it's entirely possible there
+	are crucial gaps in our understanding of spaced repetition.
+	To illustrate this point in a small way, consider a 2009 study
+	of the spacing effect*<span class="marginnote">* Thomas
+	C. Toppino, Melodie D. Fearnow-Kenney, Marissa H. Kiepert, and
+	Amanda C. Teremula, <a href="assets/Toppino2009.pdf">The
+	spacing effect in intentional and incidental free recall by
+	children and adults: Limits on the automaticity hypothesis</a>
+	(2009).</span>.  This paper studied the spacing effect when
+	learning is incidental rather than intentional, i.e., occurs
+	when the learning occurs as a byproduct of some other task.
+	The paper found examples where young children do show a
+	spacing effect when material is learned intentionally, but not
+	when the learning was incidental.  Remarkably, when the same
+	experiment is done with young adults, the spacing effect is
+	seen for both intentional and incidental learning.  Why is
+	this?  It is, of course, possible that these results will
+	disappear with more careful study.  It's also possible that
+	the result is genuine.  It's tempting to shrug our shoulders
+	and say &ldquo;well, it's not a big deal if spaced repetition
+	doesn't work for incidental learning in young children&rdquo;.
+	But such surprises may be the tip of a much larger iceberg, a
+	sign that we have some deep misunderstanding of the spacing
+	effect, a misunderstanding that perhaps has implications for
+	the design of technology.
+      </p>
+
+      <p>
+	Okay, that's why the &ldquo;studies have shown&rdquo; trope is
+	a problematic one to use in thinking and writing about
+	cognitive technology: studies are often wrong, or provide no
+	more than weak evidence.  Even when that's not the case, it
+	can be easy to overgeneralize from a few studies.  Underlying
+	all this, cognitive science is in its infancy, and without a
+	well-developed theory of cognition it's easy for surprising
+	effects to arise even in seemingly well-studied corners of the
+	mind.
+      </p>
+
+      <h2>Academic HCI</h2>
+      
+      <p>
+	Is there a better way to incorporate cognitive science into
+	the development of cognitive technologies?  One of the
+	academic fields most concerned with cognitive technologies is
+	the field of human-computer interaction (HCI).  HCI has
+	gradually developed an approach that goes deeper than
+	&ldquo;studies have shown&rdquo;, developing a methodology
+	based on user studies to assess how new technologies impact
+	users' ability to perform particular tasks.  These user
+	studies are similar in style to many of the studies done in
+	cognitive science, and in this sense HCI may be viewed as an
+	extension of cognitive science.
+      </p>
+
+      <p>
+	As an example, consider word processors.  Beginning in the
+	late 1970s, researchers in HCI and related fields have tried
+	to assess the impact word processors have on writing, by
+	comparing writing samples produced using word processors to
+	handwritten samples.  One early study was a 1981 paper by
+	Gould*<span class="marginnote">* John
+	D. Gould, <a href="http://hfs.sagepub.com/content/23/5/593.abstract">Composing
+	Letters with Computer-Based Text Editors</a> (1981).</span>.
+	Gould focused on users of a particular line editor (a type of
+	word processor), and found that users were slower to compose
+	with the line editor than with handwriting, and produced
+	output of no higher quality.  This and later studies were all
+	based on the development of techniques to measure key metrics,
+	such as the speed or fluency of writing, the overall quality
+	of writing, the style, and so on.  In 1984, Card, Robert and
+	Keenan published a similar study*<span class="marginnote"
+	id="Card">* S. K. Card, J. M. Robert, and L. N. Keenan,
+	On-line composition of text, appeared in <em>Interact
+	'84</em>.  I have not been able to obtain a copy of the
+	article, and have relied on the account in Ronald T. Kellogg's
+	book &ldquo;The Psychology of Writing&rdquo; (Oxford
+	University Press, 1994).</span>, this time using a full-screen
+	text editor rather than a line editor.  The results gave a
+	better showing for word processors, but there was still no
+	advantage over handwriting in speed or quality of composition.
+	Later, in 1989, Haas did a study*<span class="marginnote"
+	id="Haas">* Christina Haas, <a href="assets/Haas1989.pdf">Does
+	the Medium Make a Difference? Two Studies of Writing With Pen
+	and Paper and With Computers</a>, appeared in the
+	journal <em>Human-Computer Interaction</em> (1989).</span>
+	suggesting that the size of the screen made a significant
+	difference to performance (still no advantage for word
+	processors over handwriting, though, even with a large
+	screen!)  And so on: studies continue through today,
+	investigating these and related questions in ever more depth.
+	How does the experience or training of users impact results?
+	What about their broader background?  It's possible to do
+	detailed studies of almost every detail of the interface.  How
+	much does use of a mouse matter, versus keyboard-only?  What
+	about the style of keyboard?  And so on.
+      </p>
+
+      <p>
+	This is valuable work.  As I mentioned above, it's an
+	extension of an approach used by many cognitive scientists:
+	careful study of how performance metrics vary, under a variety
+	of conditions.  But it is also largely orthogonal to the
+	process of imaginative design that went into modern word
+	processors, through the work of people such as Douglas
+	Engelbart, Ted Nelson*<span class="marginnote">* I wouldn't be
+	entirely surprised if Nelson entirely disavowed involvement in
+	modern word processors; if so, such a disavowal would
+	illustrate my larger point.  See, for example,
+	Nelson's <a href="https://en.wikipedia.org/wiki/Literary_Machines">Literary
+	Machines</a> (1980).</span>, Larry Tesler, Charles Simonyi,
+	and many others.  That work seems to have arisen out of a
+	conviction &ndash; still true, I believe &ndash; that <em>we
+	don't yet know what it is to compose text at a computer</em>.
+	And that the right response to this conviction is to
+	experiment with new approaches to composition.  Those
+	approaches did not, for the most part, come out of careful
+	studies of how writing tools affected
+	users*<span class="marginnote">* They were, however, certainly
+	influenced by such studies.  See, for example, Larry Tesler's
+	remarks in <a href="assets/Tesler2012.pdf">A Personal History
+	of Modeless Text Editing and Cut/Copy-Paste</a>
+	(2012).</span>.  Rather, they came out of a wilder and more
+	exploratory process of imaginative design.
+      </p>
+
+      <p>
+	More generally, consider all the new representations and
+	operations that have been conjured for us by the great
+	designers of cognitive technology.  Think of the invention of
+	writing, of the alphabet, of language itself, of maps, of
+	numerals and mathematical notation, of screen cursors, of the
+	search box, of hyperlinks, and of windowing systems.  All
+	these, and so many more, came out of a process of imaginative
+	design.  That process may build upon and draw inspiration from
+	detailed studies of users.  But its fundamental roots lie in a
+	very different set of norms and values.
+      </p>
+
+      <p>
+	In practice, academic HCI involves both imaginative design and
+	user studies.  However, the imaginative design is often
+	restrained, sometimes even apologetic, especially if not
+	accompanied by detailed user studies. By contrast, many
+	pioneers of computer interfaces &ndash; people such as
+	Engelbart and Nelson &ndash; were extraordinarily imaginative
+	designers.  It is difficult to imagine Nelson's exuberant work
+	being accepted into leading HCI venues
+	today*<span class="marginnote">* This image is a fair sample
+	of much of Nelson's
+	book <a href="https://en.wikipedia.org/wiki/Computer_Lib/Dream_Machines">Computer
+	Lib/Dream Machines</a> (1987, 2nd edition).</span>:
+      </p>
+
+      <center>
+      <img src="assets/Nelson.png">
+      </center>
+      
+      <p>
+	Could such restraint somehow be lifted?  Maybe HCI could
+	encourage imaginative designers to explore boldly, inventing
+	radical new ideas?  While that may be possible in principle,
+	in practice I think it's extremely difficult.  Such works fits
+	awkwardly within the usual norms of academia: to focus on what
+	is measurable; to focus more on understanding how systems work
+	than on inventing radical new types of system; a discomfort
+	with imaginative design; a focus on papers over code and
+	prototypes.  Imaginative design is based on a very different
+	set of norms. And in any community it is always difficult to
+	maintain two sets of norms that are to some extent at cross
+	purposes.  It's simply too much to ask any one person or even
+	one community to fully reflect both sets of norms.
+      </p>
+
+      <p>
+	These difficulties and their inhibitory effect have been well
+	described by the designer and researcher Crista
+	Lopes*<span class="marginnote">* Crista
+	Lopes, <a href="http://tagide.com/blog/academia/research-in-programming-languages/">Research
+	in Programming Languages</a> (2012).</span> in the context of
+	programming language design:
+      </p>
+
+      <blockquote>
+	I am yet to see the first study that <em>convincingly
+	demonstrates</em> that a programming language, or a certain
+	feature of programming languages, makes software development a
+	more productive process&hellip; <br><br>
+
+	This is the main reason why I stopped doing research in
+	Programming Languages in any official capacity&hellip; I
+	realized at some point that I had crossed the line to saying
+	things for which I had very little evidence. I was
+	simply&hellip; evangelizing, i.e. convincing others of an idea
+	that I believed strongly. At some point I felt I needed
+	empirical evidence for what I was saying. But providing
+	evidence for the human productivity argument is damn hard! My
+	scientist self cannot lead doctoral students into that trap, a
+	trap that I know too well&hellip; <br><br>
+
+	Is the high bar of <em>scientific evidence</em> killing
+	innovation in programming languages? Is this what's causing
+	the asymptotic behavior? It certainly is what's keeping me
+	away from that topic, but I'm just a grain of sand. What about
+	the work of many who propose intriguing new design ideas that
+	are then shot down in peer-review committees because of the
+	lack of evidence?&hellip; <br><br>
+
+	So, we're back to whether design innovation <em>per se</em> is
+	an admissible first-order goal of doctoral work or not. And
+	now that question is joined by a counterpart: is the provision
+	of scientific evidence really required for doctoral work in
+	programming languages?
+      </blockquote>
+	
+      <p>
+	From the other side, these difficulties are illustrated in
+	microcosm by the memory systems based on spaced repetition.
+	Arguably the two most successful systems
+	are <a href="https://en.wikipedia.org/wiki/SuperMemo">SuperMemo</a>
+	and <a href="https://en.wikipedia.org/wiki/Anki_(software)">Anki</a>.
+	In both cases, the designer did not have a particularly strong
+	background in HCI or cognitive science.  This lack of
+	background perhaps helped more than it hindered.  When faced
+	with fundamental questions such as &ldquo;how should we space
+	presentation of material?&rdquo; and &ldquo;what's the best
+	way to present material?&rdquo;, they didn't do studies
+	uncovering detailed, well-grounded answers to these scientific
+	questions.  Rather, they made practical, pretty-good choices,
+	enough to build a system.  In some sense the way they made
+	those decisions are &ldquo;wrong&rdquo; by many of the norms
+	of the HCI and cognitive science communities.  But such
+	informal, partially justified choices are exactly what is
+	needed if your first priority is to build an interesting
+	system.
+      </p>
+
+      <p>
+	In the introduction, I said that I'd identify
+	&ldquo;mistaken&rdquo; ways of approaching the design of new
+	cognitive technologies.  Now, I certainly don't think HCI user
+	studies are mistaken.  They can provide valuable insight.  But
+	if the goal is to invent interesting new cognitive
+	technologies, those studies should not be the central focus of
+	the process.  Instead, the central focus must be on
+	imagination-driven design.
+      </p>
+      
+      <h2>Imagination-driven design</h2>
+      
+      <p>
+	Much of my research interest in cognitive technologies is in
+	developing fundamental new representations and operations,
+	what I've called*<span class="marginnote">* Michael
+	Nielsen, <a href="http://cognitivemedium.com/tat/index.html">Thought
+	as a Technology</a> (2016).</span> <em>new elements of
+	cognition</em>.  That is, it's about developing new elements
+	which can be incorporated into our thinking:
+      </p>
+
+      <center>
+      <img src="assets/possible_vs_extant_elements.png">
+      </center>
+
+      <p>
+	In my opinion, the most fruitful approach to this is what we
+	might call imagination-centered design.  This means pushing
+	the limits of our representations and operations by any means
+	possible.  The cognitive science literature (and, indeed,
+	everything else) should be viewed as a source of stimulating
+	ideas. But it shouldn't constrain exploration, nor should we
+	be bound by its methodology.  The primary measure of success
+	in this approach is finding striking new representations and
+	operations: it's expanding the bubble of &ldquo;extant
+	elements of cognition&rdquo; shown above.  If this can be
+	done, even if it's inspired by rather hokey cognitive science,
+	or has no basis in cognitive science at all, the effort is a
+	success. In other words, imagination-centered design
+	is <em>not</em> the same as cognitive science, should not be
+	viewed as an extension of such, and should not be judged by
+	the same standards.  Rather, we should put design and bold
+	exploration first.  We should acknowledge that when building
+	systems we oftentimes need to make choices, even when the
+	underlying basis is poorly understood.  And sometimes it's
+	worth just trying something wild.
+      </p>
+
+      <p>
+	In the past, I've often felt as though if I'm going to draw on
+	the cognitive science literature, then I should drill down
+	very deeply into it, understand all details of the
+	experiments, understand all the related work, and so on.  I've
+	felt guilty when I don't do this.  What I've learnt from
+	writing this essay is not to feel guilty.  It's absolutely
+	fine to flit across the cognitive science literature, reading
+	or skimming a large number of papers, looking for inspiration
+	for ideas any which way you can.  Of course, it's also fine to
+	read deeply into the literature, but one absolutely should not
+	feel beholden to read in depth.  The primary thing, the
+	measure of success, is whether one has found striking new
+	representations and operations.  If those new representations
+	and operations are of interest, then it does not matter how
+	one arrived at them; they are of value in their own right, as
+	a way of exploring the as-yet largely unexplored space of
+	cognitive technologies.
+      </p>
+
+      <p>
+	You might object: won't this sometimes lead to designs whose
+	basis in cognitive science is wrong?  Yes, it will.  However,
+	with a caveat, that's okay.  The reason it's okay is that if
+	the primary criterion for judgment is whether we've found
+	striking new representations and operations, then it doesn't
+	matter whether some of the reasoning along the way was
+	erroneous.  Research is filled with examples where interesting
+	discoveries were found through an error-filled process.
+      </p>
+
+      <p>
+	The caveat, of course, is not to overstate the basis for one's
+	conclusions.  For example, some of the
+	popular <a href="https://en.wikipedia.org/wiki/Cognitive_training">brain
+	games</a> claim to be based on scientific studies, and attempt
+	to derive credibility from those studies.  In the cases I'm
+	familiar with these claims are overstated.  A better approach
+	is to present the claims as inspiration, but not as a solid
+	justification, except in the unusual case where solid
+	justification really is available.  (In commercial contexts
+	this may conflict with a company's marketing strategy; so much
+	the worse for their marketing strategy.)  Usually, a phrasing
+	such as &ldquo;an intriguing study suggests&rdquo; is more
+	useful and accurate than &ldquo;studies in cognitive science
+	show&rdquo;.  It seems a small difference from &ldquo;studies
+	have shown&rdquo;, but I believe the difference is important.
+	The real value of the work is in finding stimulating new
+	representations, expanding the space of extant cognitive
+	technologies.
+      </p>
+
+      <p>
+	<strong>What follows is an optional paragraph whose value I am not yet decided on.
+	</strong>
+      </p>
+      
+      <p>
+        The approach I've advocated here will, I am confident, annoy
+	some people.  I've met people who loudly and self-righteously
+	proclaim an adherence to evidence-based behaviors.  A few
+	months ago, the <em>New York Times</em> published
+	an <a href="http://www.nytimes.com/2016/08/03/health/flossing-teeth-cavities.html">
+	article</a> pointing out that the evidence for flossing
+	improving dental health is slim.  On Twitter I immediately saw
+	many people proclaim that they would stop flossing.  It sounds
+	reasonable: who could possibly argue against using evidence?
+	Until you realize that the available evidence is often
+	terrible.  And so the right solution isn't for everyone to
+	pull back and only do what is supported by the evidence.
+	Rather, it's for some people to keep working on assessing the
+	evidence.  And for others to stay out ahead of them, sometimes
+	by decades, building imaginative systems.  Both approaches can
+	and should co-exist.
+      </p>
+
+      <h3>Acknowledgments</h3>
+
+      <p>
+      	Thanks for Dave Albert and Omar Rizwan for helpful
+	discussions.  Thanks to Julia Galef for telling me of the bias
+	blind spot, and Katherine Ye for pointing out Crista Lopes's
+	essay.  Supported by <a href="http://ycr.org">Y Combinator
+	Research</a>, extending work begun at
+	the <a href="http://recurse.com">Recurse Center</a>.
+      </p>
+
+      <h3>Citation</h3>
+
+      <p>
+	In academic work, please cite this essay as: <em>Michael
+	  Nielsen, &ldquo;The role of cognitive science in the design
+	  of cognitive technologies&rdquo;, available
+	  at <a href="http://cognitivemedium.com/tat/design.html">http://cognitivemedium.com/ehi/cognitive_science_design/index.html</a>
+	  (2016)</em>.
+      </p>
+
+      <p>
+	In non-academic work, I'd appreciate shout outs, too.  As a
+	researcher, my work matters insofar as it shifts other
+	people's thinking.  Evidence that that's happening helps me
+	justify my work.  Thanks!
+      </p>
+
+    </div>    
+
+    <div id="footer">
+      This work is licensed under a <a rel="license"
+	 href="http://creativecommons.org/licenses/by/4.0/">Creative
+	 Commons Attribution 4.0 International License</a>.  This
+	 means you're free to copy, share, and build on the work,
+	 provided you attribute it appropriately.  Please click on the
+	 following license link for details: <a rel="license"
+	 href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative
+	 Commons License" style="border-width: 0; height: 21px;"
+	 src="https://i.creativecommons.org/l/by/4.0/88x31.png"/></a>
+    </div>
+
+      <!-- Script to ensure that marginal notes don't get squished
+	   together. -->
+      <script src="margins.js" type="text/javascript"></script>
+
+      <script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-44208967-4', 'auto');
+	ga('send', 'pageview');
+      </script>
+
+      
+  </body>
+</html>  
