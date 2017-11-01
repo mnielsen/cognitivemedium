@@ -1,0 +1,27 @@
+<footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      
+      <div class="footer-col footer-col-1">
+        <ul class="social-media-list">
+	  
+          {% if site.twitter_username %}
+          <li>
+            {% include icon-twitter.html username=site.twitter_username %}
+          </li>
+          {% endif %}
+
+	  <li>Subscribe <a href="{{ "/feed.xml" | relative_url }}">via
+	      RSS</a>
+	  </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
