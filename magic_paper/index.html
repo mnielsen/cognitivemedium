@@ -19,6 +19,11 @@
       }
       h1 {
         font: 48px Helvetica;
+        opacity: 0.8;
+      }
+      h3 {
+        font: 32px Helvetica;
+        opacity: 0.8;
       }
       p {
         opacity: 0.8;
@@ -130,7 +135,7 @@
     </p>
 
     <p>
-      Of course, it's too ambitious for a quickly-built prototype
+      Of course, it's too ambitious for such a quickly-built prototype
       medium to be useable across all of mathematics.  And so I
       decided to narrow the question, and ask whether such a medium
       could be used to explore at least <em>one</em> non-trivial
@@ -148,14 +153,14 @@
 
     <p>
       In fact, even this is too demanding.  The idea for a proof
-      presented above isn't really discovered in the medium.  It's a
-      proof taken from my book on neural
+      presented above wasn't actually discovered in this medium.  It's
+      a proof taken from my book on neural
       networks*<span class="marginnote">* Michael A. Nielsen,
 	<a href="http://neuralnetworksanddeeplearning.com/chap4.html">Neural
 	  Networks and Deep Learning (Chapter 4)</a>, Determination
 	Press (2015).
       </span>. Despite this, I believe this context &ndash; explaining
-      the idea underlying the proof of a serious mathematical result
+      the idea underlying the proof of a genuine mathematical result
       &ndash; is a good one for helping understand what is required
       for a general-purpose exploratory mathematical medium.
     </p>
@@ -164,41 +169,40 @@
       Note that while the video of <em>Magic Paper</em> perhaps makes
       it appear to be explanatory or educational, those are not its
       goals. It is intended primarily to be a medium to think and
-      explore in, and only secondarily to explain or to educate in. Of
-      course, these goals are sometimes congruent, but they are also
+      explore in, and only secondarily to explain or to educate
+      in. While these goals are sometimes congruent, they are also
       often in tension.
     </p>
 
     <p>
       As an example of this tension, explanatory media are often
       highly polished, presenting a finished product from which
-      distracting elements have been eliminated.  By contrast, genuine
+      distracting elements have been eliminated.  By contrast,
       exploration involves distractions, wrong paths, and dead
-      ends. One sees this in myriad small ways in the earlier video:
-      the constant readjustment of the position and size of the glyphs
-      in the video; the various unnecessary weight and bias parameters
+      ends. One sees this in myriad small ways in the video: the
+      frequent readjustment of the position and size of the glyphs in
+      the video; the various unnecessary weight and bias parameters
       that are sometimes shown; and so on.  In a polished presentation
-      these would have been eliminated or dealt with more smoothly,
-      showing just what the viewer needs at any given moment.  But
-      such things are inevitable in
+      these would have been eliminated, showing just what the viewer
+      needs at any given moment.  But such things are inevitable in
       exploration.
     </p>
 
     <p>
       Another example of the tension between education and exploration
       is the programming language Logo.  Logo is often touted as an
-      example of discovery-based education, and it's true that in many
-      respects it's an exploratory medium for mathematics.  However,
-      while Logo has had some success in helping children understand
-      ideas about differential geometry, differential geometers do
-      not, as far as I'm aware, use it as a medium for research.
-      That's problematic. While it's common to partition education and
-      real practice, it often results in busy work on badly motivated
-      problems.  An interesting project is to span these worlds,
-      creating a single environment which can be used for both
-      education and research.  I am optimistic this is possible; after
-      all, beginning chess players use the same board and the same
-      moves as the world champion.
+      example of discovery-based learning, and in many respects it's a
+      good exploratory medium for mathematics.  However, while Logo
+      has had some success in helping children understand ideas about
+      differential geometry, differential geometers do not, as far as
+      I'm aware, use it as a medium for research.  That's a
+      problem. When education and real practice are separated, it
+      often results in busy work on poorly-motivated
+      &ldquo;educational&rdquo; problems.  An interesting project
+      would be to create a single environment which can be used for
+      both education and research.  I am optimistic this is possible;
+      after all, beginning chess players use the same board and the
+      same moves as the world champion.
     </p>
 
     <h3>Can we reify deep ideas about mathematics inside the <em>Magic
@@ -242,23 +246,23 @@
       <em>ChalkTalk</em>-like media seem promising for reifying such
       principles. Unfortunately, as far as I'm aware there are no
       general results about neural networks as powerful as
-      conservation of energy in classical mechanics.  However, as a
-      step in this direction, the ability to directly see the
-      relationship between the parameters of a network and the output
-      of various neurons certainly does help in understanding the
-      behaviour of the network.  It's interesting to think about
-      extensions incorporating the deeper ideas known about neural
-      networks, such as gradient descent, or regularization, or
-      visualizing parts of the network*<span class="marginnote">* See,
-      e.g., Yosinksi, Clune, Nguyen, Fuchs, and Lipson,
+      conservation of energy.  However, as a step in this direction,
+      directly seeing the relationship between the parameters of a
+      network and the output of various neurons does help us
+      understand the behaviour of the network.  Further work could
+      incorporate deeper ideas about neural networks, such as learning
+      by gradient descent, or regularization, or ways of visualizing
+      the network*<span class="marginnote">* A nice recent example is
+      the paper by Jason Yosinksi, Jeff Clune, Anh Nguyen, Thomas
+      Fuchs, and Hod Lipson,
       on <a href="assets/Yosinski2015a.pdf">Understanding Neural
       Networks Through Deep Visualization</a> ICML (2015).</span>.
-      It'd also be interesting to explore the use of such an interface
-      in a context where more deep principles are available &ndash;
-      perhaps using <em>Magic Paper</em> to explore (say) chaotic
-      dynamical systems, where ideas such as conservation of energy,
+      It'd also be interesting to develop such an interface in a
+      context where more deep principles are available &ndash; perhaps
+      using <em>Magic Paper</em> to explore (say) chaotic dynamical
+      systems, using ideas such as conservation of energy,
       conservation of phase space volume, Lyapunov exponents, and the
-      KAM theorem are all available.
+      KAM theorem.
     </p>
 
     <h3>Why not just key commands?</h3>
@@ -272,44 +276,49 @@
 
     <p>
       This question has bothered me a lot, ever since first seeing
-      Perlin demonstrate <em>ChalkTalk</em>.  Even as a viewer, I
-      found it far more satisfying to see him draw the neuron than to
-      just hit a key and have it appear. And this effect was even
-      stronger as a user of <em>Magic Paper</em>.
+      Perlin demonstrate <em>ChalkTalk</em>.  Even as an audience
+      member, I found it far more satisfying to see him draw the
+      neuron than to just hit a key and have it appear. And this
+      effect was even stronger as a user of <em>Magic Paper</em>.
     </p>
 
     <p>
-      I don't know why it's more satisyfing to do this.  I suspect
-      it's because the act of drawing activates associations inside
-      our brain that wouldn't have been activated nearly so strongly
-      by issuing a key command.  In this sense, the act of drawing is
-      far more meaningful &ndash; and meaning-inducing &ndash; than
-      hitting a key.  It's a little like the reasons we don't name a
-      variable meant to represent someone's name as <em>jnwhg</em>;
-      it's more meaningful to use <em>name</em>.
+      I don't have a satisfactory understanding of why it's satisfying
+      to do this.  I suspect it's because the act of drawing activates
+      associations inside my brain that wouldn't have been activated
+      so strongly by issuing a key command.  In this sense, the act of
+      drawing is far more meaningful &ndash; and meaning-inducing
+      &ndash; than hitting a key.  It's a little like the reasons we
+      don't name a variable meant to represent someone's name
+      as <em>jnwhg</em>; it's more meaningful to use <em>name</em>.
+      Or the reasons it's better to use a map of a coastline to
+      navigate, rather than a log of latitudes and longitudes for
+      points on the coast.
     </p>
 
     <p>
-      Intellectually, this explanation seems to me vague and
-      incomplete.  And yet my lived experience is that this is a
-      strong effect. Something similar is true of physical activities,
-      such as tennis or dance: there is an enormous difference between
-      a symbolic representation &ndash; say, reading about tennis
-      &ndash; versus actually doing it.  Now, for the most part, we
-      tend to think of these activities as a special class of
-      &ldquo;physical&rdquo; activities, different from
+      Unfortunately, such explanations seem to me suggestive, but
+      vague and incomplete.  And yet my lived experience is that this
+      is a strong effect. Something similar is true of physical
+      activities, such as tennis or dance: there is an enormous
+      difference between a symbolic representation &ndash; say,
+      reading about tennis &ndash; versus actually doing it.  Now, for
+      the most part, we tend to think of these activities as a special
+      class of &ldquo;physical&rdquo; activities, different from
       &ldquo;mental&rdquo; activities such as mathematics.  Yet I'm
-      not so sure the distinction is really all that strong.
+      not sure the distinction is all that strong.
     </p>
 
     <p>
-      Unfortunately, I don't know how to test this.  It's a general
+      I don't know how to test these assertions.  It's a general
       problem faced by people interested in embodied cognition.
-      Advocates of embodied cognition often make very strong claims
-      about how important is.  As far as I can see, the evidence they
-      have for those claims is rather weak.  And yet I believe that
-      while the specific claims may be wrong, there is some very
-      strong and important underlying effect.
+      Advocates of embodied cognition often make strong claims about
+      its importance.  As far as I can see, the evidence they have for
+      those claims is rather weak.  And yet while the specific claims
+      may be wrong, I believe there is some strong and important
+      underlying effect.  It really does greatly help my thinking to
+      sketch the glyphs in <em>Magic Paper</em>. I just don't entirely
+      understand why.
     </p>
 
     <h3>Extensions: abstracting glyphs, re-parameterization, glyph
@@ -317,15 +326,14 @@
 
     <p>
       Here are three extensions that could easily be added
-      to <em>Magic Paper</em>.  Prototype-level versions could be
-      implemented with perhaps 40 to 50 hours of additional work.
+      to <em>Magic Paper</em>, with 40 to 50 hours of additional work.
     </p>
 
     <p>
       The first idea is a kind of abstraction: it should be possible
       to &ldquo;lasso&rdquo; several elements, and then abstract them
       away.  For instance, we could lasso the two-neuron gadget used
-      to build tower functions, and to turn it into a single re-usable
+      to build tower functions, and turn it into a single re-usable
       glyph, with two inputs and two outputs.  That abstracted glyph
       could then be duplicated, moved, its parameters edited, and so
       on, just as any other glyph.  But it would also be possible to
@@ -337,20 +345,19 @@
       Ideally, it'd be possible to re-parameterize the abstracted
       glyph.  Rather than having two biases, two input weights, and
       two output weights, the abstracted glyph should have just three
-      parameters, as needed to represent a tower function: a height, a
+      parameters, to represent a tower function: a height, a
       starting <em>x</em> value, and a finishing <em>x</em> value.
       These three parameters would then determine the biases and
-      weights of the underlying elements of the underlying elements.
-      This could be implemented easily with a simple expression
-      parser.
+      weights of the underlying elements.  This could be implemented
+      easily with a simple expression parser.
     </p>
 
     <p>
-      On top of this, it'd be good to integrate a simple editor
-      enabling the addition of extra glyphs to the visual language
-      used by <em>Magic Paper</em>.  Amongst other things, such an
-      editor could be used to add unique visual representations for
-      the abstracted glyphs.
+      On top of this, it'd be good to integrate an editor enabling the
+      addition of extra glyphs to the visual language used
+      by <em>Magic Paper</em>.  Amongst other things, such an editor
+      could be used to add unique visual representations for the
+      abstracted glyphs.
     </p>
 
 
@@ -361,9 +368,9 @@
       paper-and-pen storyboards and a text-based script for my video.
       As I developed the storyboards and script I also began to
       develop the system.  Very quickly, the system was powerful
-      enough that I could do basic sketches in it.  Once that point
-      was reached, it was more stimulating (and easier) to work within
-      the new medium, and to abandon the storyboards and script.
+      enough that I could do basic sketches.  Once that point was
+      reached, it was more stimulating (and easier) to work within the
+      new medium, and to abandon the storyboards and script.
     </p>
 
     <p>
@@ -405,14 +412,8 @@
     </center>
 
     <p>
-      Part of the value is that it makes more information visible,
-      helping the viewer understand and put together the behaviour of
-      different parts of the network.
-    </p>
-
-    <p>
-      Another benefit is object persistence.  When possible, it's
-      often useful to reuse or repurpose existing objects, since
+      A big benefit of this is object persistence.  When possible,
+      it's often useful to reuse or repurpose existing objects, since
       viewers have already built strong mental models of their
       behaviour. This kind of dynamic reuse is harder to achieve in
       static media. Perhaps for that reason I did not anticipate it in
@@ -420,11 +421,9 @@
     </p>
 
     <p>
-      As an example illustrating the difficulty of such reuse, I
-      mentioned above that this proof is based on an earlier
-      presentation in an online book about neural networks and deep
-      learning.  That presentation consisted of text interspersed with
-      interactive elements, e.g.:
+      By contrast, my earlier description of this proof in an online
+      book consisted of text interspersed with interactive elements,
+      e.g.:
     </p>
 
     <img src="assets/nnadl_4_pt1.png" width="50%"><img src="assets/nnadl_4_pt2.png" width="50%">
@@ -445,131 +444,36 @@
       approach I was comfortable with.
     </p>
 
-
-        <h3>What if there are no deep principles to reify?</h3>
+    <h3>Why exploration of new media forms is often not viewed as
+      &ldquo;serious&rdquo; work</h3>
 
     <p>
-      I've advocated reifying deep principles inside the interface.
-      This works well when it's something like the principle of
-      conservation of energy, which is extremely precise, and also
-      extremely powerful, essentially determining everything about
-      one-dimensional motion.
+      Within science and mathematics the exploration of new media
+      forms is often not treated as serious work.  This is related to
+      my earlier observation, which is that such work is often viewed
+      as primarily educational.  Unfortunately, within the sciences
+      education is often viewed as second-rate work.  As George
+      Bernard Shaw's famous line has it: &ldquo;He who can, does. He
+      who cannot, teaches.&rdquo; This is, of course, ridiculous
+      &ndash; I am reporting it as a common position, not agreeing
+      with it!  But I believe such sentiments underly the reasons why
+      work experimenting with new media is often considered as
+      &ldquo;merely&rdquo; unimportant educational work.
     </p>
 
     <p>
-      Unfortunately, in many areas of human thought, the principles
-      available are often vague, poorly defined, and not terribly
-      powerful.  Consider, for example, the notion, widely used by
-      writers, that one should &ldquo;show, not tell&rdquo;.  It's
-      much less well defined than the principle of conservation of
-      energy; worse, there are times when .  Of course, one has rules
-      of thumb for when that is, too.
+      In fact, I believe this connection to education and explanation
+      is a major reason exploration with new media is so important.
+      The new medium forces us rethink the most fundamental parts of
+      science and mathematics.  Much advanced research work concerns
+      esoteric subjects.  But people working on new media forms have
+      the opportunity to rethink how absolutely fundamental concepts
+      such as number, equality, and so on.  They are rethinking what
+      mathematics and language is.  I believe these experiments will
+      eventually affect and perhaps transform the way all research is
+      done.  But it will take a huge effort, since this is not an
+      individual-sized problem.  It's a civilization-sized problem.
     </p>
-
-    <p>
-      <b>Why exploration of new media forms is often not viewed as
-      &ldquo;serious&rdquo; work:</b> It's a curiosity that within
-      science and mathematics this kind of work is often not treated
-      as especially serious work.
-    </p>
-
-    <p>
-      I believe much of the reason for this is that it appears at
-      first glance to be primarily work on education or explanation.
-      Unfortunately, within the sciences explanation and education are
-      often viewed as second-rate work.  As George Bernard Shaw's
-      famous line has it: &ldquo;He who can, does. He who cannot,
-      teaches.&rdquo; This is, of course, ridiculous as a blanket
-      proposition &ndash; I am reporting it as a common position, not
-      agreeing with it!  But I believe this sentiment underlies the
-      reasons why work experimenting with new media is often
-      considered as &ldquo;merely&rdquo; explanatory work, and so
-      rather unimportant.
-    </p>
-
-    <p>
-      Why does so much experimentation with new media take place in
-      expository or educational contexts?
-    </p>
-
-    <p>
-      I believe it's because the new medium lets us rethink even the
-      most fundamental things.  Before we can rethink the best ways of
-      representing the abstruse points of homological algebra, we need
-      to rethink how we represent number, equality, and so on.  And so
-      the professional mathematicians go on writing their papers in
-      the conventional style in conventional journals.  And
-      &ldquo;educators&rdquo; like Ken Perlin, Nicky Case, Grant
-      Sanderson, Bret Victor, Vi Hart, May-Li Khoe, Andy Matuschack,
-      and many others experiment with new ways of representing the
-      fundamentals of mathematics.  I believe that eventually the
-      latter experiments will affect and eventually transform the way
-      the former is done.  But it will take a huge effort.  This is
-      not an individual-sized problem.  It's a civilization-sized
-      problem.
-    </p>
-
-
-    
-    
-
-        <b>SICM and Jupyter:</b> Of course, there has been much prior
-    work rethinking the expression of mathematics in a dynamic medium
-    --- too much to do a comprehesnive review.  But one particularly
-    interesting example is the book SICM.  This develops the ideas.
-    These systems are powerful.  But they are text-based.
-
-    Against visualization.  It's tempting to look at the visual aspect
-    of this medium as the most important thing.  Certainly, there is a
-    fetish for visualization that is common.  While much interesting
-    work on visualization is being done, I believe that focusing on
-	the visual aspect is a mistake.
-
-	
-
-	Who should be making these?
-    
-    <P>
-      
-       (though it may be achieved in a real-time presentation,
-      especially with the aid of an eraser).
-    </P>
-
-
-    Did I think of any radically new ideas as a result of working in this
-    environment?
-
-
-
-    Executable knowledge.
-
-
-
-    Littlewood: speed of associative thought matters.
-
-    
-    
-    <b>Comparison to visual programming languages:</b>
-
-    Grasshopper
-    
-    Kill Math
-
-    Mathematica
-
-    Jupyter
-
-              And so the video above is <em>discovery fiction</em>: a
-      fictionalized account sketching how one might discover the
-      result. The idea of discovery fiction is to start with very
-      rough and simple ideas &ndash; the kind the reader or viewer
-      might have had themselves &ndash; and then to figure out where
-      the ideas go wrong, using that to iteratively improve the ideas,
-      again in relatively obvious ways. The point isn't just for the
-      reader or viewer to know what is true, but also for them to
-      understand as deeply as possible why things are true. I believe
-      the visual approach of <em>Magic Paper</em> is well adapted to
-      preparing video-based discovery fiction.
 
     <h2>Acknowledgements</h2>
 
@@ -603,13 +507,9 @@
 
     <p>
       Bret Victor, <a href="http://worrydream.com/KillMath/">Kill
-	Math</a> (2011).
-    </p>
-
-    <p>
-      Michael
-	Nielsen, <a href="http://mnielsen.github.io/notes/kill_math/kill_math.html">Kill
-	Math: Notes</a> (2014).
+	Math</a> (2011).  See also
+	my <a href="http://mnielsen.github.io/notes/kill_math/kill_math.html">notes
+	on Kill Math</a> (2014).
     </p>
 
     <p>
