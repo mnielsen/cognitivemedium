@@ -1,0 +1,662 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="citation_title" content="Magic Paper">
+    <meta name="citation_author" content="Nielsen, Michael A.">
+    <meta name="citation_publication_date" content="2017">
+    <meta name="citation_fulltext_html_url" content="http://cognitivemedium.com/magic_paper/index.html">
+    <meta name="citation_publisher" content="Determination Press">
+    <meta name="citation_fulltext_world_readable" content="">
+    <title>Magic Paper</title>
+    <style>
+      body {
+        font: 24px Georgia;
+        line-height: 1.5;
+        padding: 0;
+        margin: 15px 30% 20px 5%;
+        max-width: 660px;
+      }
+      h1 {
+        font: 48px Helvetica;
+      }
+      p {
+        opacity: 0.8;
+      }
+      a {
+        font: 24px Georgia;
+        opacity: 0.8;
+        text-decoration: none;
+      }
+      .marginnote {
+        position: absolute;
+        font-size: small;
+        opacity: 0.8;
+      }
+
+      .marginnote a {
+        font-size: small;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <h1>Magic Paper</h1>
+
+    <p>
+       Working notes
+	  by <a href="http://michaelnielsen.org"><em>Michael
+	  Nielsen</em></a>, November 2017.  Followup to (but doesn't
+	  require) my <a href="../interfaces-1/index.html">notes on
+	  ChalkTalk</a>.
+    </p>
+
+    <blockquote>
+      <p>
+      <em>
+	[Technology] transforms what can be said and what is
+	said&hellip; all major advances in consciousness depend on
+	technological transformations in implementations of the word.
+      </em> &ndash; Walter Ong, <em>Interfaces of the Word</em>
+      (1977).
+      </p>
+    </blockquote>
+    
+    <p>
+      Mathematical ideas are conventionally expressed using notation
+      and terminology developed using static media.  Suppose, however,
+      that mathematics had been invented <em>after</em> modern
+      computers. This is perhaps difficult to imagine &ndash; after
+      all, mathematics helped lead to computers &ndash; but let's do
+      the thought experiment anyway.  Might mathematical notation have
+      developed in a different way?  Would we instead have developed a
+      dynamic, interactive notation more powerful than the static
+      mathematical and linguistic notations in common use today?
+    </p>
+
+    <p style="position: relative;">
+      As part of my exploration of this question, I recently developed
+      a simple prototype system, which I call <em>Magic Paper</em>. To
+      get a feel for what the system does, below is a video of me
+      using <em>Magic Paper</em> to explain the (very simple!) basic
+      idea underlying the proof of a beautiful theorem of artificial
+      neural networks: the result that neural nets may be used to
+      approximate any continuous function*<span class="marginnote"
+      style="top: 90px">*
+      See <a href="assets/Cybenko.pdf">Approximation by superpositions
+      of sigmoidal function</a>, by George Cybenko (1989),
+      and <a href="assets/Hornik.pdf">Multilayer feedforward networks
+      are universal approximators</a>, by Kurt Hornik, Maxwell
+      Stinchcombe, and Halbert White (1989).</span>.  Note that you do
+      not need to be deeply familiar with neural networks to follow
+      along; an introduction to the basics of neural nets may be
+      found <a href="http://neuralnetworksanddeeplearning.com/chap1.html">here</a>. You
+      may wish to fullscreen the video, for easier viewing:
+    </p>
+
+    <iframe width="800" height="420" src="https://www.youtube.com/embed/Ijqkc7OLenI?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+    
+    <p>
+      The design of <em>Magic Paper</em> was inspired in part by a
+      system developed by Ken Perlin, known
+      as <em>ChalkTalk</em>. <em>ChalkTalk</em> has not been publicly
+      released at the time of this writing (November 2017), but you
+      can get some understanding of the system by viewing from 32:40
+      to the end of the following video:
+    </p>
+
+    <iframe width="560" height="315"
+	    src="https://www.youtube.com/embed/xuzrF_82z7U?start=1960"
+	    frameborder="0" allowfullscreen></iframe>
+
+    <h3>Can a visual medium be used to do serious mathematical
+      exploration?</h3>
+    
+    <p>
+      I built <em>Magic Paper</em> to begin exploring two questions
+      not directly addressed by <em>ChalkTalk</em>.
+    </p>
+
+    <p>
+      The first question is whether such a visual medium can be used
+      to do serious mathematical exploration, the kind a researcher
+      might do when working on a research problem. In other words: can
+      such a system be used as a medium for creative thought?
+      While <em>ChalkTalk</em> is a fun medium to explore in, it's not
+      obvious to me that it's suitable for the kind of exploration
+      that arises in mathematical work.
+    </p>
+
+    <p>
+      Of course, it's too ambitious for a quickly-built prototype
+      medium to be useable across all of mathematics.  And so I
+      decided to narrow the question, and ask whether such a medium
+      could be used to explore at least <em>one</em> non-trivial
+      mathematical question; concretely: can neural nets be used to
+      approximate any function?
+    </p>
+
+    <p>
+      While focusing on one problem is much easier than building a
+      general-purpose exploratory mathematical medium, it's still an
+      extremely demanding and thus informative constraint.
+      Furthermore, it seems likely that patterns useful in solving one
+      mathematical problem will be reuseable in solving others.
+    </p>
+
+    <p>
+      In fact, even this is too demanding.  The idea for a proof
+      presented above isn't really discovered in the medium.  It's a
+      proof taken from my book on neural
+      networks*<span class="marginnote">* Michael A. Nielsen,
+	<a href="http://neuralnetworksanddeeplearning.com/chap4.html">Neural
+	  Networks and Deep Learning (Chapter 4)</a>, Determination
+	Press (2015).
+      </span>. Despite this, I believe this context &ndash; explaining
+      the idea underlying the proof of a serious mathematical result
+      &ndash; is a good one for helping understand what is required
+      for a general-purpose exploratory mathematical medium.
+    </p>
+
+    <p>
+      Note that while the video of <em>Magic Paper</em> perhaps makes
+      it appear to be explanatory or educational, those are not its
+      goals. It is intended primarily to be a medium to think and
+      explore in, and only secondarily to explain or to educate in. Of
+      course, these goals are sometimes congruent, but they are also
+      often in tension.
+    </p>
+
+    <p>
+      As an example of this tension, explanatory media are often
+      highly polished, presenting a finished product from which
+      distracting elements have been eliminated.  By contrast, genuine
+      exploration involves distractions, wrong paths, and dead
+      ends. One sees this in myriad small ways in the earlier video:
+      the constant readjustment of the position and size of the glyphs
+      in the video; the various unnecessary weight and bias parameters
+      that are sometimes shown; and so on.  In a polished presentation
+      these would have been eliminated or dealt with more smoothly,
+      showing just what the viewer needs at any given moment.  But
+      such things are inevitable in
+      exploration.
+    </p>
+
+    <p>
+      Another example of the tension between education and exploration
+      is the programming language Logo.  Logo is often touted as an
+      example of discovery-based education, and it's true that in many
+      respects it's an exploratory medium for mathematics.  However,
+      while Logo has had some success in helping children understand
+      ideas about differential geometry, differential geometers do
+      not, as far as I'm aware, use it as a medium for research.
+      That's problematic. While it's common to partition education and
+      real practice, it often results in busy work on badly motivated
+      problems.  An interesting project is to span these worlds,
+      creating a single environment which can be used for both
+      education and research.  I am optimistic this is possible; after
+      all, beginning chess players use the same board and the same
+      moves as the world champion.
+    </p>
+
+    <h3>Can we reify deep ideas about mathematics inside the <em>Magic
+    Paper</em> interface?</h3>
+    
+    <p>
+      The second question motivating <em>Magic Paper</em> was whether
+      it is possible to reify deep ideas about mathematics inside the
+      interface.  That sounds cryptic, but has a straightforward
+      meaning. To explain that meaning, let's briefly switch topic,
+      and recall an idea from elementary physics, the principle of
+      conservation of energy:
+    </p>
+
+    <center>
+      <p><em>&frac12;mv<sup>2</sup> + U(x)</em> = constant</p>
+    </center>
+
+    <p>
+      The basic point is that there's some relationship between the
+      mass of a particle, <em>m</em>, its velocity <em>v</em>, its
+      position <em>x</em>, and its potential energy <em>U(x)</em>.
+      The way physics is ordinarily done, we manipulate this
+      expression using algebraic operations. But a different approach
+      is possible. In my essay &ldquo;Thought as a
+      Technology&rdquo;*<span class="marginnote">* Michael
+      Nielsen, <a href="http://cognitivemedium.com/tat/index.html">Thought
+      as a Technology</a>, available at
+      http://cognitivemedium.com/tat/index.html (2016).</span> I
+      develop a prototype interface which reifies the principle of
+      conservation of energy.  In particular, the prototype vividly
+      shows the user the relationship between mass, position, velocity
+      and potential energy. This makes it possible to directly see and
+      adjust the potential energy, see how the trajectories respond,
+      and so on.  This gives a unique and rich experience, one
+      enabling the user to internalize a powerful set of cognitive
+      technologies for thinking about motion.
+    </p>
+
+    <p>
+      <em>ChalkTalk</em>-like media seem promising for reifying such
+      principles. Unfortunately, as far as I'm aware there are no
+      general results about neural networks as powerful as
+      conservation of energy in classical mechanics.  However, as a
+      step in this direction, the ability to directly see the
+      relationship between the parameters of a network and the output
+      of various neurons certainly does help in understanding the
+      behaviour of the network.  It's interesting to think about
+      extensions incorporating the deeper ideas known about neural
+      networks, such as gradient descent, or regularization, or
+      visualizing parts of the network*<span class="marginnote">* See,
+      e.g., Yosinksi, Clune, Nguyen, Fuchs, and Lipson,
+      on <a href="assets/Yosinski2015a.pdf">Understanding Neural
+      Networks Through Deep Visualization</a> ICML (2015).</span>.
+      It'd also be interesting to explore the use of such an interface
+      in a context where more deep principles are available &ndash;
+      perhaps using <em>Magic Paper</em> to explore (say) chaotic
+      dynamical systems, where ideas such as conservation of energy,
+      conservation of phase space volume, Lyapunov exponents, and the
+      KAM theorem are all available.
+    </p>
+
+    <h3>Why not just key commands?</h3>
+    
+    <p>
+      Instead of drawing a neuron, why not just hit &ldquo;n&rdquo;?
+      Instead of drawing axes, why not just hit &ldquo;g&rdquo;, for
+      &ldquo;graph&rdquo;?  Wouldn't such keystrokes be faster and
+      easier?
+    </p>
+
+    <p>
+      This question has bothered me a lot, ever since first seeing
+      Perlin demonstrate <em>ChalkTalk</em>.  Even as a viewer, I
+      found it far more satisfying to see him draw the neuron than to
+      just hit a key and have it appear. And this effect was even
+      stronger as a user of <em>Magic Paper</em>.
+    </p>
+
+    <p>
+      I don't know why it's more satisyfing to do this.  I suspect
+      it's because the act of drawing activates associations inside
+      our brain that wouldn't have been activated nearly so strongly
+      by issuing a key command.  In this sense, the act of drawing is
+      far more meaningful &ndash; and meaning-inducing &ndash; than
+      hitting a key.  It's a little like the reasons we don't name a
+      variable meant to represent someone's name as <em>jnwhg</em>;
+      it's more meaningful to use <em>name</em>.
+    </p>
+
+    <p>
+      Intellectually, this explanation seems to me vague and
+      incomplete.  And yet my lived experience is that this is a
+      strong effect. Something similar is true of physical activities,
+      such as tennis or dance: there is an enormous difference between
+      a symbolic representation &ndash; say, reading about tennis
+      &ndash; versus actually doing it.  Now, for the most part, we
+      tend to think of these activities as a special class of
+      &ldquo;physical&rdquo; activities, different from
+      &ldquo;mental&rdquo; activities such as mathematics.  Yet I'm
+      not so sure the distinction is really all that strong.
+    </p>
+
+    <p>
+      Unfortunately, I don't know how to test this.  It's a general
+      problem faced by people interested in embodied cognition.
+      Advocates of embodied cognition often make very strong claims
+      about how important is.  As far as I can see, the evidence they
+      have for those claims is rather weak.  And yet I believe that
+      while the specific claims may be wrong, there is some very
+      strong and important underlying effect.
+    </p>
+
+    <h3>Extensions: abstracting glyphs, re-parameterization, glyph
+    design</h3>
+
+    <p>
+      Here are three extensions that could easily be added
+      to <em>Magic Paper</em>.  Prototype-level versions could be
+      implemented with perhaps 40 to 50 hours of additional work.
+    </p>
+
+    <p>
+      The first idea is a kind of abstraction: it should be possible
+      to &ldquo;lasso&rdquo; several elements, and then abstract them
+      away.  For instance, we could lasso the two-neuron gadget used
+      to build tower functions, and to turn it into a single re-usable
+      glyph, with two inputs and two outputs.  That abstracted glyph
+      could then be duplicated, moved, its parameters edited, and so
+      on, just as any other glyph.  But it would also be possible to
+      inspect the internal state of the abstracted glyph, making it
+      possible to understand multiple layers of abstraction.
+    </p>
+
+    <p>
+      Ideally, it'd be possible to re-parameterize the abstracted
+      glyph.  Rather than having two biases, two input weights, and
+      two output weights, the abstracted glyph should have just three
+      parameters, as needed to represent a tower function: a height, a
+      starting <em>x</em> value, and a finishing <em>x</em> value.
+      These three parameters would then determine the biases and
+      weights of the underlying elements of the underlying elements.
+      This could be implemented easily with a simple expression
+      parser.
+    </p>
+
+    <p>
+      On top of this, it'd be good to integrate a simple editor
+      enabling the addition of extra glyphs to the visual language
+      used by <em>Magic Paper</em>.  Amongst other things, such an
+      editor could be used to add unique visual representations for
+      the abstracted glyphs.
+    </p>
+
+
+    <h3>Working within the system</h3>
+    
+    <p>
+      I began the design work for <em>Magic Paper</em> with
+      paper-and-pen storyboards and a text-based script for my video.
+      As I developed the storyboards and script I also began to
+      develop the system.  Very quickly, the system was powerful
+      enough that I could do basic sketches in it.  Once that point
+      was reached, it was more stimulating (and easier) to work within
+      the new medium, and to abandon the storyboards and script.
+    </p>
+
+    <p>
+      I initially felt guilty at abandoning the storyboards and
+      script, as though that was somehow the &ldquo;correct&rdquo; way
+      of working.  But working in the new medium quickly began to
+      suggest useful ideas that I do not believe I would otherwise
+      have anticipated.
+    </p>
+
+    <p>
+      As an example, in the final video we often see multiple graphs
+      showing the behaviour of several different neurons in a network.
+      This makes it easy for the viewer to understand the behaviours
+      of different parts of the network, and to put it all together:
+    </p>
+
+    <center>
+    <img src="assets/multiple_graphs.png" width="400px">
+    </center>
+    
+    <p>
+      By contrast, my initial storyboards and script had just a single
+      output graph.  It was only after I began using the medium that I
+      realized it was possible to use the graphs in this way.  In
+      particular, I didn't design the system so it could plot the
+      behavior of intermediate neurons.  Rather, that was a fortuitous
+      happenstance, tried spontaneously as I used the medium.
+    </p>
+
+    <p>
+      Another point I did not anticipate in storyboarding and
+      scripting was how useful it would be to move and resize the
+      neurons and the graphs, e.g.:
+    </p>
+
+    <center>
+    <img src="assets/movement_edited.gif" width="400px">
+    </center>
+
+    <p>
+      Part of the value is that it makes more information visible,
+      helping the viewer understand and put together the behaviour of
+      different parts of the network.
+    </p>
+
+    <p>
+      Another benefit is object persistence.  When possible, it's
+      often useful to reuse or repurpose existing objects, since
+      viewers have already built strong mental models of their
+      behaviour. This kind of dynamic reuse is harder to achieve in
+      static media. Perhaps for that reason I did not anticipate it in
+      my storyboarding and scripting.
+    </p>
+
+    <p>
+      As an example illustrating the difficulty of such reuse, I
+      mentioned above that this proof is based on an earlier
+      presentation in an online book about neural networks and deep
+      learning.  That presentation consisted of text interspersed with
+      interactive elements, e.g.:
+    </p>
+
+    <img src="assets/nnadl_4_pt1.png" width="50%"><img src="assets/nnadl_4_pt2.png" width="50%">
+
+    <p>
+      Many of the interactive elements depict minor variations on the
+      same system.  But because there is no object persistence, the
+      user must parse each one separately, and put in the mental work
+      required to understand the relationships.  For the most part
+      this is not terribly hard work, but it is an additional mental
+      burden.
+    </p>
+
+    <p>
+      All told, while the script and storyboards were useful to
+      bootstrap, once the medium was running, it was more generative
+      to work directly within that, experimenting and evolving an
+      approach I was comfortable with.
+    </p>
+
+
+        <h3>What if there are no deep principles to reify?</h3>
+
+    <p>
+      I've advocated reifying deep principles inside the interface.
+      This works well when it's something like the principle of
+      conservation of energy, which is extremely precise, and also
+      extremely powerful, essentially determining everything about
+      one-dimensional motion.
+    </p>
+
+    <p>
+      Unfortunately, in many areas of human thought, the principles
+      available are often vague, poorly defined, and not terribly
+      powerful.  Consider, for example, the notion, widely used by
+      writers, that one should &ldquo;show, not tell&rdquo;.  It's
+      much less well defined than the principle of conservation of
+      energy; worse, there are times when .  Of course, one has rules
+      of thumb for when that is, too.
+    </p>
+
+    <p>
+      <b>Why exploration of new media forms is often not viewed as
+      &ldquo;serious&rdquo; work:</b> It's a curiosity that within
+      science and mathematics this kind of work is often not treated
+      as especially serious work.
+    </p>
+
+    <p>
+      I believe much of the reason for this is that it appears at
+      first glance to be primarily work on education or explanation.
+      Unfortunately, within the sciences explanation and education are
+      often viewed as second-rate work.  As George Bernard Shaw's
+      famous line has it: &ldquo;He who can, does. He who cannot,
+      teaches.&rdquo; This is, of course, ridiculous as a blanket
+      proposition &ndash; I am reporting it as a common position, not
+      agreeing with it!  But I believe this sentiment underlies the
+      reasons why work experimenting with new media is often
+      considered as &ldquo;merely&rdquo; explanatory work, and so
+      rather unimportant.
+    </p>
+
+    <p>
+      Why does so much experimentation with new media take place in
+      expository or educational contexts?
+    </p>
+
+    <p>
+      I believe it's because the new medium lets us rethink even the
+      most fundamental things.  Before we can rethink the best ways of
+      representing the abstruse points of homological algebra, we need
+      to rethink how we represent number, equality, and so on.  And so
+      the professional mathematicians go on writing their papers in
+      the conventional style in conventional journals.  And
+      &ldquo;educators&rdquo; like Ken Perlin, Nicky Case, Grant
+      Sanderson, Bret Victor, Vi Hart, May-Li Khoe, Andy Matuschack,
+      and many others experiment with new ways of representing the
+      fundamentals of mathematics.  I believe that eventually the
+      latter experiments will affect and eventually transform the way
+      the former is done.  But it will take a huge effort.  This is
+      not an individual-sized problem.  It's a civilization-sized
+      problem.
+    </p>
+
+
+    
+    
+
+        <b>SICM and Jupyter:</b> Of course, there has been much prior
+    work rethinking the expression of mathematics in a dynamic medium
+    --- too much to do a comprehesnive review.  But one particularly
+    interesting example is the book SICM.  This develops the ideas.
+    These systems are powerful.  But they are text-based.
+
+    Against visualization.  It's tempting to look at the visual aspect
+    of this medium as the most important thing.  Certainly, there is a
+    fetish for visualization that is common.  While much interesting
+    work on visualization is being done, I believe that focusing on
+	the visual aspect is a mistake.
+
+	
+
+	Who should be making these?
+    
+    <P>
+      
+       (though it may be achieved in a real-time presentation,
+      especially with the aid of an eraser).
+    </P>
+
+
+    Did I think of any radically new ideas as a result of working in this
+    environment?
+
+
+
+    Executable knowledge.
+
+
+
+    Littlewood: speed of associative thought matters.
+
+    
+    
+    <b>Comparison to visual programming languages:</b>
+
+    Grasshopper
+    
+    Kill Math
+
+    Mathematica
+
+    Jupyter
+
+              And so the video above is <em>discovery fiction</em>: a
+      fictionalized account sketching how one might discover the
+      result. The idea of discovery fiction is to start with very
+      rough and simple ideas &ndash; the kind the reader or viewer
+      might have had themselves &ndash; and then to figure out where
+      the ideas go wrong, using that to iteratively improve the ideas,
+      again in relatively obvious ways. The point isn't just for the
+      reader or viewer to know what is true, but also for them to
+      understand as deeply as possible why things are true. I believe
+      the visual approach of <em>Magic Paper</em> is well adapted to
+      preparing video-based discovery fiction.
+
+    <h2>Acknowledgements</h2>
+
+    <p>
+      Thanks to Shan Carter, Andy Matuschak, Robert Ochshorn, Kanjun
+      Qiu, and Grant Sanderson for helpful discussions.
+    </p>
+
+    <h2>Citation</h2>
+
+    <p>
+      In academic work, please cite this as: Michael A. Nielsen,
+      <a href="http://cognitivemedium.com/magic_paper/index.html">&ldquo;Magic
+      Paper&rdquo;</a>, available at
+      http://cognitivemedium.com/magic_paper/index.html (2017).
+    </p>
+
+    <h2>Further Reading</h2>
+
+    <p>
+      Michael
+      Nielsen, <a href="http://cognitivemedium.com/emm/emm.html">Toward
+      an Exploratory Medium for Mathematics</a> (2016).
+    </p>
+    
+    <p>
+      Michael
+      Nielsen, <a href="http://cognitivemedium.com/tat/index.html">Thought
+      as a Technology</a> (2016).
+    </p>
+
+    <p>
+      Bret Victor, <a href="http://worrydream.com/KillMath/">Kill
+	Math</a> (2011).
+    </p>
+
+    <p>
+      Michael
+	Nielsen, <a href="http://mnielsen.github.io/notes/kill_math/kill_math.html">Kill
+	Math: Notes</a> (2014).
+    </p>
+
+    <p>
+      Bret
+      Victor, <a href="http://worrydream.com/MediaForThinkingTheUnthinkable/">Media
+      for Thinking the Unthinkable</a> (2013).
+    </p>
+
+    <p>
+      Bret Victor, <a href="http://worrydream.com/MagicInk/">Magic
+	Ink</a> (2006).
+    </p>
+      
+    <p>
+      Seymour
+	Papert, <a href="https://mindstorms.media.mit.edu/">Mindstorms:
+	children, computers, and powerful ideas</a> (1980).
+    </p>
+      
+    <h2>Licensing</h2>
+
+    <p>
+      This work is licensed under a
+      <a rel="license"
+	 href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_GB">Creative
+	 Commons Attribution-NonCommercial 3.0 Unported License
+      </a>.  This means you're free to copy, share, and build on it, but
+      not to sell it.  If you're interested in commercial use,
+      please <a href="mailto:mn@michaelnielsen.org">contact me</a>.
+
+      <a rel="license"
+	 href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_GB"><img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" />
+      </a>
+    </p>
+
+    <script src="adjust_marginnotes.js" type="text/javascript">
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-44208967-4', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>
+
