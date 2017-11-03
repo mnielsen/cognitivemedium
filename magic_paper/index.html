@@ -87,10 +87,10 @@
       (<a href="https://github.com/mnielsen/magic_paper">code</a>). To
       get a feel for what the system does, below is a video of me
       using <em>Magic Paper</em> to explain the (very simple!) basic
-      idea underlying the proof of a beautiful theorem of artificial
-      neural networks: the result that neural nets may be used to
-      approximate any continuous function*<span class="marginnote"
-      style="top: 90px">*
+      idea underlying the proof of a beautiful theorem about
+      artificial neural networks: the result that neural nets may be
+      used to approximate any continuous
+      function*<span class="marginnote" style="top: 90px">*
       See <a href="assets/Cybenko.pdf">Approximation by superpositions
       of sigmoidal function</a>, by George Cybenko (1989),
       and <a href="assets/Hornik.pdf">Multilayer feedforward networks
@@ -162,8 +162,8 @@
 	Press (2015).
       </span>. Despite this, I believe this context &ndash; explaining
       the idea underlying the proof of a relatively recent
-      mathematical result &ndash; is a good one for helping understand
-      what is required for a general-purpose exploratory mathematical
+      mathematical result &ndash; is a good one for understanding what
+      is required for a general-purpose exploratory mathematical
       medium.
     </p>
 
@@ -182,12 +182,12 @@
       distracting elements have been eliminated.  By contrast,
       exploration involves distractions, wrong paths, and dead
       ends. One sees this in myriad small ways in the video: the
-      frequent readjustment of the position and size of the glyphs in
-      the video; the various unnecessary weight and bias parameters
-      that are sometimes shown; and so on.  In a polished presentation
-      these would have been eliminated, showing just what the viewer
-      needs at any given moment.  But such things are inevitable in
-      exploration.
+      frequent readjustment of the position and size of the glyphs;
+      the various unnecessary weight and bias parameters that are
+      sometimes shown; and so on.  In a polished presentation these
+      would have been eliminated, showing just what the viewer needs
+      at any given moment.  But such superfluous elements are
+      inevitable in exploration.
     </p>
 
     <p>
@@ -195,11 +195,11 @@
       comes from the programming language Logo.  Logo is often touted
       as an example of discovery-based learning, and in many respects
       it's a good exploratory medium for mathematics.  However, while
-      Logo has had some success in helping children understand ideas
-      about differential geometry, differential geometers do not, as
-      far as I'm aware, use it as a medium for research.  That's a
-      problem: when education and real practice are separated, it
-      often results in busy work on poorly-motivated
+      Logo has had considerable success in helping children understand
+      ideas about differential geometry, differential geometers do
+      not, as far as I'm aware, use it as a medium for research.
+      That's potentially a problem: when education and real practice
+      are separated, it can result in busy work on poorly-motivated
       &ldquo;educational&rdquo; problems.  An interesting project
       would be to create a single environment which can be used for
       both education and research.  I am optimistic this is possible;
@@ -277,18 +277,18 @@
     </p>
 
     <p>
-      This question has bothered me a lot, ever since first seeing
-      Perlin demonstrate <em>ChalkTalk</em>.  Even as an audience
-      member, I found it far more satisfying to see him draw the
-      neuron than to just hit a key and have it appear. And this
-      effect was even stronger as a user of <em>Magic Paper</em>.
+      This question has bothered me ever since first seeing Perlin
+      demonstrate <em>ChalkTalk</em>.  Even as an audience member, I
+      found it much more satisfying to see him draw a glyph than to
+      just hit a key and have it appear. And this effect was even
+      stronger as a user of <em>Magic Paper</em>.
     </p>
 
     <p>
       I don't have a satisfactory understanding of why it's satisfying
-      to do this.  I suspect it's because the act of drawing activates
-      associations inside my brain that wouldn't have been activated
-      so strongly by issuing a key command.  In this sense, the act of
+      to do this.  Perhaps it's because the act of drawing activates
+      associations in my brain that wouldn't have been activated as
+      strongly by issuing a key command.  In this sense, the act of
       drawing is far more meaningful &ndash; and meaning-inducing
       &ndash; than hitting a key.  It's a little like the reasons we
       don't name a variable meant to represent someone's name
@@ -299,7 +299,7 @@
     </p>
 
     <p>
-      Unfortunately, such explanations seem to me suggestive, but
+      Unfortunately, while such explanations are suggestive they're
       vague and incomplete.  And yet my lived experience is that this
       is a strong effect. Something similar is true of physical
       activities, such as tennis or dance: there is an enormous
@@ -308,18 +308,16 @@
       the most part, we tend to think of these activities as a special
       class of &ldquo;physical&rdquo; activities, different from
       &ldquo;mental&rdquo; activities such as mathematics.  Yet I'm
-      not sure the distinction is all that strong.
+      not sure the distinction is all that sharp.
     </p>
 
     <p>
-      I don't know how to test these assertions.  It's a general
-      problem faced by people interested in embodied cognition.
       Advocates of embodied cognition often make strong claims about
       its importance.  As far as I can see, the evidence they have for
-      those claims is rather weak.  And yet while the specific claims
-      may be wrong, I believe there is some strong and important
+      those claims is weak.  And yet while the specific claims may be
+      weak or wrong, I believe there is some strong and important
       underlying effect.  It really does greatly help my thinking to
-      sketch the glyphs in <em>Magic Paper</em>. I just don't entirely
+      sketch the glyphs in <em>Magic Paper</em>. I just don't
       understand why.
     </p>
 
@@ -327,39 +325,36 @@
     design</h3>
 
     <p>
-      Here are three extensions that could easily be added
-      to <em>Magic Paper</em>, with 40 to 50 hours of additional work.
+      Here are three extensions that could be added to <em>Magic
+      Paper</em> with 40 to 50 hours of additional work.
     </p>
 
     <p>
-      The first idea is a kind of abstraction: it should be possible
-      to &ldquo;lasso&rdquo; several elements, and then abstract them
-      away.  For instance, we could lasso the two-neuron gadget used
-      to build tower functions, and turn it into a single re-usable
-      glyph, with two inputs and two outputs.  That abstracted glyph
-      could then be duplicated, moved, its parameters edited, and so
-      on, just as any other glyph.  But it would also be possible to
-      inspect the internal state of the abstracted glyph, making it
-      possible to understand multiple layers of abstraction.
+      First, it should be possible to &ldquo;lasso&rdquo; several
+      elements, combining them into a single new glyph.  For instance,
+      we could lasso the two-neuron gadget used to build tower
+      functions, and turn it into a single re-usable glyph.  That
+      abstracted glyph could then be duplicated, moved, its parameters
+      edited, and so on, just as any other glyph.  It would also be
+      possible to inspect the internal state of the abstracted glyph,
+      making it possible to understand multiple layers of abstraction.
     </p>
 
     <p>
-      Ideally, it'd be possible to re-parameterize the abstracted
-      glyph.  Rather than having two biases, two input weights, and
-      two output weights, the abstracted glyph should have just three
-      parameters, to represent a tower function: a height, a
-      starting <em>x</em> value, and a finishing <em>x</em> value.
-      These three parameters would then determine the biases and
-      weights of the underlying elements.  This could be implemented
-      easily with a simple expression parser.
+      Second, it should be possible to re-parameterize the abstracted
+      glyph, so it has just three parameters, representing the height
+      of the tower function, a starting <em>x</em> value, and a
+      finishing <em>x</em> value.  These three parameters would then
+      determine the biases and weights of the underlying elements.
+      This could be implemented with a simple expression parser.
     </p>
 
     <p>
-      On top of this, it'd be good to integrate an editor enabling the
-      addition of extra glyphs to the visual language used
-      by <em>Magic Paper</em>.  Amongst other things, such an editor
-      could be used to add unique visual representations for the
-      abstracted glyphs.
+      Third, it should be possible to integrate an image editor
+      enabling the addition of extra glyphs to <em>Magic Papers</em>'s
+      visual language.  Amongst other things, such an editor could be
+      used to add unique visual representations for the abstracted
+      glyphs.
     </p>
 
 
