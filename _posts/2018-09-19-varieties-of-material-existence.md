@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The varieties of material existence"
-date:   2018-09-24
+date:   2018-09-19
 permalink: /vme
 ---
 By [Michael Nielsen](http://twitter.com/michael_nielsen) 
