@@ -264,8 +264,8 @@ determine what the _next_ generation of scientists and engineers will
 dream of making.)
 
 There are exceptions. Prestigious enough individuals get something of
-a pass. Richard Feynman wrote pieces about [nanotechnology](matter/Feynman1959.pdf)
-and [quantum computing](matter/Feynman1982.pdf), and those were taken much more seriously
+a pass. Richard Feynman wrote pieces about [nanotechnology](assets/matter/Feynman1959.pdf)
+and [quantum computing](assets/matter/Feynman1982.pdf), and those were taken much more seriously
 than they might otherwise have been (and eventually held up as
 validating the fields) _because_ it was Feynman. But even in those
 essays, Feynman is somewhat apologetic &ndash; he knows he's doing
@@ -279,9 +279,9 @@ exploring the question, from a variety of speculative points of view.
 
 *What could designer matter mean?* One natural and pretty common
 conception is that it means the ability to reconfigure shape in real
-time. This is central to concepts such as the [Utility Fog](assets/Hall1993.pdf), much
+time. This is central to concepts such as the [Utility Fog](assets/matter/Hall1993.pdf), much
 of the work of the [Tangible Media Group](https://tangible.media.mit.edu/), DARPA's program on
-progammable matter ([e.g.](assets/DARPA2006.pdf), and others. I'm fascinated, though, by
+progammable matter ([e.g.](assets/matter/DARPA2006.pdf), and others. I'm fascinated, though, by
 questions which go beyond reconfiguring shape and basic quantities
 such as density. Ideally, you'd like to be able to program _all_
 macroscopic quantities, things like thermal and electrical
@@ -438,7 +438,7 @@ name of this type of device.)
 
 *A few things to read, or to read more deeply*
 
-+ Some of Kitaev's early models: [1](assets/Kitaev2003.pdf), [2](https://arxiv.org/abs/cond-mat/0506438).
++ Some of Kitaev's early models: [1](assets/matter/Kitaev2003.pdf), [2](https://arxiv.org/abs/cond-mat/0506438).
 
 + Kitaev and Laumann review on [topological phases and quantum computation](https://arxiv.org/abs/0904.2771)
 
