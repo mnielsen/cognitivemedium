@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title:  "Appendix on the diminishing returns to science"
 permalink: /diminishing-returns
 ---
