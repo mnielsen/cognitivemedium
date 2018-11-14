@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Appendix on the diminishing returns to science"
-date:   2018-11-14
 permalink: /diminishing-returns
 ---
 By Patrick Collison and Michael Nielsen
