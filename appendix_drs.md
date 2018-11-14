@@ -108,7 +108,7 @@ us by Kelly Kang (NSF).
 The number of doctorates in the US from 1958 to 2016 came from the
 National Science Foundation's Survey of Earned Doctorates (<a
 href="https://ncsesdata.nsf.gov/ids/sed">interactive tool</a>). The
-data are <a href="assets/NSF1958.csv">here</a>.  Note that the year
+data are <a href="assets/drs/NSF1958.csv">here</a>.  Note that the year
 1957 is missing from this data. 
 
 The data on NIH and NSF budgets came from the respective websites of
