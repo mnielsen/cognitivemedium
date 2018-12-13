@@ -161,8 +161,9 @@ standard ways. But the deepest types of imaginative design are very
 different, creating fundamentally new types of objects and new types
 of behaviour. I won't try to enumerate the heuristics behind that kind
 of work here (though see <a
-href="http://cognitivemedium.com/tat/index.html">my earlier essay<a>).
-But it's a very different kind of work than traditional physics.
+href="http://cognitivemedium.com/tat/index.html">my earlier
+essay</a>).  But it's a very different kind of work than traditional
+physics.
 
 This point of view contrasts with the conventional point of view that
 says quantum computing will mostly be about finding fast new
@@ -176,18 +177,27 @@ ultimately be for quantum computing.
 
 ### Critical Addendum
 
-This is a draft written as part of writing a much longer essay
-covering a wider array of quantum topics. In that sense it's been
-written as a sort of version 0, with a (hopefully improved) version 1
-to be included in the longer essay. My main critique of the current
-draft is that it struggles to adequately convey what it would mean for
-quantum computing to be a design science. The notion of designing
-radically new classes of object and behaviour hasn't made it into
-popular culture in any really deep way, and it certainly isn't part of
-the culture of physics.  Perhaps what's need to make the essay work is
-a longer discussion &ndash; or, at least, a better discussion!
+This is a draft written as part of the process of writing a much
+longer essay covering a wider array of quantum topics. In that sense
+it's been written as a sort of version 0 of a section of that essay,
+with a (hopefully much improved) version 1 to be included in the
+longer essay. My main critique of the current draft is that it
+struggles to adequately convey what it would mean for quantum
+computing to be a design science. The notion of designing radically
+new classes of object and behaviour hasn't made it into popular
+culture in any really deep way, and it certainly isn't part of the
+culture of physics.  Perhaps what's need to make the essay work is a
+longer discussion &ndash; or, at least, a more compelling discussion!
 &ndash; of what it would mean for quantum computing to be a design
-science._
+science.
+
+The other main critique of this version 0 is that it focuses so much
+on design science that it doesn't quite do the job of answering the
+underlying question: in what sense will quantum computing be a
+science, and address fundamental questions? The design science aspects
+may be the most unfamiliar (and so need the most explanation), but
+they're only part of a broader picture, which needs to be painted more
+convincingly.
 
 ### Notes
 
