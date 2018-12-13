@@ -174,19 +174,23 @@ invention of new types of object and behaviour &ndash; has been much
 more important in classical computing. And so, perhaps, it may
 ultimately be for quantum computing.
 
-*Critical Addendum:* _This is a draft written as part of writing a
-much longer essay covering a wider array of quantum topics. In that
-sense it's been written as a sort of version 0, with a (hopefully
-improved) version 1 to be included in the longer essay. My main
-critique of the current draft is that it struggles to adequately
-convey what it would mean for quantum computing to be a design
-science. The notion of designing radically new classes of object and
-behaviour hasn't made it into popular culture in any really deep way,
-and it certainly isn't part of the culture of physics.  Perhaps what's
-need to make the essay work is a longer discussion &ndash; or, at
-least, a better discussion!  &ndash; of what it would mean for quantum
-computing to be a design science._
-	
+## Critical Addendum
+
+This is a draft written as part of writing a much longer essay
+covering a wider array of quantum topics. In that sense it's been
+written as a sort of version 0, with a (hopefully improved) version 1
+to be included in the longer essay. My main critique of the current
+draft is that it struggles to adequately convey what it would mean for
+quantum computing to be a design science. The notion of designing
+radically new classes of object and behaviour hasn't made it into
+popular culture in any really deep way, and it certainly isn't part of
+the culture of physics.  Perhaps what's need to make the essay work is
+a longer discussion &ndash; or, at least, a better discussion!
+&ndash; of what it would mean for quantum computing to be a design
+science._
+
+## Notes
+
 <a name="Anderson"></a> (1) I presume this broad point of view wasn't
 novel when Anderson wrote his article. Still, Anderson crystallized
 the point of view, and provided some beautiful examples and useful
