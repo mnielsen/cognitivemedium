@@ -174,7 +174,7 @@ invention of new types of object and behaviour &ndash; has been much
 more important in classical computing. And so, perhaps, it may
 ultimately be for quantum computing.
 
-## Critical Addendum
+### Critical Addendum
 
 This is a draft written as part of writing a much longer essay
 covering a wider array of quantum topics. In that sense it's been
@@ -189,7 +189,7 @@ a longer discussion &ndash; or, at least, a better discussion!
 &ndash; of what it would mean for quantum computing to be a design
 science._
 
-## Notes
+### Notes
 
 <a name="Anderson"></a> (1) I presume this broad point of view wasn't
 novel when Anderson wrote his article. Still, Anderson crystallized
@@ -214,6 +214,8 @@ and don't fall squarely under the rubric of design science. Still, as
 implied in the main text, over the long run I expect quantum computing
 will primarily be a design science, in much the same way as
 conventional computing has become a design science.
+
+### Citation and licensing
 
 _In academic work, please cite this as: Michael A. Nielsen, "In what
 sense is quantum computing a science?",
