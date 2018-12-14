@@ -49,12 +49,12 @@ href="https://arxiv.org/abs/quant-ph/9701001">provably impossible to
 do in general, or even just in typical cases</a>. 
 
 What I think is going on is this: when people remark that the state
-$\sqrt{0.6}|0\rangle+\sqrt{0.8}|1\rangle$ is simultaneously $0$ and
+$0.6|0\rangle+0.8|1\rangle$ is simultaneously $0$ and
 $1$, they're trying to explain the quantum state in terms of classical
 concepts they're already familiar with. That sounds sort of okay at
 first, and fills a vacuum of meaning for people unfamiliar with
 quantum mechanics. But the more you think about it, the worse things
-get. Saying $\sqrt{0.6}|0\rangle+\sqrt{0.8}|1\rangle$ is
+get. Saying $0.6|0\rangle+0.8|1\rangle$ is
 simultaneously $0$ and $1$ makes about as much sense as Lewis
 Carroll's nonsense poem _Jabberwocky_:
 
