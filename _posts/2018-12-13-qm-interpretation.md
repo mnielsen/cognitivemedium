@@ -181,35 +181,25 @@ with.
 
 ### Addendum 
 
-I wrote this essay with some trepidation. The interpretation of the
-quantum state arouses strong passions and, for some reason, seems to
-inspire people who know little of quantum mechanics to very strong
-convictions. (It reminds me of cryptocurrencies in that regard.)  The
-computer scientist Richard Lipton has <a
-href="https://rjlipton.wordpress.com/2009/11/04/on-mathematical-diseases/">described</a>
-a number of _mathematical diseases_ (a term he atttributes to Frank
-Harary). These are mathematical problems that people find extremely
-difficult to let go once they've started working on them, even when
-they're really not making any progress. The interpretation of the
-quantum state is perhaps accurately described as a physicist's
-disease. It's seductive, deep, and fundamental, seeming to yield to
-progress, but always remaining just tantalizingly out of reach.  I
-know I'll get messages telling me I'm wrong or ignorant (or people
-will post that on social media), that the messager knows the right way
-to think.  The trouble is, except when talking with real experts, I've
-rarely learnt much from such conversations, no matter how confident
-the person.  Richard Feynman supposedly often told people who wanted
-to talk about such issues that he had "Doctor's orders not to talk
-about metaphysics". It's perhaps understandable.
-
 This essay is a preliminary draft version of some material to be
 included in a larger project (joint with Andy Matuschak). My thinking
-will almost certainly change! In particular, in this draft I've really
-pushed on the agnosticism and shut-up-and-calculate angle. It'd be
-better if it were more opinionated, and dug more into specific
-details. It is, of course, tempting to get into the details of
-different interpretations. The pull of physicist's disease is strong!
-But just maybe we can make some progress &hellip;
+will almost certainly change! In particular, in this draft I've
+focused on the agnosticism and shut-up-and-calculate angles. One of my
+strongly-held general convictions is that holding uncertainty in your
+head is a very underrated skill, and so I've emphasized that in this
+draft. Still, it'd be better if the draft were more opinionated, and
+dug more into specific details. It is, of course, particularly
+tempting to get more into the details of different
+interpretations. Just maybe we can make some progress &hellip;
+
+I wrote the essay with some trepidation. The interpretation of the
+quantum state arouses strong passions and, for some reason, often
+inspires people who know little of quantum mechanics to strong
+convictions; it reminds me of cryptocurrencies in that regard. Past
+experience suggests I'll likely get strongly-worded messages telling
+me I'm wrong or ignorant, that the messager knows the right way to
+think (and will fill me in).  Such messages are usually
+well-intentioned, but I do wish such people would pause a moment.
 
 ### Citation and licensing
 
