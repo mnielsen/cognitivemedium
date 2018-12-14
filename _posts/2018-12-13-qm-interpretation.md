@@ -147,11 +147,12 @@ My own current preference is thus for the this-is-an-open-problem
 interpretation of quantum mechanics: I think we don't yet have enough
 evidence to know, and won't for decades. I know some readers will
 dislike this: they'd much prefer if I shouted with conviction that the
-right way to interpet the quantum state is &hellip; But I don't know,
-and I don't think anyone else does either. Or, failing that, they'd
-like me to say how I think we might get to such an interpretation. I
-do have opinions on that, but will omit them in the interests of
-brevity.
+right way to interpet the quantum state is _etc_ But I don't know, and
+I don't think anyone else does either. I do have opinions about how to
+get to such an interpretation, but will omit them in the interests of
+brevity. The main thing I want you to take away from this essay is
+that determined agnosticism _is_ a possible approach, and is also
+consistent with a deep interest in actually solving the problem.
 
 Will all that said, there are people who've thought long and hard
 about the meaning of the quantum state, and who do have definite
