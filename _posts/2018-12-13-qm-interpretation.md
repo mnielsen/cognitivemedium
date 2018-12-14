@@ -5,15 +5,14 @@ date:   2018-12-13
 permalink: /qm-interpretation
 ---
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$']]},
-      "HTML-CSS": 
-      {scale: 92},
-      TeX: { equationNumbers: { autoNumber: "AMS" }}});
-    </script>
-    <script type="text/javascript" src="../emm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$']]},
+"HTML-CSS": 
+{scale: 92},
+TeX: { equationNumbers: { autoNumber: "AMS" }}});
+</script>
+<script type="text/javascript" src="../emm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	
 By <a href="http://michaelnielsen.org">Michael Nielsen</a>, December
 2018
@@ -206,10 +205,11 @@ about metaphysics". It's perhaps understandable.
 This essay is a preliminary draft version of some material to be
 included in a larger project (joint with Andy Matuschak). My thinking
 will almost certainly change! In particular, in this draft I've really
-pushed on the agnosticism and shut-up-and-calculate angle. It is, of
-course, tempting to get into the details of different
-interpretations. The pull of physicist's disease is strong! But just
-maybe we can make some progress &hellip;
+pushed on the agnosticism and shut-up-and-calculate angle. It'd be
+better if it were more opinionated, and dug more into specific
+details. It is, of course, tempting to get into the details of
+different interpretations. The pull of physicist's disease is strong!
+But just maybe we can make some progress &hellip;
 
 ### Citation and licensing
 
