@@ -4,6 +4,17 @@ title:  "What does the quantum state mean?"
 date:   2018-12-13
 permalink: /qm-interpretation
 ---
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$']]},
+      "HTML-CSS": 
+      {scale: 92},
+      TeX: { equationNumbers: { autoNumber: "AMS" }}});
+    </script>
+    <script type="text/javascript" src="../emm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+	
 By <a href="http://michaelnielsen.org">Michael Nielsen</a>, December
 2018
 
