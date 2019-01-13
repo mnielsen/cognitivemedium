@@ -627,8 +627,15 @@ three-and-a-half theorems so far:
 
 It's quite time-intensive.  I don't have any easy way to count the
 number of questions I've added for each of these theorems, but I guess
-on the order of 100 cards for each. It takes a few hours typically,
-though I expect I could easily add many more questions.
+on the order of dozens of cards for each. It takes a few hours
+typically, though I expect I could easily add many more questions.
+
+[Note added: in the initial version of this essay I wrote "100 cards
+for each". I looked, and in fact there are fewer &ndash; on the order
+of dozens, well short of 100. This surprised me &ndash; if anything,
+I'd have guessed my error was in underestimation. The card-adding
+process was intense, however, which perhaps accounts for my badly
+mistaken impression.]
 
 *Seeing through a piece of mathematics:* This is all a lot of work!
 The result, though, has been a considerable deepening in my
