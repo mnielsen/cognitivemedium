@@ -114,15 +114,18 @@ deeply.
 To explain the heuristic, I need a piece of mathematics to use as an
 example.  The piece I will use is a beautiful theorem of linear
 algebra. The theorem states that a complex normal matrix is always
-diagonalizable.  The converse is also true (and is much easier to
-prove, so we won't be concerned with it): a diagonalizable matrix is
-always normal.
+diagonalizable by a unitary matrix.  The converse is also true (and is
+much easier to prove, so we won't be concerned with it): a matrix
+diagonalizable by a unitary matrix is always normal.
 
 Unpacking that statement, recall that a matrix $M$ is said to be
 normal if $MM^\dagger = M^\dagger M$, where $M^\dagger$ is the complex
-transpose, $M^\dagger := (M^*)^T$. And a matrix is diagonalizable if
-there exists a unitary matrix $U$ such that $M = U D U^\dagger$, where
-$D$ is a diagonal matrix.
+transpose, $M^\dagger := (M^*)^T$. And a matrix is diagonalizable by a
+unitary matrix if there exists a unitary matrix $U$ such that $M = U D
+U^\dagger$, where $D$ is a diagonal matrix. 
+
+(As shorthand, from now on I will use "diagonalizable" as shorthand to
+mean "diagonalizable by a unitary matrix".)
 
 What's lovely about this theorem is that the condition $MM^\dagger =
 M^\dagger M$ can be checked by simple computation. By contrast,
