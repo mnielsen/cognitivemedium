@@ -774,6 +774,8 @@ skills at managing uncertainty and vagueness. But as a limited-use
 cognitive tool, deep Ankification seems potentially valuable in many
 areas.
 
+<a href="https://twitter.com/michael_nielsen">Follow me on Twitter</a>
+
 ### Acknowledgments
 
 Many thanks to everyone who has talked with me about spaced-repetition
