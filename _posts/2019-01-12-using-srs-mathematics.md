@@ -60,7 +60,7 @@ have no idea where the above story comes from.)
 
 How can we make actionable this idea that it's possible to deepen our
 mathematical understanding in an open-ended way? What heuristics can
-we use to deeepen our understanding of a piece of mathematics?
+we use to deepen our understanding of a piece of mathematics?
 
 Over the years I've collected many such heuristics. In these notes I
 describe a heuristic I stumbled upon a year or so ago that I've found
@@ -392,7 +392,7 @@ As described, this deep Ankification process can feel rather
 wasteful. Inevitably, over time my understanding of the proof
 changes. When that happens it's often useful to rewrite (and sometimes
 discard or replace) cards to reflect my improved understanding. And
-some of the cards written along the way have the flavour of exhaust,
+some of the cards written along the way have the flavor of exhaust,
 bad cards that seem to be necessary to get to good cards. I wish I had
 a good way of characterizing these, but I haven't gone through this
 often enough to have more than fuzzy ideas about it.
@@ -443,7 +443,7 @@ If you don't do mathematics, I expect this all sounds rather strange.
 When I was a teenager I vividly recall reading a curious letter Albert
 Einstein wrote to the mathematician Jacques Hadamard, describing his
 (Einstein's) thought processes. I won't quote the whole letter, but
-here's some of the flavour:
+here's some of the flavor:
 
 > The words or the language, as they are written or spoken, do not
 > seem to play any role in my mechanism of thought. The psychical
@@ -504,7 +504,7 @@ less in terms of the conventional representations. The more questions
 I write, the more true this seems to be. And so I wonder if the
 Ankification process can be used as a kind of deterministic way of
 attaining that type of state. (Unfortunately, I can't get obsessed
-with a problem on demand; it's a decidely non-deterministic process!)
+with a problem on demand; it's a decidedly non-deterministic process!)
 
 One consequence of this for the Ankification process is that over time
 I find myself more and more wanting to use blank answers: I don't have
@@ -521,7 +521,7 @@ is when obsessively problem solving. However, I suspect it greatly
 enables such a transition. (I rarely obsessively problem solve these
 days, so I haven't yet had a chance to see this happen.) And I do
 wonder if there are types of question I can ask that will help me get
-more fully to the deepy-internalized state. What seems to be lacking
+more fully to the deeply-internalized state. What seems to be lacking
 is a really strongly-felt internalization of the meaning of answers
 like that shown above:
 
@@ -544,7 +544,7 @@ of the proof and of the theorem. I find it helpful to consider many
 different ways of changing the assumptions of the theorem, and to ask
 how it breaks down (or generalizes). For instance:
 
-_Q: Why does the proof that complex normal matrics are diagonalizable
+_Q: Why does the proof that complex normal matrices are diagonalizable
 fail for real matrices?_
 
 _A: It may not be possible to find an eigenvector for the matrix,
@@ -691,7 +691,7 @@ Nonetheless, something I find invaluable is the confidence Anki brings
 that I will remember what I learn from this process. It's not so much
 any single fact, but rather a sense of familiarity and fluency with
 the underlying objects, an ability to simply see relationships between
-them. That sense does fade with time, but far less rapildy than if I
+them. That sense does fade with time, but far less rapidly than if I
 simply didn't think about the proof again.  That's a large payoff, and
 one that I find makes me far more motivated to go through the
 process. Perhaps other people, with different motivations, would find
@@ -756,7 +756,7 @@ for studying many other subjects, I haven't used it at anything like
 this kind of depth. In the near future, I plan to use a similar
 process to study some of the absolute core results about climate
 change, and perhaps also to study some of the qualities of good
-writing (e.g., I can imagine using a similar process to analyse the
+writing (e.g., I can imagine using a similar process to analyze the
 lead sentences from, say, 30 well-written books).  I don't know how
 this will go, but am curious to try. I'm a little leery of coming to
 rely too much on the process &ndash; creative work also requires many
@@ -768,7 +768,7 @@ areas.
 
 Many thanks to everyone who has talked with me about spaced-repetition
 memory systems.  Especial thanks to Andy Matuschak, whose conversation
-has deeply influenced how I think about nearly all aspects of spaaced
+has deeply influenced how I think about nearly all aspects of spaced
 repetition. And thanks to Kevin Simler for additional initial
 encouragement to write about my spaced repetition practice.
 
