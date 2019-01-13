@@ -750,19 +750,19 @@ discovery fiction as a good example of a process which gives rise to a
 very different kind of understanding than the Ankification process.
 
 *What about other subjects?* Mathematics is particularly well suited
-to deep Ankification, since so much of it is about precise
-relationships between precisely-specified objects. Although I use Anki
-extensively for studying many subjects, I haven't used it at anything
-like this kind of depth. In the near future, I plan to use a process
-along the lines sketched above to study some of the absolute core
-results about climate change, and perhaps also to study in some depth
-the qualities of good writing (e.g., I can imagine using a similar
-process to analyse the lead sentences from, say, 30 well-written
-books).  I don't know how this will go, but am curious to try. I'm a
-little leery of coming to rely too much on the process &ndash;
-creative work also requires many skills at managing uncertainty and
-vagueness. But as a limited-use cognitive tool, this deep Ankification
-process seems potentially valuable in many areas.
+to deep Ankification, since much of it is about precise relationships
+between precisely-specified objects. Although I use Anki extensively
+for studying many other subjects, I haven't used it at anything like
+this kind of depth. In the near future, I plan to use a similar
+process to study some of the absolute core results about climate
+change, and perhaps also to study some of the qualities of good
+writing (e.g., I can imagine using a similar process to analyse the
+lead sentences from, say, 30 well-written books).  I don't know how
+this will go, but am curious to try. I'm a little leery of coming to
+rely too much on the process &ndash; creative work also requires many
+skills at managing uncertainty and vagueness. But as a limited-use
+cognitive tool, deep Ankification seems potentially valuable in many
+areas.
 
 ### Acknowledgments
 
