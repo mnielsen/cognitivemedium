@@ -37,7 +37,7 @@ got better over time. So perhaps he took a small seed of feeling, some
 sense of the numinous that he had privately, and then cultivated it,
 growing it publicly, as part of this work.
 
-More Sagan, from later in Chapter II:
+2. More Sagan, from later in Chapter II:
 
 > In the great dark between the stars there are clouds of gas and dust
 > and organic matter. Dozens of different kinds of organic molecules
