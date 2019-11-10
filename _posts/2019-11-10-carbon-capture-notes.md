@@ -177,7 +177,7 @@ re-used, perhaps as raw material for manufacturing fuel or something
 similar. That's a dramatic oversimplification, but starts to give you
 a basic picture of what they're doing.
 
-	![Abstract of the Carbon Engineering paper](/assets/carbon-capture/ce_abstract.png)
+![Abstract of the Carbon Engineering paper](/assets/carbon-capture/ce_abstract.png)
 
 Unlike many proposals, Carbon Engineering isn't just working on
 paper. They've built a small pilot plant in British Columbia, running
@@ -191,7 +191,7 @@ exact amount depends on details of the configuration the plant is run
 in, and also reflects things like possible variations in interest
 rates on debt, and so on.
 
-	[](/assets/carbon-capture/ce_pic.png)
+![Photo of pilot plant, sketch of the proposed plant](/assets/carbon-capture/ce_pic.png)
 
 It's tempting to be skeptical of this proposal. For one thing, in the
 short term Carbon Engineering has a vested interest in making their
@@ -444,7 +444,7 @@ Nisbet's survey of US climate and energy foundation funding
 summary chart. Note that it covers funding from 19 major funders of
 climate and energy work, and the years from 2011 to 2015:
 
-	![](/assets/carbon-capture/nisbet_balance.png)
+![Graph by Nisbet summarizing breakup of US climate and energy foundation funding](/assets/carbon-capture/nisbet_balance.png)
 
 You see enormous sums of money going into renewable energy,
 sustainable aagriculture, and into opposing fossil fuels. But just a
