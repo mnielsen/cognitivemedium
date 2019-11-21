@@ -1,16 +1,16 @@
 ---
 layout: post
-title:  "Can direct air carbon capture significantly reduce climate change?"
-date:   2019-11-10
+title:  "The impact of direct air carbon capture on climate change"
+date:   2019-11-21
 permalink: /dac-notes
 ---
-	
+
 By <a href="http://michaelnielsen.org">Michael Nielsen</a>, November
-10 2019
+21, 2019
 
 **Note:** *Rough and incomplete working notes, me thinking out
 loud. I'm not an expert on this, so the notes are tentative, certainly
-contain minor errors, and probably contains major errors too, at no
+contain minor errors, and probably contain major errors too, at no
 extra charge!  Thoughtful, well-informed further ideas and corrections
 welcome.*
 
@@ -23,7 +23,9 @@ It's tempting (and fun) to begin by diving into all the many possible
 approaches to DAC. But before getting into any such details, it's
 helpful to think about the scale of the problem to be confronted. How
 much will DAC need to cost if it's to significantly reduce climate
-change?  Let's look quickly at three scenarios for the cost of DAC.
+change?  Let's look quickly at two scenarios for the cost of DAC, just
+as baselines to keep in mind. I'll discuss how realistic (or
+unrealistic) they are below.
 
 As of 2014, the United States [emits](https://web.archive.org/web/20191019082428/https://www.epa.gov/climate-indicators/climate-change-indicators-us-greenhouse-gas-emissions) about 6 billion tonnes of CO2
 each year. Suppose it cost about 100 dollars per tonne of CO2 to do
@@ -54,8 +56,8 @@ Environmental Protection Agency [estimated](https://www.epa.gov/clean-air-act-ov
 the Clean Air Act cost about 65.5 billion dollars in 2010.
 
 (The choice of year may sound a little odd and dated &ndash; why did I
-go all the way back to 2010? In fact, it's not a cherrypicked
-year. The EPA only very rarely reports on the costs of the Clean Air
+go all the way back to 2010? It's not a cherrypicked year &ndash;
+rather, the EPA only very rarely reports on the costs of the Clean Air
 Act, and it happens that 2010 is the most recent year for which an
 estimate is available. It is, by the way, in line with the EPA's
 estimates for earlier years, and it seems reasonable to assume with
@@ -88,28 +90,20 @@ cost of DAC is comparable to the US military budget; and at 10 dollars
 per tonne for DAC, the cost is comparable to the cost of compliance
 with the Clean Air Act and related regulations.
 
-Going even further, at 1 dollar per tonne, the cost of direct air
-capture for the US would be about 6 billion dollars per year. It'd be
-a rounding error in the US economy, soluble in many, many different
-ways. Even the worldwide cost &ndash; more like 40 billion dollars to
-capture all global CO2 emissions &ndash; would be quite modest.
-
 None of this tells us at what cost point it's possible to do DAC. It
-doesn't tell us how to set up a carbon economy to fund this, or how to
-get the political will for any necessary changes (as was required for
-the Clean Air Act). It doesn't tell us what to do about other
-greenhouse gases, or other countries.
+doesn't tell us how to set up a carbon economy to fund this, at any
+price point, or how to get the political will for any necessary
+changes (as was required for the Clean Air Act). Nor does it tell us
+what to do about other greenhouse gases, or other countries.
 
 Still, it's helpful to have a ballpark figure to aim for. If DAC is
-scalable at $100 per tonne, it starts to get very interesting. At $10
-per tonne, the costs start to resemble things we've done before for
-environmental concerns. And if it can be done for $1 per tonne, it
-starts to look like a small cost of doing business. 
+scalable at $100 per tonne, it starts to get very interesting. And at
+$10 per tonne, the costs start to resemble things we've done before
+for environmental concerns. 
 
-As we'll see in a moment, the $100 and $10 per tonne cost estimates
-are at least plausible with existing and, respectively,
-not-too-distant-future technology. $1 per tonne is much more
-speculative.
+As we'll see in a moment, the $100 cost estimate is at least plausible
+with near-future technology. $10 per tonne is more speculative, but
+worth thinking about.
 
 What I like and find striking about this frame is that many people are
 extremely pessimistic about climate change. They can't imagine any
@@ -122,30 +116,46 @@ and required a lot of political will. But the US did it, and many
 other countries have implemented similar legislation. It's a specific,
 concrete goal worth thinking hard about.
 
+Incidentally, in most analyses like this it's conventional to engage
+in a lot of cross-comparison between approaches. Analyses which don't
+do such cross-comparisons tend to get criticised: &ldquo;but why
+didn't you consider [other approach] which [works better
+because]&rdquo;. Doing such comparisons makes good sense if your goal
+is to figure out where to invest resources, or what outcomes are
+likely. But those aren't the point of this analysis. The point here is
+to more clearly understand the bounds on the overall complexity of the
+problem. If _some_ approach can work at a reasonable price point, then
+better solutions are certainly possible. So let me say: I think we can
+likely do much better than direct air capture. But I think this
+analysis is useful for bounding the difficulty of the problem.
+
 I've been talking at an abstract level, in terms of government
 programs and so on. It's also worth putting these numbers in
 individual terms. On average, US citizens produce about 20 tonnes of
 CO2 emissions each year. At $100 per tonne for DAC, that's $2,000 each
-year. At $10 per tonne, it's $200 each year. And at $1 per tonne, it's
-$20 each year. Again, we can see that the $10 per tonne price point
-looks very feasible &ndash; $200 is quite a bit of money for most
-people, but it's about what they routinely spend for many important
-things in their life.
+year. At $10 per tonne, it's $200 each year. Again, we can see that
+the $10 per tonne price point looks very feasible &ndash; $200 is
+quite a bit of money for most people, but it's about what they
+routinely spend for many important things in their life. And while
+$2,000 really is a lot of money for most people, it's also much less
+than the median US citizen routinely spend for many important aspects
+of their lives.
 
-There's a lot of variation in other countries, but among large
-countries the US is on the high end of per-capita emissions. In
-countries like France and Sweden, which have worked hard on reducing
-emissions, the numbers tend to be more like 5 tonnes of CO2 emissions
-per year. And so $100 DAC comes out to $500 per person per year, $10
-DAC to $50 per person per year, and $1 DAC to $5 per person per year.
+There's a lot of variation in other countries, but among large,
+wealthy countries the US is on the high end of per-capita
+emissions. In countries like France and Sweden, which have worked hard
+on reducing emissions, the numbers tend to be more like 5 tonnes of
+CO2 emissions per year. And so $100 DAC comes out to $500 per person
+per year, and $10 DAC to $50 per person per year.
 
-I guess it's not exactly popular to memorize numbers and simple
-models. Still, I wish people discussing climate change knew these
-numbers or some equivalently informative set. I've sat in meetings
-about climate change where many attendees appeared to have almost no
-quantitative awareness of the scale of the problem. Without such an
-awareness of, and facility with, quantitative models, their only
-chance of making progress is by accident, in my opinion.
+I guess it's not currently popular to memorize numbers and simple
+models of climate change. Still, I wish people discussing climate
+change knew not just these numbers (or some equivalently informative
+set), but also many more. I've sat in meetings about climate change
+where many attendees appeared to have almost no quantitative awareness
+of the scale of the problem. Without such an awareness of, and
+facility with, quantitative models, their only chance of making
+substantive progress is by accident, in my opinion.
 
 # How much will direct air capture cost, in the near future?
 
@@ -153,66 +163,80 @@ So, how much does direct air capture actually cost? And what are the
 prospects for driving the costs down?
 
 Unfortunately, it's not very clear. Although technologies for direct
-air capture have been used for many decades, it's usually been done on
+air capture have been used since the 1930s, it's usually been done on
 a small scale, for reasons unrelated to climate. Doing it at the giant
 scales &ndash; ultimately, billions of tonnes! &ndash; required to
 impact the climate is quite another matter.
 
 If you read around about direct air capture, you discover a few
-things: many approaches have been proposed, with cost estimates
-typically ranging from $10 per tonne to $1000 per tonne; those
-estimates are often back-of-the-envelope theory, not even based on a
-pilot, much less an operating large-scale plant. There's nothing quite
-as inexpensive as an industrial plant that exists only on paper.
+things: there are many approaches, with widely-varying cost estimates;
+those estimates are often back-of-the-envelope theory, not even based
+on a pilot, much less an operating large-scale plant. There's nothing
+quite as inexpensive as an industrial plant that exists only on
+paper. Or, as I once overheard someone say, half cynically, half
+optimistically: &ldquo;my favourite form of science fiction is the
+pitch deck.&rdquo;
 
-One of the more detailed proposals comes from the company Carbon
+One of the most detailed proposals comes from the company Carbon
 Engineering, which has been working on direct air capture
 since 2009. In 2018 they published a [paper](https://www.cell.com/joule/fulltext/S2542-4351(18)30225-3) estimating the costs
 associated to direct air capture. Their basic proposal is to build
-cooling towers, filled with a liquid that absorbs CO2, running big
-fans to blow CO2 over that liquid. They then run the resulting
-material through a second process that produces nearly pure CO2 as
-output. That CO2 then needs to either be stored or else somehow
-re-used, perhaps as raw material for manufacturing fuel or something
-similar. That's a dramatic oversimplification, but starts to give you
-a basic picture of what they're doing.
+cooling towers, filled with a liquid that absorbs CO2, and run big
+fans to blow air from the atmosphere over that liquid. They then run
+the resulting material through a second process that produces nearly
+pure CO2 as output. That CO2 then needs to either be stored or else
+somehow re-used, perhaps as raw material for manufacturing fuel or
+something similar. Obviously, this is a very simplified account of
+what they're doing, that leaves many details out!
 
 ![Abstract of the Carbon Engineering paper](/assets/carbon-capture/ce_abstract.png)
 
 Unlike many proposals, Carbon Engineering isn't just working on
-paper. They've built a small pilot plant in British Columbia, running
-at a rate of a few hundred tonnes of CO2 captured per year. They've
-attempted to do detailed costings of all components necessary to make
-a large-scale plant, one with a capacity, if run at full utilization
-(they estimate it'll be run at about 90% utilization), of removing a
-million tonnes of CO2 from the atmosphere each year. They estimate
-that it'll cost from $94 to $232 per tonne of carbon removed. The
-exact amount depends on details of the configuration the plant is run
-in, and also reflects things like possible variations in interest
-rates on debt, and so on.
+paper. They've built a small pilot plant in the town of Squamish,
+British Columbia, an hour north of Vancouver. It runs at a rate of
+hundreds of tonnes of CO2 captured per year. They've attempted to do
+detailed costings of all components necessary to make a large-scale
+plant, one with a capacity, if run at full utilization (they estimate
+it'll be run at about 90% utilization), of removing a million tonnes
+of CO2 from the atmosphere each year. They estimate that it'll cost
+from $94 to $232 per tonne of carbon removed. The exact amount depends
+on details of the configuration the plant is run in, and also reflects
+things like possible variations in interest rates on debt, and so on.
 
 ![Photo of pilot plant, sketch of the proposed plant](/assets/carbon-capture/ce_pic.png)
 
 It's tempting to be skeptical of this proposal. For one thing, in the
 short term Carbon Engineering has a vested interest in making their
-direct air capture scheme look attractive and inexpensive. So caution
-is called for. I also lack the expertise to seriously evaluate their
-proposal. While to my eye, it looks as though Carbon Engineering has
-been careful, maybe they've missed some important factor, and their
-estimates are way off. On the other hand, there are at least quite a
-few eyes on it &ndash; although the paper was published just a year
-ago, in 2018, it's already been cited 132 times, and it's clear it's
-seen as something of a gold standard.
+direct air capture scheme look attractive and inexpensive. And there's
+also just natural human entrepreneurial optimism, and the fact that,
+by definition, you can't anticipate the details of unexpected
+problems. So caution is called for. I also lack the expertise to
+seriously evaluate the technical details of their proposal. While to
+my eye, it looks as though Carbon Engineering has been careful, maybe
+they've missed some important factor, and their estimates are way
+off. On the other hand, there are at least quite a few eyes on it
+&ndash; although the paper was published just a year ago, in 2018,
+it's already been cited 132 times, and it's clear it's seen as
+something of a gold standard.
 
 There are some interesting critiques of direct air capture in the
 scientific literature. For instance, [this 2011 paper](https://www.pnas.org/content/pnas/108/51/20428.full.pdf) by House _et
 al_ claims a minimal cost of $1,000 per tonne, based on a relatively
 general argument, whose main input appears to be the cost of
-electricity. They conclude that &ldquo;many estimates in the
-literature appear to overestimate air capture's potential&rdquo;. The
-Carbon Engineering paper mentions this paper and similar critiques,
-and rebuts it with an argument that amounts to &ldquo;well, we
-actually went and built a plant which works, and we did detailed
+electricity. The analysis is quite complicated, and I don't understand
+many of the details (working on it, but it's a real research project
+to track everything down!) The essential gist seems to be: when you
+separate the CO2 from the atmosphere, you're ordering the system, and
+so necessarily lowering the entropy of the system. The second law of
+thermodynamics tells us there will be an intrinsic energy cost
+associated to doing this, even if done with maximal efficiency; that,
+in turn, puts some constraints on the costs.  In any case, they
+conclude that &ldquo;many estimates in the literature appear to
+overestimate air capture's potential&rdquo;. 
+
+The Carbon Engineering paper mentions this paper and similar
+critiques, and rebuts it with an argument that amounts to &ldquo;well,
+we actually went and built a plant which works, and we did detailed
 costings of how to scale it up&rdquo;. This is a good start on a
 rebuttal, but obviously as an outsider it'd be good to go back and dig
 into both pro and con details much more than I have. That may be a
@@ -221,15 +245,15 @@ remainder of these notes, let's stick with Carbon Engineering's
 numbers, but keep in mind that they should be taken with a grain of
 salt, until examined much more closely.
 
-I must admit, part of the reason I'm inclined to at least be
-sympathetic toward Carbon Engineering's estimate is that I read lead
-author (and Carbon Engineering's cofounder) David Keith's book about a
-different topic, [solar geoengineering](https://www.amazon.com/Climate-Engineering-Boston-Review-Books/dp/0262019825). Keith seemed to me to be
-very honest in the book, carefully describing many of his own
-uncertainties, the complexities of the problem, and giving charitable
-explanations of the position of his critics. None of that makes him
-correct, but I'm inclined to believe he's careful, serious, and worth
-paying attention to.
+I must admit, part of the reason I'm inclined to be sympathetic toward
+Carbon Engineering's estimate is that I read lead author (and Carbon
+Engineering's cofounder) David Keith's book about a different
+topic, [solar geoengineering](https://www.amazon.com/Climate-Engineering-Boston-Review-Books/dp/0262019825). Keith seemed to me to be very honest
+in the book, carefully describing many of his own uncertainties, the
+complexities of the problem, and giving charitable explanations of the
+position of his critics. None of that makes him correct, but I'm
+inclined to believe he's careful, serious, and worth paying attention
+to.
 
 An influential [prior study](https://infoscience.epfl.ch/record/200555/files/dac2011.pdf) of DAC came in 2011 from an American
 Physical Society (APS) study. The costs estimated were much higher,
@@ -263,8 +287,9 @@ often a less costly but also less general, more bespoke approach.)
 Earlier this year, the US National Academies of Sciences, Engineering,
 and Medicine released an informative [report](https://www.nap.edu/catalog/25259/negative-emissions-technologies-and-reliable-sequestration-a-research-agenda) surveying negative
 emissions technologies. In the report, they attempt to estimate both
-cost ranges and the scalability of many different technologies. (For a
-summary, see pages 354-356 of the report).
+cost ranges and the scalability of many different technologies. If
+you're interested, there's a good summary on pages 354-356 of the
+report.
 
 I won't summarize all their results here. But there is much
 (cautiously) encouraging news. There are a lot of possible negative
@@ -277,15 +302,16 @@ decades or centuries. The NAS survey reports a cost estimate of $10
 per tonne.
 
 That price point is much more encouraging than Carbon
-Engineering's. Unfortunately, the report also projects a "potential
-[global] capacity with current technology and understanding" of 8-65
-billion tonnes. That's not enough for even two years of global CO2
-production. At most, this can simply help out.
+Engineering's. Unfortunately, the report also projects a
+&ldquo;potential [global] capacity with current technology and
+understanding&rdquo; of 8-65 billion tonnes. That's not enough for
+even two years of global CO2 production. So at most, this can simply
+help out.
 
 Another approach is based on storing carbon in forests. The National
 Academies report's estimated price is somewhat higher &ndash; from
 $15-50 per tonne of CO2. (I don't know if that includes proper burial
-&ndash; when trees die they typically return most of their CO2 to the
+&ndash; when trees die most of their CO2 is typically returned to the
 atmosphere). But the approach is also much more scalable, with an
 estimated global capacity of from 570 to 1,125 billion tonnes, using
 &ldquo;current technology and understanding&rdquo;.  Per year, the NAS
@@ -303,10 +329,10 @@ profit. This is based in part on the cost of storing CO2 in the Utsira
 formation &ndash; a giant undersea aquifer off Scandinavia &ndash;
 where several million tonnes of CO2 have been stored at a
 Wikipedia-reported price of 17 dollar per tonne. If this impression is
-correct then storage and utiliziation is likely a relatively small
-overhead, and the cost of capturing the CO2 currently
-dominates. Still, a more complete analysis would be careful about this
-costing.)
+correct then the cost of capturing CO2 is likely to either dominate or
+in worst case be comparable to the cost of storage and
+utilization. Still, a more detailed analysis would be careful about
+this costing.)
 
 # How much can the costs drop?
 
@@ -316,7 +342,8 @@ where they need to be for climate to be a problem of similar order to
 air pollution. But the numbers are also based on &ldquo;current
 technology and understanding&rdquo;.
 
-How much can these costs drop with improvements in technology?
+How much can these costs drop with improvements in technology? And are
+there other ways of dropping the effective costs?
 
 The most famous technology cost curves are those associated to Moore's
 Law &ndash; the exponential increase in transistor density in
@@ -339,24 +366,25 @@ roughly a factor of 100 over the past four decades
 ([link](http://news.mit.edu/2018/explaining-dropping-solar-cost-1120), [link](https://www.sciencedirect.com/science/article/pii/S0301421518305196)). That cost reduction was driven in part by
 technological improvement, and in part by economies of scale.
 
-One wonders: will the cost of direct air capture and other negative
-emission technologies follow something like Wright's Law? If so, one
-might hope that it would drive the cost of carbon capture in some form
-down below 10 dollars per tonne. Indeed, it's even possible to start
-to think about whether there's ways it could be made net profitable.
+One wonders: will the cost of direct air capture or some other
+negative emission technology follow something like Wright's Law? If
+so, one might hope that it would drive the cost of carbon capture in
+some form down below 10 dollars per tonne. Indeed, it's even possible
+to start to think about whether there's ways it could be made net
+profitable.
 
 Unfortunately, while Wright's Law is interesting, it's far from a
 compelling argument. Indeed, it's a little silly to call it a Law:
 it's an observed historical regularity, an observation about the past
-for certain technologies. If you're Intel, planning for 5-10 year from
-now, you need to set targets. You may perhaps be able to project 1 or
-2 years on the basis of in-train improvements. But longer-term
-improvements may be more speculative, and require new ideas, ideas
-that by definition you can't directly incorporate into your current
-models. Studying history is an alternative approach to help set
-plausible targets. But eventually such historical regularities break
-down. Indeed, we see this in recent years where many aspects of
-Moore's Law have started to break down.
+for certain technologies. If you're Intel, planning for 5 to 10 or
+more years from now, you need to [set targets](https://en.wikipedia.org/wiki/International_Roadmap_for_Devices_and_Systems). You may perhaps be
+able to project reliably a few years on the basis of in-train
+improvements. But longer-term improvements may be more speculative,
+and require new ideas, ideas that by definition you can't directly
+incorporate into your current models. Studying history is an
+alternative approach to help set plausible targets. But eventually
+such historical regularities break down. Indeed, we see this in recent
+years where many aspects of Moore's Law have started to break down.
 
 And so the fundamental problem here is that we don't know how much the
 costs of DAC will go down. At best, we can make guesses. That's a
@@ -398,45 +426,64 @@ staff. They were founded in 2009, and appear to have subsisted on
 relatively small grants and seed funding until 2019, when they raised
 68 million dollars. It's interesting to think about what they'll
 achieve with that funding. Hopefully, they'll be able to pick some
-slightly higher-hanging fruit. Assuming their initial cost estimates
-bear out, for this design, will it be possible for them (or someone
-else working on direct air capture) to achieve another factor of 3
-reduction in cost?
+higher-hanging fruit. Assuming their initial cost estimates bear out,
+for this design, will it be possible for them (or someone else working
+on direct air capture) to achieve another factor of 3 reduction in
+cost?
 
-I've focused a lot on Carbon Engineering, and it sounds like I'm
-bullish about their approach. Actually, I'm too ignorant to have a
-really strong opinion. From my point of view, the benefit of Carbon
-Engineering is that they've been quite detailed about what they've
-been pursuing. That makes them a useful example to dig into. And my
-tentative conclusion is that _direct air capture offers a promising
-but far from certain approach to making major progress on climate
-change_. And, more broadly: _negative emissions technologies offer an
-extremely promising approach to making major progress on climate
-change_.
-
-In particular, while the current approach to DAC obviously costs too
-much, I think it's at least plausible that DAC can be done at a cost
-point more like $10 per tonne. Here we have a situation where
-relatively little work has been done developing a technology. Compared
-to the billions spent on improving solar, say, work on DAC is really
-just getting started. It seems very promising that they're starting
-only an order of magnitude (or two, if you take more skeptical
-estimates) away from a cost at which it can plausibly make a huge dint
-in the climate problem.
-
-(Aside: I've been focusing on cost reductions. In fact, part of the
-job will be done in a very different way. The _carbon intensity_ of a
-country is the CO2 emissions per dollar of GDP. Carbon intensities in
-the US dropped more than 18% per decade from 1990 to 2014, the latest
-year for which the World Bank reports numbers. This isn't surprising:
-all other things equal, most people and companies try to keep doing
-things in more energy-efficient ways. If this drop in carbon intensity
+I've been focusing on cost reductions due to better design and
+technology. In fact, part of the job will be done in a very different
+way. The _carbon intensity_ of a country is the CO2 emissions per
+dollar of GDP. Carbon intensities in the US dropped more than 18% per
+decade from 1990 to 2014, the latest year for which the World Bank
+reports numbers. This isn't surprising: all other things equal, most
+people and companies try to keep doing things in more energy-efficient
+ways, since energy costs them money. If this drop in carbon intensity
 continues, it means that considered as a fraction of the total
 economy, the cost of DAC will go down. Effectively, it's as though
-we're automatically making progress toward the $10 DAC goal, at a rate
-of about 18 percent per decade. On its own that won't make DAC
-economically feasible. But over a couple of decades, it'll help a
-lot!)
+we're automatically making progress toward $10 DAC, at a rate of about
+18 percent per decade. On its own that won't make DAC economically
+feasible. But over two or three decades, it'll help a lot.
+
+It's also interesting to think about cost reductions due to plausible
+emissions reductions. As noted earlier, in countries such as France,
+Sweden, etc, average emissions per capita are something like 4 times
+lower than in the US. This is often attributed causally to their
+extensive use of nuclear power; nuclear certainly plays a large role,
+but as far as I can see it can only be part of the story (since
+electricity production is only responsible for a moderate fraction of
+total emissions). Rather, it's that they've also been more serious
+than the US in other ways about reducing emissions; their use of
+nuclear is, in part, a symptom of this seriousness, not the cause. In
+any case, such examples illustrate that nuclear plus other moderate
+efforts can lead to large emissions reductions.
+
+Of course, neither changes in carbon intensity nor emissions
+reductions are literally the same as a drop in price of direct air
+capture. But considered as a fraction of the economy they may as well
+be; it's a kind of drop in the effective cost of DAC. And so I think a
+factor 10 or more reduction in the effective cost of DAC is plausibly
+possible, in part through technological improvements, in part through
+emissions reductions as already implemented in countries with similar
+standards of living, and in part through reduced carbon intensity. Put
+another way: it's plausible that doing DAC to make the US carbon
+neutral ends up costing an amount comparable to or less than the
+current cost of the Clean Air Act, as a fraction of the total
+economy. That seems encouraging.
+
+I've focused a lot on direct air capture, and it sounds like I'm
+bullish about this approach. Actually, I'm too ignorant to have a
+really strong opinion. From my point of view, a big part of
+concentrating here was simply that (a) there was what seemed a
+particularly juicy paper to dig into, and (b) as I said at the start,
+this could be treated as a boundary case, setting a kind of worst-case
+scenario. It's entirely possible &ndash; indeed, likely, &ndash; that
+other approaches to dealing with climate are considerably better. But
+this already looks promising. My tentative conclusions are that
+_direct air capture offers a promising but far from certain approach
+to making major progress on climate change_. And, more broadly:
+_negative emissions technologies offer a promising approach to making
+major progress on climate change_.
 
 I got interested in direct air capture in part after reading Matt
 Nisbet's survey of US climate and energy foundation funding
@@ -453,13 +500,16 @@ dollars &ndash; went to other low carbon energy technologies. And of
 that, just $1.3 million went to evaluate carbon capture and storage.
 
 Now, admittedly, these numbers focus on just a tiny slice of the total
-funding pie (US foundation funding), and are somewhat outdated.
-Still, my impression is that the qualitative picture from Nisbet's
-research holds more broadly.  Humanity's collective priorities are
-research and development focused on renewable energy sources,
-especially solar and wind; and anti-fossil fuel messaging and
-lobbying. By contrast, negative emissions technologies like DAC are
-receiving relatively little funding.
+funding pie (US foundation funding), and are somewhat outdated. In
+particular, the last few years have seen substantial progress on
+investment in negative emissions technologies (as witness the $68
+million invested in Carbon Engineering).  Still, my impression is that
+the qualitative picture from Nisbet's research holds more broadly.
+Humanity's collective priorities are research and development focused
+on renewable energy sources, especially solar and wind; and
+anti-fossil fuel messaging and lobbying. By contrast, negative
+emissions technologies like DAC are receiving relatively little
+funding.
 
 As a non-expert, I'm reluctant to hold too firm opinions here. But,
 frankly albeit tentatively I think this makes no sense! Of course,
@@ -477,27 +527,28 @@ relatively minor effort so far put into it.
 This is a tiny slice through a tiny slice (direct air capture) of the
 climate problem.  Climate is intimidating in part because the scale of
 understanding required is so immense.  You can spend a lifetime
-studying the relevant parts of just one of: the climate, the energy
-industry, solar, wind, nuclear, politics, economics, social norms.
-It's extremely difficult to get an overall picture; it's easy to miss
-very big things.  I wrote these notes mostly because the only way I
-know to get a handle on big problems is to start by doing detailed
-investigations of many tiny corners. So consider this one tiny corner.
+studying the relevant parts of just one of: the climate itself, the
+energy industry, solar, wind, nuclear, politics, economics, social
+norms.  It's extremely difficult to get an overall picture; it's easy
+to miss very big things.  I wrote these notes mostly because the only
+way I know to get a handle on big problems is to start by doing
+detailed investigations of very tiny corners. So consider this one
+very tiny corner.
 
-To finish, I can't resist reporting an uncommon opinion: overall, I'm
-optimistic about climate.
+To finish, I can't resist reporting an uncommon opinion: overall, and
+over the long term, I'm optimistic about climate.
 
-I've focused on direct air capture (and, to some extent, negative
-emissions technologies), but it seems to me there are many other
-promising approaches.  I believe humans will figure out how to address
-climate change. There will be a lot of suffering along the way, much
-of it falling to the world's poorest people. That's a terrible
-tragedy, and something we're too late to entirely avert.  But over the
-long term work on this problem will *also* lead us to strengthen
-existing institutions, and to invent new institutions, institutions
-which will make life far better for billions of people.  It's a huge
-challenge, and I think we'll rise to the challenge, and make human
-civilization better off for it.
+I've focused on direct air capture, but it seems to me there are many
+other promising approaches.  I believe humans will figure out how to
+address climate change. There will be a lot of suffering along the
+way, much of it falling to the world's poorest people. That's a
+terrible tragedy, and something we're too late to entirely avert;
+indeed, it's very likely already happening.  But over the long term
+work on this problem will *also* lead us to strengthen existing
+institutions, and to invent new institutions, institutions which will
+make life far better for billions of people.  It's a huge challenge,
+but I think we'll rise to the challenge, and make human civilization
+much better off for it.
 
 *Acknowledgments:* Thanks to Andy Matuschak for conversations about
 climate.
