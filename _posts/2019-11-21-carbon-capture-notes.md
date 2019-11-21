@@ -458,6 +458,12 @@ nuclear is, in part, a symptom of this seriousness, not the cause. In
 any case, such examples illustrate that nuclear plus other moderate
 efforts can lead to large emissions reductions.
 
+(I should point out: of course, drops in carbon intensity and
+emissions reductions are intertwined, not independent! I've mentioned
+them separately because there are ways in which they've very different
+kinds of goals with, for example, different kinds of expression in
+policy.)
+
 Of course, neither changes in carbon intensity nor emissions
 reductions are literally the same as a drop in price of direct air
 capture. But considered as a fraction of the economy they may as well
