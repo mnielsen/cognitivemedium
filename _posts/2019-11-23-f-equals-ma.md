@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Why does F = ma?"
-date:   2019-11-21
+date:   2019-11-23
 permalink: /f-ma
 ---
 
