@@ -123,7 +123,7 @@ indeed, no-one would ever have heard of it.
 
 Putting it in somewhat fuzzier terms, and at the risk of repeating
 myself: _F = ma_ derives its power from the (implicit) assertion that
-there is a simple unversal force law that lets us figure out _F_ for a
+there is a simple universal force law that lets us figure out _F_ for a
 particular configuration of matter. And so the configuration of matter
 completely determines the acceleration of a test particle. There is no
 _a priori_ reason this ought to be true. It's an absolutely incredible
