@@ -1,5 +1,3 @@
-# Slow
-
 A list of marvellous projects which human beings have undertaken that
 took an exceptionally long time. Many examples contributed by people
 on [Twitter](https://twitter.com/michael_nielsen/status/1224902391331319809).
