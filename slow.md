@@ -4,7 +4,10 @@ Marvellous projects which human beings have undertaken that took an
 exceptionally long time. The focus is especially on goal-directed
 projects (e.g., a scientific experiment or a building), less on
 long-lived institutions or decentralized change (e.g., languages,
-domestication of livestock).
+domestication of livestock, cities, religions). Of course, those are
+also fascinating, but they have less of a sense of a long-term goal
+&ndash; Jericho is incredible, but the founders probably weren't
+thinking "I hope this is still here in 9,000 years".
 
 What problems can human beings _only_ solve over a very long period of
 time? And how can we build institutions that solve those problems?
@@ -35,7 +38,9 @@ centuries: [wikipedia](https://en.wikipedia.org/wiki/Wiles%27s_proof_of_Fermat%2
 + The [Clock of the Long Now](https://en.wikipedia.org/wiki/Clock_of_the_Long_Now), which aspires to last 10,000 years.
 
 + I suspect many key open source systems (Linux, Wikipedia) will still
-  be around in 100 years.
+  be around in 100 years. I won't be surprised if certain standards
+  still show up in a thousand years, perhaps in a modified form. ASCII
+  -> Unicode -> ???  Unix Time? TCP/IP?
   
-+
++ The 
 
