@@ -12,6 +12,10 @@ thinking "I hope this is still here in 9,000 years".
 What problems can human beings _only_ solve over a very long period of
 time? And how can we build institutions that solve those problems?
 
+This is
+a [riff on Patrick Collison's list of /fast projects](https://patrickcollison.com/fast). There are
+surprisingly many commonalities.
+
 + The proof of Fermat's Last Theorem involved an incredible amount of
 mathematics developed over many decades, and in some ways
 centuries: [wikipedia](https://en.wikipedia.org/wiki/Wiles%27s_proof_of_Fermat%27s_Last_Theorem).
@@ -42,5 +46,6 @@ centuries: [wikipedia](https://en.wikipedia.org/wiki/Wiles%27s_proof_of_Fermat%2
   still show up in a thousand years, perhaps in a modified form. ASCII
   -> Unicode -> ???  Unix Time? TCP/IP?
   
-+ The 
+
+
 
