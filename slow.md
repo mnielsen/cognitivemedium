@@ -1,20 +1,21 @@
-# Slow
 
-Marvellous projects which human beings have undertaken that took an
-exceptionally long time. The focus is especially on goal-directed
-projects (e.g., a scientific experiment or a building), less on
-long-lived institutions or decentralized change (e.g., languages,
-domestication of livestock, cities, religions). Of course, those are
-also fascinating, but they have less of a sense of a long-term goal
-&ndash; Jericho is incredible, but the founders probably weren't
-thinking "I hope this is still here in 9,000 years".
+A list of marvellous projects which human beings have undertaken that
+took an exceptionally long time. 
+
+The focus is mostly on goal-directed projects (e.g., a scientific
+experiment or a building), less on long-lived institutions or
+decentralized change (e.g., languages, domestication of livestock,
+cities, religions). Of course, those are also fascinating, but they
+have less of a sense of a long-term goal. Jericho is incredible, but
+the founders probably weren't thinking "I hope this is still here in
+9,000 years".
 
 What problems can human beings _only_ solve over a very long period of
 time? And how can we build institutions that solve those problems?
 
-This is
+This page is
 a [riff on Patrick Collison's list of /fast projects](https://patrickcollison.com/fast). There are
-surprisingly many commonalities.
+surprisingly many commonalities with those projects.
 
 + The proof of Fermat's Last Theorem involved an incredible amount of
 mathematics developed over many decades, and in some ways
@@ -45,7 +46,16 @@ centuries: [wikipedia](https://en.wikipedia.org/wiki/Wiles%27s_proof_of_Fermat%2
   be around in 100 years. I won't be surprised if certain standards
   still show up in a thousand years, perhaps in a modified form. ASCII
   -> Unicode -> ???  Unix Time? TCP/IP?
-  
+
++ The [2nd Ave Subway in Manhattan](https://en.wikipedia.org/wiki/Second_Avenue_Subway), with preparatory construction
+  beginning in 1942. First phase opened in 2017.
+
++ The [list of oldest companies in the world](https://en.wikipedia.org/wiki/List_of_oldest_companies) is food for
+  thought. Sad to report the 2006 demise of [Kongo Gumi](https://en.wikipedia.org/wiki/Kong%C5%8D_Gumi), which
+  began in 578. It was in the construction business, originally of
+  Shinto Shrines (I believe). Such Shrines undergo a continuous
+  process of renewal; an example is the [Izumo-taisha](https://en.wikipedia.org/wiki/Izumo-taisha), which may
+  date to BCE.
 
 
 
