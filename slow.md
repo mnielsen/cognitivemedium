@@ -1,6 +1,7 @@
 
 A list of marvellous projects which human beings have undertaken that
-took an exceptionally long time. 
+took an exceptionally long time. Many examples contributed by people
+on [Twitter](https://twitter.com/michael_nielsen/status/1224902391331319809).
 
 The focus is mostly on goal-directed projects (e.g., a scientific
 experiment or a building), less on long-lived institutions or
