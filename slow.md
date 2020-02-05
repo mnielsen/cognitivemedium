@@ -11,7 +11,10 @@ the founders probably weren't thinking "I hope this is still here in
 9,000 years".
 
 What problems can human beings _only_ solve over a very long period of
-time? And how can we build institutions that solve those problems?
+time? And how can we build institutions that solve those problems? 
+
+Related: of the projects below, which _required_ a long time, and
+which could have been greatly accelerated? 
 
 This page is
 a [riff on Patrick Collison's list of /fast projects](https://patrickcollison.com/fast). There are
