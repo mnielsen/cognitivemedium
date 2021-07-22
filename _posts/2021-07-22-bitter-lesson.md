@@ -6,8 +6,8 @@ permalink: /bitter-lesson
 ---
 By [Michael Nielsen](https://michaelnielsen.org) 
 
-*Attention conservation notice:* /Very rapidly written, by an
-interested non-expert outsider./
+*Attention conservation notice: Rough notes, very rapidly written, by
+an interested non-expert outsider.*
 
 [Rich Sutton](http://incompleteideas.net/) is an expert on neural
 networks at the University of Alberta and DeepMind. He's written a
