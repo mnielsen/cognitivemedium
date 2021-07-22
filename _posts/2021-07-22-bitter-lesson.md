@@ -2,7 +2,7 @@
 layout: post
 title:  "Reflections on 'The Bitter Lesson'"
 date:   2021-07-22
-permalink: /rmnist
+permalink: /bitter-lesson
 ---
 By [Michael Nielsen](https://michaelnielsen.org) 
 
