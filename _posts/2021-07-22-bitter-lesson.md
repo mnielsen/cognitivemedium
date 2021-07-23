@@ -6,8 +6,8 @@ permalink: /bitter-lesson
 ---
 By [Michael Nielsen](https://michaelnielsen.org) 
 
-*Attention conservation notice: Rough notes, very rapidly written, by
-an interested non-expert outsider.*
+**Attention conservation notice:** * Rough notes, very rapidly
+written, by an interested non-expert outsider.*
 
 [Rich Sutton](http://incompleteideas.net/) is an expert on neural
 networks at the University of Alberta and DeepMind. He's written a
@@ -100,17 +100,18 @@ many were based on expert analysis of games lost by Deep Blue's
 predecessor systems (an earlier version of Deep Blue, Deep Thought,
 and ChipTest).
 
-Sutton is correct that Deep Blue was a triump of "massive, deep
+Sutton is correct that Deep Blue was a triumph of "massive, deep
 search". But it was also a triumph of expert knowledge of chess. It
 seems to me an example of a hybrid approach: deep domain knowledge
 _and_ massive search leveraging computational power.
 
 Jump forward more than two decades, and you have DeepMind's AlphaZero
 and MuZero systems. AlphaZero taught itself to play chess (and Go and
-Shogi) using self-play; on top of that, MuZero added 57 Atari video
-games. Neither system had hand-engineered features &ndash; they
-started solely with the rules of the various games. And they quickly
-learned to play many of the games (all?) better than any human being.
+Shogi) using self-play; on top of those games, MuZero added as well 57
+Atari video games. Neither system had hand-engineered features &ndash;
+they started solely with the rules of the various games. And they
+quickly learned to play many of the games (all?) better than any human
+being.
 
 This supports Sutton's contention that:
 
@@ -189,14 +190,14 @@ has been far greater than progress according to Moore's Law.
 
 Reports of Moore's Law's death have often been prematurely circulated,
 if not greatly exaggerated. It does seem very likely that Moore's Law
-will continue its gradual slow down over the next few decades. In that
-sense we can expect the Bitter Lesson to gradually lose its
-power. Still, my guess is that there may well be a factor of a million
-or more to go, in computational power per unit cost, over the next few
-decades.  The following factors are all at play:
+will continue its gradual decline over the next few decades. In that
+sense we can expect the Bitter Lesson to gradually lose power. Still,
+my guess is that there may well be a factor of a million or more to
+go, in computational power per unit cost, over the next few decades.
+The following factors are all at play:
 
-+ Better-adapated dedicated hardware (later versions of TPUs and the
-like)
++ Better-adapted dedicated hardware &ndash; later versions of TPUs and
+the like
 
 + The ongoing gradual extrusion of semiconductor manufacture into the
 third dimension, giving more scope for parallel computing. My (very
@@ -280,19 +281,19 @@ often a better programmer than you.
 + At the same time, we often understimate the benefits of Moore's Law
 as a force making compute-heavy search-and-learning methods simply
 improve, as if by magic. This is likely to continue for several more
-decades, albeit gradually getting slower and slower. At some point the
-shoe may well be on the other foot.
+decades, albeit gradually getting slower. At some point the shoe may
+well be on the other foot.
 
 + Hybrid approaches often seem better than either pure approach.  But
-the teams making the hybrids often seem to involve people who've taken
-relatively pure approaches (in both directions) in the past.  
+the teams making the hybrids often involve people who've specialized
+in relatively pure approaches (in both directions) in the past.
 
 + I think it's a mistake to expect to reason about this from first
 principles and arrive at reliable conclusions. The Bitter Lesson is a
 heuristic model and set of arguments to keep in mind, not a reliable
 argument that applies in all circumstances. You need to proceed
 empirically.  Keep the Bitter Lesson in mind, yes, but also keep in
-mind that your OS wasn't produced by training TPUs for a decade.  
+mind that your OS wasn't produced by training TPUs for a decade.
 
 *Acknowledgements:* Thanks to everyone who commented on Twitter and
 elsewhere about this. The above was written mostly in response to
